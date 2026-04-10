@@ -277,7 +277,7 @@ public IActionResult Index()
 
 ```razor
 <ejs-multiselect id="countries" 
-    dataSource="https://services.odata.org/V4/Northwind/Northwind.svc/Customers"
+    dataSource="YOUR_API_ENDPOINT"
     fields-text="ContactName"
     fields-value="CustomerID"
     placeholder="Select customer">

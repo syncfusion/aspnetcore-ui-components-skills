@@ -112,20 +112,6 @@ The `enableHtmlSanitizer` property enables automatic HTML sanitization in the Fi
 </ejs-filemanager>
 ```
 
-**JavaScript Configuration**:
-```javascript
-// Initialize File Manager with HTML sanitization enabled
-const fileManagerInstance = new ej.filemanager.FileManager({
-    ajaxSettings: {
-        url: '/FileManager/Read'
-    },
-    enableHtmlSanitizer: true,  // Enable HTML sanitization
-    view: 'Details'
-});
-
-fileManagerInstance.appendTo('#filemanager');
-```
-
 **What enableHtmlSanitizer Protects**:
 - File names with HTML tags
 - Metadata containing scripts
@@ -151,7 +137,6 @@ fileManagerInstance.appendTo('#filemanager');
 </script>
 
 <script>
-// Even if data.name contains "<script>alert('xss')</script>", 
 // enableHtmlSanitizer will safely escape it
 function getIcon(fileName) {
     const ext = (fileName.split('.').pop() || '').toLowerCase();

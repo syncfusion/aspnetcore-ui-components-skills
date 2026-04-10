@@ -250,72 +250,30 @@ public IActionResult SelfReferentialBinding()
 
 **C# (TreeViewController.cs)**:
 ```csharp
-public IActionResult ODataBinding()
+public IActionResult RemoteData()
 {
-    // DataManager configuration happens in view
+    TreeViewFieldsSettings childData = new TreeViewFieldsSettings();
+    childData.Query = "new ej.data.Query().from('Orders').select('OrderID,EmployeeID,ShipName').take(5)";
+    childData.Id = "OrderID";
+    childData.Text = "ShipName";
+    childData.ParentID = "EmployeeID";
+    childData.DataSource = new DataManager
+    {
+        Url = "https://services.odata.org/V4/Northwind/Northwind.svc",
+        Adaptor = "ODataV4Adaptor",
+        CrossDomain = true
+    };
+    ViewBag.child = childData;
     return View();
 }
 ```
 
 **Razor View**:
 ```html
-<ejs-treeview id="treeOData">
-    <e-treeview-fields 
-        dataSource="url"
-        id="EmployeeID"
-        text="FirstName"
-        hasChildren="Reports"
-        parentId="ReportsTo">
-    </e-treeview-fields>
-</ejs-treeview>
-```
-
-### Web API Service
-
-**C# Web API Endpoint**:
-```csharp
-[ApiController]
-[Route("api/[controller]")]
-public class TreeDataController : ControllerBase
-{
-    [HttpGet]
-    public IActionResult GetNodes(int? parentId = null)
-    {
-        List<object> data = new List<object>();
-        
-        if (parentId == null)
-        {
-            // Root nodes
-            data.Add(new { id = 1, name = "Folder 1", hasChild = true });
-            data.Add(new { id = 4, name = "Folder 2", hasChild = true });
-        }
-        else if (parentId == 1)
-        {
-            // Children of Folder 1
-            data.Add(new { id = 2, name = "File 1", pid = 1 });
-            data.Add(new { id = 3, name = "File 2", pid = 1 });
-        }
-        else if (parentId == 4)
-        {
-            // Children of Folder 2
-            data.Add(new { id = 5, name = "File 3", pid = 4 });
-        }
-        
-        return Ok(data);
-    }
-}
-```
-
-**Razor View with Web API**:
-```html
-<ejs-treeview id="treeWebApi">
-    <e-treeview-fields 
-        dataSource="url"
-        id="id"
-        parentId="pid"
-        text="name"
-        hasChildren="hasChild">
-    </e-treeview-fields>
+<ejs-treeview id="tree">
+  <e-treeview-fields child="ViewBag.child" query="new ej.data.Query().from('Employees').select('EmployeeID,FirstName,Title').take(5)" id="EmployeeID" text="FirstName" hasChildren="EmployeeID">
+       <e-data-manager url="https://services.odata.org/V4/Northwind/Northwind.svc" adaptor="ODataV4Adaptor" crossDomain="true"></e-data-manager>
+  </e-treeview-fields>
 </ejs-treeview>
 ```
 
@@ -326,8 +284,9 @@ public class TreeDataController : ControllerBase
 **Razor View**:
 ```html
 <ejs-treeview id="treeDataManager">
-    <e-datamanager url="url" adaptor="UrlAdaptor"></e-datamanager>
-    <e-treeview-fields dataSource="$this.dataManager" id="id" text="name" parentId="pid" hasChildren="hasChild"></e-treeview-fields>
+    <e-treeview-fields id="id" text="name" parentId="pid" hasChildren="hasChild">
+        <e-datamanager url="url" adaptor="UrlAdaptor"></e-datamanager>
+    </e-treeview-fields>
 </ejs-treeview>
 ```
 
@@ -336,8 +295,9 @@ public class TreeDataController : ControllerBase
 **Razor View**:
 ```html
 <ejs-treeview id="treeODataManager">
-    <e-datamanager url="url" adaptor="ODataV4Adaptor"></e-datamanager>
-    <e-treeview-fields dataSource="$this.dataManager" id="EmployeeID" text="FirstName" parentId="ReportsTo" hasChildren="Reports"></e-treeview-fields>
+    <e-treeview-fields id="EmployeeID" text="FirstName" parentId="ReportsTo" hasChildren="Reports">
+        <e-datamanager url="url" adaptor="ODataV4Adaptor"></e-datamanager>
+    </e-treeview-fields>
 </ejs-treeview>
 ```
 
@@ -346,10 +306,11 @@ public class TreeDataController : ControllerBase
 **Razor View with Query**:
 ```html
 <ejs-treeview id="treeQuery">
-    <e-datamanager url="url" adaptor="ODataV4Adaptor">
-        <e-query where="new ej2.data.Predicate('ShipCity', 'equal', 'London')" expand="Customer"></e-query>
-    </e-datamanager>
-    <e-treeview-fields dataSource="$this.dataManager" id="OrderID" text="ShipName"></e-treeview-fields>
+    <e-treeview-fields id="OrderID" text="ShipName">
+        <e-datamanager url="url" adaptor="ODataV4Adaptor">
+            <e-query where="new ej2.data.Predicate('ShipCity', 'equal', 'London')" expand="Customer"></e-query>
+        </e-datamanager>
+    </e-treeview-fields>
 </ejs-treeview>
 ```
 

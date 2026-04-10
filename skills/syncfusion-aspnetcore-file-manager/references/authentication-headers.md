@@ -349,8 +349,7 @@ function onBeforeDownloadWithAuth(args) {
 <div id="progressBar" style="width: 0%; height: 20px; background: #4CAF50;"></div>
 
 <ejs-filemanager id="filemanager"
-    beforeDownload="onBeforeSecureDownload"
-    beforeLoad="onDownloadProgress">
+    beforeDownload="onBeforeSecureDownload">
     <e-filemanager-ajaxsettings url="/FileManager/FileManager" 
         downloadUrl="/FileManager/Download">
     </e-filemanager-ajaxsettings>

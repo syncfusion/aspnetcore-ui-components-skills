@@ -343,87 +343,12 @@ Renames file programmatically (opens rename dialog):
     function beginRenameFile() {
         var fileManager = document.getElementById('filemanager').ej2_instances[0];
         var fileName = document.getElementById('fileToRename').value;
-        
+        var newName ="NewFolder";
         if (fileManager && fileName) {
             fileManager.selectedItems = [fileName];
-            fileManager.beginEdit();
+            fileManager.renameFile(fileName, newName);
             console.log('Opened rename dialog for: ' + fileName);
             document.getElementById('fileToRename').value = '';
-        }
-    }
-</script>
-```
-
-### Copy Files
-
-Copies selected files to clipboard:
-
-**View Code (Index.cshtml)**:
-```html
-<input type="text" id="filesToCopy" placeholder="Enter file names (comma-separated)" 
-    style="padding: 8px; width: 300px; margin-right: 5px;" />
-<button type="button" onclick="copySelectedFiles()" style="padding: 8px 16px; margin-bottom: 10px;">
-    Copy Files
-</button>
-
-<script>
-    function copySelectedFiles() {
-        var fileManager = document.getElementById('filemanager').ej2_instances[0];
-        var input = document.getElementById('filesToCopy').value;
-        var fileNames = input.split(',').map(function(name) { return name.trim(); });
-        
-        if (fileManager && fileNames.length > 0) {
-            fileManager.selectedItems = fileNames;
-            fileManager.copy();
-            console.log('Copied to clipboard: ' + fileNames.join(', '));
-        }
-    }
-</script>
-```
-
-### Paste Files
-
-Pastes files from clipboard:
-
-**View Code (Index.cshtml)**:
-```html
-<button type="button" onclick="pasteFiles()" style="padding: 8px 16px; margin-bottom: 10px;">
-    Paste Files
-</button>
-
-<script>
-    function pasteFiles() {
-        var fileManager = document.getElementById('filemanager').ej2_instances[0];
-        if (fileManager) {
-            fileManager.paste();
-            console.log('Pasted files from clipboard');
-        }
-    }
-</script>
-```
-
-### Cut Files
-
-Cuts files for moving:
-
-**View Code (Index.cshtml)**:
-```html
-<input type="text" id="filesToCut" placeholder="Enter file names (comma-separated)" 
-    style="padding: 8px; width: 300px; margin-right: 5px;" />
-<button type="button" onclick="cutSelectedFiles()" style="padding: 8px 16px; margin-bottom: 10px;">
-    Cut Files
-</button>
-
-<script>
-    function cutSelectedFiles() {
-        var fileManager = document.getElementById('filemanager').ej2_instances[0];
-        var input = document.getElementById('filesToCut').value;
-        var fileNames = input.split(',').map(function(name) { return name.trim(); });
-        
-        if (fileManager && fileNames.length > 0) {
-            fileManager.selectedItems = fileNames;
-            fileManager.cut();
-            console.log('Cut files: ' + fileNames.join(', '));
         }
     }
 </script>
@@ -445,19 +370,9 @@ Cuts files for moving:
     function displayFileDetails() {
         var fileManager = document.getElementById('filemanager').ej2_instances[0];
         if (fileManager) {
-            var fileDetails = fileManager.fileDetails;
+            var fileDetails = fileManager.getSelectedFiles();
             var html = '<strong>File Details:</strong><br/>';
             
-            fileDetails.forEach(function(file) {
-                html += '<div style="border-bottom: 1px solid #ddd; padding: 5px 0;">';
-                html += 'Name: ' + file.name + '<br/>';
-                html += 'Size: ' + formatBytes(file.size) + '<br/>';
-                html += 'Type: ' + file.type + '<br/>';
-                html += 'Modified: ' + (file.dateModified || 'N/A') + '<br/>';
-                html += 'Is File: ' + file.isFile + '</div>';
-            });
-            
-            document.getElementById('fileDetailsOutput').innerHTML = html;
             console.log('File details:', fileDetails);
         }
     }
@@ -505,117 +420,7 @@ Cuts files for moving:
 </script>
 ```
 
-### Calculate Total Size
-
-**View Code (Index.cshtml)**:
-```html
-<input type="text" id="filesToMeasure" placeholder="Enter file names (comma-separated)" 
-    style="padding: 8px; width: 300px; margin-right: 5px;" />
-<button type="button" onclick="calculateTotalSize()" style="padding: 8px 16px; margin-bottom: 10px;">
-    Calculate Size
-</button>
-
-<div id="totalSizeOutput" style="padding: 10px; background-color: #f5f5f5; margin-top: 10px;"></div>
-
-<script>
-    function calculateTotalSize() {
-        var fileManager = document.getElementById('filemanager').ej2_instances[0];
-        var input = document.getElementById('filesToMeasure').value;
-        var fileNames = input.split(',').map(function(name) { return name.trim(); });
-        
-        if (fileManager && fileNames.length > 0) {
-            var fileDetails = fileManager.fileDetails;
-            var totalSize = fileDetails
-                .filter(function(file) { return fileNames.indexOf(file.name) !== -1; })
-                .reduce(function(sum, file) { return sum + (file.size || 0); }, 0);
-            
-            var output = 'Total size of ' + fileNames.length + ' file(s): <strong>' + 
-                formatBytes(totalSize) + '</strong>';
-            document.getElementById('totalSizeOutput').innerHTML = output;
-        }
-    }
-</script>
-```
-
-### Get File Count
-
-**View Code (Index.cshtml)**:
-```html
-<button type="button" onclick="getFileCounts()" style="padding: 8px 16px; margin-bottom: 10px;">
-    Get File Statistics
-</button>
-
-<div id="fileCountOutput" style="padding: 10px; background-color: #f5f5f5; margin-top: 10px;"></div>
-
-<script>
-    function getFileCounts() {
-        var fileManager = document.getElementById('filemanager').ej2_instances[0];
-        if (fileManager) {
-            var fileDetails = fileManager.fileDetails;
-            var fileCount = fileDetails.filter(function(f) { return f.isFile; }).length;
-            var folderCount = fileDetails.filter(function(f) { return !f.isFile; }).length;
-            var totalCount = fileDetails.length;
-            
-            var html = '<strong>File Statistics:</strong><br/>' +
-                'Total Items: ' + totalCount + '<br/>' +
-                'Files: ' + fileCount + '<br/>' +
-                'Folders: ' + folderCount;
-            
-            document.getElementById('fileCountOutput').innerHTML = html;
-            console.log('File count:', fileCount, 'Folder count:', folderCount);
-        }
-    }
-</script>
-```
-
 ## Dialog Control Methods
-
-### Open New Folder Dialog
-
-Opens the create folder dialog:
-
-**View Code (Index.cshtml)**:
-```html
-<button type="button" onclick="openNewFolderDialog()" style="padding: 8px 16px; margin-bottom: 10px;">
-    Open New Folder Dialog
-</button>
-
-<script>
-    function openNewFolderDialog() {
-        var fileManager = document.getElementById('filemanager').ej2_instances[0];
-        if (fileManager) {
-            fileManager.openDialog('NewFolder');
-            console.log('New folder dialog opened');
-        }
-    }
-</script>
-```
-
-### Open Rename Dialog
-
-Opens the rename dialog:
-
-**View Code (Index.cshtml)**:
-```html
-<input type="text" id="fileToRenameDialog" placeholder="Enter file name" 
-    style="padding: 8px; width: 300px; margin-right: 5px;" />
-<button type="button" onclick="openRenameDialog()" style="padding: 8px 16px; margin-bottom: 10px;">
-    Open Rename Dialog
-</button>
-
-<script>
-    function openRenameDialog() {
-        var fileManager = document.getElementById('filemanager').ej2_instances[0];
-        var fileName = document.getElementById('fileToRenameDialog').value;
-        
-        if (fileManager && fileName) {
-            fileManager.selectedItems = [fileName];
-            fileManager.openDialog('Rename');
-            console.log('Rename dialog opened for: ' + fileName);
-        }
-    }
-</script>
-```
 
 ### Close All Dialogs
 
@@ -627,14 +432,8 @@ Opens the rename dialog:
 
 <script>
     function closeAllDialogs() {
-        var dialogs = document.querySelectorAll('.e-dialog');
-        dialogs.forEach(function(dialog) {
-            var dialogInstance = dialog.ej2_instances[0];
-            if (dialogInstance && dialogInstance.hide) {
-                dialogInstance.hide();
-                console.log('Dialog closed');
-            }
-        });
+        var fileManager = document.getElementById('filemanager').ej2_instances[0];
+        fileManager.closeDialog();
     }
 </script>
 ```

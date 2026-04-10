@@ -45,7 +45,7 @@ Add your custom CSS in a `<style>` block or external stylesheet AFTER the Syncfu
 ```html
 <head>
     <!-- Syncfusion CSS first -->
-    <link rel="stylesheet" href="https://cdn.syncfusion.com/ej2/22.1.34/material.css" />
+    <link rel="stylesheet" href="https://cdn.syncfusion.com/ej2/{{ site.ej2version }}/material.css" />
     
     <!-- Your custom CSS after -->
     <style>

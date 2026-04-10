@@ -174,7 +174,7 @@ ej.popups.setSpinner({ type: 'HighContrast' });
 
 ```html
 <!-- In _Layout.cshtml -->
-<link rel="stylesheet" href="https://cdn.syncfusion.com/ej2/22.1.34/material.css" />
+<link rel="stylesheet" href="https://cdn.syncfusion.com/ej2/{{ site.ej2version }}/material.css" />
 
 <script>
     // Material theme → Spinner type = Material (automatic)
@@ -187,7 +187,7 @@ ej.popups.setSpinner({ type: 'HighContrast' });
 
 ```html
 <!-- In _Layout.cshtml -->
-<link rel="stylesheet" href="https://cdn.syncfusion.com/ej2/22.1.34/bootstrap5.css" />
+<link rel="stylesheet" href="https://cdn.syncfusion.com/ej2/{{ site.ej2version }}/bootstrap5.css" />
 
 <script>
     // Bootstrap5 theme → Spinner type = Bootstrap4 (automatic)
@@ -200,7 +200,7 @@ ej.popups.setSpinner({ type: 'HighContrast' });
 
 ```html
 <!-- In _Layout.cshtml -->
-<link rel="stylesheet" href="https://cdn.syncfusion.com/ej2/22.1.34/fabric.css" />
+<link rel="stylesheet" href="https://cdn.syncfusion.com/ej2/{{ site.ej2version }}/fabric.css" />
 
 <script>
     // Fabric theme → Spinner type = Fabric (automatic)
@@ -213,7 +213,7 @@ ej.popups.setSpinner({ type: 'HighContrast' });
 
 ```html
 <!-- In _Layout.cshtml -->
-<link rel="stylesheet" href="https://cdn.syncfusion.com/ej2/22.1.34/fluent.css" />
+<link rel="stylesheet" href="https://cdn.syncfusion.com/ej2/{{ site.ej2version }}/fluent.css" />
 
 <script>
     // Fluent theme → Spinner type = Bootstrap4 (automatic)

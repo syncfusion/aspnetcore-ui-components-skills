@@ -375,7 +375,7 @@ public async Task<IActionResult> GetExternalData()
     {
         try
         {
-            var response = await client.GetAsync("https://api.example.com/items");
+            var response = await client.GetAsync("YOUR_API_ENDPOINT");
             var content = await response.Content.ReadAsStringAsync();
             var items = JsonConvert.DeserializeObject<List<ExternalItem>>(content);
             return Json(items);

@@ -212,8 +212,10 @@ If you want internal drag and drop but not external file drops:
 **View Code (Index.cshtml)**:
 ```html
 <ejs-filemanager id="filemanager"
-    allowDragAndDrop="true"
-    ajaxSettings-url="/FileManager/FileManager">
+    allowDragAndDrop="true">
+    <e-filemanager-ajaxsettings url="/FileManager/FileManager" uploadUrl="/FileManager/Upload" 
+        downloadUrl="/FileManager/Download" getImageUrl="/FileManager/GetImage">
+    </e-filemanager-ajaxsettings>
 </ejs-filemanager>
 ```
 
@@ -228,9 +230,10 @@ If you want internal drag and drop but not external file drops:
     fileDragStart="onFileDragStart"
     fileDragging="onFileDragging"
     fileDragStop="onFileDragStop"
-    fileDropped="onFileDropped"
-    ajaxSettings-url="/FileManager/FileManager"
-    ajaxSettings-uploadUrl="/FileManager/Upload">
+    fileDropped="onFileDropped">
+    <e-filemanager-ajaxsettings url="/FileManager/FileManager" uploadUrl="/FileManager/Upload" 
+        downloadUrl="/FileManager/Download" getImageUrl="/FileManager/GetImage">
+    </e-filemanager-ajaxsettings>
 </ejs-filemanager>
 
 <script>
@@ -260,8 +263,10 @@ If you want internal drag and drop but not external file drops:
 ```html
 <ejs-filemanager id="filemanager"
     allowDragAndDrop="true"
-    fileDragStart="handleDragStart"
-    ajaxSettings-url="/FileManager/FileManager">
+    fileDragStart="handleDragStart">
+    <e-filemanager-ajaxsettings url="/FileManager/FileManager" uploadUrl="/FileManager/Upload" 
+        downloadUrl="/FileManager/Download" getImageUrl="/FileManager/GetImage">
+    </e-filemanager-ajaxsettings>
 </ejs-filemanager>
 
 <script>
@@ -285,8 +290,10 @@ If you want internal drag and drop but not external file drops:
 ```html
 <ejs-filemanager id="filemanager"
     allowDragAndDrop="true"
-    fileDragStop="handleDragStop"
-    ajaxSettings-url="/FileManager/FileManager">
+    fileDragStop="handleDragStop">
+    <e-filemanager-ajaxsettings url="/FileManager/FileManager" uploadUrl="/FileManager/Upload" 
+        downloadUrl="/FileManager/Download" getImageUrl="/FileManager/GetImage">
+    </e-filemanager-ajaxsettings>
 </ejs-filemanager>
 
 <script>

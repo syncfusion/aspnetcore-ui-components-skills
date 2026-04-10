@@ -10,17 +10,6 @@ metadata:
 
 # Implementing Syncfusion ASP.NET Core ComboBox
 
-## When to Use This Skill
-
-Use this skill when you need to:
-- **Create a dropdown or selection control** in an ASP.NET Core application
-- **Enable user selection from predefined options** with autocomplete/search
-- **Bind data from local or remote sources** to a ComboBox
-- **Customize the dropdown appearance** with templates and styling
-- **Add filtering, grouping, or sorting** to dropdown items
-- **Implement advanced scenarios** like cascading dropdowns, virtual scrolling, or keyboard navigation
-- **Handle accessibility requirements** (WCAG compliance, screen readers)
-
 ## Component Overview
 
 The ComboBox is a powerful dropdown control that combines:

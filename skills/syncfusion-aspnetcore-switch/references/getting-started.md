@@ -88,8 +88,11 @@ Add this link inside the `<head>` section:
 <head>
     <!-- Other stylesheets -->
     
-    <!-- Syncfusion CSS -->
-    <link rel="stylesheet" href="https://cdn.syncfusion.com/ej2/22.1.34/fluent.css" />
+    <!-- Syncfusion CSS (with Subresource Integrity for CDN security) -->
+    <link rel="stylesheet"
+          href="https://cdn.syncfusion.com/ej2/{{ site.ej2version }}/fluent.css"
+          integrity="sha384-<HASH>"
+          crossorigin="anonymous" />
 </head>
 ```
 
@@ -99,8 +102,10 @@ Add this script before the closing `</body>` tag:
 <body>
     <!-- Your content goes here -->
     
-    <!-- Syncfusion JavaScript -->
-    <script src="https://cdn.syncfusion.com/ej2/22.1.34/dist/ej2.min.js"></script>
+    <!-- Syncfusion JavaScript (with Subresource Integrity for CDN security) -->
+    <script src="https://cdn.syncfusion.com/ej2/{{ site.ej2version }}/dist/ej2.min.js"
+            integrity="sha384-<HASH>"
+            crossorigin="anonymous"></script>
 </body>
 ```
 
@@ -112,6 +117,14 @@ Add this script before the closing `</body>` tag:
 - `highcontrast.css` - High contrast theme
 
 **Version Note:** Use the current Syncfusion version in CDN URLs (e.g., 22.1.34)
+
+> **CDN Security Note:** Loading assets from an external CDN introduces a supply-chain risk. Apply the following mitigations based on your deployment requirements:
+>
+> | Mitigation | Description |
+> |---|---|
+> | **Subresource Integrity (SRI)** | Add `integrity="sha384-<HASH>"` and `crossorigin="anonymous"` attributes to every `<link>` and `<script>` tag. Generate hashes with the [SRI Hash Generator](https://www.srihash.org/) or `openssl dgst -sha384 -binary <file> \| openssl base64 -A`. |
+> | **Vendor / Self-hosting** | For production or air-gapped environments, copy the CSS and JS files from the NuGet package's `wwwroot` folder to your own `wwwroot/lib/syncfusion/` and reference them locally instead of the CDN. |
+> | **License Key Handling** | Never hard-code your Syncfusion license key in client-side scripts. Register it server-side in `Program.cs` or `Startup.cs` using `Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense(Configuration["Syncfusion:LicenseKey"])` and store the key in environment variables or a secrets manager. |
 
 ## Register Script Manager
 
@@ -128,7 +141,7 @@ Add this at the end of the `<body>` section in `_Layout.cshtml`:
 </body>
 ```
 
-**Complete Layout Example:**
+**Complete Layout Example (CDN with SRI):**
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -137,21 +150,34 @@ Add this at the end of the `<body>` section in `_Layout.cshtml`:
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Syncfusion Switch Demo</title>
     
-    <!-- Syncfusion CSS -->
-    <link rel="stylesheet" href="https://cdn.syncfusion.com/ej2/22.1.34/fluent.css" />
+    <!-- Syncfusion CSS — replace <HASH> with the sha384 hash for your version -->
+    <link rel="stylesheet"
+          href="https://cdn.syncfusion.com/ej2/{{ site.ej2version }}/fluent.css"
+          integrity="sha384-<HASH>"
+          crossorigin="anonymous" />
 </head>
 <body>
     <main role="main">
         @RenderBody()
     </main>
     
-    <!-- Syncfusion JavaScript -->
-    <script src="https://cdn.syncfusion.com/ej2/22.1.34/dist/ej2.min.js"></script>
+    <!-- Syncfusion JavaScript — replace <HASH> with the sha384 hash for your version -->
+    <script src="https://cdn.syncfusion.com/ej2/{{ site.ej2version }}/dist/ej2.min.js"
+            integrity="sha384-<HASH>"
+            crossorigin="anonymous"></script>
     
     <!-- Syncfusion Script Manager -->
     <ejs-scripts></ejs-scripts>
 </body>
 </html>
+```
+
+**Alternative: Self-hosted (recommended for production)**
+```html
+<!-- Reference files from your own wwwroot after copying from the NuGet package -->
+<link rel="stylesheet" href="~/lib/syncfusion/fluent.css" />
+...
+<script src="~/lib/syncfusion/ej2.min.js"></script>
 ```
 
 ## Create Your First Switch
@@ -346,12 +372,32 @@ document.addEventListener('DOMContentLoaded', function() {
 ```
 
 ### Issue: CDN resources blocked or not loading
-**Cause:** Network issue or CDN URL incorrect
+**Cause:** Network issue, incorrect CDN URL, or SRI hash mismatch
 **Solution:**
-1. Check browser console for 404 errors
-2. Verify CDN URL has correct version number
-3. Check internet connection
-4. Try using NPM package instead of CDN (for local projects)
+1. Check browser console for 404 errors or `net::ERR_FAILED` / SRI mismatch errors
+2. Verify CDN URL has the correct version number
+3. Check internet connectivity
+4. If using SRI hashes, regenerate them for the exact version you are using:
+   ```bash
+   # PowerShell
+   $bytes = [System.IO.File]::ReadAllBytes("ej2.min.js")
+   $hash  = [System.Security.Cryptography.SHA384]::Create().ComputeHash($bytes)
+   "sha384-" + [Convert]::ToBase64String($hash)
+   ```
+5. **For production environments**, self-host assets under `wwwroot/lib/syncfusion/` to remove the external CDN dependency entirely and eliminate the SRI maintenance burden
+
+### Issue: License key exposed in client-side code
+**Cause:** License key registered via an inline `<script>` block on the page
+**Solution:**
+Register the key exclusively on the server side and source it from a secrets store:
+```csharp
+// Program.cs / Startup.cs — never embed the key in Razor views
+Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense(
+    builder.Configuration["Syncfusion:LicenseKey"]); // stored in secrets / env var
+```
+Store the value in:
+- **Development:** `dotnet user-secrets set "Syncfusion:LicenseKey" "<key>"`
+- **Production:** an environment variable or a key vault (e.g., Azure Key Vault)
 
 ## Next Steps
 

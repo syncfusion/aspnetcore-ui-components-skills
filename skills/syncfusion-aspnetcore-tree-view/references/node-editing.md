@@ -87,7 +87,7 @@ public IActionResult BasicEditing()
 
 **Razor View**:
 ```html
-<ejs-treeview id="treeDoubleClickEdit" allowEditing="true" editSettings="@(new { actionOnClick = "DoubleClick" })">
+<ejs-treeview id="treeDoubleClickEdit" allowEditing="true">
     <e-treeview-fields dataSource="ViewBag.dataSource" id="id" text="name"></e-treeview-fields>
 </ejs-treeview>
 ```
@@ -96,7 +96,7 @@ public IActionResult BasicEditing()
 
 **Razor View**:
 ```html
-<ejs-treeview id="treeSingleClickEdit" allowEditing="true" editSettings="@(new { actionOnClick = "SingleClick" })">
+<ejs-treeview id="treeSingleClickEdit" allowEditing="true">
     <e-treeview-fields dataSource="ViewBag.dataSource" id="id" text="name"></e-treeview-fields>
 </ejs-treeview>
 ```

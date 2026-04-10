@@ -26,6 +26,8 @@ Upload large files in smaller chunks for reliability:
 
 ### Server-Side Chunk Handling
 
+> **Security note:** Never use the client-supplied filename directly as a filesystem path. Instead, generate a server-side safe name and scope all temporary files to a session-specific directory validated with a server-issued session token. Reject any path separators or `..` sequences in the original filename.
+
 ```csharp
 [HttpPost]
 public IActionResult Save(IFormFile[] uploader)
@@ -40,32 +42,63 @@ public IActionResult Save(IFormFile[] uploader)
         {
             if (file.Length > 0)
             {
-                string fileName = file.FileName;
-                string filePath = Path.Combine(uploadPath, fileName);
-                
+                // Reject filenames containing path separators or traversal sequences
+                string originalName = Path.GetFileName(file.FileName);
+                if (string.IsNullOrWhiteSpace(originalName) ||
+                    originalName.IndexOfAny(Path.GetInvalidFileNameChars()) >= 0)
+                    return BadRequest("Invalid file name.");
+
+                // Use a server-generated safe name to avoid overwrite/traversal
+                string safeFileName = Guid.NewGuid().ToString("N") +
+                                      Path.GetExtension(originalName).ToLowerInvariant();
+
                 // Check for chunk metadata
-                string chunkIndex = Request.Form["chunkIndex"];
-                string totalChunks = Request.Form["totalChunks"];
-                
-                if (!string.IsNullOrEmpty(chunkIndex))
+                string chunkIndexStr  = Request.Form["chunkIndex"];
+                string totalChunksStr = Request.Form["totalChunks"];
+                // Session token issued by the server on the first chunk request
+                string sessionId      = Request.Form["uploadSessionId"];
+
+                if (!string.IsNullOrEmpty(chunkIndexStr))
                 {
-                    // Handle chunk upload
-                    string chunkPath = filePath + ".tmp";
+                    // Validate session token: must be a non-empty GUID issued earlier
+                    if (string.IsNullOrWhiteSpace(sessionId) ||
+                        !Guid.TryParse(sessionId, out Guid parsedSession))
+                        return BadRequest("Invalid upload session.");
+
+                    if (!int.TryParse(chunkIndexStr,  out int chunkIndex)  ||
+                        !int.TryParse(totalChunksStr, out int totalChunks) ||
+                        chunkIndex < 0 || totalChunks <= 0 || chunkIndex >= totalChunks)
+                        return BadRequest("Invalid chunk parameters.");
+
+                    // Scope chunk files to a session-specific temp directory
+                    string sessionTempDir = Path.Combine(uploadPath, "tmp_" + parsedSession.ToString("N"));
+                    Directory.CreateDirectory(sessionTempDir);
+
+                    string chunkPath = Path.Combine(sessionTempDir, $"chunk_{chunkIndex}");
+                    // Confirm the resolved path is inside the expected directory
+                    if (!Path.GetFullPath(chunkPath)
+                             .StartsWith(Path.GetFullPath(sessionTempDir) + Path.DirectorySeparatorChar,
+                                         StringComparison.OrdinalIgnoreCase))
+                        return BadRequest("Invalid chunk path.");
+
                     using (FileStream fs = System.IO.File.Create(chunkPath))
                     {
                         file.CopyTo(fs);
                         fs.Flush();
                     }
-                    
-                    // If all chunks received, combine them
-                    if (int.Parse(chunkIndex) == int.Parse(totalChunks) - 1)
+
+                    // Combine once all chunks have arrived
+                    if (chunkIndex == totalChunks - 1)
                     {
-                        CombineChunks(filePath, uploadPath);
+                        string finalPath = GetSafePath(uploadPath, safeFileName);
+                        CombineChunks(finalPath, sessionTempDir, totalChunks);
+                        Directory.Delete(sessionTempDir, recursive: true);
                     }
                 }
                 else
                 {
-                    // Regular single file upload
+                    // Regular single-file upload — write to safe server-generated path
+                    string filePath = GetSafePath(uploadPath, safeFileName);
                     using (FileStream fs = System.IO.File.Create(filePath))
                     {
                         file.CopyTo(fs);
@@ -78,22 +111,20 @@ public IActionResult Save(IFormFile[] uploader)
     return Ok();
 }
 
-private void CombineChunks(string filePath, string uploadPath)
+private void CombineChunks(string finalPath, string sessionTempDir, int totalChunks)
 {
-    // Combine chunk files into final file
-    using (FileStream fs = System.IO.File.Create(filePath))
+    using (FileStream fs = System.IO.File.Create(finalPath))
     {
-        for (int i = 0; ; i++)
+        for (int i = 0; i < totalChunks; i++)
         {
-            string chunkPath = filePath + ".tmp" + i;
+            string chunkPath = Path.Combine(sessionTempDir, $"chunk_{i}");
             if (!System.IO.File.Exists(chunkPath))
-                break;
-            
+                throw new InvalidOperationException($"Missing chunk {i}.");
+
             using (FileStream chunkFs = System.IO.File.OpenRead(chunkPath))
             {
                 chunkFs.CopyTo(fs);
             }
-            System.IO.File.Delete(chunkPath);
         }
     }
 }
@@ -142,9 +173,9 @@ public async Task<IActionResult> UploadWithForm(string name, string description,
         // Validate form data
         if (string.IsNullOrEmpty(name))
             return BadRequest("Name is required");
-        
-        // Handle file uploads
-        string uploadPath = Path.Combine(_webHostEnvironment.WebRootPath, "Uploads", name);
+
+        // Use a fixed upload directory — never embed user-supplied values in the path
+        string uploadPath = Path.Combine(_webHostEnvironment.WebRootPath, "Uploads");
         if (!Directory.Exists(uploadPath))
             Directory.CreateDirectory(uploadPath);
 
@@ -154,7 +185,16 @@ public async Task<IActionResult> UploadWithForm(string name, string description,
             {
                 if (doc.Length > 0)
                 {
-                    string filePath = Path.Combine(uploadPath, doc.FileName);
+                    // Generate a server-side safe filename; reject any path traversal
+                    string originalName = Path.GetFileName(doc.FileName);
+                    if (string.IsNullOrWhiteSpace(originalName) ||
+                        originalName.IndexOfAny(Path.GetInvalidFileNameChars()) >= 0)
+                        return BadRequest("Invalid file name.");
+
+                    string safeFileName = Guid.NewGuid().ToString("N") +
+                                          Path.GetExtension(originalName).ToLowerInvariant();
+                    string filePath = GetSafePath(uploadPath, safeFileName);
+
                     using (FileStream fs = System.IO.File.Create(filePath))
                     {
                         await doc.CopyToAsync(fs);
@@ -169,9 +209,10 @@ public async Task<IActionResult> UploadWithForm(string name, string description,
 
         return RedirectToAction("Success");
     }
-    catch (Exception ex)
+    catch (Exception)
     {
-        return BadRequest($"Error: {ex.Message}");
+        // Do not expose exception details to the client
+        return StatusCode(500, "An error occurred while processing your request.");
     }
 }
 ```
@@ -181,6 +222,8 @@ public async Task<IActionResult> UploadWithForm(string name, string description,
 Upload complete folder structure:
 
 ### Server-Side Directory Handling
+
+> **Security note:** Client-supplied relative paths (`file.Name`) can contain `..` sequences that escape the upload directory. Each path segment must be validated and the fully resolved path must be confirmed to remain under the base upload directory.
 
 ```csharp
 [HttpPost]
@@ -196,12 +239,28 @@ public IActionResult Save(IFormFile[] uploader)
         {
             if (file.Length > 0)
             {
-                // Get relative path (includes directory structure)
-                string relativePath = file.Name;
-                string filePath = Path.Combine(baseUploadPath, relativePath);
-                
-                // Create directory structure if needed
-                string directoryPath = Path.GetDirectoryName(filePath);
+                // Sanitize every path segment — reject any traversal sequences
+                string relativePath = file.Name ?? string.Empty;
+                string[] segments = relativePath.Split('/', '\\');
+                var safeSegments = new List<string>();
+                foreach (string segment in segments)
+                {
+                    string safe = Path.GetFileName(segment); // strips directory parts
+                    if (string.IsNullOrWhiteSpace(safe) ||
+                        safe.IndexOfAny(Path.GetInvalidFileNameChars()) >= 0)
+                        return BadRequest("Invalid file path.");
+                    safeSegments.Add(safe);
+                }
+
+                string safePath = Path.Combine(safeSegments.ToArray());
+                string filePath = Path.GetFullPath(Path.Combine(baseUploadPath, safePath));
+
+                // Final guard: resolved path must stay inside the base directory
+                if (!filePath.StartsWith(Path.GetFullPath(baseUploadPath) + Path.DirectorySeparatorChar,
+                                         StringComparison.OrdinalIgnoreCase))
+                    return BadRequest("Invalid file path.");
+
+                string directoryPath = Path.GetDirectoryName(filePath)!;
                 if (!Directory.Exists(directoryPath))
                     Directory.CreateDirectory(directoryPath);
 
@@ -301,32 +360,33 @@ Handle upload failures gracefully:
 
 <script>
 function onFailure(args) {
-    let errorMsg = '';
-    
-    // Parse error based on status code
+    // Map status codes to safe, static messages — never render raw server responses
+    let errorMsg;
     if (args.statusCode === 400) {
-        errorMsg = args.response || 'Bad request';
+        errorMsg = 'Bad request. Please check the file and try again.';
     } else if (args.statusCode === 413) {
-        errorMsg = 'File size exceeds limit';
+        errorMsg = 'File size exceeds the allowed limit.';
     } else if (args.statusCode === 500) {
-        errorMsg = 'Server error. Please try again later';
+        errorMsg = 'Server error. Please try again later.';
     } else if (args.statusCode === 0) {
-        errorMsg = 'Network error or server unreachable';
+        errorMsg = 'Network error or server unreachable.';
     } else {
-        errorMsg = 'Upload failed: ' + args.response;
+        errorMsg = 'Upload failed. Please try again.';
     }
-    
-    // Display error
-    document.getElementById('errorContainer').innerHTML = 
-        '<div style="color: red; padding: 10px; border: 1px solid #ffcccc; border-radius: 4px;">' +
-        'Error: ' + errorMsg +
-        '</div>';
+
+    // Use textContent — never innerHTML with server-supplied content (XSS risk)
+    const container = document.getElementById('errorContainer');
+    container.textContent = '';                       // clear previous content
+    const div = document.createElement('div');
+    div.style.cssText = 'color:red;padding:10px;border:1px solid #ffcccc;border-radius:4px;';
+    div.textContent = 'Error: ' + errorMsg;           // safe: textContent only
+    container.appendChild(div);
 }
 
 function onSuccess(args) {
     if (args.operation === 'upload') {
         console.log('Uploaded: ' + args.file.name);
-        document.getElementById('errorContainer').innerHTML = '';
+        document.getElementById('errorContainer').textContent = '';
     }
 }
 </script>
@@ -341,30 +401,36 @@ public IActionResult Save(IFormFile[] uploader)
     try
     {
         string uploadPath = Path.Combine(_webHostEnvironment.WebRootPath, "Uploads");
-        
+
         if (uploader == null || uploader.Length == 0)
-            return BadRequest("No files provided");
+            return BadRequest("No files provided.");
 
         foreach (IFormFile file in uploader)
         {
-            // Validate file
+            // Reject filenames with path separators or invalid characters
+            string originalName = Path.GetFileName(file.FileName);
+            if (string.IsNullOrWhiteSpace(originalName) ||
+                originalName.IndexOfAny(Path.GetInvalidFileNameChars()) >= 0)
+                return BadRequest("Invalid file name.");
+
             if (file.Length == 0)
-                return BadRequest($"File {file.FileName} is empty");
-            
-            if (file.Length > 5242880)  // 5MB
-                return StatusCode(413, $"File {file.FileName} exceeds size limit");
-            
-            // Validate extension
-            string ext = Path.GetExtension(file.FileName).ToLower();
+                return BadRequest("One or more files are empty.");
+
+            if (file.Length > 5242880)  // 5 MB
+                return StatusCode(413, "One or more files exceed the size limit.");
+
+            // Validate extension against an allowlist
+            string ext = Path.GetExtension(originalName).ToLowerInvariant();
             var allowedExts = new[] { ".jpg", ".png", ".pdf" };
             if (!allowedExts.Contains(ext))
-                return BadRequest($"File type {ext} not allowed");
-            
-            // Save file
+                return BadRequest("File type not allowed.");
+
+            // Save with a server-generated safe filename
             if (!Directory.Exists(uploadPath))
                 Directory.CreateDirectory(uploadPath);
 
-            string filePath = Path.Combine(uploadPath, file.FileName);
+            string safeFileName = Guid.NewGuid().ToString("N") + ext;
+            string filePath = GetSafePath(uploadPath, safeFileName);
             using (FileStream fs = System.IO.File.Create(filePath))
             {
                 file.CopyTo(fs);
@@ -374,13 +440,14 @@ public IActionResult Save(IFormFile[] uploader)
 
         return Ok(new { message = "Upload successful", count = uploader.Length });
     }
-    catch (IOException ex)
+    catch (IOException)
     {
-        return StatusCode(500, $"IO Error: {ex.Message}");
+        // Do not expose internal exception details to the client
+        return StatusCode(500, "A file I/O error occurred. Please try again.");
     }
-    catch (Exception ex)
+    catch (Exception)
     {
-        return StatusCode(500, $"Server error: {ex.Message}");
+        return StatusCode(500, "An unexpected error occurred. Please try again.");
     }
 }
 ```
@@ -440,15 +507,16 @@ private bool IsValidFileSignature(byte[] buffer, string mimeType)
 ```csharp
 private string GetSafePath(string baseDir, string fileName)
 {
-    string filePath = Path.Combine(baseDir, fileName);
-    string fullPath = Path.GetFullPath(filePath);
+    string fullPath    = Path.GetFullPath(Path.Combine(baseDir, fileName));
     string fullBaseDir = Path.GetFullPath(baseDir);
-    
-    // Ensure file is within upload directory
-    if (!fullPath.StartsWith(fullBaseDir))
-        throw new InvalidOperationException("Invalid file path");
-    
-    return filePath;
+
+    // Append a separator so "Uploads_evil" cannot prefix-match "Uploads"
+    if (!fullPath.StartsWith(fullBaseDir + Path.DirectorySeparatorChar,
+                             StringComparison.OrdinalIgnoreCase))
+        throw new InvalidOperationException("Invalid file path.");
+
+    // Return the fully-resolved path, not the raw Path.Combine result
+    return fullPath;
 }
 ```
 
@@ -463,25 +531,34 @@ Optimize upload performance:
 public async Task<IActionResult> Save(IFormFile[] uploader)
 {
     string uploadPath = Path.Combine(_webHostEnvironment.WebRootPath, "Uploads");
-    
+    Directory.CreateDirectory(uploadPath);
+
     if (uploader != null)
     {
         var tasks = uploader.Select(async file =>
         {
             if (file.Length > 0)
             {
-                string filePath = Path.Combine(uploadPath, file.FileName);
-                
+                // Always generate a server-side safe filename
+                string originalName = Path.GetFileName(file.FileName);
+                if (string.IsNullOrWhiteSpace(originalName) ||
+                    originalName.IndexOfAny(Path.GetInvalidFileNameChars()) >= 0)
+                    throw new InvalidOperationException("Invalid file name.");
+
+                string safeFileName = Guid.NewGuid().ToString("N") +
+                                      Path.GetExtension(originalName).ToLowerInvariant();
+                string filePath = GetSafePath(uploadPath, safeFileName);
+
                 using (FileStream fs = System.IO.File.Create(filePath))
                 {
                     await file.CopyToAsync(fs);
                 }
             }
         });
-        
+
         await Task.WhenAll(tasks);
     }
-    
+
     return Ok();
 }
 ```

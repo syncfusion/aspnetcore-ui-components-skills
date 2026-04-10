@@ -178,7 +178,7 @@ Bind to remote OData services using DataManager.
 **View:**
 ```html
 <ejs-combobox id="remotedata"
-              dataSource="@(new Syncfusion.EJ2.Base.DataManager { Url = \"https://js.syncfusion.com/demos/ejServices/Wcf/Northwind.svc/Orders\" })"
+              dataSource="@(new Syncfusion.EJ2.Base.DataManager { Url = YOUR_API_ENDPOINT }"
               fields-text="CustomerName"
               fields-value="OrderID"
               placeholder="Select a customer"
@@ -247,7 +247,7 @@ Use DataManager Query for filtering/paging remote data.
 @{
     var dataManager = new Syncfusion.EJ2.Base.DataManager
     {
-        Url = "https://js.syncfusion.com/demos/ejServices/Wcf/Northwind.svc/Orders",
+        Url = "YOUR_API_ENDPOINT",
         Adaptor = "ODataAdaptor"
     };
     var query = new Syncfusion.EJ2.Base.Query()

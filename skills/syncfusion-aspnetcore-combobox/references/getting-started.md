@@ -52,9 +52,9 @@ Edit `~/Pages/Shared/_Layout.cshtml` to include Syncfusion resources in the `<he
 <head>
     ...
     <!-- Syncfusion ASP.NET Core styles -->
-    <link rel="stylesheet" href="https://cdn.syncfusion.com/ej2/21.2.6/fluent.css" />
+    <link rel="stylesheet" href="https://cdn.syncfusion.com/ej2/{{ site.ej2version }}/fluent.css" />
     <!-- Syncfusion ASP.NET Core scripts -->
-    <script src="https://cdn.syncfusion.com/ej2/21.2.6/dist/ej2.min.js"></script>
+    <script src="https://cdn.syncfusion.com/ej2/{{ site.ej2version }}/dist/ej2.min.js"></script>
 </head>
 ```
 

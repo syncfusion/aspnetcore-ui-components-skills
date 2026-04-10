@@ -310,11 +310,22 @@ Customize Uploader appearance with CSS classes:
 
 Apply Syncfusion themes:
 
+> **W012 – Runtime remote-code dependency risk:** Each CDN stylesheet is fetched at runtime from an external origin. Use self-hosted assets (copy CSS to `wwwroot/lib/syncfusion/` and reference with a relative path) to eliminate this dependency. If you must use the CDN, pin each file with an SRI `integrity` attribute and `crossorigin="anonymous"` so the browser rejects any tampered version. See [getting-started.md](getting-started.md) for full guidance.
+
 ### Fluent Theme
 
 ```html
+<!-- Self-hosted (recommended) -->
 <head>
-    <link rel="stylesheet" href="https://cdn.syncfusion.com/ej2/24.1.48/fluent.css" />
+    <link rel="stylesheet" href="~/lib/syncfusion/fluent.css" />
+</head>
+
+<!-- CDN with SRI pinning (replace hash with actual value) -->
+<head>
+    <link rel="stylesheet"
+          href="https://cdn.syncfusion.com/ej2/{{ site.ej2version }}/fluent.css"
+          integrity="sha384-REPLACE_WITH_ACTUAL_HASH_FOR_fluent.css"
+          crossorigin="anonymous" />
 </head>
 
 <ejs-uploader id="uploader">
@@ -325,8 +336,17 @@ Apply Syncfusion themes:
 ### Material Theme
 
 ```html
+<!-- Self-hosted (recommended) -->
 <head>
-    <link rel="stylesheet" href="https://cdn.syncfusion.com/ej2/24.1.48/material.css" />
+    <link rel="stylesheet" href="~/lib/syncfusion/material.css" />
+</head>
+
+<!-- CDN with SRI pinning (replace hash with actual value) -->
+<head>
+    <link rel="stylesheet"
+          href="https://cdn.syncfusion.com/ej2/{{ site.ej2version }}/material.css"
+          integrity="sha384-REPLACE_WITH_ACTUAL_HASH_FOR_material.css"
+          crossorigin="anonymous" />
 </head>
 
 <ejs-uploader id="uploader">
@@ -337,8 +357,17 @@ Apply Syncfusion themes:
 ### Bootstrap 5 Theme
 
 ```html
+<!-- Self-hosted (recommended) -->
 <head>
-    <link rel="stylesheet" href="https://cdn.syncfusion.com/ej2/24.1.48/bootstrap5.css" />
+    <link rel="stylesheet" href="~/lib/syncfusion/bootstrap5.css" />
+</head>
+
+<!-- CDN with SRI pinning (replace hash with actual value) -->
+<head>
+    <link rel="stylesheet"
+          href="https://cdn.syncfusion.com/ej2/{{ site.ej2version }}/bootstrap5.css"
+          integrity="sha384-REPLACE_WITH_ACTUAL_HASH_FOR_bootstrap5.css"
+          crossorigin="anonymous" />
 </head>
 
 <ejs-uploader id="uploader">

@@ -510,10 +510,7 @@ private void HandleChunkUpload(IFormFile chunk, string path, long chunkSize)
     <progress id="uploadProgress" max="100" value="0" style="width: 100%; height: 25px;"></progress>
 </div>
 
-<ejs-filemanager id="filemanager"
-    uploadStart="onUploadStart"
-    uploadProgress="onUploadProgress"
-    uploadComplete="onUploadComplete">
+<ejs-filemanager id="filemanager">
     <e-filemanager-uploadsettings
         chunkSize="1048576"
         autoUpload="true"
@@ -523,27 +520,6 @@ private void HandleChunkUpload(IFormFile chunk, string path, long chunkSize)
         uploadUrl="/FileManager/Upload">
     </e-filemanager-ajaxsettings>
 </ejs-filemanager>
-
-<script>
-    function onUploadStart(args) {
-        console.log('Upload started for: ' + args.fileDetails.name);
-        document.getElementById('progressPercent').textContent = '0';
-        document.getElementById('uploadProgress').value = 0;
-    }
-    
-    function onUploadProgress(args) {
-        var percentComplete = Math.round((args.e.loaded / args.e.total) * 100);
-        document.getElementById('progressPercent').textContent = percentComplete;
-        document.getElementById('uploadProgress').value = percentComplete;
-        console.log('Upload progress: ' + percentComplete + '%');
-    }
-    
-    function onUploadComplete(args) {
-        console.log('Upload complete for: ' + args.fileDetails.name);
-        document.getElementById('progressPercent').textContent = '100';
-        document.getElementById('uploadProgress').value = 100;
-    }
-</script>
 ```
 
 ## Directory Upload
@@ -647,46 +623,6 @@ Triggered before upload request is sent:
 </script>
 ```
 
-### Upload Start Event
-
-**View Code (Index.cshtml)**:
-```html
-<ejs-filemanager id="filemanager"
-    uploadStart="onUploadStart">
-    <e-filemanager-uploadsettings autoUpload="true"></e-filemanager-uploadsettings>
-    <e-filemanager-ajaxsettings url="/FileManager/FileManager"
-        uploadUrl="/FileManager/Upload">
-    </e-filemanager-ajaxsettings>
-</ejs-filemanager>
-
-<script>
-    function onUploadStart(args) {
-        console.log('Upload started for: ' + args.fileDetails.name);
-        console.log('File size: ' + (args.fileDetails.size / 1024).toFixed(2) + ' KB');
-    }
-</script>
-```
-
-### Upload Complete Event
-
-**View Code (Index.cshtml)**:
-```html
-<ejs-filemanager id="filemanager"
-    uploadComplete="onUploadComplete">
-    <e-filemanager-uploadsettings autoUpload="true"></e-filemanager-uploadsettings>
-    <e-filemanager-ajaxsettings url="/FileManager/FileManager"
-        uploadUrl="/FileManager/Upload">
-    </e-filemanager-ajaxsettings>
-</ejs-filemanager>
-
-<script>
-    function onUploadComplete(args) {
-        console.log('Upload complete for: ' + args.fileDetails.name);
-        console.log('Upload took: ' + args.e.timeStamp + 'ms');
-    }
-</script>
-```
-
 ## Practical Examples
 
 ### Example 1: Basic Upload with Restrictions
@@ -731,9 +667,7 @@ Triggered before upload request is sent:
     <label>Uploading: <span id="currentFile">--</span></label>
 </div>
 
-<ejs-filemanager id="filemanager"
-    uploadStart="onUploadStart"
-    uploadComplete="onUploadComplete">
+<ejs-filemanager id="filemanager">
     <e-filemanager-uploadsettings
         chunkSize="2097152"
         sequentialUpload="true"
@@ -743,20 +677,6 @@ Triggered before upload request is sent:
         uploadUrl="/FileManager/Upload">
     </e-filemanager-ajaxsettings>
 </ejs-filemanager>
-
-<script>
-    function onUploadStart(args) {
-        document.getElementById('currentFile').textContent = args.fileDetails.name;
-        console.log('Started uploading (chunked): ' + args.fileDetails.name);
-    }
-    
-    function onUploadComplete(args) {
-        console.log('Completed: ' + args.fileDetails.name);
-        setTimeout(function() {
-            document.getElementById('currentFile').textContent = '--';
-        }, 2000);
-    }
-</script>
 ```
 
 ### Example 3: Folder Upload
@@ -832,48 +752,7 @@ var chunkSizeRecommendations = {
 </ejs-filemanager>
 ```
 
-### 3. Implement Upload Progress UI
-
-**View Code (Index.cshtml)**:
-```html
-<div id="uploadStatus" style="display: none; padding: 10px; margin-bottom: 10px; border: 1px solid #ccc;">
-    <p>Uploading: <strong id="fileName"></strong></p>
-    <progress id="fileProgress" max="100" value="0" style="width: 100%; height: 20px;"></progress>
-    <p id="progressText">0%</p>
-</div>
-
-<ejs-filemanager id="filemanager"
-    uploadStart="showProgress"
-    uploadProgress="updateProgress"
-    uploadComplete="hideProgress">
-    <e-filemanager-uploadsettings autoUpload="true"></e-filemanager-uploadsettings>
-    <e-filemanager-ajaxsettings url="/FileManager/FileManager"
-        uploadUrl="/FileManager/Upload">
-    </e-filemanager-ajaxsettings>
-</ejs-filemanager>
-
-<script>
-    var uploadProgress = {};
-    
-    function showProgress(args) {
-        document.getElementById('uploadStatus').style.display = 'block';
-        document.getElementById('fileName').textContent = args.fileDetails.name;
-        document.getElementById('fileProgress').value = 0;
-    }
-    
-    function updateProgress(args) {
-        var percent = Math.round((args.e.loaded / args.e.total) * 100);
-        document.getElementById('fileProgress').value = percent;
-        document.getElementById('progressText').textContent = percent + '%';
-    }
-    
-    function hideProgress(args) {
-        document.getElementById('uploadStatus').style.display = 'none';
-    }
-</script>
-```
-
-### 4. Comprehensive Error Handling
+### 3. Comprehensive Error Handling
 
 **View Code (Index.cshtml)**:
 ```html

@@ -142,7 +142,7 @@ Open `Pages/Shared/_Layout.cshtml` and add Syncfusion CSS and JavaScript:
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     
     <!-- Syncfusion CSS - Must be included -->
-    <link rel="stylesheet" href="https://cdn.syncfusion.com/ej2/24.1.48/fluent.css" />
+    <link rel="stylesheet" href="https://cdn.syncfusion.com/ej2/{{ site.ej2version }}/fluent.css" />
     
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 </head>
@@ -163,7 +163,7 @@ Open `Pages/Shared/_Layout.cshtml` and add Syncfusion CSS and JavaScript:
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     
     <!-- Syncfusion JavaScript - Must be included -->
-    <script src="https://cdn.syncfusion.com/ej2/24.1.48/dist/ej2.min.js"></script>
+    <script src="https://cdn.syncfusion.com/ej2/{{ site.ej2version }}/dist/ej2.min.js"></script>
     
     <script src="~/js/site.js" asp-append-version="true"></script>
     
@@ -194,7 +194,7 @@ Add the Syncfusion script manager at the **end of `<body>`** in `_Layout.cshtml`
 <body>
     @RenderBody()
     
-    <script src="https://cdn.syncfusion.com/ej2/24.1.48/dist/ej2.min.js"></script>
+    <script src="https://cdn.syncfusion.com/ej2/{{ site.ej2version }}/dist/ej2.min.js"></script>
     
     <!-- Syncfusion Script Manager - Initializes Syncfusion controls -->
     <ejs-scripts></ejs-scripts>
@@ -371,7 +371,7 @@ You should see:
 1. Check Syncfusion CSS is loaded in `_Layout.cshtml`
 2. Open browser DevTools (F12) → Network tab
 3. Verify CSS file loads (status 200)
-4. Try different CDN URL: `https://cdn.syncfusion.com/ej2/24.1.48/fluent.css`
+4. Try different CDN URL: `https://cdn.syncfusion.com/ej2/{{ site.ej2version }}/fluent.css`
 
 ### Issue 3: JavaScript Not Initializing
 
@@ -379,7 +379,7 @@ You should see:
 
 **Solution:**
 1. Verify `<ejs-scripts></ejs-scripts>` is at end of `<body>`
-2. Verify JavaScript file loads: `https://cdn.syncfusion.com/ej2/24.1.48/dist/ej2.min.js`
+2. Verify JavaScript file loads: `https://cdn.syncfusion.com/ej2/{{ site.ej2version }}/dist/ej2.min.js`
 3. Check browser console for errors (F12)
 4. Ensure ej2.min.js loads **before** `<ejs-scripts>`
 

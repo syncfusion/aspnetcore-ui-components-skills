@@ -75,7 +75,7 @@ Add CSS and JavaScript resources to `Views/Shared/_Layout.cshtml`:
     <title>@ViewData["Title"] - Syncfusion MultiSelect</title>
     
     <!-- Syncfusion CSS -->
-    <link rel="stylesheet" href="https://cdn.syncfusion.com/ej2/24.1.48/fluent.css" />
+    <link rel="stylesheet" href="https://cdn.syncfusion.com/ej2/{{ site.ej2version }}/fluent.css" />
 </head>
 <body>
     @RenderBody()
@@ -84,7 +84,7 @@ Add CSS and JavaScript resources to `Views/Shared/_Layout.cshtml`:
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     
     <!-- Syncfusion Scripts -->
-    <script src="https://cdn.syncfusion.com/ej2/24.1.48/ej2.min.js"></script>
+    <script src="https://cdn.syncfusion.com/ej2/{{ site.ej2version }}/dist/ej2.min.js"></script>
     
     @RenderSection("Scripts", required: false)
 </body>
@@ -309,8 +309,8 @@ public class HomeController : Controller
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MultiSelect Demo</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.syncfusion.com/ej2/24.1.48/fluent.css" />
+    <link href="https://cdn.syncfusion.com/ej2/{{ site.ej2version }}/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.syncfusion.com/ej2/{{ site.ej2version }}/fluent.css" />
     <style>
         body { padding: 20px; }
         .demo-section { max-width: 600px; margin: 0 auto; }
@@ -322,7 +322,7 @@ public class HomeController : Controller
     </div>
     
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.syncfusion.com/ej2/24.1.48/ej2.min.js"></script>
+    <script src="https://cdn.syncfusion.com/ej2/{{ site.ej2version }}/dist/ej2.min.js"></script>
     @RenderSection("Scripts", required: false)
 </body>
 </html>

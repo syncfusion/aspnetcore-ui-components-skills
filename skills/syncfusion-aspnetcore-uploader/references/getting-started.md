@@ -46,30 +46,39 @@ This single line registers all Syncfusion TagHelpers for use in your views.
 
 Add stylesheet and script references in `_Layout.cshtml`:
 
+> **Security note:** Always include `integrity` and `crossorigin` attributes on CDN-loaded resources. Subresource Integrity (SRI) hashes allow the browser to verify that the file has not been tampered with (supply-chain integrity). Generate or retrieve the correct SRI hash for each version from the CDN provider or via `openssl dgst -sha384 -binary <file> | openssl base64 -A`. Update the hash whenever you upgrade the library version.
+
 ```html
 <!-- Shared/_Layout.cshtml -->
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title</title>
-    
-    <!-- Syncfusion Styles -->
-    <link rel="stylesheet" href="https://cdn.syncfusion.com/ej2/24.1.48/fluent.css" />
+
+    <!-- Syncfusion Styles — integrity hash must match the exact file served by the CDN -->
+    <link rel="stylesheet"
+          href="https://cdn.syncfusion.com/ej2/{{ site.ej2version }}/fluent.css"
+          integrity="sha384-REPLACE_WITH_ACTUAL_HASH_FOR_fluent.css"
+          crossorigin="anonymous" />
 </head>
 <body>
     @RenderBody()
 
-    <!-- Syncfusion Scripts -->
-    <script src="https://cdn.syncfusion.com/ej2/24.1.48/dist/ej2.min.js"></script>
-    
+    <!-- Syncfusion Scripts — integrity hash must match the exact file served by the CDN -->
+    <script src="https://cdn.syncfusion.com/ej2/{{ site.ej2version }}/dist/ej2.min.js"
+            integrity="sha384-REPLACE_WITH_ACTUAL_HASH_FOR_ej2.min.js"
+            crossorigin="anonymous"></script>
+
     @RenderSection("scripts", required: false)
 </body>
 </html>
 ```
 
+> **Tip:** If your security policy prohibits external CDN usage, host the Syncfusion assets locally (copy them to `wwwroot/lib/syncfusion/`) so you have full control over the files being served.
+
 ### Available Themes
 
-Choose one of these theme CDN URLs based on your preference:
+Choose one of these theme CDN URLs based on your preference (add the matching `integrity` hash for each):
 - **Fluent:** `https://cdn.syncfusion.com/ej2/24.1.48/fluent.css`
 - **Material:** `https://cdn.syncfusion.com/ej2/24.1.48/material.css`
 - **Bootstrap 5:** `https://cdn.syncfusion.com/ej2/24.1.48/bootstrap5.css`
@@ -82,9 +91,12 @@ Register the script manager at the end of `_Layout.cshtml`:
 ```html
 <body>
     @RenderBody()
-    
-    <script src="https://cdn.syncfusion.com/ej2/24.1.48/dist/ej2.min.js"></script>
-    
+
+    <!-- Include the SRI integrity attribute to guard against CDN supply-chain tampering -->
+    <script src="https://cdn.syncfusion.com/ej2/{{ site.ej2version }}/fluent.css"
+            integrity="sha384-REPLACE_WITH_ACTUAL_HASH_FOR_ej2.min.js"
+            crossorigin="anonymous"></script>
+
     <!-- Script Manager - required for all Syncfusion controls -->
     <ejs-scripts></ejs-scripts>
 </body>
@@ -137,7 +149,23 @@ public class HomeController : Controller
             {
                 if (file.Length > 0)
                 {
-                    string filePath = Path.Combine(uploadPath, file.FileName);
+                    // Strip directory components and reject invalid characters
+                    // to prevent path traversal / arbitrary file overwrite.
+                    string originalName = Path.GetFileName(file.FileName);
+                    if (string.IsNullOrWhiteSpace(originalName) ||
+                        originalName.IndexOfAny(Path.GetInvalidFileNameChars()) >= 0)
+                        return BadRequest("Invalid file name.");
+
+                    // Use a server-generated name so the client cannot dictate the path.
+                    string safeFileName = Guid.NewGuid().ToString("N") +
+                                          Path.GetExtension(originalName).ToLowerInvariant();
+
+                    // Confirm the resolved path stays inside the upload directory.
+                    string filePath = Path.GetFullPath(Path.Combine(uploadPath, safeFileName));
+                    if (!filePath.StartsWith(Path.GetFullPath(uploadPath) + Path.DirectorySeparatorChar,
+                                             StringComparison.OrdinalIgnoreCase))
+                        return BadRequest("Invalid file path.");
+
                     using (FileStream fs = System.IO.File.Create(filePath))
                     {
                         file.CopyTo(fs);
@@ -155,10 +183,21 @@ public class HomeController : Controller
         if (files != null && files.Length > 0)
         {
             string uploadPath = Path.Combine(_webHostEnvironment.WebRootPath, "Uploads");
-            
+
             foreach (string file in files)
             {
-                string filePath = Path.Combine(uploadPath, file);
+                // Reject filenames with path separators or traversal sequences.
+                string safeName = Path.GetFileName(file);
+                if (string.IsNullOrWhiteSpace(safeName) ||
+                    safeName.IndexOfAny(Path.GetInvalidFileNameChars()) >= 0)
+                    continue;
+
+                // Confirm the resolved path stays inside the upload directory.
+                string filePath = Path.GetFullPath(Path.Combine(uploadPath, safeName));
+                if (!filePath.StartsWith(Path.GetFullPath(uploadPath) + Path.DirectorySeparatorChar,
+                                         StringComparison.OrdinalIgnoreCase))
+                    continue;
+
                 if (System.IO.File.Exists(filePath))
                     System.IO.File.Delete(filePath);
             }

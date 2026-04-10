@@ -440,7 +440,6 @@ Navigate to the appropriate reference file based on your implementation needs:
     }
 </script>
 ```
-```
 
 ### Pattern 7: Event-Driven File Operations
 

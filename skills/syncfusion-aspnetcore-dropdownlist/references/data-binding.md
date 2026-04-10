@@ -234,7 +234,7 @@ public class ProductsController : ControllerBase
 // View - bind to OData service
 @Html.EJ2().DropDownList()
     .Id("ODataDropdown")
-    .DataSource(d => d.Url("https://services.odata.org/V4/Northwind/Northwind.svc/Categories"))
+    .DataSource(d => d.Url("YOUR_API_ENDPOINT"))
     .Fields(f => f.Text("CategoryName").Value("CategoryID"))
     .Render()
 ```

@@ -183,14 +183,45 @@ public class HomeController : Controller
 
 ### In _Layout.cshtml (one-time setup)
 
+> **W012 – Runtime remote-code dependency risk:** Loading scripts and styles from an external CDN means a compromised or tampered CDN file would execute in your users' browsers. Mitigate this with one of the two approaches below.
+>
+> **Preferred – Self-host the assets** (eliminates the runtime remote dependency entirely):
+> 1. Copy `ej2.min.js` and the theme CSS from the NuGet package or a one-time CDN download into `wwwroot/lib/syncfusion/`.
+> 2. Reference them with relative paths — no `integrity` attribute needed because the files are served from your own origin.
+>
+> **Alternative – CDN with Subresource Integrity (SRI):** If you must use the CDN, pin the file with an `integrity` hash so the browser rejects any tampered version. Compute the hash with `openssl dgst -sha384 -binary <file> | openssl base64 -A` and update it on every version upgrade.
+
+#### Option A — Self-hosted (recommended)
+
 ```html
 <head>
-    <link rel="stylesheet" href="https://cdn.syncfusion.com/ej2/24.1.48/fluent.css" />
+    <!-- Served from your own wwwroot — no external runtime dependency -->
+    <link rel="stylesheet" href="~/lib/syncfusion/fluent.css" />
 </head>
 <body>
     @RenderBody()
-    
-    <script src="https://cdn.syncfusion.com/ej2/24.1.48/dist/ej2.min.js"></script>
+
+    <script src="~/lib/syncfusion/ej2.min.js"></script>
+    <ejs-scripts></ejs-scripts>
+</body>
+```
+
+#### Option B — CDN with SRI pinning
+
+```html
+<head>
+    <!-- integrity hash must match the exact file; regenerate on every version upgrade -->
+    <link rel="stylesheet"
+          href="https://cdn.syncfusion.com/ej2/24.1.48/fluent.css"
+          integrity="sha384-REPLACE_WITH_ACTUAL_HASH_FOR_fluent.css"
+          crossorigin="anonymous" />
+</head>
+<body>
+    @RenderBody()
+
+    <script src="https://cdn.syncfusion.com/ej2/24.1.48/dist/ej2.min.js"
+            integrity="sha384-REPLACE_WITH_ACTUAL_HASH_FOR_ej2.min.js"
+            crossorigin="anonymous"></script>
     <ejs-scripts></ejs-scripts>
 </body>
 ```

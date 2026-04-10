@@ -56,7 +56,7 @@ The stylesheet must be referenced in the `<head>` of your layout file. Open `~/P
     <link rel="stylesheet" href="~/css/site.css" />
     
     <!-- Add Syncfusion CSS -->
-    <link rel="stylesheet" href="https://cdn.syncfusion.com/ej2/22.1.34/fluent.css" />
+    <link rel="stylesheet" href="https://cdn.syncfusion.com/ej2/{{ site.ej2version }}/fluent.css" />
 </head>
 ```
 
@@ -78,7 +78,7 @@ Scripts must be referenced in the `<body>`, typically at the end before the clos
     <ejs-scripts></ejs-scripts>
     
     <!-- OR manual script reference -->
-    <script src="https://cdn.syncfusion.com/ej2/22.1.34/dist/ej2.min.js"></script>
+    <script src="https://cdn.syncfusion.com/ej2/{{ site.ej2version }}/dist/ej2.min.js"></script>
     
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js"></script>
@@ -101,7 +101,7 @@ Your complete `_Layout.cshtml` should look like:
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     
     <!-- Syncfusion CSS -->
-    <link rel="stylesheet" href="https://cdn.syncfusion.com/ej2/22.1.34/fluent.css" />
+    <link rel="stylesheet" href="https://cdn.syncfusion.com/ej2/{{ site.ej2version }}/fluent.css" />
 </head>
 <body>
     <div class="container">
@@ -321,7 +321,7 @@ Here's a complete working example in an ASP.NET Core Razor page:
 ```html
 <head>
     <!-- ... other content ... -->
-    <link rel="stylesheet" href="https://cdn.syncfusion.com/ej2/22.1.34/fluent.css" />
+    <link rel="stylesheet" href="https://cdn.syncfusion.com/ej2/{{ site.ej2version }}/fluent.css" />
 </head>
 <body>
     @RenderBody()

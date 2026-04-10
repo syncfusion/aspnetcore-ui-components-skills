@@ -393,28 +393,65 @@ Enables lazy loading of nodes (load children on expand).
 ```csharp
 public IActionResult LazyLoadExample()
 {
-    List<object> treeData = new List<object>();
-    treeData.Add(new { id = 1, name = "Parent 1", hasChild = true });  // No child array
-    
-    ViewBag.dataSource = treeData;
-    return View();
-}
+    List<Continents> continents = new List<Continents>();
+    List<Countries> countries = new List<Countries>();
+    continents.Add(new Continents
+    {
+        code = "NA",
+        name = "North America",  
+        expanded=true,
+        child = countries,
+    });
+        countries.Add(new Countries { code = "USA", name = "United States of America", selected=true});
+        countries.Add(new Countries { code = "CUB", name = "Cuba" });
+        countries.Add(new Countries { code = "MEX", name = "Mexico" });
+    List<Countries> countries2 = new List<Countries>();
+    continents.Add(new Continents
+    {
+        code = "AF",
+        name = "Africa",
+        child = countries2,
+    });
+    countries2.Add(new Countries { code = "NGA", name = "Nygeria" });
+    countries2.Add(new Countries { code = "EGY", name = "Egypt" });
+    countries2.Add(new Countries { code = "ZAF", name = "South Africa" });
+    List<Countries> countries3 = new List<Countries>();
+    continents.Add(new Continents
+    {
+        code = "AS",
+        name = "Asia",
+        child = countries3,
+    });
 
-public IActionResult GetChildren(int id)
+    char[] value = { 'c', 'h', 'i', 'l', 'd' };
+    string Child = new string(value);
+    ViewBag.child = Child;
+    ViewBag.data = continents;
+    return View();      
+}
+public class Continents
 {
-    List<object> children = new List<object>();
-    if (id == 1) {
-        children.Add(new { id = 11, name = "Child 1.1" });
-    }
-    return Json(children);
+    public string code;
+    public string name;
+    public bool expanded;
+    public bool selected;
+    public List<Countries> child;
+
+}
+public class Countries
+{
+    public string code;
+    public string name;
+    public bool expanded;
+    public bool selected;
+
 }
 ```
 
 **Razor View**:
 ```html
 <ejs-treeview id="treeLoD" loadOnDemand="true">
-    <e-treeview-fields dataSource="ViewBag.dataSource" id="id" text="name" 
-        hasChildren="hasChild" child="@Url.Action("GetChildren", "TreeView")"></e-treeview-fields>
+    <e-treeview-fields child="ViewBag.child" dataSource="ViewBag.data" id="code" text="name" selected="selected" expanded="expanded"></e-treeview-fields>
 </ejs-treeview>
 ```
 
@@ -576,6 +613,11 @@ public IActionResult AnimationExample()
             new { id = 11, name = "Child 1.1" } 
         }
     });
+     ViewBag.animation = new
+    {
+        expand = new { duration = 600, easing = "ease-out" }, 
+        collapse = new { duration = 400, easing = "ease-in" }
+    };
     
     ViewBag.dataSource = treeData;
     // Animation configured in Razor View
@@ -585,11 +627,7 @@ public IActionResult AnimationExample()
 
 **Razor View**:
 ```html
-<ejs-treeview id="treeAnimation" 
-    animation="@(new { 
-        expand = new { duration = 600, easing = "ease-out" }, 
-        collapse = new { duration = 400, easing = "ease-in" } 
-    })">
+<ejs-treeview id="treeAnimation" animation="ViewBag.animation">
     <e-treeview-fields dataSource="ViewBag.dataSource" id="id" text="name" child="child"></e-treeview-fields>
 </ejs-treeview>
 
@@ -1342,14 +1380,42 @@ Configure expand/collapse animations.
 | `collapse.easing` | string | Collapse easing |
 
 **Example**:
-```html
-<ejs-treeview id="treeAnimation" 
-    animation="@(new { 
+
+**C# (TreeViewController.cs)**:
+```csharp
+public IActionResult AnimationExample()
+{
+    List<object> treeData = new List<object>();
+    treeData.Add(new { 
+        id = 1, 
+        name = "Item 1", 
+        hasChild = true,
+        child = new object[] { 
+            new { id = 11, name = "Child 1.1" } 
+        }
+    });
+     ViewBag.animation = new
+    {
         expand = new { effect = "SlideDown", duration = 600, easing = "ease-out" },
         collapse = new { effect = "SlideUp", duration = 600, easing = "ease-in" }
-    })">
-    <e-treeview-fields dataSource="ViewBag.dataSource" id="id" text="name"></e-treeview-fields>
+    };
+    
+    ViewBag.dataSource = treeData;
+    // Animation configured in Razor View
+    return View();
+}
+```
+
+**Razor View**:
+```html
+<ejs-treeview id="treeAnimation" animation="ViewBag.animation">
+    <e-treeview-fields dataSource="ViewBag.dataSource" id="id" text="name" child="child"></e-treeview-fields>
 </ejs-treeview>
+
+<script>
+    var treeObj = document.getElementById('treeAnimation').ej2_instances[0];
+    // Animation is applied automatically on expand/collapse
+</script>
 ```
 
 ---

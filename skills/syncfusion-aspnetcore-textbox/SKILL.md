@@ -129,12 +129,12 @@ Use this skill when you need to:
 
 ```html
 <head>
-    <link rel="stylesheet" href="https://cdn.syncfusion.com/ej2/24.1.48/fluent.css" />
+    <link rel="stylesheet" href="https://cdn.syncfusion.com/ej2/{{ site.ej2version }}/fluent.css" />
 </head>
 <body>
     @RenderBody()
     
-    <script src="https://cdn.syncfusion.com/ej2/24.1.48/dist/ej2.min.js"></script>
+    <script src="https://cdn.syncfusion.com/ej2/{{ site.ej2version }}/dist/ej2.min.js"></script>
     <ejs-scripts></ejs-scripts>
 </body>
 ```

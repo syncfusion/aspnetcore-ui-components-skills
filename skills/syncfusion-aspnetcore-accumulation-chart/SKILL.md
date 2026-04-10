@@ -145,7 +145,7 @@ Here's a minimal example to render a pie chart in ASP.NET Core:
 ### 1. Install Package
 
 ```bash
-Install-Package Syncfusion.EJ2.AspNet.Core -Version {{ site.releaseversion }}
+Install-Package Syncfusion.EJ2.AspNet.Core -Version <your_version_here>
 ```
 
 ### 2. Register Tag Helper (~/Pages/_ViewImports.cshtml)
@@ -158,10 +158,8 @@ Install-Package Syncfusion.EJ2.AspNet.Core -Version {{ site.releaseversion }}
 
 ```html
 <head>
-    <!-- Syncfusion CSS -->
-    <link href="https://cdn.syncfusion.com/ej2/{{ site.ej2version }}/material.css" rel="stylesheet" />
     <!-- Syncfusion JS -->
-    <script src="https://cdn.syncfusion.com/ej2/{{ site.ej2version }}/dist/ej2.min.js"></script>
+    <script src="<!-- Add the appropriate Syncfusion CDN script link here -->"></script>
 </head>
 <body>
     <!-- Content -->

@@ -641,12 +641,6 @@ Selecting a range of files using Shift+Click:
 
 **View Code (Index.cshtml)**:
 ```html
-<button type="button" onclick="performOperation('copy')" style="padding: 8px 16px; margin-right: 5px;">
-    Copy Selected
-</button>
-<button type="button" onclick="performOperation('cut')" style="padding: 8px 16px; margin-right: 5px;">
-    Cut Selected
-</button>
 <button type="button" onclick="performOperation('delete')" style="padding: 8px 16px; margin-bottom: 10px;">
     Delete Selected
 </button>
@@ -667,14 +661,6 @@ Selecting a range of files using Shift+Click:
             }
             
             switch(operation) {
-                case 'copy':
-                    fileManager.copy();
-                    messageDiv.innerHTML = '<strong style="color: green;">Copied ' + selected.length + ' items</strong>';
-                    break;
-                case 'cut':
-                    fileManager.cut();
-                    messageDiv.innerHTML = '<strong style="color: green;">Cut ' + selected.length + ' items</strong>';
-                    break;
                 case 'delete':
                     fileManager.delete();
                     messageDiv.innerHTML = '<strong style="color: green;">Deleted ' + selected.length + ' items</strong>';
@@ -799,14 +785,6 @@ Selecting a range of files using Shift+Click:
                 case 'delete':
                     fileManager.delete();
                     alert('Deletion completed');
-                    break;
-                case 'copy':
-                    fileManager.copy();
-                    alert('Items copied');
-                    break;
-                case 'cut':
-                    fileManager.cut();
-                    alert('Items cut');
                     break;
             }
         }

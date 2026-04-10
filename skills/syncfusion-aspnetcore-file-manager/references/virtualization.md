@@ -378,7 +378,7 @@ Bulk operations may be slow even with virtualization:
 <ejs-filemanager id="filemanager"
     enableVirtualization="true"
     height="600px"
-    FileSelection="onFileSelection">
+    fileSelection="onFileSelection">
     <e-filemanager-ajaxsettings url="/FileManager/FileManager">
     </e-filemanager-ajaxsettings>
 </ejs-filemanager>
@@ -541,7 +541,7 @@ function onFileManagerCreated(args) {
     enableVirtualization="true"
     height="600px"
     created="onFileManagerCreated"
-    FileSelection="onFileSelection">
+    fileSelection="onFileSelection">
     <e-filemanager-ajaxsettings url="/FileManager/FileManager">
     </e-filemanager-ajaxsettings>
 </ejs-filemanager>
@@ -745,7 +745,7 @@ function updateMetrics() {
 <ejs-filemanager id="filemanager"
     enableVirtualization="false"
     height="600px"
-    FileSelection="onFileSelection"
+    fileSelection="onFileSelection"
     created="onFileManagerCreated">
     <e-filemanager-ajaxsettings url="/FileManager/FileManager">
     </e-filemanager-ajaxsettings>

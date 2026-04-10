@@ -284,11 +284,11 @@ public IActionResult WebApiBinding()
 ```html
 <ejs-treeview id="treeWebApi">
     <e-treeview-fields 
-        dataSource="url"
         id="id"
         parentId="parentId"
         text="name"
         hasChildren="hasChild">
+        <e-datamanager url="url" adaptor="WebAPIAdaptor"></e-datamanager>
     </e-treeview-fields>
 </ejs-treeview>
 ```

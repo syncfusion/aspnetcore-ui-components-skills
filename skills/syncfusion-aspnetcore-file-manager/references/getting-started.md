@@ -406,8 +406,9 @@ The `enablePersistence` property maintains the File Manager's state across page 
 
 ```html
 <ejs-filemanager id="filemanager"
-    enablePersistence="true"
-    ajaxSettings-url="/FileManager/FileManager">
+    enablePersistence="true">
+    <e-filemanager-ajaxsettings url="/FileManager/FileManager">
+    </e-filemanager-ajaxsettings>
 </ejs-filemanager>
 ```
 
@@ -561,8 +562,9 @@ public IActionResult Index(string locale = "en")
 **Razor View (Index.cshtml)**:
 ```html
 <ejs-filemanager id="filemanager"
-    locale="@ViewBag.locale"
-    ajaxSettings-url="/FileManager/FileManager">
+    locale="@ViewBag.locale">
+    <e-filemanager-ajaxsettings url="/FileManager/FileManager">
+    </e-filemanager-ajaxsettings>
 </ejs-filemanager>
 ```
 

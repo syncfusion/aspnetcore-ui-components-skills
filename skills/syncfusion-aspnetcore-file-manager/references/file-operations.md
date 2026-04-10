@@ -145,7 +145,7 @@ public IActionResult FileManager(string action, string path, string name)
 **View Code (Index.cshtml)**:
 ```html
 <ejs-filemanager id="filemanager"
-    FolderCreate="onFolderCreate"
+    folderCreate="onFolderCreate"
     beforeFolderCreate="beforeFolderCreate">
     <e-filemanager-ajaxsettings url="/FileManager/FileManager">
     </e-filemanager-ajaxsettings>
@@ -278,7 +278,7 @@ public IActionResult FileManager(string action, string path, string name, string
 ```html
 <ejs-filemanager id="filemanager"
     beforeRename="onBeforeRename"
-    Rename="onRenameComplete">
+    rename="onRenameComplete">
     <e-filemanager-ajaxsettings url="/FileManager/FileManager">
     </e-filemanager-ajaxsettings>
 </ejs-filemanager>
@@ -441,7 +441,7 @@ public IActionResult FileManager(string action, string path, [FromBody] FileMana
 ```html
 <ejs-filemanager id="filemanager"
     beforeDelete="onBeforeDelete"
-    Delete="onDeleteComplete">
+    delete="onDeleteComplete">
     <e-filemanager-ajaxsettings url="/FileManager/FileManager">
     </e-filemanager-ajaxsettings>
 </ejs-filemanager>
@@ -807,8 +807,8 @@ When operations fail, the server should return an error object:
 ```html
 <ejs-filemanager id="filemanager"
     beforeSend="onBeforeSend"
-    Failure="onFailure"
-    Success="onSuccess">
+    failure="onFailure"
+    success="onSuccess">
     <e-filemanager-ajaxsettings url="/FileManager/FileManager">
     </e-filemanager-ajaxsettings>
 </ejs-filemanager>
@@ -936,7 +936,7 @@ When operations fail, the server should return an error object:
 
 **View Code (Index.cshtml)**:
 ```html
-<ejs-filemanager id="filemanager" BeforeRename="validateRename">
+<ejs-filemanager id="filemanager" beforeRename="validateRename">
     <e-filemanager-ajaxsettings url="/FileManager/FileManager">
     </e-filemanager-ajaxsettings>
 </ejs-filemanager>

@@ -186,12 +186,6 @@ function onFileManagerCreated(args) {
     const fileManager = document.getElementById('filemanager').ej2_instances[0];
     fileManager.selectedItems = ['file1.pdf', 'file2.doc'];
 }
-
-// Get selection programmatically
-function getSelection() {
-    const fileManager = document.getElementById('filemanager').ej2_instances[0];
-    console.log('Selected:', fileManager.selectedItems);
-}
 </script>
 ```
 
@@ -241,19 +235,16 @@ Configures columns in Details view:
 
 **View Code (Index.cshtml)**:
 ```html
-@{
-    var columns = new object[] {
-        new { field = "name", headerText = "Name", minWidth = 120, width = "200" },
-        new { field = "_fm_modified", headerText = "Date Modified", type = "dateTime", format = "MMMM dd, yyyy HH:mm", minWidth = 120, width = "190" },
-        new { field = "size", headerText = "Size", minWidth = 90, width = "120" }
-    };
-}
-
 <ejs-filemanager id="filemanager" view="Details">
-    <e-filemanager-detailsviewsettings columns="@columns">
-    </e-filemanager-detailsviewsettings>
     <e-filemanager-ajaxsettings url="/FileManager/FileManager">
     </e-filemanager-ajaxsettings>
+    <e-filemanager-detailsviewsettings>
+        <e-filemanager-detailsviewsettings-columns>
+            <e-detailsviewcolumn field="name" headerText="Name" minWidth="150" width="200"></e-detailsviewcolumn>
+            <e-detailsviewcolumn field="_fm_modified" headerText="Date Modified" type="dateTime" minWidth="120" width="150"></e-detailsviewcolumn>
+            <e-detailsviewcolumn field="size" headerText="Size" minWidth="90" width="120"></e-detailsviewcolumn>
+        </e-filemanager-detailsviewsettings-columns>
+    </e-filemanager-detailsviewsettings>
 </ejs-filemanager>
 ```
 
@@ -619,17 +610,44 @@ Sets sort direction:
 Custom sort comparator function:
 
 ```html
-<ejs-filemanager id="filemanager" sortChanged="onSortChanged">
-    <e-filemanager-ajaxsettings url="/FileManager/FileManager">
+<ejs-filemanager id="filemanager"
+                 height="380px"
+                 sortComparer="naturalSortComparer">
+    <e-filemanager-ajaxsettings 
+        url="/FileManager/FileManager">
     </e-filemanager-ajaxsettings>
+
+    <e-filemanager-detailsviewsettings>
+        <e-filemanager-detailsview-columns>
+            <e-filemanager-detailsview-column 
+                field="name"
+                headerText="File Name"
+                minWidth="120"
+                width="auto"
+                sortComparer="naturalSortComparer">
+            </e-filemanager-detailsview-column>
+
+            <e-filemanager-detailsview-column 
+                field="size"
+                headerText="File Size"
+                width="110">
+            </e-filemanager-detailsview-column>
+
+            <e-filemanager-detailsview-column 
+                field="_fm_modified"
+                headerText="Date Modified"
+                width="190">
+            </e-filemanager-detailsview-column>
+        </e-filemanager-detailsview-columns>
+    </e-filemanager-detailsviewsettings>
 </ejs-filemanager>
 
+
 <script>
-function onSortChanged(args) {
-    // Custom sort logic handled server-side
-    // Folders can be prioritized based on sort
-    console.log('Sort changed:', args.sortBy, args.sortOrder);
-}
+    window.naturalSortComparer = function (x, y, isCaseSensitive) {
+        const fileManager = document.getElementById('filemanager').ej2_instances[0];
+        return fileManager.sortComparer(x, y, isCaseSensitive);
+    };
 </script>
 ```
 
@@ -738,155 +756,6 @@ Enable HTML sanitization for security to prevent XSS attacks:
     <e-filemanager-ajaxsettings url="/FileManager/FileManager">
     </e-filemanager-ajaxsettings>
 </ejs-filemanager>
-```
-
-**JavaScript Sanitization Helper**:
-```javascript
-// Custom sanitization function for file names and content
-function sanitizeHtml(input) {
-    const div = document.createElement('div');
-    div.textContent = input;
-    return div.innerHTML;
-}
-
-// Sanitize file names before display
-function getSafeFileName(fileName) {
-    return fileName
-        .replace(/[<>:"\/\\|?*]/g, '')  // Remove invalid characters
-        .replace(/&/g, '&amp;')          // HTML entity encoding
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;')
-        .replace(/"/g, '&quot;')
-        .replace(/'/g, '&#x27;')
-        .trim();
-}
-
-// Sanitize custom template content
-function sanitizeTemplateContent(content) {
-    // Remove script tags and event handlers
-    const temp = document.createElement('div');
-    temp.innerHTML = content;
-    
-    // Remove all script tags
-    const scripts = temp.querySelectorAll('script');
-    scripts.forEach(script => script.remove());
-    
-    // Remove event handlers
-    temp.innerHTML = temp.innerHTML
-        .replace(/\s*on\w+\s*=\s*['"][^'"]*['"]/g, '');
-    
-    return temp.innerHTML;
-}
-```
-
-**Controller-Level Sanitization (C#)**:
-```csharp
-using System.Text.RegularExpressions;
-
-public class HtmlSanitizer
-{
-    // Whitelist of allowed HTML tags for template content
-    private static readonly string[] AllowedTags = new[] 
-    { 
-        "div", "span", "p", "strong", "em", "i", "b", "u", 
-        "img", "a", "br", "hr", "ul", "ol", "li", "table", "tr", "td" 
-    };
-    
-    public static string Sanitize(string html)
-    {
-        if (string.IsNullOrEmpty(html))
-            return html;
-        
-        // Remove all tags except allowed ones
-        var sanitized = Regex.Replace(html, @"</?(?!/?(" + 
-            string.Join("|", AllowedTags.Select(Regex.Escape)) + @")\b)[^>]*>", "");
-        
-        // Remove event handlers
-        sanitized = Regex.Replace(sanitized, @"\s*on\w+\s*=\s*['\"]?[^'\"]*['\"]?", "", 
-            RegexOptions.IgnoreCase);
-        
-        // Remove javascript: URLs
-        sanitized = Regex.Replace(sanitized, @"javascript:", "", RegexOptions.IgnoreCase);
-        
-        // Remove data: URLs (potentially dangerous)
-        sanitized = Regex.Replace(sanitized, @"data:(?!image/(png|gif|jpeg))", "", 
-            RegexOptions.IgnoreCase);
-        
-        return sanitized;
-    }
-    
-    public static string SanitizeFileName(string fileName)
-    {
-        if (string.IsNullOrEmpty(fileName))
-            return fileName;
-        
-        // Remove invalid file name characters
-        var invalidChars = Path.GetInvalidFileNameChars();
-        var sanitized = new string(fileName
-            .Where(c => !invalidChars.Contains(c) && !char.IsControl(c))
-            .ToArray());
-        
-        // Remove dangerous patterns
-        sanitized = Regex.Replace(sanitized, @"[<>:""/\\|?*]", "");
-        
-        // Remove leading/trailing spaces and dots
-        sanitized = sanitized.Trim(' ', '.');
-        
-        return string.IsNullOrEmpty(sanitized) ? "file" : sanitized;
-    }
-}
-
-// Usage in controller
-[HttpPost]
-[Route("Upload")]
-public IActionResult Upload(IFormFile file, string path)
-{
-    try
-    {
-        // Sanitize file name
-        var safeName = HtmlSanitizer.SanitizeFileName(file.FileName);
-        
-        // Validate and save file
-        var uploadPath = Path.Combine("wwwroot/uploads", HtmlSanitizer.Sanitize(path));
-        var filePath = Path.Combine(uploadPath, safeName);
-        
-        using (var stream = new FileStream(filePath, FileMode.Create))
-        {
-            file.CopyTo(stream);
-        }
-        
-        return Ok(new { name = safeName, size = file.Length });
-    }
-    catch (Exception ex)
-    {
-        return BadRequest(HtmlSanitizer.Sanitize(ex.Message));
-    }
-}
-
-[HttpPost]
-[Route("CreateFolder")]
-public IActionResult CreateFolder(string path, string name)
-{
-    try
-    {
-        // Sanitize inputs
-        var safePath = HtmlSanitizer.Sanitize(path);
-        var safeName = HtmlSanitizer.SanitizeFileName(name);
-        
-        var folderPath = Path.Combine("wwwroot", safePath, safeName);
-        
-        if (!Directory.Exists(folderPath))
-        {
-            Directory.CreateDirectory(folderPath);
-        }
-        
-        return Ok(new { name = safeName, path = safePath });
-    }
-    catch (Exception ex)
-    {
-        return BadRequest(HtmlSanitizer.Sanitize(ex.Message));
-    }
-}
 ```
 
 **Best Practices**:
@@ -1336,23 +1205,6 @@ function getTotalSize() {
 
 ### Navigation Methods
 
-#### navigateTo(path: string)
-
-Changes current directory:
-
-```html
-<script>
-function navigateTo(path) {
-    const fileManager = document.getElementById('filemanager').ej2_instances[0];
-    fileManager.path = path;
-}
-
-// Examples
-navigateTo('/Documents');
-navigateTo('/Documents/Projects');
-</script>
-```
-
 #### traverseBackward()
 
 Goes to parent directory:
@@ -1361,7 +1213,7 @@ Goes to parent directory:
 <script>
 function goBack() {
     const fileManager = document.getElementById('filemanager').ej2_instances[0];
-    fileManager.path = fileManager.path.split('/').slice(0, -1).join('/') || '/';
+    fileManager.traverseBackward();
 }
 </script>
 ```
@@ -1374,8 +1226,7 @@ Opens a file or navigates into a folder:
 <script>
 function openFile(fileName) {
     const fileManager = document.getElementById('filemanager').ej2_instances[0];
-    const currentPath = fileManager.path.endsWith('/') ? fileManager.path : fileManager.path + '/';
-    fileManager.path = currentPath + fileName;
+    fileManager.openFile(fileName);
 }
 </script>
 ```
@@ -1718,13 +1569,13 @@ File Manager provides comprehensive events for tracking operations:
 ```html
 <ejs-filemanager id="filemanager"
     beforeDelete="onBeforeDelete"
-    Delete="onDelete"
+    delete="onDelete"
     beforeRename="onBeforeRename"
-    Rename="onRename"
+    rename="onRename"
     beforeFolderCreate="onBeforeFolderCreate"
-    FolderCreate="onFolderCreate"
+    folderCreate="onFolderCreate"
     beforeMove="onBeforeMove"
-    Move="onMove">
+    move="onMove">
     <e-filemanager-ajaxsettings url="/FileManager/FileManager">
     </e-filemanager-ajaxsettings>
 </ejs-filemanager>
@@ -1769,8 +1620,8 @@ function onMove(args) {
 
 ```html
 <ejs-filemanager id="filemanager"
-    FileSelect="onFileSelect"
-    FileSelection="onFileSelection">
+    fileSelect="onFileSelect"
+    fileSelection="onFileSelection">
     <e-filemanager-ajaxsettings url="/FileManager/FileManager">
     </e-filemanager-ajaxsettings>
 </ejs-filemanager>
@@ -1794,7 +1645,7 @@ function onFileSelection(args) {
 ```html
 <ejs-filemanager id="filemanager"
     search="onSearch"
-    FileOpen="onFileOpen"
+    fileOpen="onFileOpen"
     fileLoad="onFileLoad">
     <e-filemanager-ajaxsettings url="/FileManager/FileManager">
     </e-filemanager-ajaxsettings>
@@ -1850,9 +1701,9 @@ function onFileDropped(args) {
 
 ```html
 <ejs-filemanager id="filemanager"
-    Success="onUploadSuccess"
-    Failure="onUploadFailure"
-    UploadListCreate="onUploadListCreate">
+    success="onUploadSuccess"
+    failure="onUploadFailure"
+    uploadListCreate="onUploadListCreate">
     <e-filemanager-uploadsettings autoUpload="true">
     </e-filemanager-uploadsettings>
     <e-filemanager-ajaxsettings uploadUrl="/FileManager/Upload">
@@ -1914,9 +1765,9 @@ function onBeforeImageLoad(args) {
 
 ```html
 <ejs-filemanager id="filemanager"
-    PopupOpen="onPopupOpen"
+    popupOpen="onPopupOpen"
     beforePopupOpen="onBeforePopupOpen"
-    PopupClose="onPopupClose"
+    popupClose="onPopupClose"
     beforePopupClose="onBeforePopupClose">
     <e-filemanager-ajaxsettings url="/FileManager/FileManager">
     </e-filemanager-ajaxsettings>
@@ -1946,11 +1797,11 @@ function onBeforePopupClose(args) {
 
 ```html
 <ejs-filemanager id="filemanager"
-    ToolbarClick="onToolbarClick"
-    ToolbarCreate="onToolbarCreate"
-    MenuClick="onMenuClick"
-    MenuOpen="onMenuOpen"
-    MenuClose="onMenuClose">
+    toolbarClick="onToolbarClick"
+    toolbarCreate="onToolbarCreate"
+    menuClick="onMenuClick"
+    menuOpen="onMenuOpen"
+    menuClose="onMenuClose">
     <e-filemanager-ajaxsettings url="/FileManager/FileManager">
     </e-filemanager-ajaxsettings>
 </ejs-filemanager>

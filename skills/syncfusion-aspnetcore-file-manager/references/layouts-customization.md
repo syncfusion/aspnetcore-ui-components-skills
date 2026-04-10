@@ -297,8 +297,6 @@ function getFolderTemplate(item) {
 ```html
 <ejs-filemanager id="filemanager" 
     view="Details"
-    showBreadcrumb="true"
-    statusBar="true"
     showFileExtension="true"
     showHiddenItems="false">
     <e-filemanager-navigationpanesettings visible="true" width="250px">
@@ -322,7 +320,7 @@ function getFolderTemplate(item) {
 
 ```html
 <!-- Hide extra UI elements for compact view -->
-<ejs-filemanager id="filemanager" showBreadcrumb="false" statusBar="false">
+<ejs-filemanager id="filemanager">
     <e-filemanager-navigationpanesettings visible="false">
     </e-filemanager-navigationpanesettings>
     <e-filemanager-toolbarsettings items="Upload,Download">
@@ -339,9 +337,7 @@ function getFolderTemplate(item) {
 ```html
 <ejs-filemanager id="filemanager" 
     view="Details"
-    showBreadcrumb="true"
-    created="onFileManagerCreated"
-    resizeStart="onResizeStart">
+    created="onFileManagerCreated">
     <e-filemanager-navigationpanesettings visible="true" width="250px">
     </e-filemanager-navigationpanesettings>
     <e-filemanager-toolbarsettings items="NewFolder,Upload,Download,Delete,Refresh">
@@ -376,10 +372,6 @@ function onFileManagerCreated(args) {
     handleResponsiveLayout();
 }
 
-function onResizeStart(args) {
-    handleResponsiveLayout();
-}
-
 // Listen for window resize
 window.addEventListener('resize', handleResponsiveLayout);
 </script>
@@ -389,7 +381,7 @@ window.addEventListener('resize', handleResponsiveLayout);
 
 ```html
 <!-- Good balance for tablet view -->
-<ejs-filemanager id="filemanager" view="Details" showBreadcrumb="true">
+<ejs-filemanager id="filemanager" view="Details">
     <e-filemanager-navigationpanesettings visible="true" width="200px">
     </e-filemanager-navigationpanesettings>
     <e-filemanager-detailsviewsettings>
@@ -490,9 +482,9 @@ let currentPath = '/';
     <button id="toggleNavBtn" onclick="toggleNavigation()">◀</button>
     
     <div id="navPanel" class="nav-panel">
-        <ejs-filemanager id="filemanager"
-            navigationPaneSettings="visible=true"
-            ajaxSettings="url=/FileManager/FileManager">
+        <ejs-filemanager id="filemanager">
+            <e-filemanager-navigationpanesettings visible="true" width="250px">
+            </e-filemanager-navigationpanesettings>
             <e-filemanager-ajaxsettings url="/FileManager/FileManager">
             </e-filemanager-ajaxsettings>
         </ejs-filemanager>

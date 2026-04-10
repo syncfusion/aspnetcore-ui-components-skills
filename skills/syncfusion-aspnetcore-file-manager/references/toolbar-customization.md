@@ -164,11 +164,11 @@ The File Manager toolbar provides quick access to file operations:
             <e-filemanager-toolbaritem name="Upload"></e-filemanager-toolbaritem>
             <e-filemanager-toolbaritem name="Delete"></e-filemanager-toolbaritem>
             <!-- Custom toolbar items -->
-            <e-filemanager-toolbaritem name="Print" text="Print" icon="e-icons e-print" 
+            <e-filemanager-toolbaritem name="Print" text="Print" prefixIcon="e-icons e-print" 
                 tooltipText="Print current folder"></e-filemanager-toolbaritem>
-            <e-filemanager-toolbaritem name="Share" text="Share" icon="e-icons e-share" 
+            <e-filemanager-toolbaritem name="Share" text="Share" prefixIcon="e-icons e-share" 
                 tooltipText="Share selected items"></e-filemanager-toolbaritem>
-            <e-filemanager-toolbaritem name="Compress" text="Compress" icon="e-icons e-compress" 
+            <e-filemanager-toolbaritem name="Compress" text="Compress" prefixIcon="e-icons e-compress" 
                 tooltipText="Create ZIP archive"></e-filemanager-toolbaritem>
         </e-filemanager-toolbaritems>
     </e-filemanager-toolbarsettings>
@@ -239,13 +239,13 @@ align: 'Left' or 'Right'     // Toolbar alignment
             <e-filemanager-toolbaritem name="Upload"></e-filemanager-toolbaritem>
             <e-filemanager-toolbaritem name="Delete"></e-filemanager-toolbaritem>
             <!-- Custom items with icons -->
-            <e-filemanager-toolbaritem name="Print" text="Print" icon="e-icons e-print" 
+            <e-filemanager-toolbaritem name="Print" text="Print" prefixIcon="e-icons e-print" 
                 tooltipText="Print files"></e-filemanager-toolbaritem>
-            <e-filemanager-toolbaritem name="Archive" text="Archive" icon="e-icons e-zip-folder" 
+            <e-filemanager-toolbaritem name="Archive" text="Archive" prefixIcon="e-icons e-zip-folder" 
                 tooltipText="Create archive"></e-filemanager-toolbaritem>
-            <e-filemanager-toolbaritem name="Sync" text="Sync" icon="e-icons e-refresh" 
+            <e-filemanager-toolbaritem name="Sync" text="Sync" prefixIcon="e-icons e-refresh" 
                 tooltipText="Sync with cloud"></e-filemanager-toolbaritem>
-            <e-filemanager-toolbaritem name="Settings" text="Settings" icon="e-icons e-settings" 
+            <e-filemanager-toolbaritem name="Settings" text="Settings" prefixIcon="e-icons e-settings" 
                 align="Right" tooltipText="Open settings"></e-filemanager-toolbaritem>
         </e-filemanager-toolbaritems>
     </e-filemanager-toolbarsettings>
@@ -274,8 +274,7 @@ align: 'Left' or 'Right'     // Toolbar alignment
 
 <ejs-filemanager id="filemanager"
     allowMultiSelection="true"
-    fileSelect="onFileSelect"
-    fileUnselect="onFileUnselect">
+    fileSelect="onFileSelect">
     <e-filemanager-toolbarsettings>
         <e-filemanager-toolbaritems>
             <e-filemanager-toolbaritem name="NewFolder"></e-filemanager-toolbaritem>
@@ -294,10 +293,6 @@ align: 'Left' or 'Right'     // Toolbar alignment
 
 <script>
     function onFileSelect(args) {
-        updateToolbarVisibility(args.fileDetails);
-    }
-    
-    function onFileUnselect(args) {
         updateToolbarVisibility(args.fileDetails);
     }
     
@@ -414,7 +409,7 @@ private List<string> GetToolbarItemsByRole(string userRole)
             <e-filemanager-toolbaritem name="Upload"></e-filemanager-toolbaritem>
             <e-filemanager-toolbaritem name="Delete"></e-filemanager-toolbaritem>
             <e-filemanager-toolbaritem name="Refresh"></e-filemanager-toolbaritem>
-            <e-filemanager-toolbaritem name="Custom" text="Custom" icon="e-icons e-play"></e-filemanager-toolbaritem>
+            <e-filemanager-toolbaritem name="Custom" text="Custom" prefixIcon="e-icons e-play"></e-filemanager-toolbaritem>
         </e-filemanager-toolbaritems>
     </e-filemanager-toolbarsettings>
     <e-filemanager-ajaxsettings url="/FileManager/FileManager" uploadUrl="/FileManager/Upload" 
@@ -615,11 +610,11 @@ private List<string> GetToolbarItemsByRole(string userRole)
     toolbarClick="onToolbarClick">
     <e-filemanager-toolbarsettings>
         <e-filemanager-toolbaritems>
-            <e-filemanager-toolbaritem name="Print" text="Print" icon="e-icons e-print" 
+            <e-filemanager-toolbaritem name="Print" text="Print" prefixIcon="e-icons e-print" 
                 cssClass="toolbar-print-btn"></e-filemanager-toolbaritem>
-            <e-filemanager-toolbaritem name="Delete" text="Delete" icon="e-icons e-delete" 
+            <e-filemanager-toolbaritem name="Delete" text="Delete" prefixIcon="e-icons e-delete" 
                 cssClass="toolbar-danger-btn"></e-filemanager-toolbaritem>
-            <e-filemanager-toolbaritem name="Backup" text="Backup" icon="e-icons e-refresh" 
+            <e-filemanager-toolbaritem name="Backup" text="Backup" prefixIcon="e-icons e-refresh" 
                 cssClass="toolbar-warning-btn"></e-filemanager-toolbaritem>
         </e-filemanager-toolbaritems>
     </e-filemanager-toolbarsettings>
@@ -655,11 +650,11 @@ private List<string> GetToolbarItemsByRole(string userRole)
             <e-filemanager-toolbaritem name="Delete"></e-filemanager-toolbaritem>
             <e-filemanager-toolbaritem name="Download"></e-filemanager-toolbaritem>
             <!-- Custom items -->
-            <e-filemanager-toolbaritem name="Print" text="Print" icon="e-icons e-print" 
+            <e-filemanager-toolbaritem name="Print" text="Print" prefixIcon="e-icons e-print" 
                 tooltipText="Print files"></e-filemanager-toolbaritem>
-            <e-filemanager-toolbaritem name="Archive" text="Archive" icon="e-icons e-zip-folder" 
+            <e-filemanager-toolbaritem name="Archive" text="Archive" prefixIcon="e-icons e-zip-folder" 
                 tooltipText="Create archive"></e-filemanager-toolbaritem>
-            <e-filemanager-toolbaritem name="Share" text="Share" icon="e-icons e-share" 
+            <e-filemanager-toolbaritem name="Share" text="Share" prefixIcon="e-icons e-share" 
                 align="Right" tooltipText="Share selected items"></e-filemanager-toolbaritem>
         </e-filemanager-toolbaritems>
     </e-filemanager-toolbarsettings>
@@ -793,7 +788,7 @@ private List<string> GetToolbarItemsByRole(string userRole)
             <e-filemanager-toolbaritem name="Upload"></e-filemanager-toolbaritem>
             <e-filemanager-toolbaritem name="Delete"></e-filemanager-toolbaritem>
             <e-filemanager-toolbaritem name="Refresh"></e-filemanager-toolbaritem>
-            <e-filemanager-toolbaritem name="Export" text="Export" icon="e-icons e-export" 
+            <e-filemanager-toolbaritem name="Export" text="Export" prefixIcon="e-icons e-export" 
                 align="Right"></e-filemanager-toolbaritem>
         </e-filemanager-toolbaritems>
     </e-filemanager-toolbarsettings>

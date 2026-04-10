@@ -17,10 +17,9 @@
 
 **View Code (Index.cshtml)**:
 ```html
-<ejs-filemanager id="filemanager"
-    allowSearching="true">
+<ejs-filemanager id="filemanager">
     <e-filemanager-searchsettings
-        allowSearchInside="true"
+        allowSearchOnTyping="true"
         ignoreCase="true">
     </e-filemanager-searchsettings>
     <e-filemanager-ajaxsettings url="/FileManager/FileManager">
@@ -35,10 +34,9 @@
 <div id="searchResults" style="padding: 10px; background-color: #f5f5f5; margin-bottom: 10px;"></div>
 
 <ejs-filemanager id="filemanager"
-    allowSearching="true"
-    searchComplete="onSearchComplete">
+    search="onSearchComplete">
     <e-filemanager-searchsettings
-        allowSearchInside="true"
+        allowSearchOnTyping="true"
         ignoreCase="true"
         filterType="startsWith">
     </e-filemanager-searchsettings>
@@ -87,27 +85,14 @@
 
 **View Code (Index.cshtml)**:
 ```html
-<ejs-filemanager id="filemanager"
-    allowSearching="true"
-    beforeSearch="validateSearch"
-    searchComplete="displayResults">
-    <e-filemanager-searchsettings ignoreCase="true">
+<ejs-filemanager id="filemanager" search="displayResults">
+    <e-filemanager-searchsettings allowSearchOnTyping="true" ignoreCase="true">
     </e-filemanager-searchsettings>
     <e-filemanager-ajaxsettings url="/FileManager/FileManager">
     </e-filemanager-ajaxsettings>
 </ejs-filemanager>
 
 <script>
-    function validateSearch(args) {
-        console.log('Search query:', args.searchString);
-        
-        // Require minimum 2 characters
-        if (args.searchString.length < 2) {
-            args.cancel = true;
-            alert('Please enter at least 2 characters');
-        }
-    }
-    
     function displayResults(args) {
         console.log('Found files:', args.files.length);
         args.files.forEach(function(file) {
@@ -130,8 +115,7 @@
     <option value="contains">Contains</option>
 </select>
 
-<ejs-filemanager id="filemanager"
-    allowSearching="true">
+<ejs-filemanager id="filemanager">
     <e-filemanager-searchsettings
         filterType="startsWith"
         ignoreCase="true">
@@ -165,8 +149,7 @@ Ignore Case (Case-insensitive)
 <input type="radio" name="caseSensitive" value="true" onchange="setCaseSensitivity()" /> 
 Match Case (Case-sensitive)
 
-<ejs-filemanager id="filemanager"
-    allowSearching="true">
+<ejs-filemanager id="filemanager">
     <e-filemanager-searchsettings ignoreCase="true">
     </e-filemanager-searchsettings>
     <e-filemanager-ajaxsettings url="/FileManager/FileManager">
@@ -193,9 +176,8 @@ Current Folder Only
 <input type="radio" name="searchScope" value="all" onchange="setSearchScope()" /> 
 All Subfolders
 
-<ejs-filemanager id="filemanager"
-    allowSearching="true">
-    <e-filemanager-searchsettings allowSearchInside="true">
+<ejs-filemanager id="filemanager">
+    <e-filemanager-searchsettings allowSearchOnTyping="true">
     </e-filemanager-searchsettings>
     <e-filemanager-ajaxsettings url="/FileManager/FileManager">
     </e-filemanager-ajaxsettings>
@@ -218,8 +200,7 @@ All Subfolders
 **View Code (Index.cshtml)**:
 ```html
 <ejs-filemanager id="filemanager"
-    allowSearching="true"
-    beforeSearch="validateSearchInput">
+    search="validateSearchInput">
     <e-filemanager-ajaxsettings url="/FileManager/FileManager">
     </e-filemanager-ajaxsettings>
 </ejs-filemanager>
@@ -253,8 +234,7 @@ All Subfolders
 <div id="searchMessage" style="padding: 10px; background-color: #f5f5f5; margin-bottom: 10px;"></div>
 
 <ejs-filemanager id="filemanager"
-    allowSearching="true"
-    searchComplete="onSearchComplete">
+    search="onSearchComplete">
     <e-filemanager-ajaxsettings url="/FileManager/FileManager">
     </e-filemanager-ajaxsettings>
 </ejs-filemanager>
@@ -392,345 +372,16 @@ All Subfolders
 <button type="button" onclick="filterByExtension(['pdf', 'doc', 'docx'])" style="padding: 8px 16px; margin: 3px;">
     Show Documents (PDF, DOC, DOCX)
 </button>
-<button type="button" onclick="filterByExtension(['jpg', 'png', 'gif'])" style="padding: 8px 16px; margin: 3px;">
-    Show Images
-</button>
 
 <div id="filterResults" style="padding: 10px; background-color: #f5f5f5; margin-top: 10px;"></div>
 
 <script>
     function filterByExtension(extensions) {
-        var fileManager = document.getElementById('filemanager').ej2_instances[0];
-        if (fileManager) {
-            var fileDetails = fileManager.fileDetails;
-            
-            var filtered = fileDetails.filter(function(file) {
-                if (!file.isFile) return true;
-                var ext = file.name.split('.').pop().toLowerCase();
-                return extensions.indexOf(ext) !== -1;
-            });
-            
-            displayFilterResults(filtered, 'Extension: ' + extensions.join(', '));
-        }
-    }
-    
-    function displayFilterResults(files, filterName) {
-        var html = '<strong>' + filterName + '</strong><br/>Found: ' + files.length + ' files<br/>';
-        files.slice(0, 5).forEach(function(f) {
-            html += '• ' + f.name + '<br/>';
+        const fileManager = document.getElementById('filemanager').ej2_instances[0];
+        fileManager.filterFiles({
+            filterType: 'contains',
+            searchString: '.pdf'
         });
-        if (files.length > 5) {
-            html += '... and ' + (files.length - 5) + ' more';
-        }
-        document.getElementById('filterResults').innerHTML = html;
-    }
-</script>
-```
-
-### Filter by File Size
-
-**View Code (Index.cshtml)**:
-```html
-<button type="button" onclick="filterBySize(0, 1048576)" style="padding: 8px 16px; margin: 3px;">
-    &lt; 1MB
-</button>
-<button type="button" onclick="filterBySize(1048576, 104857600)" style="padding: 8px 16px; margin: 3px;">
-    1-100MB
-</button>
-<button type="button" onclick="filterBySize(104857600, Infinity)" style="padding: 8px 16px; margin: 3px;">
-    &gt; 100MB
-</button>
-
-<script>
-    function filterBySize(minBytes, maxBytes) {
-        var fileManager = document.getElementById('filemanager').ej2_instances[0];
-        if (fileManager) {
-            var fileDetails = fileManager.fileDetails;
-            
-            var filtered = fileDetails.filter(function(file) {
-                var size = file.size || 0;
-                return size >= minBytes && size <= maxBytes;
-            });
-            
-            var sizeRange = formatBytes(minBytes) + ' - ' + 
-                (maxBytes === Infinity ? '∞' : formatBytes(maxBytes));
-            displayFilterResults(filtered, 'Size: ' + sizeRange);
-        }
-    }
-</script>
-```
-
-### Filter by Date Range
-
-**View Code (Index.cshtml)**:
-```html
-<button type="button" onclick="filterByDateRange(7)" style="padding: 8px 16px; margin: 3px;">
-    Last 7 Days
-</button>
-<button type="button" onclick="filterByDateRange(30)" style="padding: 8px 16px; margin: 3px;">
-    Last 30 Days
-</button>
-<button type="button" onclick="filterByDateRange(365)" style="padding: 8px 16px; margin: 3px;">
-    Last Year
-</button>
-
-<script>
-    function filterByDateRange(daysBack) {
-        var fileManager = document.getElementById('filemanager').ej2_instances[0];
-        if (fileManager) {
-            var fileDetails = fileManager.fileDetails;
-            var cutoffDate = new Date();
-            cutoffDate.setDate(cutoffDate.getDate() - daysBack);
-            
-            var filtered = fileDetails.filter(function(file) {
-                var fileDate = new Date(file.dateModified);
-                return fileDate >= cutoffDate;
-            });
-            
-            displayFilterResults(filtered, 'Modified: Last ' + daysBack + ' days');
-        }
-    }
-</script>
-```
-
-### Filter by Name Pattern
-
-**View Code (Index.cshtml)**:
-```html
-<input type="text" id="patternInput" placeholder="Enter pattern (regex)" 
-    style="padding: 8px; width: 250px; margin-right: 5px;" />
-<button type="button" onclick="filterByPattern()" style="padding: 8px 16px; margin: 3px;">
-    Filter by Pattern
-</button>
-
-<div style="margin-top: 10px; font-size: 12px;">
-    Examples: <code>^[A-M].*</code> | <code>.*backup.*</code> | <code>\\d{4}-\\d{2}.*</code>
-</div>
-
-<script>
-    function filterByPattern() {
-        var fileManager = document.getElementById('filemanager').ej2_instances[0];
-        var pattern = document.getElementById('patternInput').value;
-        
-        if (fileManager && pattern) {
-            var fileDetails = fileManager.fileDetails;
-            var regex = new RegExp(pattern, 'i');
-            
-            var filtered = fileDetails.filter(function(file) {
-                return regex.test(file.name);
-            });
-            
-            displayFilterResults(filtered, 'Pattern: ' + pattern);
-        }
-    }
-</script>
-```
-
-## Advanced Filtering
-
-### Compound Filtering
-
-**View Code (Index.cshtml)**:
-```html
-<div style="border: 1px solid #ddd; padding: 15px; margin: 10px 0; background-color: #fafafa;">
-    <label>File Extensions: </label>
-    <input type="text" id="compoundExt" placeholder="pdf,doc,docx" style="width: 150px; padding: 5px;" />
-    
-    <label style="margin-left: 20px;">Min Size (bytes): </label>
-    <input type="number" id="compoundMinSize" placeholder="1048576" style="width: 120px; padding: 5px;" />
-    
-    <label style="margin-left: 20px;">Max Size (bytes): </label>
-    <input type="number" id="compoundMaxSize" placeholder="104857600" style="width: 120px; padding: 5px;" />
-    
-    <label style="margin-left: 20px;">Pattern: </label>
-    <input type="text" id="compoundPattern" placeholder=".*report.*" style="width: 150px; padding: 5px;" />
-    
-    <button type="button" onclick="applyCompoundFilter()" style="padding: 8px 16px; margin-left: 10px;">
-        Apply Filter
-    </button>
-</div>
-
-<script>
-    function applyCompoundFilter() {
-        var fileManager = document.getElementById('filemanager').ej2_instances[0];
-        if (fileManager) {
-            var ext = document.getElementById('compoundExt').value;
-            var minSize = parseInt(document.getElementById('compoundMinSize').value) || 0;
-            var maxSize = parseInt(document.getElementById('compoundMaxSize').value) || Infinity;
-            var pattern = document.getElementById('compoundPattern').value;
-            
-            var fileDetails = fileManager.fileDetails;
-            var extArray = ext ? ext.split(',').map(function(e) { 
-                return e.trim().toLowerCase(); 
-            }) : [];
-            
-            var filtered = fileDetails.filter(function(file) {
-                // Extension check
-                if (extArray.length > 0) {
-                    var fileExt = file.name.split('.').pop().toLowerCase();
-                    if (extArray.indexOf(fileExt) === -1) return false;
-                }
-                
-                // Size check
-                var size = file.size || 0;
-                if (size < minSize || size > maxSize) return false;
-                
-                // Pattern check
-                if (pattern) {
-                    var regex = new RegExp(pattern, 'i');
-                    if (!regex.test(file.name)) return false;
-                }
-                
-                return true;
-            });
-            
-            var criteria = [];
-            if (extArray.length > 0) criteria.push('Extensions: ' + ext);
-            if (minSize > 0) criteria.push('Size > ' + formatBytes(minSize));
-            if (maxSize !== Infinity) criteria.push('Size < ' + formatBytes(maxSize));
-            if (pattern) criteria.push('Pattern: ' + pattern);
-            
-            displayFilterResults(filtered, 'Compound: ' + criteria.join(' AND '));
-        }
-    }
-</script>
-```
-
-### Smart Filter Engine
-
-**Controller Code (FileManagerController.cs)**:
-```csharp
-// Advanced filter engine for backend operations
-public class FileFilterEngine
-{
-    private List<FileInfo> _fileDetails;
-    private List<(string name, Func<FileInfo, bool> predicate)> _filters;
-
-    public FileFilterEngine(List<FileInfo> fileDetails)
-    {
-        _fileDetails = fileDetails ?? new List<FileInfo>();
-        _filters = new List<(string, Func<FileInfo, bool>)>();
-    }
-
-    public FileFilterEngine AddFilter(string name, Func<FileInfo, bool> predicate)
-    {
-        _filters.Add((name, predicate));
-        return this;
-    }
-
-    public List<FileInfo> Apply()
-    {
-        return _fileDetails.Where(file => 
-            _filters.All(f => f.predicate(file))
-        ).ToList();
-    }
-
-    public FileFilterEngine RemoveFilter(string name)
-    {
-        _filters.RemoveAll(f => f.name == name);
-        return this;
-    }
-
-    public void Clear()
-    {
-        _filters.Clear();
-    }
-}
-
-// Advanced filter action
-[HttpPost]
-public IActionResult ApplyAdvancedFilter([FromBody] AdvancedFilterRequest request)
-{
-    try
-    {
-        var files = GetFileDetails(request.RootPath ?? "/");
-        var engine = new FileFilterEngine(files);
-
-        if (!string.IsNullOrEmpty(request.FileType))
-        {
-            engine.AddFilter("type", file => 
-                Path.GetExtension(file.Name).TrimStart('.').ToLower() == request.FileType.ToLower()
-            );
-        }
-
-        if (request.MinSize.HasValue)
-        {
-            engine.AddFilter("minSize", file => file.Size >= request.MinSize.Value);
-        }
-
-        if (request.MaxSize.HasValue)
-        {
-            engine.AddFilter("maxSize", file => file.Size <= request.MaxSize.Value);
-        }
-
-        var results = engine.Apply();
-        return Json(new { success = true, count = results.Count, files = results });
-    }
-    catch (Exception ex)
-    {
-        return Json(new { success = false, message = ex.Message });
-    }
-}
-
-public class AdvancedFilterRequest
-{
-    public string RootPath { get; set; }
-    public string FileType { get; set; }
-    public long? MinSize { get; set; }
-    public long? MaxSize { get; set; }
-}
-```
-
-**View Code (Client-side Filter Engine)**:
-```html
-<script>
-    // JavaScript Filter Engine for client-side operations
-    var FileFilterEngine = function(fileDetails) {
-        this.fileDetails = fileDetails || [];
-        this.filters = [];
-    };
-
-    FileFilterEngine.prototype.addFilter = function(name, predicate) {
-        this.filters.push({ name: name, predicate: predicate });
-        return this;
-    };
-
-    FileFilterEngine.prototype.apply = function() {
-        var self = this;
-        return this.fileDetails.filter(function(file) {
-            return self.filters.every(function(f) {
-                return f.predicate(file);
-            });
-        });
-    };
-
-    FileFilterEngine.prototype.removeFilter = function(name) {
-        this.filters = this.filters.filter(function(f) {
-            return f.name !== name;
-        });
-        return this;
-    };
-
-    FileFilterEngine.prototype.clear = function() {
-        this.filters = [];
-        return this;
-    };
-
-    // Usage example
-    function demonstrateFilterEngine() {
-        var fileManager = document.getElementById('filemanager').ej2_instances[0];
-        var engine = new FileFilterEngine(fileManager.fileDetails);
-
-        engine
-            .addFilter('isFile', function(f) { return f.isFile; })
-            .addFilter('size', function(f) { return (f.size || 0) > 1048576; })
-            .addFilter('type', function(f) {
-                var ext = f.name.split('.').pop().toLowerCase();
-                return ['pdf', 'doc', 'docx'].indexOf(ext) !== -1;
-            });
-
-        var filtered = engine.apply();
-        displayFilterResults(filtered, 'Smart Engine: Files + Large + Docs');
     }
 </script>
 ```
@@ -742,10 +393,9 @@ public class AdvancedFilterRequest
 **View Code (Index.cshtml)**:
 ```html
 <ejs-filemanager id="caseFilemanager"
-    allowSearching="true"
-    searchComplete="onSearchComplete">
+    search="onSearchComplete">
     <e-filemanager-searchsettings
-        allowSearchInside="true"
+        allowSearchOnTyping="true"
         ignoreCase="false">
     </e-filemanager-searchsettings>
     <e-filemanager-ajaxsettings url="/FileManager/FileManager">
@@ -770,10 +420,9 @@ public class AdvancedFilterRequest
 **View Code (Index.cshtml)**:
 ```html
 <ejs-filemanager id="filemanager"
-    allowSearching="true"
-    searchComplete="onSearchComplete">
+    search="onSearchComplete">
     <e-filemanager-searchsettings
-        allowSearchInside="true"
+        allowSearchOnTyping="true"
         ignoreCase="true">
     </e-filemanager-searchsettings>
     <e-filemanager-ajaxsettings url="/FileManager/FileManager">

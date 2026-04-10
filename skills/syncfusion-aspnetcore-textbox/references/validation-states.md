@@ -563,7 +563,7 @@ public class ContactModel : PageModel
 ```csharp
 // Ensure Syncfusion CSS is loaded
 // In _Layout.cshtml, verify:
-// <link rel="stylesheet" href="https://cdn.syncfusion.com/ej2/24.1.48/fluent.css" />
+// <link rel="stylesheet" href="https://cdn.syncfusion.com/ej2/{{ site.ej2version }}/fluent.css" />
 
 // Check the CSS is loaded in browser DevTools (F12)
 // Network tab → check fluent.css loads with status 200
