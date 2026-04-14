@@ -1,6 +1,6 @@
 ---
 name: syncfusion-aspnetcore-dropdowns
-description: Comprehensive guide for implementing Syncfusion aspnetcore dropdown components including DropDownList, MultiSelect. Single and multiple selection control with data binding, filtering, grouping, templates, and accessibility features. Essential for building professional dropdown interfaces with server-side data binding.
+description: Comprehensive guide for implementing Syncfusion aspnetcore dropdown components including DropDownList, MultiSelect, AutoComplete, Mention. Single and multiple selection control with data binding, filtering, grouping, templates, and accessibility features. Essential for building professional dropdown interfaces with server-side data binding.
 metadata:
   author: "Syncfusion Inc"
   category: "Dropdowns"
@@ -522,105 +522,446 @@ For the parent library overview and other components, see [Implementing Syncfusi
 
 ## Security & Trust Boundary
 
-### ⚠️ Key Security Findings & Mitigations
+> **Scope:** All CDN URLs (`https://cdn.syncfusion.com/ej2/...`) and remote data endpoints shown in this skill's examples are **documentation references only**. The agent must never fetch, execute, or proxy these URLs at runtime. Consumers are solely responsible for how these resources are integrated into their applications.
 
-**Snyk W011 (Third-party Content Exposure)** & **W012 (Malicious External URL)** require enforcing a strict trust boundary between external sources and your application.
+### W011 — Third-party Content Exposure
 
----
+Code examples in the **Data Binding** and **Filtering** sections reference remote endpoints (e.g., `<e-data-manager url="..." adaptor="ODataV4Adaptor" crossDomain="true">`). These are **illustrative only**.
 
-### **1. Remote Data Ingestion (Cascading Dropdowns, Remote Filtering)**
+**Required mitigations before production use:**
+- Replace all external/OData/WebAPI URLs with **same-origin server endpoints** under your own domain.
+- Remove `crossDomain="true"` from all `<e-data-manager>` tags.
+- Validate, authenticate, and sanitize all data server-side before binding to the component.
 
-**✅ SECURE PATTERN:** Always proxy through your **same-origin server**. Do NOT:
-- Direct `fetch()` to untrusted external URLs
-- Use `crossDomain="true"` with external OData/WebAPI endpoints
-- Bind dropdowns directly to public third-party APIs
+### W012 — External CDN Runtime Script
 
-**Implementation Guidelines:**
-- Create server-side `/api/` endpoints that act as proxies (see Pattern 2 & 3 secure examples above)
-- Server validates, authenticates, and sanitizes all data before returning
-- Client binds only to these same-origin endpoints
-- **Input validation:** whitelist allowed values, reject out-of-range IDs
-- **Schema validation:** reject unexpected JSON fields or types
-- **Error handling:** set timeouts, size limits, catch fetch failures gracefully
+The **Getting Started** examples reference `https://cdn.syncfusion.com/ej2/dist/ej2.min.js` for quickstart convenience only.
 
----
+**Required mitigations before production use:**
+- **Preferred:** Serve scripts locally via the `Syncfusion.EJ2.AspNet.Core` NuGet package — no external network call at runtime.
+- **If CDN is required:** Pin the exact version and add a Subresource Integrity (SRI) hash with `crossorigin="anonymous"` to verify file integrity before execution.
 
-### **2. Runtime CDN Scripts (ej2.min.js, stylesheets)**
-
-**Option A: Use Subresource Integrity (SRI) + HTTPS (if CDN is mandatory)**
-```html
-<!-- ✅ Pin version & use SRI hash to verify script integrity -->
-<link rel="stylesheet" 
-      href="https://cdn.syncfusion.com/ej2/{{ site.ej2version }}/material.css"
-      integrity="sha384-[REPLACE_WITH_ACTUAL_SRI_HASH]"
-      crossorigin="anonymous">
-<script src="https://cdn.syncfusion.com/ej2/{{ site.ej2version }}/ej2.min.js"
-        integrity="sha384-[REPLACE_WITH_ACTUAL_SRI_HASH]"
-        crossorigin="anonymous"></script>
-```
-*Find SRI hashes on the CDN provider's documentation or use an SRI hash generator.*
-
-**Option B: Host Scripts Locally (RECOMMENDED for production)**
-```html
-<!-- ✅ Best security: host vendor files locally from NuGet -->
-<link rel="stylesheet" href="~/lib/syncfusion/material.css">
-<script src="~/lib/syncfusion/ej2.min.js"></script>
-```
-
-**Setup via NuGet:**
-```bash
-Install-Package Syncfusion.EJ2.AspNet.Core
-```
-Then add to `_Layout.cshtml`:
-```html
-<link rel="stylesheet" href="~/css/ej2/material.css" />
-<script src="~/js/ej2/ej2.min.js"></script>
-<ejs-script-manager></ejs-script-manager>
-```
-
----
-
-### **3. Content Security Policy (CSP) Configuration**
-
-**Add to `_Layout.cshtml` to restrict script/style sources:**
-```html
-<meta http-equiv="Content-Security-Policy" 
-      content="default-src 'self'; 
-               script-src 'self'; 
-               style-src 'self' 'unsafe-inline'; 
-               font-src 'self' data:; 
-               img-src 'self' data: https:; 
-               connect-src 'self';">
-```
-Or implement in **Startup.cs / Program.cs**:
-```csharp
-app.Use(async (context, next) =>
-{
-    context.Response.Headers["Content-Security-Policy"] = 
-        "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; connect-src 'self'";
-    await next();
-});
-```
-
----
-
-### **4. General Controls & Best Practices**
-
-- **Authorization:** Sensitive dropdown actions (e.g., delete, submit) must be re-validated server-side; never trust client-side selection alone.
-- **Input Sanitization:** Use `System.Web.HttpUtility.HtmlEncode()` or Razor's `@Html.Encode()` for all user-generated or external data rendered in templates.
-- **Logging & Monitoring:** Log remote-data fetch failures and unexpected response shapes for audit trails and rapid incident detection.
-- **Trusted Endpoints Whitelist:** Maintain a documented list of approved API endpoints in your deployment configuration.
-- **Vendor Scanning:** Periodically scan NuGet/CDN artifacts with `snyk test --file=packages.config` or equivalent.
-
----
-
-### **Summary: How These Steps Resolve Snyk Findings**
-
-| Snyk Finding | Root Cause | Mitigation |
+| Finding | Root Cause | Mitigation |
 |---|---|---|
-| **W011: Third-party exposure** | Untrusted external data influences UI/app behavior | Use server-proxy pattern (Pattern 2 & 3); validate & sanitize server-side before binding |
-| **W012: Malicious CDN URL** | Runtime execution of remote vendor scripts | Host scripts locally from NuGet; or use SRI + version pinning if CDN is required |
+| W011 — Third-party content exposure | Remote data endpoints in examples can influence component behavior | Use same-origin proxy endpoints; remove `crossDomain="true"` |
+| W012 — Malicious external URL | CDN script in examples executes remote code at page load | Host scripts locally from NuGet; or use SRI hash + version pinning |
 
-**The secure examples in Patterns 2 and 3 above (with checkmark comments) demonstrate the recommended implementation.**
+# Implementing AutoComplete in ASP.NET Core
 
-``` 
+The Syncfusion ASP.NET Core AutoComplete (`<ejs-autocomplete>`) is a textbox component that provides a list of suggestions as users type. It supports local and remote data binding, filtering, grouping, templates, virtual scrolling, accessibility, and rich customization options.
+
+## Navigation Guide
+
+### Getting Started
+📄 **Read:** [references/getting-started.md](references/autocomplete-getting-started.md)
+- NuGet package installation and setup
+- Tag helper registration and CDN references
+- Basic AutoComplete rendering with `<ejs-autocomplete>`
+- Custom values with `allowCustom`
+- Popup height and width configuration
+
+### Data Binding
+📄 **Read:** [references/data-binding.md](references/autocomplete-data-binding.md)
+- Binding array of strings and array of objects
+- Binding complex/nested object data
+- Remote data binding (OData, OData V4, Web API, URL Adaptor)
+- Offline mode with DataManager
+- Fields mapping (`value`, `groupBy`, `iconCss`)
+
+### Filtering
+📄 **Read:** [references/filtering.md](references/autocomplete-filtering.md)
+- Filter types: `StartsWith`, `EndsWith`, `Contains`
+- Limiting suggestion count with `suggestionCount`
+- Minimum character length with `minLength`
+- Case-sensitive filtering with `ignoreCase`
+- Diacritics/accent-insensitive filtering with `ignoreAccent`
+- Debounce delay to reduce filtering frequency
+
+### Grouping
+📄 **Read:** [references/grouping.md](references/autocomplete-grouping.md)
+- Grouping list items by category using `groupBy` field
+- Inline and fixed group headers
+- Custom group header with `groupTemplate`
+
+### Templates
+📄 **Read:** [references/templates.md](references/autocomplete-templates.md)
+- Item template (`itemTemplate`) for custom list item content
+- Group template (`groupTemplate`) for group headers
+- Header template (`headerTemplate`) for static popup header
+- Footer template (`footerTemplate`) for static popup footer
+- No records template (`noRecordsTemplate`)
+- Action failure template (`actionFailureTemplate`)
+
+### Value Binding
+📄 **Read:** [references/value-binding.md](references/autocomplete-value-binding.md)
+- Binding primitive values (string, number, boolean) with `value`
+- Object binding with `allowObjectBinding`
+- Pre-selecting values
+
+### Virtual Scrolling
+📄 **Read:** [references/virtual-scroll.md](references/autocomplete-virtual-scroll.md)
+- Enable virtualization with `enableVirtualization`
+- Virtual scrolling with local data
+- Virtual scrolling with remote data
+- Customizing item count in virtualization
+- Grouping with virtualization
+
+### Disabled Items & Component State
+📄 **Read:** [references/disabled-items.md](references/autocomplete-disabled-items.md)
+- Disabling individual items with `fields.disabled`
+- Using `disableItem` method dynamically
+- Disabling the entire component with `enabled`
+
+### Localization
+📄 **Read:** [references/localization.md](references/autocomplete-localization.md)
+- Localizing `noRecordsTemplate` and `actionFailureTemplate`
+- Loading translations with L10n
+- Setting locale with `locale` property
+
+### Popup Resizing
+📄 **Read:** [references/resize.md](references/autocomplete-resize.md)
+- Enabling resizable popup with `allowResize`
+- Resize persistence across sessions
+
+### Styling & CSS Customization
+📄 **Read:** [references/style.md](references/autocomplete-style.md)
+- Customizing wrapper, icon, focus, placeholder, text selection
+- Customizing popup item appearance
+- Outline theme and float label customization
+
+### Accessibility
+📄 **Read:** [references/accessibility.md](references/autocomplete-accessibility.md)
+- WCAG 2.2, Section 508, screen reader support
+- WAI-ARIA attributes and roles
+- Full keyboard navigation shortcuts
+
+### How-To Scenarios
+📄 **Read:** [references/how-to.md](references/autocomplete-how-to.md)
+- Autofill (auto-complete while typing with `autofill`)
+- Custom highlight search (`highlight` property)
+- Show list items with icons (`iconCss`)
+- Filter by both text and value fields
+- AutoCompleteFor with model binding and data annotations
+
+### API Reference
+📄 **Read:** [references/api.md](references/autocomplete-api.md)
+- Complete list of all properties, events, and their default values
+- Properties: `actionFailureTemplate`, `allowCustom`, `allowObjectBinding`, `allowResize`, `autofill`, `cssClass`, `dataSource`, `debounceDelay`, `enabled`, `enablePersistence`, `enableRtl`, `enableVirtualization`, `fields`, `filterType`, `floatLabelType`, `footerTemplate`, `groupTemplate`, `headerTemplate`, `highlight`, `htmlAttributes`, `ignoreAccent`, `ignoreCase`, `isDeviceFullScreen`, `itemTemplate`, `locale`, `minLength`, `noRecordsTemplate`, `placeholder`, `popupHeight`, `popupWidth`, `query`, `readonly`, `showClearButton`, `showPopupButton`, `sortOrder`, `suggestionCount`, `value`, `width`, `zIndex`
+- Events: `actionBegin`, `actionComplete`, `actionFailure`, `beforeOpen`, `blur`, `change`, `close`, `created`, `customValueSpecifier`, `dataBound`, `destroyed`, `filtering`, `focus`, `open`, `resizeStart`, `resizeStop`, `resizing`, `select`
+
+---
+
+## Quick Start
+
+**Basic AutoComplete (array of strings):**
+
+```cshtml
+@{
+    var sports = new string[] { "Badminton", "Basketball", "Cricket", "Football", "Golf", "Hockey", "Tennis" };
+}
+
+<ejs-autocomplete id="sports" dataSource="sports" placeholder="Select a sport">
+</ejs-autocomplete>
+```
+
+**AutoComplete with object data source:**
+
+```cshtml
+@{
+    List<Countries> countries = new List<Countries> {
+        new Countries { Name = "India", Code = "IN" },
+        new Countries { Name = "United States", Code = "US" },
+        new Countries { Name = "Germany", Code = "DE" }
+    };
+}
+
+<ejs-autocomplete id="country" dataSource="@countries" placeholder="Select a country">
+    <e-autocomplete-fields value="Name"></e-autocomplete-fields>
+</ejs-autocomplete>
+```
+
+**Model class:**
+```csharp
+public class Countries {
+    public string Name { get; set; }
+    public string Code { get; set; }
+}
+```
+
+---
+
+## Common Patterns
+
+### Remote Data with OData
+```cshtml
+<ejs-autocomplete id="customers"
+    query="new ej.data.Query().from('Customers').select(['ContactName'])"
+    placeholder="Find a customer"
+    filterType="StartsWith"
+    popupHeight="200px">
+    <e-autocomplete-fields value="ContactName"></e-autocomplete-fields>
+    <e-data-manager url="url"
+        adaptor="ODataV4Adaptor" crossDomain="true">
+    </e-data-manager>
+</ejs-autocomplete>
+```
+
+### Grouped List with Custom Filter
+```cshtml
+<ejs-autocomplete id="vegetables"
+    dataSource="@vegList"
+    placeholder="Select a vegetable"
+    filterType="StartsWith"
+    suggestionCount="10"
+    minLength="1">
+    <e-autocomplete-fields value="Vegetable" groupBy="Category"></e-autocomplete-fields>
+</ejs-autocomplete>
+```
+
+### Virtual Scrolling for Large Data
+```cshtml
+<ejs-autocomplete id="records"
+    dataSource="@data"
+    placeholder="e.g. Item 1"
+    enableVirtualization="true"
+    popupHeight="200px">
+    <e-autocomplete-fields value="Text"></e-autocomplete-fields>
+</ejs-autocomplete>
+```
+
+---
+
+## Key Properties Quick Reference
+
+| Property | Type | Default | Purpose |
+|---|---|---|---|
+| `dataSource` | object | null | Local array or DataManager |
+| `fields` | AutoCompleteFieldSettings | null | Map value, groupBy, iconCss |
+| `filterType` | FilterType | Contains | StartsWith / EndsWith / Contains |
+| `placeholder` | string | null | Input hint text |
+| `value` | object | null | Selected value |
+| `allowCustom` | bool | true | Allow values not in data source |
+| `minLength` | double | 1 | Minimum chars before filtering |
+| `suggestionCount` | double | 20 | Max suggestion items |
+| `autofill` | bool | false | Auto-complete first match inline |
+| `highlight` | bool | false | Highlight matched characters |
+| `enableVirtualization` | bool | false | Virtual scrolling for large lists |
+| `allowResize` | bool | false | Resizable popup |
+| `enabled` | bool | true | Enable/disable component |
+---
+
+# Implementing Mention in ASP.NET Core
+
+The Syncfusion ASP.NET Core Mention (`<ejs-mention>`) is an inline suggestion component that listens to a **target** element (a `contenteditable` div or textarea) and displays a suggestion popup when the user types a trigger character (default: `@`). It supports local and remote data binding, custom templates, configurable filtering, sorting, disabled items, and full accessibility.
+
+## Navigation Guide
+
+### Getting Started
+📄 **Read:** [references/getting-started.md](references/mention-getting-started.md)
+- NuGet package installation and project setup
+- Tag helper registration (`@addTagHelper *, Syncfusion.EJ2`)
+- CDN stylesheet and script references
+- Script manager registration (`<ejs-scripts>`)
+- Defining the target `contenteditable` element
+- Basic Mention rendering with `<ejs-mention>`
+- Binding a string array as data source
+- Displaying the mention character with `showMentionChar` and `mentionChar`
+
+### Data Binding
+📄 **Read:** [references/data-binding.md](references/mention-data-binding.md)
+- Binding simple string arrays
+- Binding arrays of JSON objects with `<e-mention-fields>`
+- Binding complex/nested object data with dot-notation field mapping
+- Remote data binding with OData V4 adaptor
+- Remote data binding with Web API adaptor
+- Using `<e-data-manager>` for remote sources
+- `query` property for customizing remote fetch requests
+
+### Filtering
+📄 **Read:** [references/filtering.md](references/mention-filtering.md)
+- Filter types: `StartsWith`, `EndsWith`, `Contains` via `filterType`
+- Minimum character length with `minLength` (default: 0)
+- Allow spaces in search with `allowSpaces`
+- Limit visible suggestions with `suggestionCount`
+- Case-sensitive filtering with `ignoreCase`
+- Reducing filter calls with `debounceDelay`
+- Custom server-side filtering with the `filtering` event
+
+### Templates
+📄 **Read:** [references/templates.md](references/mention-templates.md)
+- `itemTemplate` — customize each item in the suggestion popup
+- `displayTemplate` — customize what is inserted into the editor upon selection
+- `noRecordsTemplate` — custom message when no items match search
+- `spinnerTemplate` — custom loading indicator for remote data
+
+### Customization
+📄 **Read:** [references/customization.md](references/mention-customization.md)
+- Show or hide mention character prefix with `showMentionChar`
+- Change trigger character with `mentionChar` (default: `@`)
+- Append suffix after selection with `suffixText` (space, newline)
+- Control popup dimensions with `popupHeight` and `popupWidth`
+- Leading space requirement with `requireLeadingSpace`
+- Apply custom CSS styles with `cssClass`
+- Highlight matched characters with `highlight`
+
+### Disabled Items
+📄 **Read:** [references/disabled-items.md](references/mention-disabled-items.md)
+- Disable individual items via `fields.disabled` data source mapping
+- Dynamically disable items at runtime using the `disableItem` method
+- Disable multiple items by iterating
+
+### Sorting
+📄 **Read:** [references/sorting.md](references/mention-sorting.md)
+- Sort suggestion list with `sortOrder` (`None`, `Ascending`, `Descending`)
+- Ascending and descending sort examples
+
+### Accessibility
+📄 **Read:** [references/accessibility.md](references/mention-accessibility.md)
+- WCAG 2.2 (AA), Section 508, screen reader compliance
+- WAI-ARIA attributes (`aria-selected`, `aria-activedescendant`, `aria-owns`)
+- Full keyboard navigation (Arrow keys, Escape, Enter, Tab)
+- Tips for accessible target element setup
+
+### API Reference
+📄 **Read:** [references/api.md](references/mention-api.md)
+- Complete properties: `allowSpaces`, `cssClass`, `dataSource`, `debounceDelay`, `displayTemplate`, `fields`, `filterType`, `highlight`, `htmlAttributes`, `ignoreCase`, `itemTemplate`, `locale`, `mentionChar`, `minLength`, `noRecordsTemplate`, `popupHeight`, `popupWidth`, `query`, `requireLeadingSpace`, `showMentionChar`, `sortOrder`, `spinnerTemplate`, `suffixText`, `suggestionCount`, `target`
+- MentionFieldSettings: `text`, `value`, `groupBy`, `iconCss`, `disabled`, `htmlAttributes`
+- All events: `actionBegin`, `actionComplete`, `actionFailure`, `beforeOpen`, `change`, `closed`, `created`, `destroyed`, `filtering`, `opened`, `select`
+
+---
+
+## Quick Start
+
+**Minimal Mention with string array:**
+
+```cshtml
+@{
+    var users = new string[] { "Adeline MacAdams", "Alba Torres", "Amy Fernandez", "Andrew Jack" };
+}
+
+<div id="mentionTarget" contenteditable="true"
+     style="min-height: 100px; border: 1px solid #ccc; padding: 10px;">
+    Type @ to mention someone
+</div>
+
+<ejs-mention id="mentionElement" target="#mentionTarget" dataSource="@users">
+</ejs-mention>
+```
+
+**Mention with object data and field mapping:**
+
+```cshtml
+<div id="mentionTarget" contenteditable="true"
+     style="min-height: 100px; border: 1px solid #ccc; padding: 10px;">
+</div>
+
+<ejs-mention id="mentionElement" target="#mentionTarget" dataSource="@ViewBag.data">
+    <e-mention-fields text="Name" value="EmailId"></e-mention-fields>
+</ejs-mention>
+```
+
+**Controller:**
+```csharp
+public IActionResult Index()
+{
+    ViewBag.data = new List<EmailData>
+    {
+        new EmailData { Name = "Adeline MacAdams", EmailId = "adeline@example.com" },
+        new EmailData { Name = "Alba Torres", EmailId = "alba@example.com" },
+        new EmailData { Name = "Amy Fernandez", EmailId = "amy@example.com" }
+    };
+    return View();
+}
+
+public class EmailData
+{
+    public string Name { get; set; }
+    public string EmailId { get; set; }
+}
+```
+
+---
+
+## Common Patterns
+
+### Custom Trigger Character (# for tags)
+```cshtml
+<ejs-mention id="mentionElement" target="#mentionTarget"
+    dataSource="@ViewBag.data"
+    mentionChar="#"
+    showMentionChar="true">
+    <e-mention-fields text="TagName"></e-mention-fields>
+</ejs-mention>
+```
+
+### Mention with Suffix Space + No Leading Space Required
+```cshtml
+<ejs-mention id="mentionElement" target="#mentionTarget"
+    dataSource="@ViewBag.data"
+    suffixText=" "
+    requireLeadingSpace="false">
+    <e-mention-fields text="Name"></e-mention-fields>
+</ejs-mention>
+```
+
+### Remote Data with Filtering
+```cshtml
+<ejs-mention id="mentionElement" target="#mentionTarget"
+    minLength="2"
+    filterType="StartsWith"
+    suggestionCount="10">
+    <e-mention-fields text="ContactName" value="CustomerID"></e-mention-fields>
+    <e-data-manager url="url"
+        adaptor="ODataV4Adaptor" crossDomain="true">
+    </e-data-manager>
+</ejs-mention>
+```
+
+### Custom Item Template
+```cshtml
+<ejs-mention id="mentionElement" target="#mentionTarget"
+    dataSource="@ViewBag.data"
+    itemTemplate="<span><img src='${EmpImage}' class='avatar'/><b>${FirstName}</b> - ${Department}</span>">
+    <e-mention-fields text="FirstName" value="FirstName"></e-mention-fields>
+</ejs-mention>
+```
+
+### Handle Selection Event
+```cshtml
+<ejs-mention id="mentionElement" target="#mentionTarget"
+    dataSource="@ViewBag.data"
+    select="onMentionSelect">
+    <e-mention-fields text="Name" value="EmailId"></e-mention-fields>
+</ejs-mention>
+
+<script>
+    function onMentionSelect(args) {
+        console.log("Mentioned user:", args.itemData.Name);
+        console.log("Email:", args.itemData.EmailId);
+    }
+</script>
+```
+
+---
+
+## Key Properties Quick Reference
+
+| Property | Type | Default | Purpose |
+|---|---|---|---|
+| `target` | string | null | CSS selector for the editable target element (required) |
+| `dataSource` | object | null | Local array or DataManager |
+| `fields` | MentionFieldSettings | null | Map text, value, groupBy, iconCss, disabled |
+| `mentionChar` | char | `'@'` | The character that triggers the suggestion popup |
+| `showMentionChar` | bool | false | Show trigger character as prefix in inserted text |
+| `suffixText` | string | null | Text appended after the inserted value (e.g., `" "`) |
+| `requireLeadingSpace` | bool | true | Require a space before the trigger character |
+| `filterType` | FilterType | Contains | Filter match strategy |
+| `minLength` | int | 0 | Min chars before search activates |
+| `suggestionCount` | int | 25 | Max items in suggestion list |
+| `allowSpaces` | bool | false | Allow spaces in the search term |
+| `sortOrder` | SortOrder | None | Sort suggestion list order |
+| `popupHeight` | string | "300px" | Height of the suggestion popup |
+| `popupWidth` | string | "auto" | Width of the suggestion popup |
+| `highlight` | bool | false | Highlight matched characters in suggestions |
+| `ignoreCase` | bool | true | Case-insensitive search |
+| `debounceDelay` | double | 300 | Delay (ms) before filtering runs |
