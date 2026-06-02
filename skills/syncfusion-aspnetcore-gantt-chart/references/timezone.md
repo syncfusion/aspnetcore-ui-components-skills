@@ -16,14 +16,14 @@ By default, the Gantt Chart uses the **local system timezone** of the browser. T
 
 | Property | Type | Description |
 |---|---|---|
-| 	imezone | string | IANA timezone string (e.g., "UTC", "America/New_York") or omit for local system timezone |
+| timezone | string | IANA timezone string (e.g., "UTC", "America/New_York") or omit for local system timezone |
 
 ---
 
 ## How JavaScript Dates Work
 
 JavaScript's 
-ew Date() always returns the current date/time in the **local browser timezone**. For example:
+new Date() always returns the current date/time in the **local browser timezone**. For example:
 
 `
 Wed Dec 12 2018 05:23:27 GMT+0530 (India Standard Time)
@@ -35,7 +35,7 @@ When dates are stored in a database in UTC and displayed on clients in different
 
 ## Display the Same Time Everywhere (UTC)
 
-Set 	imezone="UTC" to ensure all users — regardless of their local timezone — see the same date and time values as stored in the database. This prevents timezone-offset shifts on the chart timeline.
+Set timezone="UTC" to ensure all users — regardless of their local timezone — see the same date and time values as stored in the database. This prevents timezone-offset shifts on the chart timeline.
 
 `cshtml
 <ejs-gantt id='Gantt' dataSource="ViewBag.dataSource"
@@ -71,7 +71,7 @@ Set 	imezone="UTC" to ensure all users — regardless of their local timezone �
 
 ## CRUD Operations with Timezone
 
-When a specific 	imezone is set, all editing operations (add, edit, delete) are performed in that timezone. Before saving to the database, the Gantt converts the data back to the original local time internally so that the server always receives timezone-consistent values.
+When a specific timezone is set, all editing operations (add, edit, delete) are performed in that timezone. Before saving to the database, the Gantt converts the data back to the original local time internally so that the server always receives timezone-consistent values.
 
 `cshtml
 <ejs-gantt id='Gantt' dataSource="ViewBag.dataSource"
@@ -109,10 +109,10 @@ Calculates the UTC offset (in minutes) between a UTC date and the given timezone
 | Parameter | Type | Description |
 |---|---|---|
 | date | Date | UTC time as a Date object |
-| 	imezone | string | IANA timezone string |
+| timezone | string | IANA timezone string |
 
 **Returns:** 
-umber (offset in minutes)
+number (offset in minutes)
 
 `javascript
 // Assume local timezone is IST (UTC+05:30)
@@ -132,7 +132,7 @@ Converts a date from one timezone to another.
 |---|---|---|
 | date | Date | UTC time as a Date object |
 | fromOffset | number/string | Source timezone (offset in minutes or IANA string) |
-| 	oOffset | number/string | Target timezone (offset in minutes or IANA string) |
+| toOffset | number/string | Target timezone (offset in minutes or IANA string) |
 
 **Returns:** Date
 
@@ -149,14 +149,14 @@ console.log(convertedDate1); // 2018-12-05T16:55:11.000Z
 ---
 
 ### 
-emove(date, timezone)
+remove(date, timezone)
 
 Removes the timezone offset from a UTC date, returning it in local time.
 
 | Parameter | Type | Description |
 |---|---|---|
 | date | Date | UTC time as a Date object |
-| 	imezone | string | IANA timezone string |
+| timezone | string | IANA timezone string |
 
 **Returns:** Date
 

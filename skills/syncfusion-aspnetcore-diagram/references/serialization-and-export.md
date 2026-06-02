@@ -146,7 +146,7 @@ The `loaded` event fires after `loadDiagram()` completes. Use it to run post-loa
 The `PrintAndExport` module must be injected before using export or print:
 
 ```javascript
-ej.diagram.Diagram.Inject(ej.diagram.PrintAndExport);
+ej.diagrams.Diagram.Inject(ej.diagrams.PrintAndExport);
 ```
 
 Or include in the `<script>` block after `<ejs-scripts>`:
@@ -154,7 +154,7 @@ Or include in the `<script>` block after `<ejs-scripts>`:
 ```cshtml
 <ejs-scripts></ejs-scripts>
 <script>
-    ej.diagram.Diagram.Inject(ej.diagram.PrintAndExport);
+    ej.diagrams.Diagram.Inject(ej.diagrams.PrintAndExport);
 </script>
 ```
 
@@ -228,7 +228,7 @@ diagram.exportDiagram({
 </ejs-diagram>
 <ejs-scripts></ejs-scripts>
 <script>
-    ej.diagram.Diagram.Inject(ej.diagram.PrintAndExport);
+    ej.diagrams.Diagram.Inject(ej.diagrams.PrintAndExport);
 
     function exportPng() {
         var diagram = document.getElementById('diagram').ej2_instances[0];
@@ -288,7 +288,7 @@ diagram.print({
 </ejs-diagram>
 <ejs-scripts></ejs-scripts>
 <script>
-    ej.diagram.Diagram.Inject(ej.diagram.PrintAndExport);
+    ej.diagrams.Diagram.Inject(ej.diagrams.PrintAndExport);
 
     function printDiagram() {
         var diagram = document.getElementById('diagram').ej2_instances[0];
@@ -309,17 +309,17 @@ Always inject `PrintAndExport` before using export or print:
 ```cshtml
 <ejs-scripts></ejs-scripts>
 <script>
-    ej.diagram.Diagram.Inject(ej.diagram.PrintAndExport);
+    ej.diagrams.Diagram.Inject(ej.diagrams.PrintAndExport);
 </script>
 ```
 
 If using other modules simultaneously:
 
 ```javascript
-ej.diagram.Diagram.Inject(
-    ej.diagram.PrintAndExport,
-    ej.diagram.BpmnDiagrams,
-    ej.diagram.MindMap,
-    ej.diagram.ComplexHierarchicalTree
+ej.diagrams.Diagram.Inject(
+    ej.diagrams.PrintAndExport,
+    ej.diagrams.BpmnDiagrams,
+    ej.diagrams.MindMap,
+    ej.diagrams.ComplexHierarchicalTree
 );
 ```

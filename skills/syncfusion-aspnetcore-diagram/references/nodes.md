@@ -286,11 +286,11 @@ Access in JavaScript: `diagram.nodes[0].addInfo.Department`
 
 <script>
     function onPositionChange(args) {
-        console.log('Node moved:', args.element.id,
+        console.log('Node moved:', args.source.id,
             'to', args.newValue.offsetX, args.newValue.offsetY);
     }
     function onSizeChange(args) {
-        console.log('Node resized:', args.element.id);
+        console.log('Node resized:', args.source.id);
     }
     function onCollectionChange(args) {
         // args.type = 'Addition' | 'Removal'

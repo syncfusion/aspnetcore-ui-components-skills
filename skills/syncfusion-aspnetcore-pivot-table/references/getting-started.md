@@ -406,26 +406,6 @@ Configure display size:
 <ejs-pivotview id="PivotView" width="100%" height="600">
 ```
 
-## Import Required Modules
-
-For advanced features, inject required modules in `Program.cs`:
-
-```csharp
-// When using specific features
-builder.Services.AddSyncfusionBlazor();
-
-// Or register specific modules:
-// services.AddSyncfusionBlazor(new string[] { "pivotview", "pivotchart" });
-```
-
-**Common Modules:**
-- PivotView - Core pivot table
-- PivotChart - Chart visualization
-- FieldList - Field configuration panel
-- GridExcelExport - Excel export
-- GridPdfExport - PDF export
-- ConditionalFormatting - Value-based formatting
-
 ## Troubleshooting
 
 ### Component Not Displaying

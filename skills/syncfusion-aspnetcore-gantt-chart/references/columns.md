@@ -26,17 +26,13 @@
 Use `<e-gantt-columns>` to explicitly define which columns appear in the TreeGrid section. If omitted, Gantt auto-generates columns from `taskFields`.
 
 ```cshtml
-<ejs-gantt id="Gantt" dataSource="ViewBag.DataSource" height="450px">
+<ejs-gantt id='Gantt' dataSource="ViewBag.dataSource" height="450px">
     <e-gantt-taskfields id="TaskId" name="TaskName" startDate="StartDate"
-                        endDate="EndDate" duration="Duration" progress="Progress"
-                        child="SubTasks">
+            endDate="EndDate" duration="Duration" progress="Progress" child="SubTasks">
     </e-gantt-taskfields>
     <e-gantt-columns>
-        <e-gantt-column field="TaskId"   headerText="ID"        width="60"  textAlign="Right" isPrimaryKey="true"></e-gantt-column>
-        <e-gantt-column field="TaskName" headerText="Task Name" width="250" clipMode="EllipsisWithTooltip"></e-gantt-column>
-        <e-gantt-column field="StartDate" headerText="Start"   width="120" format="yMd"></e-gantt-column>
-        <e-gantt-column field="Duration"  headerText="Days"    width="80"  textAlign="Right"></e-gantt-column>
-        <e-gantt-column field="Progress"  headerText="Progress" width="100" textAlign="Right"></e-gantt-column>
+        <e-gantt-column field="TaskId" width="150"> </e-gantt-column>
+        <e-gantt-column field="TaskName" headerText="Job Name" width="250"></e-gantt-column>
     </e-gantt-columns>
 </ejs-gantt>
 ```
@@ -70,33 +66,46 @@ Use `<e-gantt-columns>` to explicitly define which columns appear in the TreeGri
 Use `headerText` for a simple rename, or `headerTemplate` for rich HTML content:
 
 ```cshtml
-@* Simple header rename *@
-<e-gantt-column field="TaskName" headerText="Activity Description" width="250"></e-gantt-column>
-
-@* Header with template — reference a script ID string via the headerTemplate attribute *@
-<ejs-gantt id="Gantt" dataSource="ViewBag.dataSource" height="450px">
+<ejs-gantt id='Gantt' dataSource="ViewBag.dataSource" height="450px">
     <e-gantt-taskfields id="TaskId" name="TaskName" startDate="StartDate"
-                        endDate="EndDate" duration="Duration" progress="Progress" child="SubTasks">
+          endDate="EndDate" duration="Duration" progress="Progress" child="SubTasks">
     </e-gantt-taskfields>
     <e-gantt-columns>
-        <e-gantt-column field="TaskName" headerTemplate="#projectName"  width="150"></e-gantt-column>
+        <e-gantt-column field="TaskName" headerTemplate="#projectName" width="150"></e-gantt-column>
         <e-gantt-column field="StartDate" headerTemplate="#dateTemplate" width="150"></e-gantt-column>
         <e-gantt-column field="Duration" headerTemplate="#durationTemplate" width="150"></e-gantt-column>
         <e-gantt-column field="Progress" headerTemplate="#progressTemplate" width="150"></e-gantt-column>
     </e-gantt-columns>
 </ejs-gantt>
-
+				
+			
 <script type="text/x-template" id="projectName">
-    <div><img src="taskname.png" width="20" height="20" class="e-image" />  Task Name</div>
+    <div>
+        <div>
+            <img src="taskname.png" width="20" height="20" class="e-image" />  Task Name
+        </div>
+    </div>
 </script>
 <script type="text/x-template" id="dateTemplate">
-    <div><img src="startdate.png" width="20" height="20" class="e-image" />  Start Date</div>
+    <div>
+        <div>
+            <img src="startdate.png" width="20" height="20" class="e-image" />  Start Date
+        </div>
+    </div>
 </script>
 <script type="text/x-template" id="durationTemplate">
-    <div><img src="duration.png" width="20" height="20" class="e-image" />  Duration</div>
+    <div>
+        <div>
+            <img src="duration.png" width="20" height="20" class="e-image" />  Duration
+        </div>
+    </div>
 </script>
 <script type="text/x-template" id="progressTemplate">
-    <div><img src="progress.png" width="20" height="20" class="e-image" />  Progress</div>
+    <div>
+        <div>
+            <img src="progress.png" width="20" height="20" class="e-image" />  Progress
+        </div>
+    </div>
 </script>
 ```
 
@@ -109,33 +118,28 @@ Use `headerText` for a simple rename, or `headerTemplate` for rich HTML content:
 Render custom HTML inside cells using a column template — reference a script ID string via the `template` attribute:
 
 ```cshtml
-<ejs-gantt id="Gantt" dataSource="ViewBag.dataSource" height="450px"
-           resources="ViewBag.projectResources">
+<ejs-gantt id='Gantt' dataSource="ViewBag.dataSource" height="450px" resources="ViewBag.projectResources">
     <e-gantt-taskfields id="TaskId" name="TaskName" startDate="StartDate"
-                        endDate="EndDate" duration="Duration" progress="Progress"
-                        child="SubTasks" resourceInfo="ResourceId">
+           endDate="EndDate" duration="Duration" progress="Progress" child="SubTasks" resourceInfo="ResourceId">
     </e-gantt-taskfields>
-    <e-gantt-resourcefields id="ResourceId" name="ResourceName"></e-gantt-resourcefields>
+     <e-gantt-resourcefields id="ResourceId" name="ResourceName"> </e-gantt-resourcefields>
     <e-gantt-columns>
-        <e-gantt-column field="TaskId"     headerText="Task Id"   width="50"></e-gantt-column>
-        <e-gantt-column field="TaskName"   headerText="Task Name" width="250"></e-gantt-column>
+        <e-gantt-column field="TaskId" headerText="Task Id" width="50"></e-gantt-column>
+        <e-gantt-column field="TaskName" headerText="Task Name" width="250"></e-gantt-column>
         <e-gantt-column field="ResourceId" headerText="Resources" template="#columnTemplate"></e-gantt-column>
         <e-gantt-column field="StartDate"></e-gantt-column>
         <e-gantt-column field="Duration"></e-gantt-column>
         <e-gantt-column field="Progress"></e-gantt-column>
-    </e-gantt-columns>
+    </e-gantt-columns>					
 </ejs-gantt>
-
-<script type="text/x-jsrender" id="columnTemplate">
-    ${if(ganttProperties.resourceNames)}
-    <div class="image">
-        <img src="${TaskID}.png" style="height:40px;width:40px" />
-        <div style="display:inline-block;width:100%;position:relative;left:30px;top:-14px">
-            ${ganttProperties.resourceNames}
+				
+    <script type="text/x-jsrender" id="columnTemplate">
+        ${if(ganttProperties.resourceNames)}
+        <div class="image">
+            <img src="${TaskID}.png" style="height:40px;width:40px" /><div style="display:inline-block;width:100%;position:relative;left:30px;top:-14px">${ganttProperties.resourceNames}</div>
         </div>
-    </div>
-    ${/if}
-</script>
+        ${/if}
+    </script>
 ```
 
 > Column templates use `type="text/x-jsrender"` script blocks. Reference them by script ID string on the `template` attribute (e.g., `template="#columnTemplate"`). There is no `<e-gantt-column-template>` child tag. Access gantt-computed values via `${ganttProperties.resourceNames}`, and raw task fields via `${TaskName}`, `${Progress}`, etc.
@@ -176,8 +180,15 @@ Format cell values using the `columns.format` property. Gantt uses the [Internat
 | `P` | Percentage — input must be in range 0–100; `0.2` renders as `20%` (e.g., `P2`) |
 
 ```cshtml
-<e-gantt-column field="Cost"     format="C2" textAlign="Right" width="100"></e-gantt-column>
-<e-gantt-column field="Progress" format="P2" textAlign="Right" width="100"></e-gantt-column>
+<ejs-gantt id='Gantt' dataSource="ViewBag.dataSource" height="450px">
+    <e-gantt-taskfields id="TaskId" name="TaskName" startDate="StartDate"
+            endDate="EndDate" duration="Duration" progress="Progress" child="SubTasks">
+    </e-gantt-taskfields>
+    <e-gantt-columns>
+        <e-gantt-column field="TaskId" width="150"></e-gantt-column>
+        <e-gantt-column field="Progress" width="150" format="C"></e-gantt-column>
+    </e-gantt-columns>
+</ejs-gantt>
 ```
 
 ### Date Formatting
@@ -193,11 +204,18 @@ Pass a built-in skeleton string or a custom format object to `format`:
 | `{ type:'dateTime', format:'MM/dd/yyyy hh:mm:ss a' }` | 07/04/2019 12:00:00 AM |
 
 ```cshtml
-@* Built-in skeleton *@
-<e-gantt-column field="StartDate" format="yMd" width="120"></e-gantt-column>
-
-@* Custom format object — pass as a JSON string *@
-<e-gantt-column field="StartDate" format="{ type:'date', format:'dd/MM/yyyy' }" width="120"></e-gantt-column>
+<ejs-gantt id='Gantt' dataSource="ViewBag.dataSource" height="450px">
+    <e-gantt-taskfields id="TaskId" name="TaskName" startDate="StartDate"
+           endDate="EndDate" duration="Duration" progress="Progress" child="SubTasks">
+    </e-gantt-taskfields>
+    <e-gantt-columns>
+        <e-gantt-column field="TaskId" width="50"></e-gantt-column>
+        <e-gantt-column field="TaskName"></e-gantt-column>
+        <e-gantt-column field="StartDate" format="yMd"></e-gantt-column>
+        <e-gantt-column field="Duration"></e-gantt-column>
+        <e-gantt-column field="Progress"></e-gantt-column>
+    </e-gantt-columns>
+</ejs-gantt>
 ```
 
 ---
@@ -207,19 +225,18 @@ Pass a built-in skeleton string or a custom format object to `format`:
 Add a boolean checkbox column for selection or boolean data fields:
 
 ```cshtml
-<e-gantt-column field="IsCompleted" headerText="Done"
-                editType="booleanedit"
-                displayAsCheckBox="true"
-                width="80" textAlign="Center">
-</e-gantt-column>
-```
-
-To show a selection checkbox column (for multi-select), use the built-in `checkboxSelection` property on the Gantt itself:
-
-```cshtml
-<ejs-gantt id="Gantt" dataSource="ViewBag.DataSource"
-           height="450px" checkboxSelection="true">
-    ...
+<ejs-gantt id='Gantt' dataSource="ViewBag.DataSource" height="550px" gridLines="Both" treeColumnIndex="1">
+    <e-gantt-taskfields id="TaskId" name="TaskName" startDate="StartDate"
+                        endDate="EndDate" duration="Duration" progress="Progress" dependency="Predecessor" child="SubTasks">
+    </e-gantt-taskfields>
+    <e-gantt-columns>
+        <e-gantt-column field="TaskId"></e-gantt-column>
+        <e-gantt-column field="TaskName" headerText="Name" width="250"></e-gantt-column>
+        <e-gantt-column field="Verified" headerText="Verified" displayAsCheckBox="true"></e-gantt-column>
+        <e-gantt-column field="Progress"></e-gantt-column>
+        <e-gantt-column field="StartDate"></e-gantt-column>
+        <e-gantt-column field="Duration"></e-gantt-column>
+    </e-gantt-columns>
 </ejs-gantt>
 ```
 
@@ -230,32 +247,31 @@ To show a selection checkbox column (for multi-select), use the built-in `checkb
 Use the `showColumn` and `hideColumn` methods to toggle column visibility programmatically via external buttons. Pass the column's `headerText` value to identify the column.
 
 ```cshtml
-<button onclick="show()">Show</button>
-<button onclick="hide()">Hide</button>
-
-<ejs-gantt id="Gantt" dataSource="ViewBag.DataSource" height="450px">
+<ejs-button id="show" cssClass="e-flat" content="Show Columns"></ejs-button>
+<ejs-button id="hide" cssClass="e-flat" content="Hide Columns"></ejs-button>
+<ejs-gantt id='Gantt' dataSource="ViewBag.DataSource" height="550px" gridLines="Both" treeColumnIndex="1">
     <e-gantt-taskfields id="TaskId" name="TaskName" startDate="StartDate"
-                        endDate="EndDate" duration="Duration" progress="Progress"
-                        child="SubTasks">
+       endDate="EndDate" duration="Duration" progress="Progress" dependency="Predecessor" child="SubTasks">
     </e-gantt-taskfields>
     <e-gantt-columns>
-        <e-gantt-column field="TaskId"    headerText="Task Id"   width="100"></e-gantt-column>
-        <e-gantt-column field="TaskName"  headerText="Task Name" width="250"></e-gantt-column>
-        <e-gantt-column field="StartDate" headerText="Start Date" width="150"></e-gantt-column>
-        <e-gantt-column field="Duration"  headerText="Duration"   width="100"></e-gantt-column>
-        <e-gantt-column field="Progress"  headerText="Progress"   width="100"></e-gantt-column>
+        <e-gantt-column field="TaskId"></e-gantt-column>
+        <e-gantt-column field="TaskName" headerText="Name" width="250"></e-gantt-column>
+        <e-gantt-column field="Progress"></e-gantt-column>
+        <e-gantt-column field="StartDate"></e-gantt-column>
+        <e-gantt-column field="Duration"></e-gantt-column>
     </e-gantt-columns>
 </ejs-gantt>
 
 <script>
-function show() {
-    var ganttObj = document.getElementById('Gantt').ej2_instances[0];
-    ganttObj.showColumn(['Progress']);   // pass headerText values
-}
-function hide() {
-    var ganttObj = document.getElementById('Gantt').ej2_instances[0];
-    ganttObj.hideColumn(['Progress']);  // pass headerText values
-}
+    document.getElementById("show").addEventListener("click", function () {
+        var gantt = document.getElementById("Gantt").ej2_instances[0];
+        gantt.showColumn(['Duration']); //show by HeaderText
+    });
+
+    document.getElementById("hide").addEventListener("click", function () {
+        var gantt = document.getElementById("Gantt").ej2_instances[0];
+        gantt.hideColumn(['Duration']); //hide by HeaderText
+    })
 </script>
 ```
 
@@ -275,21 +291,19 @@ Enable or disable specific Gantt actions per column using the following boolean 
 | `allowEditing` | Enables or disables cell editing for the column |
 
 ```cshtml
-<ejs-gantt id="Gantt" dataSource="ViewBag.DataSource" height="450px"
-           allowFiltering="true" allowSorting="true"
-           allowReordering="true">
-    <e-gantt-editsettings allowEditing="true"></e-gantt-editsettings>
+<ejs-gantt id='Gantt' dataSource="ViewBag.DataSource" height="550px" gridLines="Both" treeColumnIndex="1"
+           allowSorting="true" allowReordering="true" allowFiltering="true">
     <e-gantt-taskfields id="TaskId" name="TaskName" startDate="StartDate"
-                        endDate="EndDate" duration="Duration" progress="Progress"
-                        child="SubTasks">
+                        endDate="EndDate" duration="Duration" progress="Progress" dependency="Predecessor" child="SubTasks">
     </e-gantt-taskfields>
     <e-gantt-columns>
-        <e-gantt-column field="TaskId"    headerText="Task Id"    isPrimaryKey="true" width="100"></e-gantt-column>
-        <e-gantt-column field="TaskName"  headerText="Task Name"  allowSorting="false"   allowFiltering="false" width="250"></e-gantt-column>
-        <e-gantt-column field="StartDate" headerText="Start Date" allowEditing="false" width="150"></e-gantt-column>
-        <e-gantt-column field="Duration"  headerText="Duration"   allowReordering="false" width="100"></e-gantt-column>
-        <e-gantt-column field="Progress"  headerText="Progress"   width="100"></e-gantt-column>
+        <e-gantt-column field="TaskId"></e-gantt-column>
+        <e-gantt-column field="TaskName" headerText="Name" allowSorting="false" width="250"></e-gantt-column>
+        <e-gantt-column field="Progress" allowReordering="false"></e-gantt-column>
+        <e-gantt-column field="StartDate" allowEditing="false"></e-gantt-column>
+        <e-gantt-column field="Duration" allowFiltering="false"></e-gantt-column>
     </e-gantt-columns>
+    <e-gantt-editsettings allowEditing="true"></e-gantt-editsettings>
 </ejs-gantt>
 ```
 
@@ -300,10 +314,39 @@ Enable or disable specific Gantt actions per column using the following boolean 
 Pin columns to the left or right so they remain visible when scrolling horizontally. Use the `frozenColumns` property on `<ejs-gantt>` to freeze the first N columns from the left:
 
 ```cshtml
-<ejs-gantt id="Gantt" dataSource="ViewBag.DataSource"
-           frozenColumns="2" height="450px">
-    ...
-</ejs-gantt>
+@using Syncfusion.EJ2.Gantt
+
+<div>
+    <ejs-gantt id="GanttContainer"
+               datasource="@Model.DataSource"
+               height="430px"
+               treeColumnIndex="1"
+               gridLines="Both"
+               frozenColumns= 2
+               allowSelection="false"
+               splitterSettings="@(new GanttSplitterSettings { Position = \"65%\" })"
+               labelSettings="@(new GanttLabelSettings { TaskLabel = \"Progress\" })"
+               taskFields="@(new GanttTaskFields {
+                   Id = \"TaskID\",
+                   Name = \"TaskName\",
+                   StartDate = \"StartDate\",
+                   EndDate = \"EndDate\",
+                   Duration = \"Duration\",
+                   Dependency = \"Predecessor\",
+                   Progress = \"Progress\",
+                   ParentID = \"ParentID\"
+               })">
+        <e-gantt-columns>
+            <e-gantt-column field="TaskID" headerText="Task ID" textAlign="Right" width="90"></e-gantt-column>
+            <e-gantt-column field="TaskName" headerText="Task Name" textAlign="Left" width="290"></e-gantt-column>
+            <e-gantt-column field="StartDate" headerText="Start Date" textAlign="Right" format="yMd" width="120"></e-gantt-column>
+            <e-gantt-column field="Duration" headerText="Duration" textAlign="Right" width="90"></e-gantt-column>
+            <e-gantt-column field="EndDate" headerText="End Date" textAlign="Right" format="yMd" width="120"></e-gantt-column>
+            <e-gantt-column field="Progress" headerText="Progress" textAlign="Left" width="120"></e-gantt-column>
+            <e-gantt-column field="Predecessor" headerText="Predecessor" textAlign="Left" width="120"></e-gantt-column>
+        </e-gantt-columns>
+    </ejs-gantt>
+</div>
 ```
 
 ### Freeze Particular Columns
@@ -311,8 +354,30 @@ Pin columns to the left or right so they remain visible when scrolling horizonta
 Use the `isFrozen` property at the column level to freeze a specific column at any desired index on the left side:
 
 ```cshtml
-<e-gantt-column field="TaskId"   isFrozen="true" width="60"></e-gantt-column>
-<e-gantt-column field="TaskName" isFrozen="true" width="200"></e-gantt-column>
+@page
+@model IndexModel
+
+<ejs-gantt id="Gantt" dataSource="@Model.DataSource" height="430px" treeColumnIndex="1" gridLines="Both">
+    <e-gantt-taskfields id="TaskID"
+                        name="TaskName"
+                        startDate="StartDate"
+                        duration="Duration"
+                        endDate="EndDate"
+                        dependency="Predecessor"
+                        progress="Progress"
+                        parentID="ParentID">
+    </e-gantt-taskfields>
+    <e-gantt-splitterSettings position="65%"></e-gantt-splitterSettings>
+    <e-gantt-labelSettings taskLabel="Progress"></e-gantt-labelSettings>
+    <e-gantt-columns>
+        <e-gantt-column field="TaskID" headerText="Task ID" isFrozen="true"></e-gantt-column>
+        <e-gantt-column field="TaskName" headerText="Task Name" width="220" isFrozen="true"></e-gantt-column>
+        <e-gantt-column field="StartDate" headerText="Start Date"></e-gantt-column>
+        <e-gantt-column field="Duration" headerText="Duration"></e-gantt-column>
+        <e-gantt-column field="Progress" headerText="Progress"></e-gantt-column>
+        <e-gantt-column field="Status" headerText="Status" isFrozen="true"></e-gantt-column>
+    </e-gantt-columns>
+</ejs-gantt>
 ```
 
 ### Freeze Direction
@@ -326,11 +391,33 @@ Use the `freeze` property to position frozen columns on the left, right, or in a
 | `Fixed` | Locks the column at a fixed position — always visible during horizontal scroll |
 
 ```cshtml
-<e-gantt-column field="TaskId"    freeze="Left"  width="60"></e-gantt-column>
-<e-gantt-column field="TaskName"  freeze="Left"  width="200"></e-gantt-column>
-<e-gantt-column field="StartDate" width="120"></e-gantt-column>
-<e-gantt-column field="Progress"  freeze="Fixed" width="100"></e-gantt-column>
-<e-gantt-column field="Resources" freeze="Right" width="150"></e-gantt-column>
+@using Syncfusion.EJ2.Gantt
+
+<div>
+    <ejs-gantt id="GanttContainer"
+               dataSource="@Model.DataSource"
+               resources="@Model.Resources"
+               height="430px"
+               treeColumnIndex="1"
+               gridLines="Both"
+               allowSelection="false"
+               highlightWeekends="true">
+        <e-gantt-splitterSettings position="65%"></e-gantt-splitterSettings>
+        <e-gantt-labelSettings taskLabel="Progress"></e-gantt-labelSettings>
+        <e-gantt-taskFields id="TaskID" name="TaskName" startDate="StartDate" endDate="EndDate" duration="Duration" progress="Progress" dependency="Predecessor" parentID="ParentID" resourceInfo="Resources"></e-gantt-taskFields>
+        <e-gantt-resourceFields id="ResourceId" name="ResourceName"></e-gantt-resourceFields>
+        <e-gantt-columns>
+            <e-gantt-column field="TaskID" headerText="Task ID" width="90" textAlign="Right" freeze="Left"></e-gantt-column>
+            <e-gantt-column field="TaskName" headerText="Task Name" width="200" textAlign="Left"></e-gantt-column>
+            <e-gantt-column field="StartDate" headerText="Start Date" width="130" format="yMd" textAlign="Right"></e-gantt-column>
+            <e-gantt-column field="Duration" headerText="Duration" width="110" textAlign="Right"></e-gantt-column>
+            <e-gantt-column field="EndDate" headerText="End Date" width="130" format="yMd" textAlign="Right"></e-gantt-column>
+            <e-gantt-column field="Progress" headerText="Progress" width="110" textAlign="Center" freeze="Fixed"></e-gantt-column>
+            <e-gantt-column field="Predecessor" headerText="Dependency" width="120"></e-gantt-column>
+            <e-gantt-column field="Resources" headerText="Assignee" width="150" freeze="Right"></e-gantt-column>
+        </e-gantt-columns>
+    </ejs-gantt>
+</div>
 ```
 
 > The `freeze` direction is not compatible when both `isFrozen` and `frozenColumns` properties are enabled simultaneously.
@@ -366,9 +453,11 @@ Customize the frozen border color using CSS:
 Allow users to drag and drop columns to reorder them. Set `allowReordering="true"` on `<ejs-gantt>`:
 
 ```cshtml
-<ejs-gantt id="Gantt" dataSource="ViewBag.DataSource"
-           allowReordering="true" height="450px">
-    ...
+<ejs-gantt id='Gantt' dataSource="ViewBag.dataSource" height="450px" allowReordering="true" columnDragStart="columnDragStart"
+    columnDrag="columnDrag" columnDrop="columnDrop">
+    <e-gantt-taskfields id="TaskId" name="TaskName" startDate="StartDate"
+            endDate="EndDate" duration="Duration" progress="Progress" child="SubTasks">
+    </e-gantt-taskfields>
 </ejs-gantt>
 ```
 
@@ -383,19 +472,22 @@ Allow users to drag and drop columns to reorder them. Set `allowReordering="true
 | `columnDrop` | When a column header is dropped on the target column |
 
 ```cshtml
-<ejs-gantt id="Gantt" dataSource="ViewBag.DataSource"
-           allowReordering="true"
-           columnDragStart="onColumnDragStart"
-           columnDrag="onColumnDrag"
-           columnDrop="onColumnDrop"
-           height="450px">
-    ...
-</ejs-gantt>
-
+<ejs-gantt id='Gantt' dataSource="ViewBag.dataSource" height="450px" allowReordering="true" columnDragStart="columnDragStart"
+    columnDrag="columnDrag" columnDrop="columnDrop">
+        <e-gantt-taskfields id="TaskId" name="TaskName" startDate="StartDate"
+                    endDate="EndDate" duration="Duration" progress="Progress" child="SubTasks">
+        </e-gantt-taskfields>
+    </ejs-gantt>
 <script>
-function onColumnDragStart(args) { console.log('Drag started', args.column.headerText); }
-function onColumnDrag(args)      { console.log('Dragging',      args.column.headerText); }
-function onColumnDrop(args)      { console.log('Dropped',       args.column.headerText); }
+    function columnDragStart() {
+        alert('columnDragStart event is triggered');
+    }
+    function columnDrag() {
+        alert('columnDrag event is triggered');
+    }
+    function columnDrop() {
+        alert('columnDrop event is triggered');
+    }
 </script>
 ```
 
@@ -403,10 +495,20 @@ function onColumnDrop(args)      { console.log('Dropped',       args.column.head
 
 Use the `reorderColumns` method to reorder multiple columns at once programmatically:
 
-```javascript
-var ganttObj = document.getElementById('Gantt').ej2_instances[0];
-// Move 'TaskId' and 'TaskName' columns to position after 'Duration'
-ganttObj.reorderColumns(['TaskId', 'TaskName'], 'Duration');
+```cshtml
+<ejs-button id="reorderMultipleCols" content="Reorder Task ID and Task Name to Last" cssClass="e-primary"></ejs-button>
+<ejs-gantt id='Gantt' dataSource="ViewBag.dataSource" height="450px" allowReordering="true">
+    <e-gantt-taskfields id="TaskId" name="TaskName" startDate="StartDate"
+             endDate="EndDate" duration="Duration" progress="Progress" child="SubTasks">
+    </e-gantt-taskfields>
+</ejs-gantt>
+	
+<script>
+	document.getElementById('reorderMultipleCols').addEventListener('click', function (args) {
+           var ganttObj = document.getElementById('Gantt').ej2_instances[0];
+           ganttObj.reorderColumns(['TaskId', 'TaskName'], 'Progress');
+        });
+</script>
 ```
 
 ---
@@ -416,9 +518,10 @@ ganttObj.reorderColumns(['TaskId', 'TaskName'], 'Duration');
 Allow users to resize column widths by clicking and dragging the right edge of the column header. Double-clicking the right edge auto-fits the column to its widest cell content. Set `allowResizing="true"` on `<ejs-gantt>`:
 
 ```cshtml
-<ejs-gantt id="Gantt" dataSource="ViewBag.DataSource"
-           allowResizing="true" height="450px">
-    ...
+<ejs-gantt id='Gantt' dataSource="ViewBag.dataSource" height="450px" allowResizing="true">
+    <e-gantt-taskfields id="TaskId" name="TaskName" startDate="StartDate"
+        endDate="EndDate" duration="Duration" progress="Progress" child="SubTasks">
+    </e-gantt-taskfields>
 </ejs-gantt>
 ```
 
@@ -429,8 +532,17 @@ Allow users to resize column widths by clicking and dragging the right edge of t
 Restrict how far a column can be resized using `minWidth` and `maxWidth` per column:
 
 ```cshtml
-<e-gantt-column field="TaskName" minWidth="100" maxWidth="400" width="200"></e-gantt-column>
-<e-gantt-column field="Duration" minWidth="60"  maxWidth="200" width="100"></e-gantt-column>
+<ejs-gantt id='Gantt' dataSource="ViewBag.dataSource" height="450px" allowResizing="true">
+    <e-gantt-taskfields id="TaskId" name="TaskName" startDate="StartDate" endDate="EndDate" duration="Duration" progress="Progress" child="SubTasks">
+    </e-gantt-taskfields>
+    <e-gantt-columns>
+        <e-gantt-column field="TaskId" width="50"></e-gantt-column>
+        <e-gantt-column field="TaskName" width="200" minWidth="150" maxWidth="250"></e-gantt-column>
+        <e-gantt-column field="StartDate"></e-gantt-column>
+        <e-gantt-column field="Duration" width="100" minWidth="50" maxWidth="200"></e-gantt-column>
+        <e-gantt-column field="Progress"></e-gantt-column>
+    </e-gantt-columns>
+</ejs-gantt>
 ```
 
 ### Touch Interaction
@@ -444,17 +556,56 @@ On touch devices, tapping the right edge of a column header reveals a floating r
 Merge adjacent cells in a row to span multiple columns using the `queryCellInfo` event:
 
 ```cshtml
-<ejs-gantt id="Gantt" dataSource="ViewBag.DataSource"
-           queryCellInfo="queryCellInfo" height="450px">
-    ...
+<ejs-gantt id='Gantt' dataSource="ViewBag.DataSource" height="550px" gridLines="Both" treeColumnIndex="1"
+           queryCellInfo="QueryCellEvent" >
+    <e-gantt-taskfields id="TaskId" name="TaskName" startDate="StartDate"
+                        endDate="EndDate" duration="Duration" progress="Progress" dependency="Predecessor" child="SubTasks">
+    </e-gantt-taskfields>
+    <e-gantt-columns>
+        <e-gantt-column field="TaskId"></e-gantt-column>
+        <e-gantt-column field="TaskName" headerText="Name" width="250"></e-gantt-column>
+        <e-gantt-column field="work1" headerText="Work-1"></e-gantt-column>
+        <e-gantt-column field="work2" headerText="Work-2"></e-gantt-column>
+        <e-gantt-column field="Progress"></e-gantt-column>
+        <e-gantt-column field="StartDate"></e-gantt-column>
+        <e-gantt-column field="Duration"></e-gantt-column>
+    </e-gantt-columns>
 </ejs-gantt>
-
 <script>
-function queryCellInfo(args) {
-    if (args.column.field === 'TaskName' && args.data.TaskId === 1) {
-        args.colSpan = 2;  // span TaskName across 2 columns
+    function QueryCellEvent(args) {
+        switch (args.data.TaskID) {
+            case 1:
+                if ((args.column.field == 'work1') && (args.data.taskData.work1 == 'support')) {
+                    args.colSpan = 2;
+                }
+                break;
+            case 2:
+                if ((args.column.field == 'work1') && (args.data.taskData.work1 == 'support')) {
+                    args.colSpan = 2;
+                }
+                break;
+            case 3:
+                if ((args.column.field == 'work1') && (args.data.taskData.work1 == 'support')) {
+                    args.colSpan = 2;
+                }
+                break;
+            case 4:
+                if ((args.column.field == 'work1') && (args.data.taskData.work1 == 'support')) {
+                    args.colSpan = 2;
+                }
+                break;
+            case 5:
+                if ((args.column.field == 'work1') && (args.data.taskData.work1 == 'support')) {
+                    args.colSpan = 2;
+                }
+                break;
+            case 7:
+                if ((args.column.field == 'work1') && (args.data.taskData.work1 == 'support')) {
+                    args.colSpan = 2;
+                }
+                break;
+        }
     }
-}
 </script>
 ```
 
@@ -465,9 +616,16 @@ function queryCellInfo(args) {
 Hide columns on smaller screen widths using `hideAtMedia`:
 
 ```cshtml
-<e-gantt-column field="Notes" headerText="Notes"
-                hideAtMedia="(max-width: 768px)" width="200">
-</e-gantt-column>
+<ejs-gantt id='Gantt' dataSource="ViewBag.dataSource" height="450px">
+    <e-gantt-taskfields id="TaskId" name="TaskName" startDate="StartDate" endDate="EndDate" duration="Duration" progress="Progress" child="SubTasks">
+    </e-gantt-taskfields>
+    <e-gantt-columns>
+        <e-gantt-column field="TaskId" width="50"></e-gantt-column>
+        <e-gantt-column field="TaskName" headerText="Job Name" width="250"></e-gantt-column>
+        <e-gantt-column field="StartDate"></e-gantt-column>
+        <e-gantt-column field="Duration" hideAtMedia="(min-width: 500px)"></e-gantt-column>
+    </e-gantt-columns>
+</ejs-gantt>
 ```
 
 The column is automatically hidden when the viewport width matches the media query.
@@ -479,28 +637,30 @@ The column is automatically hidden when the viewport width matches the media que
 Display a Work Breakdown Structure (WBS) code column — automatically generated hierarchy codes. Enable WBS with `enableWBS="true"` and `enableAutoWbsUpdate="true"` on `<ejs-gantt>`, then add `WBSCode` and `WBSPredecessor` columns. Use a flat (parent-ID) data binding with `parentID` in task fields:
 
 ```cshtml
-<ejs-gantt id="GanttChart" dataSource="ViewBag.DataSource"
-           enableWBS="true" enableAutoWbsUpdate="true"
-           treeColumnIndex="2" height="550px"
-           allowSorting="true" allowFiltering="true"
-           toolbar="@(new List<string>() { "Add","Edit","Update","Delete","Cancel","ExpandAll","CollapseAll","Indent","Outdent" })">
-    <e-gantt-taskfields id="TaskId" name="TaskName" startDate="StartDate"
-                        duration="Duration" progress="Progress"
-                        dependency="Predecessor" parentID="ParentID">
-    </e-gantt-taskfields>
-    <e-gantt-editsettings allowAdding="true" allowEditing="true" allowDeleting="true"
-                          allowTaskbarEditing="true" showDeleteConfirmDialog="true">
-    </e-gantt-editsettings>
+<ejs-gantt id="GanttChart" dataSource="@GanttData.WBSData()" allowSorting="true" enableContextMenu="true" enableWBS="true" enableAutoWbsUpdate="true" allowPdfExport="true" allowSelection="true" allowFiltering="true" allowUnscheduledTasks="true" highlightWeekends="true" gridLines="Both" height="550px" treeColumnIndex="2" projectStartDate="03/31/2024" projectEndDate="05/30/2024" rowHeight="40" taskbarHeight="20" toolbar="@(new List<string>() { "Add", "Edit", "Update", "Delete", "Cancel", "ExpandAll", "CollapseAll", "Indent", "Outdent" })">
+    <e-gantt-selectionsettings mode="Row" type="Single" enableToggle="false"></e-gantt-selectionsettings>
     <e-gantt-splittersettings columnIndex="4"></e-gantt-splittersettings>
+    <e-gantt-timelinesettings>
+        <e-timelinesettings-toptier unit="Week" format="dd/MM/yyyy"></e-timelinesettings-toptier>
+        <e-timelinesettings-bottomtier unit="Day" count="1"></e-timelinesettings-bottomtier>
+    </e-gantt-timelinesettings>
+    <e-gantt-editsettings allowAdding="true" allowEditing="true" allowDeleting="true" allowTaskbarEditing="true" showDeleteConfirmDialog="true"></e-gantt-editsettings>
+    <e-gantt-filtersettings type="Menu"></e-gantt-filtersettings>
+    <e-gantt-tooltipsettings showTooltip="true"></e-gantt-tooltipsettings>
+    <e-gantt-taskfields id="TaskId" name="TaskName" startDate="StartDate" duration="Duration" progress="Progress" dependency="Predecessor" parentID="ParentID"></e-gantt-taskfields>
+    <e-gantt-labelsettings taskLabel="${Progress}%"></e-gantt-labelsettings>
     <e-gantt-columns>
-        <e-gantt-column field="TaskId"         headerText="Task ID"          visible="false"></e-gantt-column>
-        <e-gantt-column field="WBSCode"        headerText="WBS Code"         width="150px"></e-gantt-column>
-        <e-gantt-column field="TaskName"       headerText="Task Name"        width="260px"></e-gantt-column>
-        <e-gantt-column field="StartDate"      headerText="Start Date"       width="140px"></e-gantt-column>
-        <e-gantt-column field="WBSPredecessor" headerText="WBS Predecessor"  width="190px"></e-gantt-column>
-        <e-gantt-column field="Duration"       headerText="Duration"         allowEditing="false"></e-gantt-column>
-        <e-gantt-column field="Progress"       headerText="Progress"></e-gantt-column>
+        <e-gantt-column field="TaskId" headerText="Task ID" visible="false"></e-gantt-column>
+        <e-gantt-column field="WBSCode" headerText="WBS Code" width="150px"></e-gantt-column>
+        <e-gantt-column field="TaskName" headerText="Task Name" width="260px"></e-gantt-column>
+        <e-gantt-column field="StartDate" headerText="Start Date" width="140px"></e-gantt-column>
+        <e-gantt-column field="WBSPredecessor" headerText="WBS Predecessor" width="190px"></e-gantt-column>
+        <e-gantt-column field="Duration" headerText="Duration" allowEditing="false"></e-gantt-column>
+        <e-gantt-column field="Progress" headerText="Progress"></e-gantt-column>
     </e-gantt-columns>
+    <e-gantt-eventmarkers>
+        <e-gantt-eventmarker day="04/2/2024" label="Project Initiation"></e-gantt-eventmarker>
+    </e-gantt-eventmarkers>
 </ejs-gantt>
 ```
 
@@ -520,30 +680,49 @@ Display a Work Breakdown Structure (WBS) code column — automatically generated
 For better performance, control when WBS codes are updated using the `ActionBegin` and `DataBound` events. This is useful to enable auto-update only during specific actions (e.g., row drag-and-drop):
 
 ```cshtml
-<ejs-gantt id="GanttChart" dataSource="ViewBag.DataSource"
-           enableWBS="true" enableAutoWbsUpdate="false"
-           actionBegin="actionBegin"
-           dataBound="dataBound"
-           height="550px">
-    ...
+<ejs-gantt id="GanttChart" dataSource="@GanttData.WBSData()" allowSorting="true" enableContextMenu="true" enableWBS="true" enableAutoWbsUpdate="false" allowPdfExport="true" allowSelection="true" allowFiltering="true" allowUnscheduledTasks="true" highlightWeekends="true" gridLines="Both" height="550px" treeColumnIndex="2" dataBound="dataBound" actionBegin="actionBegin"  projectStartDate="03/31/2024" projectEndDate="05/30/2024" rowHeight="40" taskbarHeight="20" toolbar="@(new List<string>() { "Add", "Edit", "Update", "Delete", "Cancel", "ExpandAll", "CollapseAll", "Indent", "Outdent" })">
+    <e-gantt-selectionsettings mode="Row" type="Single" enableToggle="false"></e-gantt-selectionsettings>
+    <e-gantt-splittersettings columnIndex="4"></e-gantt-splittersettings>
+    <e-gantt-timelinesettings>
+        <e-timelinesettings-toptier unit="Week" format="dd/MM/yyyy"></e-timelinesettings-toptier>
+        <e-timelinesettings-bottomtier unit="Day" count="1"></e-timelinesettings-bottomtier>
+    </e-gantt-timelinesettings>
+    <e-gantt-editsettings allowAdding="true" allowEditing="true" allowDeleting="true" allowTaskbarEditing="true" showDeleteConfirmDialog="true"></e-gantt-editsettings>
+    <e-gantt-filtersettings type="Menu"></e-gantt-filtersettings>
+    <e-gantt-tooltipsettings showTooltip="true"></e-gantt-tooltipsettings>
+    <e-gantt-taskfields id="TaskId" name="TaskName" startDate="StartDate" duration="Duration" progress="Progress" dependency="Predecessor" parentID="ParentID"></e-gantt-taskfields>
+    <e-gantt-labelsettings taskLabel="${Progress}%"></e-gantt-labelsettings>
+    <e-gantt-columns>
+        <e-gantt-column field="TaskId" headerText="Task ID" visible="false"></e-gantt-column>
+        <e-gantt-column field="WBSCode" headerText="WBS Code" width="150px"></e-gantt-column>
+        <e-gantt-column field="TaskName" headerText="Task Name" width="260px"></e-gantt-column>
+        <e-gantt-column field="StartDate" headerText="Start Date" width="140px"></e-gantt-column>
+        <e-gantt-column field="WBSPredecessor" headerText="WBS Predecessor" width="190px"></e-gantt-column>
+        <e-gantt-column field="Duration" headerText="Duration" allowEditing="false"></e-gantt-column>
+        <e-gantt-column field="Progress" headerText="Progress"></e-gantt-column>
+    </e-gantt-columns>
+    <e-gantt-eventmarkers>
+        <e-gantt-eventmarker day="04/2/2024" label="Project Initiation"></e-gantt-eventmarker>
+    </e-gantt-eventmarkers>
 </ejs-gantt>
 
+
 <script>
-var isDragAction = false;
-function actionBegin(args) {
-    if (args.requestType === 'rowDragAndDrop') {
-        isDragAction = true;
-        var gantt = document.getElementById('GanttChart').ej2_instances[0];
-        gantt.enableAutoWbsUpdate = true;
+    var isRowDropped = false;
+    function actionBegin(args) {
+    	if (args.requestType === "beforeDrop") {
+            var ganttObj = document.getElementsByClassName('e-gantt')[0].ej2_instances[0];
+            isRowDropped = true;
+            ganttObj.enableAutoWbsUpdate = true;
+        }            
     }
-}
-function dataBound() {
-    if (isDragAction) {
-        var gantt = document.getElementById('GanttChart').ej2_instances[0];
-        gantt.enableAutoWbsUpdate = false;
-        isDragAction = false;
+    function dataBound() {
+    	if (this.isRowDropped) {
+            var ganttObj = document.getElementsByClassName('e-gantt')[0].ej2_instances[0];
+            ganttObj.enableAutoWbsUpdate = false;
+            isRowDropped = false;
+        }
     }
-}
 </script>
 ```
 
@@ -560,12 +739,9 @@ function dataBound() {
 Show a context menu on column headers for sorting, filtering, and autofit. Set `showColumnMenu="true"` on `<ejs-gantt>`:
 
 ```cshtml
-<ejs-gantt id="Gantt" dataSource="ViewBag.DataSource"
-           showColumnMenu="true"
-           allowSorting="true"
-           allowFiltering="true"
-           height="450px">
-    ...
+<ejs-gantt id='Gantt' dataSource="ViewBag.dataSource" height="450px" showColumnMenu="true" allowFiltering="true" allowSorting="true">
+    <e-gantt-taskfields id="TaskId" name="TaskName" startDate="StartDate" endDate="EndDate" duration="Duration" progress="Progress" child="SubTasks">
+    </e-gantt-taskfields>
 </ejs-gantt>
 ```
 
@@ -589,17 +765,28 @@ Default column menu items:
 | `columnMenuClick` | When the user clicks a column menu item |
 
 ```cshtml
-<ejs-gantt id="Gantt" dataSource="ViewBag.DataSource"
-           showColumnMenu="true"
-           columnMenuOpen="onColumnMenuOpen"
-           columnMenuClick="onColumnMenuClick"
-           height="450px">
-    ...
+<ejs-gantt id='Gantt' dataSource="ViewBag.DataSource" height="550px" gridLines="Both" treeColumnIndex="1"
+           allowSorting="true" allowReordering="true" allowFiltering="true" columnMenuOpen="columnMenuOpen" showColumnMenu="true" columnMenuClick="columnMenuClick">
+    <e-gantt-taskfields id="TaskId" name="TaskName" startDate="StartDate"
+                        endDate="EndDate" duration="Duration" progress="Progress" dependency="Predecessor" child="SubTasks">
+    </e-gantt-taskfields>
+    <e-gantt-columns>
+        <e-gantt-column field="TaskId"></e-gantt-column>
+        <e-gantt-column field="TaskName" headerText="Name" width="250"></e-gantt-column>
+        <e-gantt-column field="Progress"></e-gantt-column>
+        <e-gantt-column field="StartDate"></e-gantt-column>
+        <e-gantt-column field="Duration"></e-gantt-column>
+    </e-gantt-columns>
+    <e-gantt-editsettings allowEditing="true"></e-gantt-editsettings>
 </ejs-gantt>
 
 <script>
-function onColumnMenuOpen(args)  { console.log('Menu opening for:', args.column.headerText); }
-function onColumnMenuClick(args) { console.log('Menu item clicked:', args.item.text); }
+    function columnMenuOpen() {
+        alert('columnMenuOpen event is triggered')
+    }
+    function columnMenuClick() {
+        alert('columnMenuClick event is triggered')
+    }
 </script>
 ```
 
@@ -608,21 +795,28 @@ function onColumnMenuClick(args) { console.log('Menu item clicked:', args.item.t
 Add custom items to the column menu via `columnMenuItems`. Handle click actions in the `columnMenuClick` event:
 
 ```cshtml
-<ejs-gantt id="Gantt" dataSource="ViewBag.DataSource"
-           showColumnMenu="true"
-           columnMenuItems="@(new List<object> { new { text = "Clear Sorting", id = "clearSorting" } })"
-           columnMenuClick="onColumnMenuClick"
-           height="450px">
-    ...
+@{ List<object> columnMenuitems = new List<object>();
+    columnMenuitems.Add(new { text = "Clear Sorting", id = "ganttclearsorting" });}
+<ejs-gantt id='Gantt' dataSource="ViewBag.DataSource" height="550px" gridLines="Both" treeColumnIndex="1"
+    allowSorting="true" allowReordering="true" allowFiltering="true" columnMenuItems="columnMenuitems" columnMenuClick="columnMenuClick" showColumnMenu="true">
+    <e-gantt-taskfields id="TaskId" name="TaskName" startDate="StartDate" endDate="EndDate" duration="Duration" progress="Progress" dependency="Predecessor" child="SubTasks">
+    </e-gantt-taskfields>
+    <e-gantt-columns>
+        <e-gantt-column field="TaskId"></e-gantt-column>
+        <e-gantt-column field="TaskName" headerText="Name" width="250"></e-gantt-column>
+        <e-gantt-column field="Progress"></e-gantt-column>
+        <e-gantt-column field="StartDate"></e-gantt-column>
+        <e-gantt-column field="Duration"></e-gantt-column>
+    </e-gantt-columns>
+    <e-gantt-editsettings allowEditing="true"></e-gantt-editsettings>
 </ejs-gantt>
 
 <script>
-function onColumnMenuClick(args) {
-    if (args.item.id === 'clearSorting') {
-        var ganttObj = document.getElementById('Gantt').ej2_instances[0];
-        ganttObj.clearSorting();
+    function columnMenuClick(args) {
+        if (args.item.id === 'ganttclearsorting') {
+            this.clearSorting();
+        }
     }
-}
 </script>
 ```
 
@@ -631,23 +825,31 @@ function onColumnMenuClick(args) {
 Hide specific menu items for particular columns using `columnMenuOpen` and the `columnMenuOpenEventArgs.hide` flag:
 
 ```cshtml
-<ejs-gantt id="Gantt" dataSource="ViewBag.DataSource"
-           showColumnMenu="true"
-           allowFiltering="true"
-           columnMenuOpen="onColumnMenuOpen"
-           height="450px">
-    ...
+<ejs-gantt id='Gantt' dataSource="ViewBag.DataSource" height="550px" gridLines="Both" treeColumnIndex="1"
+           allowSorting="true" allowReordering="true" allowFiltering="true" columnMenuOpen="columnMenuOpen" showColumnMenu="true">
+    <e-gantt-taskfields id="TaskId" name="TaskName" startDate="StartDate"
+                        endDate="EndDate" duration="Duration" progress="Progress" dependency="Predecessor" child="SubTasks">
+    </e-gantt-taskfields>
+    <e-gantt-columns>
+        <e-gantt-column field="TaskId"></e-gantt-column>
+        <e-gantt-column field="TaskName" headerText="Name" width="250"></e-gantt-column>
+        <e-gantt-column field="Progress"></e-gantt-column>
+        <e-gantt-column field="StartDate"></e-gantt-column>
+        <e-gantt-column field="Duration"></e-gantt-column>
+    </e-gantt-columns>
+    <e-gantt-editsettings allowEditing="true"></e-gantt-editsettings>
 </ejs-gantt>
 
 <script>
-// Hide the 'Filter' item when the menu opens on the 'Task Name' column
-function onColumnMenuOpen(args) {
-    for (var item of args.items) {
-        if (item.text === 'Filter' && args.column.headerText === 'Task Name') {
-            args.hide = true;
+    function columnMenuOpen(args) {
+        for (let item of args.items) {
+            if (item.text === 'Filter' && args.column.field === 'TaskName') {
+                item.hide = true;
+            } else {
+                item.hide = false;
+            }
         }
     }
-}
 </script>
 ```
 
@@ -658,15 +860,10 @@ function onColumnMenuOpen(args) {
 Control which column displays the expand/collapse tree icon (default is index 0 = first column):
 
 ```cshtml
-<ejs-gantt id="Gantt" dataSource="ViewBag.DataSource"
-           treeColumnIndex="1"
-           height="450px">
-    <e-gantt-columns>
-        <e-gantt-column field="TaskId"   headerText="ID" width="60"></e-gantt-column>
-        <e-gantt-column field="TaskName" headerText="Task Name" width="250"></e-gantt-column>
-    </e-gantt-columns>
-    ...
+<ejs-gantt id='Gantt' dataSource="ViewBag.dataSource" height="450px" treeColumnIndex="2">
+    <e-gantt-taskfields id="TaskId" name="TaskName" startDate="StartDate" endDate="EndDate" duration="Duration" progress="Progress" child="SubTasks">
+    </e-gantt-taskfields>
 </ejs-gantt>
 ```
 
-> Setting `treeColumnIndex="1"` puts the tree expand icon on "Task Name" instead of "ID".
+> Setting `treeColumnIndex` controls which auto-generated column displays the expand/collapse icon.

@@ -38,7 +38,7 @@
     <e-filemanager-searchsettings
         allowSearchOnTyping="true"
         ignoreCase="true"
-        filterType="startsWith">
+        filterType="StartsWith">
     </e-filemanager-searchsettings>
     <e-filemanager-ajaxsettings url="/FileManager/FileManager">
     </e-filemanager-ajaxsettings>
@@ -110,14 +110,14 @@
 ```html
 <label style="margin-right: 10px;">Filter Type:</label>
 <select id="filterType" onchange="updateFilterType()" style="padding: 8px; margin-right: 10px;">
-    <option value="startsWith">Starts With</option>
-    <option value="endsWith">Ends With</option>
-    <option value="contains">Contains</option>
+    <option value="StartsWith">Starts With</option>
+    <option value="EndsWith">Ends With</option>
+    <option value="Contains">Contains</option>
 </select>
 
 <ejs-filemanager id="filemanager">
     <e-filemanager-searchsettings
-        filterType="startsWith"
+        filterType="StartsWith"
         ignoreCase="true">
     </e-filemanager-searchsettings>
     <e-filemanager-ajaxsettings url="/FileManager/FileManager">
@@ -133,10 +133,10 @@
     }
 </script>
 
-**Filter Options:**
-- **startsWith**: Query "doc" matches doc.pdf, document.txt (not "word doc")
-- **endsWith**: Query ".pdf" matches file.pdf, document.pdf (not "pdf-reader")
-- **contains**: Query "doc" matches document, word doc, mydoc.pdf (anywhere in name)
+**Filter Options (use PascalCase):**
+- **StartsWith**: Query "doc" matches doc.pdf, document.txt (not "word doc")
+- **EndsWith**: Query ".pdf" matches file.pdf, document.pdf (not "pdf-reader")
+- **Contains**: Query "doc" matches document, word doc, mydoc.pdf (anywhere in name)
 ```
 
 ### Case Sensitivity
@@ -379,7 +379,7 @@ All Subfolders
     function filterByExtension(extensions) {
         const fileManager = document.getElementById('filemanager').ej2_instances[0];
         fileManager.filterFiles({
-            filterType: 'contains',
+            filterType: 'Contains',
             searchString: '.pdf'
         });
     }
@@ -481,7 +481,7 @@ All Subfolders
             searchSettings: {
                 ignoreCase: ignoreCase,
                 allowSearchInside: true,
-                filterType: 'startsWith'
+                filterType: 'StartsWith'
             },
             allowSearching: true,
             height: '400px'

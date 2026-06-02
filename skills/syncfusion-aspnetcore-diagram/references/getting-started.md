@@ -193,6 +193,12 @@ You can also define nodes inline using Tag Helpers instead of ViewBag:
                 <e-node-annotation content="Hello"></e-node-annotation>
             </e-node-annotations>
         </e-diagram-node>
+         <e-diagram-node id="node2" offsetX="100" offsetY="300" width="100" height="60">
+            <e-node-style fill="#6BA5D7" strokeColor="white"></e-node-style>
+            <e-node-annotations>
+                <e-node-annotation content="User"></e-node-annotation>
+            </e-node-annotations>
+        </e-diagram-node>
     </e-diagram-nodes>
     <e-diagram-connectors>
         <e-diagram-connector id="conn1" sourceID="node1" targetID="node2">

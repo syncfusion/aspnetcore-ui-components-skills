@@ -1,114 +1,99 @@
 ---
 name: syncfusion-aspnetcore-diagram
-description: >
-  Implement Syncfusion ASP.NET Core Diagram component (EJ2 Tag Helper `ejs-diagram`) for building interactive diagrams in Razor Pages or MVC applications. Use this skill when working with org charts, flowcharts, BPMN process diagrams, UML diagrams, or swimlane charts. This skill covers node and connector configuration, layout options, shape styling, data binding, drawing tools, export/print functionality, and other diagram features.
+description: "Implement Syncfusion ASP.NET Core Diagram component (EJ2 Tag Helper `ejs-diagram`) for building interactive diagrams in Razor Pages or MVC applications. Use this skill when working with org charts, flowcharts, BPMN process diagrams, UML diagrams, or swimlane charts. This skill covers node and connector configuration, layout options, shape styling, data binding, drawing tools, export/print functionality, and other diagram features."
 metadata:
   author: "Syncfusion Inc"
   category: "data-visualization"
   version: "33.1.44"
 ---
 
-# Syncfusion ASP.NET Core Diagram Component
+# ⚠️ STRICT USAGE RULES — MANDATORY FOR ALL CODE GENERATION
 
-A comprehensive skill for implementing the Syncfusion EJ2 Diagram control in ASP.NET Core applications using Tag Helpers. Covers everything from basic flowcharts to complex BPMN, UML, swimlane, and auto-layout diagrams.
+These rules are **non-negotiable** and must be followed for **every** code generation request.
 
-## When to Use This Skill
+## Rule A — Use Only Provided Reference Files
 
-- Creating any diagram in an ASP.NET Core (Razor Pages / MVC) application
-- Building flowcharts, org charts, network diagrams, process maps
-- Implementing BPMN or UML diagrams
-- Configuring node/connector shapes, styles, annotations, and ports
-- Setting up automatic layouts (hierarchical, org chart, radial, mind map)
-- Adding a symbol palette for drag-and-drop diagramming
-- Binding diagram data from a database or remote source
-- Exporting diagrams to image/SVG or printing
-- Enabling drawing tools, undo/redo, layers, and virtualization
+1. **Always read** `references/getting-started.md` for every request
+2. Read **additional** reference files **only if they match the user's query** (see Navigation Guide below)
+3. **No external knowledge** allowed:
+   - ❌ Do NOT use internet documentation
+   - ❌ Do NOT use training-data assumptions about Syncfusion APIs
+   - ❌ Do NOT reference older EJ1 APIs or non-Tag Helper syntax
+   - ✅ If a feature cannot be confirmed from reference files, apply Rule B
 
-## Important: API Verification Required
+## Rule B — No Guessing, No Inference
 
-**API Verification Required**: Always verify API class names, properties, and signatures by reading reference files (`references/*.md`) BEFORE generating code examples. Do not assume or infer class names.
+If a feature, property, API, or behavior is **not explicitly documented** in the reference files:
 
-## Navigation Guide
+**You must NOT:**
+- Invent class properties, subclasses, or constructor overloads
+- Infer JavaScript callback signatures or method names
+- Assume module injections exist beyond those documented
+- Generalize from other Syncfusion components
+- Use deprecated or undocumented shape types
 
-### Setup and First Diagram
-📄 **Read:** [references/getting-started.md](references/getting-started.md)
-- NuGet installation, tag helper registration, CDN resources, basic diagram, first node/connector
+**Instead, respond with:**
+```
+⚠️ NOT DOCUMENTED: [feature name] is not covered in the reference files.
+Skipping this feature to avoid generating incorrect code.
+```
 
-### Nodes (Shapes, Position, Styling)
-📄 **Read:** [references/nodes.md](references/nodes.md)
-- Creating nodes, offsetX/Y, width/height, style, gradient, shadow, expand/collapse icons, events, getNodeDefaults
+## Rule C — Enforce Required Module Injections
 
-### Connectors (Lines, Arrows, Routing)
-📄 **Read:** [references/connectors.md](references/connectors.md)
-- Straight/Orthogonal/Bezier connectors, sourceID/targetID, decorators, segments, routing, events
+Before generating code for these features, **always include** the corresponding injection:
 
-### Labels and Annotations
-📄 **Read:** [references/labels-and-annotations.md](references/labels-and-annotations.md)
-- Adding text to nodes and connectors, font, alignment, hyperlinks, interaction, events
+| Feature | Required Injection |
+|---|---|
+| BPMN diagrams | `ej.diagrams.Diagram.Inject(ej.diagrams.BpmnDiagrams)` |
+| Export / Print | `ej.diagrams.Diagram.Inject(ej.diagrams.PrintAndExport)` |
+| Mind Map layout | `ej.diagrams.Diagram.Inject(ej.diagrams.MindMap)` |
+| Complex Hierarchical layout | `ej.diagrams.Diagram.Inject(ej.diagrams.ComplexHierarchicalTree)` |
 
-### Ports (Connection Points)
-📄 **Read:** [references/ports.md](references/ports.md)
-- Port types, positioning, appearance, connecting via ports, port constraints
+Do **NOT** assume any other injections exist unless confirmed in reference files.
 
-### Shapes and Styles
-📄 **Read:** [references/shapes-and-styles.md](references/shapes-and-styles.md)
-- Flow/Basic/Path/Image/HTML/Native shapes, fill, stroke, gradient, opacity
+---
 
-### BPMN Diagrams
-📄 **Read:** [references/bpmn-diagrams.md](references/bpmn-diagrams.md)
-- Module injection, events/triggers, gateways, activities, data objects, BPMN connectors
+# Navigation Guide
 
-### UML Diagrams
-📄 **Read:** [references/uml-diagrams.md](references/uml-diagrams.md)
-- Class diagrams, classifier shapes, relationships, UML activity diagrams, sequence diagrams
+Use this table to identify which reference file to read (Rule A).  
+**Always read `references/getting-started.md` first**, then read only files relevant to the request.
 
-### Automatic Layouts
-📄 **Read:** [references/layouts.md](references/layouts.md)
-- Hierarchical tree, org chart, mind map, radial tree, symmetric layout, getLayoutInfo, expand/collapse
+| Reference File | Read When the Query Involves |
+|---|---|
+| 📄 [getting-started.md](references/getting-started.md) | **Every request** — NuGet setup, tag helper registration, CDN, first diagram |
+| 📄 [nodes.md](references/nodes.md) | Creating/styling nodes, offsetX/Y, width/height, gradients, shadow, expand/collapse, `getNodeDefaults` |
+| 📄 [connectors.md](references/connectors.md) | Lines (Straight/Orthogonal/Bezier), arrows, routing, `sourceID`/`targetID`, segments, `getConnectorDefaults` |
+| 📄 [labels-and-annotations.md](references/labels-and-annotations.md) | Text labels, font, alignment, hyperlinks |
+| 📄 [ports.md](references/ports.md) | Connection points, port positioning, constraints |
+| 📄 [shapes-and-styles.md](references/shapes-and-styles.md) | Flow/Basic/Path/Image/HTML/Native shapes, fill, stroke, gradient, opacity |
+| 📄 [bpmn-diagrams.md](references/bpmn-diagrams.md) | BPMN events, gateways, activities, data objects |
+| 📄 [uml-diagrams.md](references/uml-diagrams.md) | UML class/sequence/activity diagrams, classifiers, relationships |
+| 📄 [layouts.md](references/layouts.md) | Hierarchical, org chart, mind map, radial, symmetric layouts, `getLayoutInfo` |
+| 📄 [swimlanes.md](references/swimlanes.md) | Swimlane structure, lanes, phases, palette integration |
+| 📄 [groups-and-containers.md](references/groups-and-containers.md) | Grouping nodes, Canvas/Stack containers |
+| 📄 [symbol-palette.md](references/symbol-palette.md) | `ejs-symbolpalette`, palettes, drag-and-drop, tooltips |
+| 📄 [data-binding.md](references/data-binding.md) | DataManager, `dataSourceSettings`, id/parentId mapping, `setNodeTemplate`, CRUD |
+| 📄 [interaction-and-tools.md](references/interaction-and-tools.md) | Selection, drag/resize/rotate, drawing tools, constraints, undo/redo |
+| 📄 [serialization-and-export.md](references/serialization-and-export.md) | `saveDiagram`/`loadDiagram`, export, print |
+| 📄 [diagram-settings.md](references/diagram-settings.md) | Layers, virtualization, grid, ruler, scroll, page settings, tooltip |
 
-### Swimlane Diagrams
-📄 **Read:** [references/swimlanes.md](references/swimlanes.md)
-- Swimlane structure, lanes, phases, children, headers, runtime add, palette integration
+---
 
-### Groups and Containers
-📄 **Read:** [references/groups-and-containers.md](references/groups-and-containers.md)
-- Grouping nodes, add/remove children, Canvas and Stack container types
+# Quick Start
 
-### Symbol Palette
-📄 **Read:** [references/symbol-palette.md](references/symbol-palette.md)
-- SymbolPalette component, defining palettes, drag-and-drop, tooltips, customization
-
-### Data Binding
-📄 **Read:** [references/data-binding.md](references/data-binding.md)
-- DataManager integration, dataSourceSettings, id/parentId mapping, setNodeTemplate, CRUD
-
-### Interaction and Drawing Tools
-📄 **Read:** [references/interaction-and-tools.md](references/interaction-and-tools.md)
-- Selection, drag/resize/rotate, drawing tools, constraints, undo/redo, commands, keyboard
-
-### Serialization and Export
-📄 **Read:** [references/serialization-and-export.md](references/serialization-and-export.md)
-- saveDiagram/loadDiagram, exportDiagram (image/SVG), print, preventDefaults
-
-### Diagram Settings
-📄 **Read:** [references/diagram-settings.md](references/diagram-settings.md)
-- Layers, virtualization, grid lines, ruler, scroll settings, page settings, tooltip, accessibility
-
-## Quick Start
-
-### 1. Install NuGet Package
+## 1. Install NuGet Package
 
 ```powershell
 Install-Package Syncfusion.EJ2.AspNet.Core
 ```
 
-### 2. Register Tag Helper (`~/Pages/_ViewImports.cshtml`)
+## 2. Register Tag Helper (`~/Pages/_ViewImports.cshtml`)
 
 ```cshtml
 @addTagHelper *, Syncfusion.EJ2
 ```
 
-### 3. Add CDN Resources (`~/Pages/Shared/_Layout.cshtml`)
+## 3. Add CDN Resources (`~/Pages/Shared/_Layout.cshtml`)
 
 ```cshtml
 <head>
@@ -121,7 +106,7 @@ Install-Package Syncfusion.EJ2.AspNet.Core
 </body>
 ```
 
-### 4. Add Diagram to a Razor Page (`~/Pages/Index.cshtml`)
+## 4. Add Diagram to Razor Page (`~/Pages/Index.cshtml`)
 
 ```cshtml
 <ejs-diagram id="diagram" width="100%" height="550px"
@@ -132,7 +117,7 @@ Install-Package Syncfusion.EJ2.AspNet.Core
 </ejs-diagram>
 ```
 
-### 5. Controller / PageModel
+## 5. PageModel / Controller
 
 ```csharp
 public IActionResult OnGet()
@@ -152,10 +137,12 @@ public IActionResult OnGet()
             Shape = new { type = "Flow", shape = "Process" }
         }
     };
+    
     List<DiagramConnector> connectors = new List<DiagramConnector>
     {
         new DiagramConnector { Id = "conn1", SourceID = "node1", TargetID = "node2" }
     };
+    
     ViewBag.nodes = nodes;
     ViewBag.connectors = connectors;
     ViewBag.getNodeDefaults = "getNodeDefaults";
@@ -170,62 +157,57 @@ function getNodeDefaults(node) {
     node.width = 120;
     return node;
 }
+
 function getConnectorDefaults(connector) {
     connector.type = 'Orthogonal';
     return connector;
 }
 ```
 
-## Module Injections
+---
 
-Some features require explicit module injection via JavaScript:
-
-```javascript
-// For BPMN diagrams
-ej.diagram.Diagram.Inject(ej.diagram.BpmnDiagrams);
-
-// For export/print
-ej.diagram.Diagram.Inject(ej.diagram.PrintAndExport);
-
-// For mind map layout
-ej.diagram.Diagram.Inject(ej.diagram.MindMap);
-
-// For complex hierarchical layout
-ej.diagram.Diagram.Inject(ej.diagram.ComplexHierarchicalTree);
-```
-
-## Key C# Classes
+# Key C# Classes
 
 | Class | Purpose |
 |-------|---------|
-| `DiagramNode` | Diagram node/shape |
+| `DiagramNode` | Node/shape element |
 | `DiagramConnector` | Connection line between nodes |
 | `DiagramNodeAnnotation` | Text label on a node |
 | `DiagramConnectorAnnotation` | Text label on a connector |
 | `DiagramPort` | Connection point on a node |
-| `DiagramLayer` | Layer for organizing diagram elements |
+| `DiagramLayer` | Layer for organizing elements |
 | `DiagramPageSettings` | Page size, orientation, background |
-| `BpmnShapes` | BPMN-specific shape config |
+| `BpmnShapes` | BPMN shape configuration |
 | `UmlClassifierShapeModel` | UML class diagram shape |
 
-## Common Patterns
+---
 
-### Flow Diagram Shape Types
+# Common Shape Types
+
+### Flow Shapes
+`Terminator`, `Process`, `Decision`, `Document`, `DirectData`, `MultiDocument`, `PreDefinedProcess`, `Delay`, `Annotation`, `ManualOperation`, `ManualInput`, `Card`, `Or`, `SummingJunction`, `Extract`, `Merge`, `Sort`, `OffPageReference`
+
+**Usage:**
 ```csharp
-// Flow shapes: Terminator, Process, Decision, Document, DirectData,
-// MultiDocument, PreDefinedProcess, Delay, Annotation, Annotation2,
-// ManualOperation, ManualInput, Card, PaperTap, Or, SummingJunction,
-// Sort, Extract, Merge, Offline, Start1, Start2, End1, End2,
-// Preparation, SequentialAccessStorage, PunchedCard, PunchedTape,
-// StoredData, InternalStorage, DirectAccessStorage, Display,
-// ManualOperation, Connector, OffPageReference, ExternalOrganization
 Shape = new { type = "Flow", shape = "Process" }
 ```
 
 ### Basic Shapes
+`Rectangle`, `Ellipse`, `Triangle`, `Pentagon`, `Hexagon`, `Heptagon`, `Octagon`, `Star`, `Cross`, `Diamond`, `CylindricalShape`, `Trapezoid`, `Parallelogram`, `Rhombus`
+
+**Usage:**
 ```csharp
-// Basic shapes: Rectangle, Ellipse, Triangle, Pentagon, Hexagon,
-// Heptagon, Octagon, Decagon, Dodecagon, Star, Cross, Diamond,
-// CylindricalShape, Trapezoid, Parallelogram, Rhombus
 Shape = new { type = "Basic", shape = "Rectangle" }
 ```
+
+## When to Use This Skill
+
+✅ Creating any diagram in ASP.NET Core (Razor Pages / MVC)  
+✅ Building flowcharts, org charts, network diagrams  
+✅ Implementing BPMN or UML diagrams  
+✅ Configuring node/connector shapes, styles, annotations  
+✅ Setting up automatic layouts  
+✅ Adding symbol palette for drag-and-drop  
+✅ Binding diagram data from database  
+✅ Exporting diagrams or printing  
+✅ Enabling drawing tools, undo/redo, layers

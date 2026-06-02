@@ -16,13 +16,13 @@
 
 ## Overview
 
-The Gantt Chart supports interactive row drag and drop, allowing users to rearrange task records by dragging rows and dropping them **above**, **below**, or as a **child** of another row. This feature is controlled by the llowRowDragAndDrop property.
+The Gantt Chart supports interactive row drag and drop, allowing users to rearrange task records by dragging rows and dropping them **above**, **below**, or as a **child** of another row. This feature is controlled by the allowRowDragAndDrop property.
 
 ---
 
 ## Enable Row Drag and Drop
 
-Set llowRowDragAndDrop="true" to enable the drag-and-drop handle on each row. Users can then drag any row and drop it at any position in the hierarchy.
+Set allowRowDragAndDrop="true" to enable the drag-and-drop handle on each row. Users can then drag any row and drop it at any position in the hierarchy.
 
 `cshtml
 <ejs-gantt id='DragAndDrop' dataSource="ViewBag.dataSource" height="450px"
@@ -39,15 +39,15 @@ Set llowRowDragAndDrop="true" to enable the drag-and-drop handle on each row. U
 
 | Position | Description |
 |---|---|
-| Above (	opSegment) | Drops the row as a sibling above the target row |
-| Below (ottomSegment) | Drops the row as a sibling below the target row |
+| Above (topSegment) | Drops the row as a sibling above the target row |
+| Below (bottomSegment) | Drops the row as a sibling below the target row |
 | Child (middleSegment) | Drops the row as a child of the target row |
 
 ---
 
 ## Multiple Row Drag and Drop
 
-To drag multiple rows simultaneously, enable SelectionSettings.type = "Multiple" along with llowRowDragAndDrop="true". Users can select multiple rows and drag them together.
+To drag multiple rows simultaneously, enable SelectionSettings.type = "Multiple" along with allowRowDragAndDrop="true". Users can select multiple rows and drag them together.
 
 `cshtml
 <ejs-gantt id='DragAndDrop' dataSource="ViewBag.dataSource" height="450px"
@@ -67,7 +67,7 @@ To drag multiple rows simultaneously, enable SelectionSettings.type = "Multiple"
 
 ## Taskbar Drag and Drop Between Rows
 
-Set llowTaskbarDragAndDrop="true" in addition to llowRowDragAndDrop="true" to enable row reordering by dragging the taskbar itself in the chart pane. Editing must also be enabled (mode="Auto").
+Set allowTaskbarDragAndDrop="true" in addition to allowRowDragAndDrop="true" to enable row reordering by dragging the taskbar itself in the chart pane. Editing must also be enabled (mode="Auto").
 
 `cshtml
 <ejs-gantt id='DragAndDrop' dataSource="ViewBag.dataSource" height="450px"
@@ -84,8 +84,8 @@ Set llowTaskbarDragAndDrop="true" in addition to llowRowDragAndDrop="true" to 
 
 | Property | Required for taskbar drag | Description |
 |---|---|---|
-| llowRowDragAndDrop | Yes | Enables the drag-and-drop feature |
-| llowTaskbarDragAndDrop | Yes | Allows dragging via the taskbar in chart pane |
+| allowRowDragAndDrop | Yes | Enables the drag-and-drop feature |
+| allowTaskbarDragAndDrop | Yes | Allows dragging via the taskbar in chart pane |
 | editSettings.allowEditing | Yes | Editing must be enabled |
 | editSettings.mode | Yes | Set to "Auto" |
 
@@ -97,21 +97,16 @@ Use these events to hook into the drag-and-drop lifecycle and customise or cance
 
 | Event | Trigger point |
 |---|---|
-| 
-owDragStartHelper | When the drag icon or row is first clicked — use to cancel drag |
-| 
-owDragStart | When drag action begins |
-| 
-owDrag | While dragging (continuous) |
-| 
-owDrop | When the dragged row is dropped on a target — use to cancel drop or change position |
+| rowDragStartHelper | When the drag icon or row is first clicked — use to cancel drag |
+| rowDragStart | When drag action begins |
+| rowDrag | While dragging (continuous) |
+| rowDrop | When the dragged row is dropped on a target — use to cancel drop or change position |
 
 ---
 
 ## Prevent Dragging a Specific Record
 
-Use 
-owDragStartHelper and set rgs.cancel = true to prevent specific rows from being dragged. The following example prevents dragging of Task IDs 1–4 and all their children.
+Use rowDragStartHelper and set args.cancel = true to prevent specific rows from being dragged. The following example prevents dragging of Task IDs 1–4 and all their children.
 
 `cshtml
 <ejs-gantt id='DragAndDrop' dataSource="ViewBag.dataSource" height="450px"
@@ -136,19 +131,18 @@ owDragStartHelper and set rgs.cancel = true to prevent specific rows from being
 `
 
 **
-owDragStartHelper args properties:**
+rowDragStartHelper args properties:**
 
 | Property | Type | Description |
 |---|---|---|
-| rgs.data | object/array | The dragged record(s) |
-| rgs.cancel | boolean | Set to 	rue to prevent drag |
+| args.data | object/array | The dragged record(s) |
+| args.cancel | boolean | Set to 	rue to prevent drag |
 
 ---
 
 ## Validate Drop Position
 
-Use 
-owDrop and set rgs.cancel = true to prevent dropping at specific positions. The example below prevents dropping a row as a child (i.e., onto a middleSegment).
+Use rowDrop and set args.cancel = true to prevent dropping at specific positions. The example below prevents dropping a row as a child (i.e., onto a middleSegment).
 
 `cshtml
 <ejs-gantt id='DragAndDrop' dataSource="ViewBag.dataSource" height="450px"
@@ -170,21 +164,20 @@ owDrop and set rgs.cancel = true to prevent dropping at specific positions. The
 `
 
 **
-owDrop args properties:**
+rowDrop args properties:**
 
 | Property | Type | Description |
 |---|---|---|
-| rgs.dropPosition | string | "topSegment", "bottomSegment", or "middleSegment" |
-| rgs.fromIndex | number | Source row index |
-| rgs.dropIndex | number | Target row index |
-| rgs.cancel | boolean | Set to 	rue to cancel the drop |
+| args.dropPosition | string | "topSegment", "bottomSegment", or "middleSegment" |
+| args.fromIndex | number | Source row index |
+| args.dropIndex | number | Target row index |
+| args.cancel | boolean | Set to 	rue to cancel the drop |
 
 ---
 
 ## Prevent Reorder as Child
 
-Cancel the drop and use 
-eorderRows to force the dropped row into a different position. In the example below, drops that would create a child relationship are redirected to be placed **above** the target row instead.
+Cancel the drop and use reorderRows to force the dropped row into a different position. In the example below, drops that would create a child relationship are redirected to be placed **above** the target row instead.
 
 `cshtml
 <ejs-gantt id='DragAndDrop' dataSource="@data" height="450px"
@@ -211,8 +204,7 @@ eorderRows to force the dropped row into a different position. In the example be
 
 ## Programmatic Row Reordering
 
-Use the 
-eorderRows method to move rows programmatically (e.g., from a button click), without requiring the user to drag.
+Use the reorderRows method to move rows programmatically (e.g., from a button click), without requiring the user to drag.
 
 **Syntax:**
 `javascript
@@ -221,8 +213,8 @@ ganttObj.reorderRows(fromIndexes, toIndex, position);
 
 | Parameter | Type | Description |
 |---|---|---|
-| romIndexes | number[] | Array of source row index values |
-| 	oIndex | number | Index of the target row |
+| fromIndexes | number[] | Array of source row index values |
+| toIndex | number | Index of the target row |
 | position | string | "above", "below", or "child" |
 
 **Example — Drop rows 1, 2, 3 as children of row 4 on button click:**

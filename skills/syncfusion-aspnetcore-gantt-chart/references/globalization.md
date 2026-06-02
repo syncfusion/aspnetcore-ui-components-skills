@@ -66,23 +66,19 @@ The following table lists all localizable keys used by the Gantt component. Prov
 |---|---|
 | emptyRecord | No records to display |
 | id | ID |
-| 
-ame | Name |
+| name | Name |
 | startDate | Start Date |
 | endDate | End Date |
 | duration | Duration |
 | progress | Progress |
 | dependency | Dependency |
-| 
-otes | Notes |
-| aselineStartDate | Baseline Start Date |
-| aselineEndDate | Baseline End Date |
-| 	ype | Type |
+| notes | Notes |
+| baselineStartDate | Baseline Start Date |
+| baselineEndDate | Baseline End Date |
+| type | Type |
 | offset | Offset |
-| 
-esourceName | Resources |
-| 
-esourceID | Resource ID |
+| resourceName | Resources |
+| resourceID | Resource ID |
 | day | day |
 | hour | hour |
 | minute | minute |
@@ -92,63 +88,61 @@ esourceID | Resource ID |
 | generalTab | General |
 | customTab | Custom Columns |
 | writeNotes | Write Notes |
-| ddDialogTitle | New Task |
+| addDialogTitle | New Task |
 | editDialogTitle | Task Information |
-| dd | Add |
+| add | Add |
 | edit | Edit |
 | update | Update |
 | delete | Delete |
 | cancel | Cancel |
 | search | Search |
-| 	ask | task |
-| 	asks | tasks |
+| task | task |
+| tasks | tasks |
 | zoomIn | Zoom in |
 | zoomOut | Zoom out |
 | zoomToFit | Zoom to fit |
 | expandAll | Expand all |
 | collapseAll | Collapse all |
-| 
-extTimeSpan | Next timespan |
+| nextTimeSpan | Next timespan |
 | prevTimeSpan | Previous timespan |
 | saveButton | Save |
 | okText | Ok |
 | confirmDelete | Are you sure you want to Delete Record? |
-| rom | From |
-| 	o | To |
-| 	askLink | Task Link |
+| from | From |
+| to | To |
+| taskLink | Task Link |
 | lag | Lag |
 | start | Start |
-| inish | Finish |
+| finish | Finish |
 | enterValue | Enter the value |
-| 	askInformation | Task Information |
+| taskInformation | Task Information |
 | deleteTask | Delete Task |
 | deleteDependency | Delete Dependency |
 | convert | Convert |
 | save | Save |
-| bove | Above |
-| elow | Below |
+| above | Above |
+| below | Below |
 | child | Child |
 | milestone | Milestone |
-| 	oTask | To Task |
-| 	oMilestone | To Milestone |
+| toTask | To Task |
+| toMilestone | To Milestone |
 | eventMarkers | Event markers |
 | leftTaskLabel | Left task label |
-| 
-ightTaskLabel | Right task label |
-| 	imelineCell | Timeline cell |
+| rightTaskLabel | Right task label |
+| timelineCell | Timeline cell |
 | changeScheduleMode | Change Schedule Mode |
 | subTasksStartDate | SubTasks Start Date |
 | subTasksEndDate | SubTasks End Date |
 | scheduleStartDate | Schedule Start Date |
 | scheduleEndDate | Schedule End Date |
-| uto | Auto |
+| auto | Auto |
 | manual | Manual |
 | excelExport | Excel export |
 | csvExport | CSV export |
 | pdfExport | Pdf export |
 | unit | Unit |
 | work | Work |
-| 	askType | Task Type |
+| taskType | Task Type |
 | unassignedTask | Unassigned Task |
 | group | Group |
 | FF | FF |
@@ -233,10 +227,8 @@ For full internationalization support (calendar formats, number systems, etc.) y
 | File | Location |
 |---|---|
 | ca-gregorian.json | cldr-data/main/<culture>/ |
-| 
-umbers.json | cldr-data/main/<culture>/ |
-| 
-umberingSystems.json | cldr-data/supplemental/ |
+| numbers.json | cldr-data/main/<culture>/ |
+| numberingSystems.json | cldr-data/supplemental/ |
 
 **Loading pattern:**
 `javascript
@@ -293,7 +285,7 @@ ej.base.L10n.load({
 
 | Property | Type | Default | Description |
 |---|---|---|---|
-| enableRtl | boolean | alse | Enables right-to-left layout for the entire component |
+| enableRtl | boolean | false | Enables right-to-left layout for the entire component |
 | locale | string | "en-US" | Culture code for RTL language (e.g., "ar-AE") |
 
 > When enableRtl is enabled, the splitter, toolbar, grid columns, and chart timeline all flip to a right-to-left layout.

@@ -287,7 +287,7 @@ ViewBag.constraints = DiagramConstraints.Default | DiagramConstraints.Virtualiza
 </ejs-diagram>
 ```
 
-> Virtualization requires `ej.diagram.Diagram.Inject(ej.diagram.Virtualization)` if using as a standalone module. When using the bundled EJ2 script, it is available automatically.
+> Virtualization requires `ej.diagrams.Diagram.Inject(ej.diagrams.Virtualization)` if using as a standalone module. When using the bundled EJ2 script, it is available automatically.
 
 ## Tooltip
 

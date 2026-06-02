@@ -257,37 +257,63 @@ Use this skill when you need to:
 
 ```cshtml
 @* ~/Pages/Index.cshtml *@
-<ejs-gantt id="Gantt"
-           dataSource="ViewBag.DataSource"
-           height="450px">
+<ejs-gantt id='Gantt' dataSource="Model.GanttDataSourceCollection" height="450px">
     <e-gantt-taskfields id="TaskId"
                         name="TaskName"
                         startDate="StartDate"
                         endDate="EndDate"
                         duration="Duration"
                         progress="Progress"
-                        child="SubTasks">
+                        parentID="ParentID">
     </e-gantt-taskfields>
 </ejs-gantt>
 ```
 
 ```csharp
-// HomeController.cs
-public IActionResult Index()
+// ~/Pages/Index.cshtml.cs
+public class IndexModel : PageModel
 {
-    ViewBag.DataSource = GanttData.ProjectNewData();
-    return View();
+    public List<GanttDataSource> GanttDataSourceCollection { get; set; }
+
+    public void OnGet()
+    {
+        GanttDataSourceCollection = GetTaskCollection();
+    }
+
+    private List<GanttDataSource> GetTaskCollection()
+    {
+        return new List<GanttDataSource>()
+        {
+            new GanttDataSource() { TaskId = 1, TaskName = "Project initiation", StartDate = new DateTime(2019, 04, 02), EndDate = new DateTime(2019, 04, 21) },
+            new GanttDataSource() { TaskId = 2, TaskName = "Identify site location", StartDate = new DateTime(2019, 04, 02), Duration = 4, Progress = 50, ParentID = 1 },
+            new GanttDataSource() { TaskId = 3, TaskName = "Perform soil test", StartDate = new DateTime(2019, 04, 02), Duration = 4, Progress = 50, ParentID = 1 },
+            new GanttDataSource() { TaskId = 4, TaskName = "Soil test approval", StartDate = new DateTime(2019, 04, 02), Duration = 4, Progress = 50, ParentID = 1 },
+            new GanttDataSource() { TaskId = 5, TaskName = "Project estimation", StartDate = new DateTime(2019, 04, 02), EndDate = new DateTime(2019, 04, 21) },
+            new GanttDataSource() { TaskId = 6, TaskName = "Develop floor plan for estimation", StartDate = new DateTime(2019, 04, 04), Duration = 3, Progress = 50, ParentID = 5 },
+            new GanttDataSource() { TaskId = 7, TaskName = "List materials", StartDate = new DateTime(2019, 04, 04), Duration = 3, Progress = 50, ParentID = 5 }
+        };
+    }
 }
+
+public class GanttDataSource
+{
+    public int TaskId { get; set; }
+    public string TaskName { get; set; }
+    public DateTime StartDate { get; set; }
+    public DateTime EndDate { get; set; }
+    public int? Duration { get; set; }
+    public int Progress { get; set; }
+    public int? ParentID { get; set; }
 ```
 
 ## Common Patterns
 
 ### Enable Editing
 ```cshtml
-<ejs-gantt id="Gantt" dataSource="ViewBag.DataSource" height="450px">
+<ejs-gantt id="Gantt" dataSource="Model.GanttDataSourceCollection" height="450px">
     <e-gantt-taskfields id="TaskId" name="TaskName" startDate="StartDate"
                         endDate="EndDate" duration="Duration" progress="Progress"
-                        child="SubTasks">
+                        parentID="ParentID">
     </e-gantt-taskfields>
     <e-gantt-editsettings allowEditing="true" allowAdding="true"
                           allowDeleting="true" allowTaskbarEditing="true"
@@ -302,22 +328,22 @@ public IActionResult Index()
 
 ### Enable Filtering and Sorting
 ```cshtml
-<ejs-gantt id="Gantt" dataSource="ViewBag.DataSource"
+<ejs-gantt id="Gantt" dataSource="Model.GanttDataSourceCollection"
            allowFiltering="true" allowSorting="true" height="450px">
     <e-gantt-taskfields id="TaskId" name="TaskName" startDate="StartDate"
                         endDate="EndDate" duration="Duration" progress="Progress"
-                        child="SubTasks">
+                        parentID="ParentID">
     </e-gantt-taskfields>
 </ejs-gantt>
 ```
 
 ### Toolbar with Export
 ```cshtml
-<ejs-gantt id="Gantt" dataSource="ViewBag.DataSource"
+<ejs-gantt id="Gantt" dataSource="Model.GanttDataSourceCollection"
            toolbar="@(new List<string>() { "Add","Edit","Delete","Cancel","Update","ExpandAll","CollapseAll","ExcelExport","PdfExport" })"
            allowExcelExport="true" allowPdfExport="true" height="450px">
     <e-gantt-taskfields id="TaskId" name="TaskName" startDate="StartDate"
-                        endDate="EndDate" duration="Duration" child="SubTasks">
+                        endDate="EndDate" duration="Duration" parentID="ParentID">
     </e-gantt-taskfields>
 </ejs-gantt>
 ```

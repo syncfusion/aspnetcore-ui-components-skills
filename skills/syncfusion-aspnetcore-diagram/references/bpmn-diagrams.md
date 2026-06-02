@@ -15,7 +15,7 @@
 BPMN support requires injecting the `BpmnDiagrams` module via JavaScript after the page loads:
 
 ```javascript
-ej.diagram.Diagram.Inject(ej.diagram.BpmnDiagrams);
+ej.diagrams.Diagram.Inject(ej.diagrams.BpmnDiagrams);
 ```
 
 Place this in a `<script>` block that runs after `<ejs-scripts>`:
@@ -25,7 +25,7 @@ Place this in a `<script>` block that runs after `<ejs-scripts>`:
 </ejs-diagram>
 <ejs-scripts></ejs-scripts>
 <script>
-    ej.diagram.Diagram.Inject(ej.diagram.BpmnDiagrams);
+    ej.diagrams.Diagram.Inject(ej.diagrams.BpmnDiagrams);
 </script>
 ```
 
@@ -419,6 +419,6 @@ public IActionResult BpmnProcess()
 </ejs-diagram>
 <ejs-scripts></ejs-scripts>
 <script>
-    ej.diagram.Diagram.Inject(ej.diagram.BpmnDiagrams);
+    ej.diagrams.Diagram.Inject(ej.diagrams.BpmnDiagrams);
 </script>
 ```

@@ -350,9 +350,9 @@ Apply shared defaults to every connector:
 
 <script>
     function onConnectionChange(args) {
-        console.log('Connector:', args.element.id,
-            'connected from:', args.element.sourceID,
-            'to:', args.element.targetID);
+        console.log('Connector:', args.connector.id,
+            'connected from:', args.connector.sourceID,
+            'to:', args.connector.targetID);
     }
 </script>
 ```

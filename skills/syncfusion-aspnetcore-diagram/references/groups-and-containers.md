@@ -204,11 +204,11 @@ Use `setNodeTemplate` in JavaScript to build custom container layouts:
 <script>
     function setNodeTemplate(obj, diagram) {
         if (obj.shape && obj.shape.type === 'Canvas') {
-            var container = new ej.diagram.Canvas();
+            var container = new ej.diagrams.Canvas();
             container.id = obj.id + '_template';
             container.style.fill = 'transparent';
 
-            var textElement = new ej.diagram.TextElement();
+            var textElement = new ej.diagrams.TextElement();
             textElement.id = obj.id + '_label';
             textElement.content = obj.data ? obj.data.name : obj.id;
             textElement.style.color = '#333';
@@ -236,14 +236,14 @@ Use `setNodeTemplate` in JavaScript to build custom container layouts:
 ```javascript
 function setNodeTemplate(obj, diagram) {
     if (obj.shape && obj.shape.type === 'Stack') {
-        var stack = new ej.diagram.StackPanel();
+        var stack = new ej.diagrams.StackPanel();
         stack.id = obj.id + '_stack';
         stack.orientation = 'Vertical';
         stack.style.strokeColor = '#4674CE';
         stack.style.fill = '#E8F0FE';
 
         // Header
-        var header = new ej.diagram.TextElement();
+        var header = new ej.diagrams.TextElement();
         header.id = obj.id + '_header';
         header.content = obj.data ? obj.data.title : 'Header';
         header.style.fill = '#4674CE';
@@ -253,7 +253,7 @@ function setNodeTemplate(obj, diagram) {
         header.height = 30;
 
         // Body
-        var body = new ej.diagram.TextElement();
+        var body = new ej.diagrams.TextElement();
         body.id = obj.id + '_body';
         body.content = obj.data ? obj.data.description : '';
         body.style.fill = 'transparent';

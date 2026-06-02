@@ -117,7 +117,7 @@ Arranges nodes around a central root, branching left and right:
 <ejs-scripts></ejs-scripts>
 <script>
     // MindMap requires the MindMap module
-    ej.diagram.Diagram.Inject(ej.diagram.MindMap);
+    ej.diagrams.Diagram.Inject(ej.diagrams.MindMap);
 </script>
 ```
 
@@ -171,7 +171,7 @@ For trees where nodes can have multiple parents (DAG-style):
 </ejs-diagram>
 <ejs-scripts></ejs-scripts>
 <script>
-    ej.diagram.Diagram.Inject(ej.diagram.ComplexHierarchicalTree);
+    ej.diagrams.Diagram.Inject(ej.diagrams.ComplexHierarchicalTree);
 </script>
 ```
 

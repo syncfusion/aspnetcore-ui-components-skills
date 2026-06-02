@@ -23,8 +23,7 @@ Rows in the Gantt Chart represent individual task records from the data source. 
 
 ## Row Height
 
-Set the 
-owHeight property (in pixels) to change the height of all rows uniformly at load time.
+Set the rowHeight property (in pixels) to change the height of all rows uniformly at load time.
 
 `cshtml
 <ejs-gantt id='Gantt' dataSource="ViewBag.dataSource" height="450px" rowHeight="60">
@@ -37,7 +36,7 @@ owHeight property (in pixels) to change the height of all rows uniformly at load
 | Property | Type | Default | Description |
 |---|---|---|---|
 | 
-owHeight | number | 36 | Height of each row in pixels |
+| rowHeight | number | 36 | Height of each row in pixels |
 
 ---
 
@@ -80,7 +79,7 @@ public bool isExpand { get; set; }
 
 ## Customize Expand/Collapse Action
 
-The following events fire during expand and collapse operations. Set rgs.cancel = true to prevent the action for specific records.
+The following events fire during expand and collapse operations. Set args.cancel = true to prevent the action for specific records.
 
 | Event | Trigger point |
 |---|---|
@@ -113,8 +112,7 @@ The following events fire during expand and collapse operations. Set rgs.cancel
 
 ## Customize Row Appearance
 
-Use the 
-owDataBound event (grid side) and queryTaskbarInfo event (chart side) together to apply custom styles to specific rows.
+Use the rowDataBound event (grid side) and queryTaskbarInfo event (chart side) together to apply custom styles to specific rows.
 
 `cshtml
 <ejs-gantt id='Gantt' dataSource="ViewBag.dataSource" height="450px"
@@ -141,7 +139,7 @@ owDataBound event (grid side) and queryTaskbarInfo event (chart side) together t
 | Event | Scope | Useful for |
 |---|---|---|
 | 
-owDataBound | Grid pane (TreeGrid) | Styling grid row cells |
+| rowDataBound | Grid pane (TreeGrid) | Styling grid row cells |
 | queryTaskbarInfo | Chart pane (taskbar area) | Styling taskbar row background |
 
 ---
@@ -173,14 +171,13 @@ Override the built-in CSS classes to apply a custom background colour to every s
 | CSS class | Applies to |
 |---|---|
 | .e-altrow | Alternate rows in the grid pane |
-| 	r.e-chart-row:nth-child(even) | Alternate rows in the chart pane |
+| tr.e-chart-row:nth-child(even) | Alternate rows in the chart pane |
 
 ---
 
 ## Row Spanning
 
-Use the 
-owSpan attribute inside the queryCellInfo event to span a cell across multiple rows in the TreeGrid pane. This is useful for grouping related rows visually.
+Use the rowSpan attribute inside the queryCellInfo event to span a cell across multiple rows in the TreeGrid pane. This is useful for grouping related rows visually.
 
 `cshtml
 <ejs-gantt id='Gantt' dataSource="ViewBag.dataSource" height="450px" queryCellInfo="queryCellInfo">
@@ -204,14 +201,13 @@ owSpan attribute inside the queryCellInfo event to span a cell across multiple r
 
 ## Customize Rows and Cells with Events
 
-The 
-owDataBound and queryCellInfo events fire for every row and cell respectively during TreeGrid rendering. Use them for fine-grained row/cell customisation.
+The rowDataBound and queryCellInfo events fire for every row and cell respectively during TreeGrid rendering. Use them for fine-grained row/cell customisation.
 
 | Event | Args object | Use case |
 |---|---|---|
 | 
-owDataBound | rgs.data, rgs.row | Apply row-level classes or inline styles |
-| queryCellInfo | rgs.data, rgs.column, rgs.cell | Apply cell-level styles, add attributes, span rows |
+| rowDataBound | args.data, args.row | Apply row-level classes or inline styles |
+| queryCellInfo | args.data, args.column, args.cell | Apply cell-level styles, add attributes, span rows |
 
 ---
 
