@@ -1,28 +1,30 @@
 # Accessibility and Localization
 
 ## Table of Contents
+
 - [WCAG 2.0 Compliance](#wcag-20-compliance)
-- [ARIA Attributes](#aria-attributes)
-- [Accessible Chart Elements](#accessible-chart-elements)
+  - [ARIA Attributes](#aria-attributes)
+  - [Accessible Chart Elements](#accessible-chart-elements)
 - [Keyboard Navigation](#keyboard-navigation)
-    - [Enable Keyboard Navigation](#enable-keyboard-navigation)
+  - [Enable Keyboard Navigation](#enable-keyboard-navigation)
+- [Accessibility and Localization](#accessibility-and-localization-1)
 - [Screen Reader Support](#screen-reader-support)
-    - [Descriptive Series Names](#descriptive-series-names)
-    - [Accessible Tooltips](#accessible-tooltips)
+  - [Descriptive Series Names](#descriptive-series-names)
+  - [Accessible Tooltips](#accessible-tooltips)
 - [Color Contrast](#color-contrast)
-    - [High Contrast Theme](#high-contrast-theme)
-    - [Custom Accessible Colors](#custom-accessible-colors)
+  - [High Contrast Theme](#high-contrast-theme)
 - [RTL (Right-to-Left) Support](#rtl-right-to-left-support)
 - [Internationalization (i18n)](#internationalization-i18n)
-    - [Set Locale](#set-locale)
-    - [Number Formatting](#number-formatting)
-    - [Date Formatting](#date-formatting)
+  - [Set Locale](#set-locale)
+  - [Number Formatting](#number-formatting)
+  - [Date Formatting](#date-formatting)
 - [Localization](#localization)
-    - [Custom Locale Strings](#custom-locale-strings)
-    - [Common Locales](#common-locales)
+  - [Custom Locale Strings](#custom-locale-strings)
+  - [Common Locales](#common-locales)
 - [Focus Indicators](#focus-indicators)
 - [Best Practices](#best-practices)
 - [API Reference](#api-reference)
+
 
 Ensure charts are accessible to all users and support multiple languages.
 

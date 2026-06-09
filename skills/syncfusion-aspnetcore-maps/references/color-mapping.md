@@ -1,13 +1,39 @@
 # Color Mapping in Syncfusion ASP.NET Core Maps
 
 ## Table of Contents
+
 - [Overview](#overview)
 - [Getting Started](#getting-started)
+  - [Basic Prerequisites](#basic-prerequisites)
 - [Types of Color Mapping](#types-of-color-mapping)
+  - [Range Color Mapping](#range-color-mapping)
+    - [Properties](#properties)
+    - [Complete Example: Population Density Map](#complete-example-population-density-map)
+  - [Equal Color Mapping](#equal-color-mapping)
+    - [Complete Example: UN Security Council Membership](#complete-example-un-security-council-membership)
+  - [Desaturation Color Mapping](#desaturation-color-mapping)
+    - [Complete Example: Population Density with Opacity](#complete-example-population-density-with-opacity)
 - [Advanced Color Mapping](#advanced-color-mapping)
+  - [Multiple Colors for Single Shape](#multiple-colors-for-single-shape)
+    - [Complete Example: Gradient Color Mapping](#complete-example-gradient-color-mapping)
+  - [Color for Excluded Items](#color-for-excluded-items)
+    - [Complete Example: Handling Excluded Data](#complete-example-handling-excluded-data)
 - [Color Mapping for Bubbles](#color-mapping-for-bubbles)
+    - [Complete Example: Bubble Color Mapping](#complete-example-bubble-color-mapping)
 - [Complete Examples](#complete-examples)
+  - [Example 1: Economic Indicators with Legend](#example-1-economic-indicators-with-legend)
+  - [Example 2: Climate Zones with Desaturation](#example-2-climate-zones-with-desaturation)
 - [Troubleshooting](#troubleshooting)
+  - [Issue: Colors Not Applying to Shapes](#issue-colors-not-applying-to-shapes)
+  - [Issue: Range Color Mapping Not Working](#issue-range-color-mapping-not-working)
+  - [Issue: Equal Color Mapping Not Matching Values](#issue-equal-color-mapping-not-matching-values)
+  - [Issue: Desaturation Effect Not Visible](#issue-desaturation-effect-not-visible)
+  - [Issue: Multiple Colors Not Creating Gradient](#issue-multiple-colors-not-creating-gradient)
+  - [Issue: Bubble Color Mapping Not Working](#issue-bubble-color-mapping-not-working)
+  - [Issue: Performance Issues with Large Datasets](#issue-performance-issues-with-large-datasets)
+  - [Issue: Legend Not Displaying Color Mappings](#issue-legend-not-displaying-color-mappings)
+  - [Common Error Messages](#common-error-messages)
+
 
 ## Overview
 

@@ -1,20 +1,42 @@
 # Getting Started with ASP.NET Core Chart
 
 ## Table of Contents
+
 - [Prerequisites](#prerequisites)
 - [Step 1: Install NuGet Package](#step-1-install-nuget-package)
+  - [Using NuGet Package Manager](#using-nuget-package-manager)
+  - [Using Package Manager Console](#using-package-manager-console)
+  - [Using .NET CLI](#using-net-cli)
 - [Step 2: Add Tag Helper](#step-2-add-tag-helper)
 - [Step 3: Add Script References](#step-3-add-script-references)
+  - [Option A: CDN (Recommended for Quick Start)](#option-a-cdn-recommended-for-quick-start)
+  - [Option B: NPM Package](#option-b-npm-package)
+  - [Option C: Static Files (Local Copy)](#option-c-static-files-local-copy)
 - [Step 4: Register Script Manager](#step-4-register-script-manager)
-- [Step 5: Add CSS Theme](#step-5-add-css-theme)
+- [Step 5: Add CSS Theme (Optional but Recommended)](#step-5-add-css-theme-optional-but-recommended)
 - [Step 6: Create Your First Chart](#step-6-create-your-first-chart)
+  - [Razor Pages Example](#razor-pages-example)
+  - [MVC Example](#mvc-example)
 - [Step 7: Run the Application](#step-7-run-the-application)
 - [Basic Chart Configuration](#basic-chart-configuration)
+  - [Minimum Required Properties](#minimum-required-properties)
+  - [Common Initial Properties](#common-initial-properties)
 - [Data Binding Patterns](#data-binding-patterns)
+  - [Simple Array of Objects](#simple-array-of-objects)
+  - [Strongly Typed Model](#strongly-typed-model)
+  - [ViewBag/ViewData Pattern](#viewbagviewdata-pattern)
 - [Handling Events](#handling-events)
+  - [Chart Load Event](#chart-load-event)
+  - [Point Click Event](#point-click-event)
 - [Licensing](#licensing)
+  - [.NET 6+ (Program.cs)](#net-6-programcs)
+  - [.NET Core 3.1 (Startup.cs)](#net-core-31-startupcs)
 - [Troubleshooting Common Issues](#troubleshooting-common-issues)
-- [Next Steps](#next-steps)
+  - [Chart Not Rendering](#chart-not-rendering)
+  - [License Warning Message](#license-warning-message)
+  - [Data Not Displaying](#data-not-displaying)
+  - [Script Errors](#script-errors)
+  - [Styling Issues](#styling-issues)
 - [Complete Working Example](#complete-working-example)
 
 This guide covers the complete setup and basic implementation of Syncfusion ASP.NET Core Chart component.
@@ -483,18 +505,6 @@ public class Startup
 2. Ensure CSS file loads successfully (check Network tab in browser)
 3. Verify theme name matches available themes
 4. Check for CSS conflicts with other libraries
-
-## Next Steps
-
-Now that you have a basic chart running, explore these features:
-
-1. **Try Different Chart Types:** Change `type` property to Column, Bar, Area, Pie, etc.
-2. **Add Multiple Series:** Add more `<e-series>` tags for comparison
-3. **Enable Interactivity:** Add zooming, tooltips, crosshair, selection
-4. **Customize Appearance:** Modify colors, fonts, sizes, themes
-5. **Add Data Labels:** Show values on data points
-6. **Configure Axes:** Customize axis titles, ranges, intervals
-7. **Implement Real-time Updates:** Bind to dynamic data sources
 
 ## Complete Working Example
 

@@ -1,17 +1,41 @@
 # Getting Started with Syncfusion Maps for ASP.NET Core
 
 ## Table of Contents
+
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
+  - [Step 1: Create ASP.NET Core Web Application](#step-1-create-aspnet-core-web-application)
+  - [Step 2: Install NuGet Package](#step-2-install-nuget-package)
 - [Project Setup](#project-setup)
+  - [Folder Structure](#folder-structure)
+  - [Adding GeoJSON Data Files](#adding-geojson-data-files)
 - [Adding Tag Helpers](#adding-tag-helpers)
+  - [Step 1: Import Syncfusion Tag Helpers](#step-1-import-syncfusion-tag-helpers)
+  - [Step 2: Add Using Directives](#step-2-add-using-directives)
 - [Adding Script References](#adding-script-references)
+  - [Option 1: Using CDN (Recommended for Development)](#option-1-using-cdn-recommended-for-development)
+  - [Option 2: Using Local Scripts (For Production)](#option-2-using-local-scripts-for-production)
+  - [Option 3: Using Static Web Assets](#option-3-using-static-web-assets)
 - [Registering Script Manager](#registering-script-manager)
 - [Creating Your First Map](#creating-your-first-map)
+  - [Basic Empty Map](#basic-empty-map)
 - [Rendering Shapes from GeoJSON](#rendering-shapes-from-geojson)
+  - [Loading GeoJSON Data](#loading-geojson-data)
+  - [Understanding Layers](#understanding-layers)
 - [Running the Application](#running-the-application)
+  - [Using Visual Studio](#using-visual-studio)
+  - [Using .NET CLI](#using-net-cli)
+  - [Expected Result](#expected-result)
 - [Complete Minimal Example](#complete-minimal-example)
 - [Troubleshooting](#troubleshooting)
+  - [Map Not Rendering / Blank Page](#map-not-rendering--blank-page)
+  - [Script Errors / Component Not Loading](#script-errors--component-not-loading)
+  - [License Warning Message](#license-warning-message)
+  - [JSON Deserialization Error](#json-deserialization-error)
+  - [Tag Helper Not Recognized](#tag-helper-not-recognized)
+  - [Performance Issues / Slow Rendering](#performance-issues--slow-rendering)
+  - [NuGet Package Installation Fails](#nuget-package-installation-fails)
+- [Next Steps](#next-steps)
 
 ## Prerequisites
 

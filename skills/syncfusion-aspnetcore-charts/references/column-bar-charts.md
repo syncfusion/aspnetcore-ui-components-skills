@@ -1,15 +1,39 @@
 # Column and Bar Charts
 
 ## Table of Contents
+
 - [Overview](#overview)
 - [Column Chart](#column-chart)
+  - [Basic Column Chart](#basic-column-chart)
+  - [Multiple Column Series](#multiple-column-series)
+  - [Column Spacing and Width](#column-spacing-and-width)
 - [Bar Chart](#bar-chart)
+  - [Basic Bar Chart](#basic-bar-chart)
+  - [Multiple Bar Series](#multiple-bar-series)
+  - [Bar vs Column: When to Use Each](#bar-vs-column-when-to-use-each)
 - [Stacked Column and Bar](#stacked-column-and-bar)
+  - [Stacked Column](#stacked-column)
+  - [Stacked Bar](#stacked-bar)
+  - [Stacking Groups](#stacking-groups)
 - [100% Stacked Charts](#100-stacked-charts)
+  - [100% Stacked Column](#100-stacked-column)
+  - [100% Stacked Bar](#100-stacked-bar)
 - [Range Column Chart](#range-column-chart)
 - [Vertical Chart](#vertical-chart)
 - [Customization Options](#customization-options)
+  - [Column/Bar Colors](#columnbar-colors)
+  - [Individual Point Colors](#individual-point-colors)
+  - [Border Customization](#border-customization)
+  - [Corner Radius](#corner-radius)
+  - [Data Labels](#data-labels)
+  - [Empty Points](#empty-points)
 - [When to Use](#when-to-use)
+  - [Column Chart Usage](#column-chart-usage)
+  - [Bar Chart Usage](#bar-chart-usage)
+  - [Stacked Column/Bar](#stacked-columnbar)
+  - [100% Stacked](#100-stacked)
+  - [Range Column](#range-column)
+- [Performance Tips](#performance-tips)
 
 ## Overview
 
@@ -527,7 +551,7 @@ Handle missing data:
 
 ## When to Use
 
-### Column Chart
+### Column Chart Usage
 **Best for:**
 - Comparing discrete categories
 - Time-based comparisons (months, years)
@@ -536,7 +560,7 @@ Handle missing data:
 
 **Examples:** Monthly sales, product comparisons, year-over-year growth
 
-### Bar Chart
+### Bar Chart Usage
 **Best for:**
 - Many categories or long category names
 - Rankings or ordered data

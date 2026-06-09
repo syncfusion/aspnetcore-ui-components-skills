@@ -3,6 +3,7 @@
 This guide covers data manipulation techniques including grouping small values, handling empty points, and dynamic data updates.
 
 ## Table of Contents
+
 - [Data Grouping](#data-grouping)
   - [Basic Grouping](#basic-grouping)
   - [Grouping by Value](#grouping-by-value)
@@ -15,8 +16,19 @@ This guide covers data manipulation techniques including grouping small values, 
   - [Customizing Empty Points](#customizing-empty-points)
   - [No Data Template](#no-data-template)
 - [Dynamic Data Updates](#dynamic-data-updates)
+  - [Update Data on Button Click](#update-data-on-button-click)
+  - [Real-Time Data Updates (Polling)](#real-time-data-updates-polling)
+  - [Add Data Point Dynamically](#add-data-point-dynamically)
 - [Data Source Patterns](#data-source-patterns)
+  - [Server-Side Data Binding](#server-side-data-binding)
+  - [JSON Data Source](#json-data-source)
+  - [Database Query Example](#database-query-example)
 - [Troubleshooting](#troubleshooting)
+  - [Data Not Displaying](#data-not-displaying)
+  - [Grouped Points Not Working](#grouped-points-not-working)
+  - [Empty Points Show Incorrectly](#empty-points-show-incorrectly)
+  - [Dynamic Updates Not Reflecting](#dynamic-updates-not-reflecting)
+  - [Performance Issues with Large Datasets](#performance-issues-with-large-datasets)
 - [Best Practices](#best-practices)
 - [Data Model Examples](#data-model-examples)
 

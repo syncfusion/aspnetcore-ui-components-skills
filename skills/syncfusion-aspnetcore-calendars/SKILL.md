@@ -4,7 +4,7 @@ description: Comprehensive guide for implementing Syncfusion ASP.NET Core Calend
 metadata:
   author: "Syncfusion Inc"
   category: "Calendars"
-  version: "1.0.0"
+  version: "33.1.44"
 ---
 
 # Implementing Syncfusion ASP.NET Core Calendars

@@ -4,14 +4,61 @@ Complete API reference for Syncfusion ASP.NET Core Accumulation Chart component.
 
 ## Table of Contents
 - [AccumulationChart Class](#accumulationchart-class)
+  - [Constructor](#constructor)
+  - [Core Properties](#core-properties)
+    - [Appearance Properties](#appearance-properties)
+    - [Data Properties](#data-properties)
+    - [Layout Properties](#layout-properties)
+    - [Text Properties](#text-properties)
+    - [Legend Properties](#legend-properties)
+    - [Interaction Properties](#interaction-properties)
+    - [Tooltip Properties](#tooltip-properties)
+    - [Label Properties](#label-properties)
+    - [Annotation Properties](#annotation-properties)
+    - [Accessibility Properties](#accessibility-properties)
+    - [Animation Properties](#animation-properties)
+    - [Export & Print Properties](#export--print-properties)
+    - [Localization & Persistence Properties](#localization--persistence-properties)
+    - [Template Properties](#template-properties)
+    - [HTML Attributes](#html-attributes)
 - [AccumulationSeries Class](#accumulationseries-class)
+  - [Properties](#properties)
+    - [Basic Data Properties](#basic-data-properties)
+    - [Chart Type Properties](#chart-type-properties)
+    - [Size & Position Properties](#size--position-properties)
+    - [Explosion Properties](#explosion-properties)
+    - [Grouping Properties](#grouping-properties)
+    - [Pyramid/Funnel Properties](#pyramidfunnel-properties)
+    - [Color Properties](#color-properties)
+    - [Label Properties](#label-properties)
+    - [Styling Properties](#styling-properties)
+    - [Data Handling Properties](#data-handling-properties)
+    - [Legend Properties](#legend-properties)
+    - [Tooltip Properties](#tooltip-properties)
+    - [Event Properties](#event-properties)
 - [Data Label Settings](#data-label-settings)
+  - [AccumulationDataLabelSettings Class](#accumulationdatalabelsettings-class)
 - [Legend Settings](#legend-settings)
+  - [AccumulationChartLegendSettings Class](#accumulationchartlegendsettings-class)
 - [Tooltip Settings](#tooltip-settings)
+  - [AccumulationChartTooltipSettings Class](#accumulationcharttooltipsettings-class)
 - [Events](#events)
 - [Enumerations](#enumerations)
+  - [AccumulationTheme Enum](#accumulationtheme-enum)
+  - [AccumulationHighlightMode Enum](#accumulationhighlightmode-enum)
+  - [AccumulationSelectionMode Enum](#accumulationselectionmode-enum)
+  - [SelectionPattern Enum](#selectionpattern-enum)
+  - [LegendShape Enum](#legendshape-enum)
+  - [LegendPosition Enum](#legendposition-enum)
+  - [Alignment Enum](#alignment-enum)
 - [Related Classes](#related-classes)
+  - [Border Classes](#border-classes)
+  - [Layout Classes](#layout-classes)
+  - [Style Classes](#style-classes)
+  - [Special Features Classes](#special-features-classes)
 - [Namespace and Assembly](#namespace-and-assembly)
+  - [Using Statement](#using-statement)
+  - [NuGet Package](#nuget-package)
 - [Additional Resources](#additional-resources)
 
 ---
@@ -111,7 +158,7 @@ Creates a new instance of the AccumulationChart class.
 |----------|------|---------|-------------|----------|
 | `Accessibility` | `AccumulationAccessibility` | null | Accessibility options (WCAG 2.2 compliance) | [AccumulationAccessibility](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.AccumulationAccessibility.html) |
 | `EnableHtmlSanitizer` | `bool` | false | Sanitize untrusted HTML content | [Reference](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.AccumulationChart.html#Syncfusion_EJ2_Charts_AccumulationChart_EnableHtmlSanitizer) |
-| `FocusBorderColor` | `string` | - | Focus border color for keyboard navigation | [Reference](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.AccumulationChart.html#Syncfusion_EJ2_Charts_AccumulationChart_FocusBorderColor) |
+| `FocusBorderColor` | `string` | null | Focus border color for keyboard navigation | [Reference](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.AccumulationChart.html#Syncfusion_EJ2_Charts_AccumulationChart_FocusBorderColor) |
 | `FocusBorderMargin` | `double` | 0 | Focus border margin | [Reference](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.AccumulationChart.html#Syncfusion_EJ2_Charts_AccumulationChart_FocusBorderMargin) |
 | `FocusBorderWidth` | `double` | 1.5 | Focus border width | [Reference](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.AccumulationChart.html#Syncfusion_EJ2_Charts_AccumulationChart_FocusBorderWidth) |
 
@@ -132,7 +179,7 @@ Creates a new instance of the AccumulationChart class.
 
 | Property | Type | Default | Description | API Link |
 |----------|------|---------|-------------|----------|
-| `Locale` | `string` | "en-US" | Culture/localization override | [Reference](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.AccumulationChart.html#Syncfusion_EJ2_Charts_AccumulationChart_Locale) |
+| `Locale` | `string` | "" | Culture/localization override | [Reference](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.AccumulationChart.html#Syncfusion_EJ2_Charts_AccumulationChart_Locale) |
 | `EnablePersistence` | `bool` | false | Persist component state across page reloads | [Reference](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.AccumulationChart.html#Syncfusion_EJ2_Charts_AccumulationChart_EnablePersistence) |
 | `EnableRtl` | `bool` | false | Enable right-to-left rendering | [Reference](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.AccumulationChart.html#Syncfusion_EJ2_Charts_AccumulationChart_EnableRtl) |
 | `UseGroupingSeparator` | `bool` | false | Use thousand separator for numbers | [Reference](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.AccumulationChart.html#Syncfusion_EJ2_Charts_AccumulationChart_UseGroupingSeparator) |
@@ -165,59 +212,58 @@ Represents a data series in the accumulation chart.
 
 | Property | Type | Default | Description | API Link |
 |----------|------|---------|-------------|----------|
-| `DataSource` | `object[]` | null | Series data collection | [Reference](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.AccumulationChart.html#Syncfusion_EJ2_Charts_AccumulationChart_DataSource) |
-| `XName` | `string` | null | Field name for X values (categories) | [Reference](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.AccumulationSeries.html#Syncfusion_EJ2_Charts_AccumulationSeries_XName) |
-| `YName` | `string` | null | Field name for Y values (numeric data) | [Reference](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.AccumulationSeries.html#Syncfusion_EJ2_Charts_AccumulationSeries_YName) |
+| `DataSource` | `object` | null | Series data collection | [Reference](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.AccumulationChart.html#Syncfusion_EJ2_Charts_AccumulationChart_DataSource) |
+| `XName` | `string` | "" | Field name for X values (categories) | [Reference](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.AccumulationSeries.html#Syncfusion_EJ2_Charts_AccumulationSeries_XName) |
+| `YName` | `string` | "" | Field name for Y values (numeric data) | [Reference](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.AccumulationSeries.html#Syncfusion_EJ2_Charts_AccumulationSeries_YName) |
 
 #### Chart Type Properties
 
-| Property | Type | Default | Description | Allowed Values |
-|----------|------|---------|-------------|-----------------|
-| `Type` | `string` | "Pie" | Series type | Pie, Pyramid, Funnel (Note: Doughnut = Pie + innerRadius) |
+| Property | Type | Default | Description | Allowed Values | API Link |
+|----------|------|---------|-------------|----------------|----------|
+| `Type` | `AccumulationType` | "Pie" | Series type | Pie, Pyramid, Funnel (Note: Doughnut = Pie + innerRadius) | [Reference](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.AccumulationSeries.html#Syncfusion_EJ2_Charts_AccumulationSeries_Type) |
 
 #### Size & Position Properties
 
 | Property | Type | Default | Description | API Link |
 |----------|------|---------|-------------|----------|
-| `Radius` | `string` | "80%" | Chart radius (percentage or pixels) | [Reference](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.AccumulationSeries.html#Syncfusion_EJ2_Charts_AccumulationSeries_Radius) |
-| `InnerRadius` | `string` | "0%" | Inner radius for doughnut charts | [Reference](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.AccumulationSeries.html#Syncfusion_EJ2_Charts_AccumulationSeries_InnerRadius) |
+| `Radius` | `string` | null | Chart radius (percentage or pixels) | [Reference](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.AccumulationSeries.html#Syncfusion_EJ2_Charts_AccumulationSeries_Radius) |
+| `InnerRadius` | `string` | "0" | Inner radius for doughnut charts | [Reference](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.AccumulationSeries.html#Syncfusion_EJ2_Charts_AccumulationSeries_InnerRadius) |
 | `StartAngle` | `double` | 0 | Start angle in degrees (0-360) | [Reference](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.AccumulationSeries.html#Syncfusion_EJ2_Charts_AccumulationSeries_StartAngle) |
-| `EndAngle` | `double` | 360 | End angle in degrees (0-360) | [Reference](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.AccumulationSeries.html#Syncfusion_EJ2_Charts_AccumulationSeries_EndAngle) |
+| `EndAngle` | `double` | NaN | End angle in degrees (0-360) | [Reference](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.AccumulationSeries.html#Syncfusion_EJ2_Charts_AccumulationSeries_EndAngle) |
 
 #### Explosion Properties
 
 | Property | Type | Default | Description | API Link |
 |----------|------|---------|-------------|----------|
 | `Explode` | `bool` | false | Enable explosion on click | [Reference](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.AccumulationSeries.html#Syncfusion_EJ2_Charts_AccumulationSeries_Explode) |
-| `ExplodeIndex` | `double` | null | Index of pre-exploded point | [Reference](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.AccumulationSeries.html#Syncfusion_EJ2_Charts_AccumulationSeries_ExplodeIndex) |
-| `ExplodeOffset` | `string` | "10%" | Distance exploded slice moves | [Reference](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.AccumulationSeries.html#Syncfusion_EJ2_Charts_AccumulationSeries_ExplodeOffset) |
+| `ExplodeIndex` | `double` | NaN | Index of pre-exploded point | [Reference](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.AccumulationSeries.html#Syncfusion_EJ2_Charts_AccumulationSeries_ExplodeIndex) |
+| `ExplodeOffset` | `string` | "30%" | Distance exploded slice moves | [Reference](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.AccumulationSeries.html#Syncfusion_EJ2_Charts_AccumulationSeries_ExplodeOffset) |
 
 #### Grouping Properties
 
-| Property | Type | Default | Description | Allowed Values |
-|----------|------|---------|-------------|-----------------|
-| `GroupTo` | `string` | null | Grouping threshold (value or percentage) | Numeric threshold or percentage |
-| `GroupMode` | `string` | "Value" | Group mode | Value, Point |
-| `GroupName` | `string` | "Others" | Name for grouped points | Any string |
+| Property | Type | Default | Description | Allowed Values | API Link |
+|----------|------|---------|-------------|----------------|----------|
+| `GroupTo` | `string` | null | Grouping threshold (value or percentage) | Numeric threshold or percentage | [Reference](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.AccumulationSeries.html#Syncfusion_EJ2_Charts_AccumulationSeries_GroupTo) |
+| `GroupMode` | `GroupModes` | "Value" | Group mode | Value, Point | [Reference](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.AccumulationSeries.html#Syncfusion_EJ2_Charts_AccumulationSeries_GroupMode) |
 
 #### Pyramid/Funnel Properties
 
-| Property | Type | Default | Description | Allowed Values |
-|----------|------|---------|-------------|-----------------|
-| `PyramidMode` | `string` | "Linear" | Pyramid rendering mode | Linear, Surface |
-| `FunnelMode` | `string` | "Standard" | Funnel rendering mode | Standard, Trapezoidal |
-| `NeckWidth` | `string` | "20%" | Funnel neck width | Percentage |
-| `NeckHeight` | `string` | "20%" | Funnel neck height | Percentage |
-| `Width` | `string` | "80%" | Pyramid/Funnel width | Percentage |
-| `Height` | `string` | "80%" | Pyramid/Funnel height | Percentage |
-| `GapRatio` | `double` | 0 | Gap between segments | 0-1 |
+| Property | Type | Default | Description | Allowed Values | API Link |
+|----------|------|---------|-------------|----------------|----------|
+| `PyramidMode` | `PyramidModes` | "Linear" | Pyramid rendering mode | Linear, Surface | [Reference](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.AccumulationSeries.html#Syncfusion_EJ2_Charts_AccumulationSeries_PyramidMode) |
+| `FunnelMode` | `FunnelModes` | "Standard" | Funnel rendering mode | Standard, Trapezoidal | [Reference](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.AccumulationSeries.html#Syncfusion_EJ2_Charts_AccumulationSeries_FunnelMode) |
+| `NeckWidth` | `string` | "20%" | Funnel neck width | Percentage | [Reference](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.AccumulationSeries.html#Syncfusion_EJ2_Charts_AccumulationSeries_NeckWidth) |
+| `NeckHeight` | `string` | "20%" | Funnel neck height | Percentage | [Reference](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.AccumulationSeries.html#Syncfusion_EJ2_Charts_AccumulationSeries_NeckHeight) |
+| `Width` | `string` | "80%" | Pyramid/Funnel width | Percentage | [Reference](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.AccumulationSeries.html#Syncfusion_EJ2_Charts_AccumulationSeries_Width) |
+| `Height` | `string` | "80%" | Pyramid/Funnel height | Percentage | [Reference](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.AccumulationSeries.html#Syncfusion_EJ2_Charts_AccumulationSeries_Height) |
+| `GapRatio` | `double` | 0 | Gap between segments | 0-1 | [Reference](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.AccumulationSeries.html#Syncfusion_EJ2_Charts_AccumulationSeries_GapRatio) |
 
 #### Color Properties
 
 | Property | Type | Default | Description | API Link |
 |----------|------|---------|-------------|----------|
 | `Palettes` | `string[]` | null | Custom color palette (hex colors) | [Reference](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.AccumulationSeries.html#Syncfusion_EJ2_Charts_AccumulationSeries_Palettes) |
-| `PointColorMapping` | `string` | null | Field name for point colors | [Reference](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.AccumulationSeries.html#Syncfusion_EJ2_Charts_AccumulationSeries_PointColorMapping) |
+| `PointColorMapping` | `string` | "" | Field name for point colors | [Reference](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.AccumulationSeries.html#Syncfusion_EJ2_Charts_AccumulationSeries_PointColorMapping) |
 
 #### Label Properties
 
@@ -248,7 +294,7 @@ Represents a data series in the accumulation chart.
 
 | Property | Type | Default | Description | API Link |
 |----------|------|---------|-------------|----------|
-| `TooltipMappingName` | `string` | null | Field for custom tooltip content | [Reference](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.AccumulationSeries.html#Syncfusion_EJ2_Charts_AccumulationSeries_TooltipMappingName) |
+| `TooltipMappingName` | `string` | "" | Field for custom tooltip content | [Reference](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.AccumulationSeries.html#Syncfusion_EJ2_Charts_AccumulationSeries_TooltipMappingName) |
 
 #### Event Properties
 
@@ -267,17 +313,17 @@ Represents a data series in the accumulation chart.
 | Property | Type | Default | Description |
 |----------|------|---------|-------------|
 | `Visible` | `bool` | false | Show/hide data labels |
-| `Position` | `string` | "Outside" | Label position: Inside, Outside |
+| `Position` | `AccumulationLabelPosition` | "Inside" | Label position: Inside, Outside |
 | `Name` | `string` | null | Field name for label text |
 | `Template` | `string` | null | HTML template for labels |
-| `Format` | `string` | null | Number format (e.g., "p1", "n2", "c2") |
-| `TextWrap` | `string` | "Normal" | Text wrapping: Normal, Wrap, AnyWhere |
-| `MaxWidth` | `double` | null | Max label width (pixels) |
-| `Font` | `object` | null | Font configuration |
+| `Format` | `string` | "" | Number format (e.g., "p1", "n2", "c2") |
+| `TextWrap` | `TextWrap` | "Normal" | Text wrapping: Normal, Wrap, AnyWhere |
+| `MaxWidth` | `double` | NaN | Max label width (pixels) |
+| `Font` | `AccumulationChartFont` | null | Font configuration |
 | `Border` | `object` | null | Label border configuration |
-| `ConnectorStyle` | `string` | "Line" | Connector type: Line, Curve |
-| `Rx` | `double` | 0 | Rotation angle |
-| `Ry` | `double` | 0 | Rotation point offset Y |
+| `ConnectorStyle` | `AccumulationChartConnector` | - | Connector type: Line, Curve |
+| `Rx` | `double` | - | Rotation angle |
+| `Ry` | `double` | - | Rotation point offset Y |
 
 ---
 
@@ -289,21 +335,21 @@ Represents a data series in the accumulation chart.
 
 | Property | Type | Default | Description |
 |----------|------|---------|-------------|
-| `Visible` | `bool` | false | Show/hide legend |
-| `Position` | `string` | "Right" | Position: Top, Bottom, Left, Right, Custom |
-| `Alignment` | `string` | "Center" | Alignment: Near, Center, Far |
-| `Width` | `string` | "0" | Legend width |
-| `Height` | `string` | "0" | Legend height |
+| `Visible` | `bool` | true | Show/hide legend |
+| `Position` | `LegendPosition` | "Auto" | Position: Auto, Top, Bottom, Left, Right, Custom |
+| `Alignment` | `Alignment` | "Center" | Alignment: Near, Center, Far |
+| `Width` | `string` | null | Legend width |
+| `Height` | `string` | null | Legend height |
 | `Reverse` | `bool` | false | Reverse legend item order |
-| `Layout` | `string` | "Vertical" | Layout: Vertical, Horizontal |
-| `MaximumColumns` | `double` | null | Max columns in horizontal layout |
-| `ShapeWidth` | `double` | 15 | Legend shape width |
-| `ShapeHeight` | `double` | 15 | Legend shape height |
-| `Title` | `object` | null | Legend title |
-| `Template` | `string` | null | Custom HTML template |
-| `TextWrap` | `string` | "Normal" | Text wrapping: Normal, Wrap |
-| `MaximumLabelWidth` | `double` | null | Max legend item label width |
-| `EnablePages` | `bool` | false | Enable paging |
+| `Layout` | `LegendLayout` | Auto | Layout: Auto, Vertical, Horizontal |
+| `MaximumColumns` | `double` | NaN | Max columns in horizontal layout |
+| `ShapeWidth` | `double` | 10 | Legend shape width |
+| `ShapeHeight` | `double` | 10 | Legend shape height |
+| `Title` | `string` | null | Legend title |
+| `Template` | `object` | null | Custom HTML template |
+| `TextWrap` | `TextWrap` | "Normal" | Text wrapping: Normal, Wrap, AnyWhere |
+| `MaximumLabelWidth` | `double` | NaN | Max legend item label width |
+| `EnablePages` | `bool` | true | Enable paging |
 | `ToggleVisibility` | `bool` | true | Toggle visibility on click |
 
 ---
@@ -321,10 +367,10 @@ Represents a data series in the accumulation chart.
 | `Format` | `string` | null | Tooltip text format |
 | `Template` | `string` | null | HTML template for tooltips |
 | `Fill` | `string` | null | Tooltip background color |
-| `Border` | `object` | null | Tooltip border |
-| `TextStyle` | `object` | null | Tooltip text styling |
+| `Border` | `AccumulationChartTooltipBorder` | null | Tooltip border |
+| `TextStyle` | `AccumulationChartTooltipTextStyle` | null | Tooltip text styling |
 | `Location` | `object` | null | Fixed tooltip position |
-| `Opacity` | `double` | 1 | Tooltip opacity |
+| `Opacity` | `double` | NaN | Tooltip opacity |
 | `Shared` | `bool` | false | Shared tooltip mode |
 
 ---
@@ -453,6 +499,7 @@ Legend icon shapes:
 
 **API Reference:** [LegendPosition](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.LegendPosition.html)
 
+- `Auto`
 - `Top`
 - `Bottom`
 - `Left`

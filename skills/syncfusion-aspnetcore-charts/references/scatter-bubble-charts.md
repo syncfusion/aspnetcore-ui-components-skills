@@ -1,23 +1,28 @@
 # Scatter and Bubble Charts
 
 ## Table of Contents
+
 - [Scatter Chart](#scatter-chart)
-    - [Basic Scatter Chart](#basic-scatter-chart)
-    - [Multiple Scatter Series](#multiple-scatter-series)
-    - [Marker Shapes](#marker-shapes)
-    - [Scatter with Trendline](#scatter-with-trendline)
+  - [Basic Scatter Chart](#basic-scatter-chart)
+  - [Multiple Scatter Series](#multiple-scatter-series)
+  - [Marker Shapes](#marker-shapes)
+  - [Scatter with Trendline](#scatter-with-trendline)
 - [Bubble Chart](#bubble-chart)
-    - [Basic Bubble Chart](#basic-bubble-chart)
-    - [Bubble Size Control](#bubble-size-control)
-    - [Multiple Bubble Series](#multiple-bubble-series)
-    - [Bubble Colors](#bubble-colors)
+  - [Basic Bubble Chart](#basic-bubble-chart)
+  - [Bubble Size Control](#bubble-size-control)
+  - [Multiple Bubble Series](#multiple-bubble-series)
+  - [Bubble Colors](#bubble-colors)
 - [Customization Options](#customization-options)
-    - [Marker Customization](#marker-customization)
-    - [Data Labels](#data-labels)
-    - [Tooltips](#tooltips)
-    - [Selection](#selection)
+  - [Marker Customization](#marker-customization)
+  - [Data Labels](#data-labels)
+  - [Tooltips](#tooltips)
+  - [Selection](#selection)
 - [Advanced Patterns](#advanced-patterns)
+  - [Correlation Matrix](#correlation-matrix)
+  - [BCG Matrix (Bubble Chart Application)](#bcg-matrix-bubble-chart-application)
 - [When to Use](#when-to-use)
+  - [Scatter Chart Usage](#scatter-chart-usage)
+  - [Bubble Chart Usage](#bubble-chart-usage)
 - [Best Practices](#best-practices)
 - [Performance Tips](#performance-tips)
 
@@ -410,7 +415,7 @@ ViewBag.Products = new object[]
 
 ## When to Use
 
-### Scatter Chart
+### Scatter Chart Usage
 **Best for:**
 - Showing correlation between two variables
 - Identifying patterns, trends, and outliers
@@ -423,7 +428,7 @@ ViewBag.Products = new object[]
 - Study Hours vs Test Scores
 - Age vs Income
 
-### Bubble Chart
+### Bubble Chart Usage
 **Best for:**
 - Displaying three-dimensional data
 - Comparing entities across multiple metrics

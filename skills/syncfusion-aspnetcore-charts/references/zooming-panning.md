@@ -3,14 +3,39 @@
 This guide covers comprehensive zooming and panning configuration in Syncfusion ASP.NET Core Charts, including various zoom modes, pan support, zoom toolbar, reset functionality, and programmatic control.
 
 ## Table of Contents
+
 - [Basic Zooming](#basic-zooming)
+  - [Enable Zooming](#enable-zooming)
+  - [Enable All Zoom Features](#enable-all-zoom-features)
 - [Zoom Modes](#zoom-modes)
+  - [Selection Zooming](#selection-zooming)
+  - [Pinch Zooming (Touch Devices)](#pinch-zooming-touch-devices)
+  - [Mouse Wheel Zooming](#mouse-wheel-zooming)
+  - [Zoom by X-Axis Only](#zoom-by-x-axis-only)
+  - [Zoom by Y-Axis Only](#zoom-by-y-axis-only)
+  - [Zoom Both Axes](#zoom-both-axes)
 - [Panning Support](#panning-support)
+  - [Enable Panning](#enable-panning)
+  - [Panning with Mouse Wheel Zoom](#panning-with-mouse-wheel-zoom)
+  - [Panning for Multiple Series](#panning-for-multiple-series)
 - [Zoom Toolbar](#zoom-toolbar)
+  - [Basic Toolbar](#basic-toolbar)
+  - [Custom Toolbar Items](#custom-toolbar-items)
+  - [Toolbar Positioning](#toolbar-positioning)
 - [Reset Zoom](#reset-zoom)
+  - [Reset Button in Toolbar](#reset-button-in-toolbar)
+  - [Enable Reset on Double Click](#enable-reset-on-double-click)
 - [Programmatic Zoom Control](#programmatic-zoom-control)
+  - [Zoom to Specific Range](#zoom-to-specific-range)
+  - [Zoom by Factor](#zoom-by-factor)
+  - [Zoom Event Handling](#zoom-event-handling)
 - [Zoom Customization](#zoom-customization)
+  - [Selection Rectangle Style](#selection-rectangle-style)
+  - [Deferred Zooming](#deferred-zooming)
+  - [Zoom with Scrollbar](#zoom-with-scrollbar)
+  - [Auto Zoom on Load](#auto-zoom-on-load)
 - [When to Use](#when-to-use)
+
 
 ## Basic Zooming
 

@@ -3,13 +3,37 @@
 This guide covers comprehensive series configuration in Syncfusion ASP.NET Core Charts, including multiple series, series types, combination charts, empty points handling, and performance optimization.
 
 ## Table of Contents
+
 - [Basic Series Configuration](#basic-series-configuration)
+  - [Single Series](#single-series)
 - [Multiple Series](#multiple-series)
+  - [Basic Multiple Series](#basic-multiple-series)
+  - [Multiple Series with Different Axes](#multiple-series-with-different-axes)
 - [Series Types and Properties](#series-types-and-properties)
+  - [Column Series](#column-series)
+  - [Line Series with Markers](#line-series-with-markers)
+  - [Area Series](#area-series)
+  - [Stacked Series](#stacked-series)
+  - [Spline Series](#spline-series)
 - [Combination Charts](#combination-charts)
+  - [Column and Line Combination](#column-and-line-combination)
+  - [Stacked Column and Line](#stacked-column-and-line)
+  - [Area and Column Combination](#area-and-column-combination)
 - [Empty Points Handling](#empty-points-handling)
+  - [Fill Empty Points](#fill-empty-points)
+  - [Average Mode](#average-mode)
+  - [Zero Mode](#zero-mode)
+  - [Custom Empty Point Style](#custom-empty-point-style)
 - [Series Customization](#series-customization)
+  - [Custom Colors](#custom-colors)
+  - [Point Color Mapping](#point-color-mapping)
+  - [Series Opacity and Border](#series-opacity-and-border)
+  - [Corner Radius](#corner-radius)
 - [Performance Optimization](#performance-optimization)
+  - [Enable Animation Selectively](#enable-animation-selectively)
+  - [Optimize Data Source](#optimize-data-source)
+  - [Lazy Loading for Large Datasets](#lazy-loading-for-large-datasets)
+  - [Reduce Marker Count](#reduce-marker-count)
 - [When to Use](#when-to-use)
 
 ## Basic Series Configuration

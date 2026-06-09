@@ -1,12 +1,25 @@
 # Appearance and Customization
 
 ## Table of Contents
+
 - [Themes](#themes)
 - [Chart Dimensions](#chart-dimensions)
+  - [Width and Height](#width-and-height)
+  - [Responsive](#responsive)
 - [Background and Border](#background-and-border)
+  - [Chart Background](#chart-background)
+  - [Chart Border](#chart-border)
+  - [Chart Area](#chart-area)
 - [Colors and Gradients](#colors-and-gradients)
+  - [Gradient Fill](#gradient-fill)
 - [Chart Title](#chart-title)
+  - [Basic Title](#basic-title)
+  - [Title Customization](#title-customization)
+  - [Subtitle](#subtitle)
 - [Print and Export](#print-and-export)
+  - [Print](#print)
+  - [Export to Image](#export-to-image)
+  - [Export to PDF](#export-to-pdf)
 
 ## Themes
 

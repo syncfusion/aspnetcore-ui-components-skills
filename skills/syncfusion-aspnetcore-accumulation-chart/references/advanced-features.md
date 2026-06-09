@@ -3,6 +3,7 @@
 This guide covers advanced capabilities including annotations, export, print functionality, and migration guidance.
 
 ## Table of Contents
+- [Table of Contents](#table-of-contents)
 - [Annotations](#annotations)
   - [Basic Annotations](#basic-annotations)
   - [Region Positioning](#region-positioning)
@@ -17,7 +18,18 @@ This guide covers advanced capabilities including annotations, export, print fun
   - [Export Options](#export-options)
 - [Print](#print)
 - [EJ1 to EJ2 Migration](#ej1-to-ej2-migration)
+  - [Key API Changes](#key-api-changes)
+  - [EJ1 Code Example](#ej1-code-example)
+  - [EJ2 Code Example](#ej2-code-example)
+  - [Migration Benefits](#migration-benefits)
+  - [Common Migration Issues](#common-migration-issues)
 - [Performance Optimization](#performance-optimization)
+  - [Reduce Data Points](#reduce-data-points)
+  - [Disable Animations for Large Datasets](#disable-animations-for-large-datasets)
+  - [Optimize Data Queries](#optimize-data-queries)
+  - [Enable Smart Labels Selectively](#enable-smart-labels-selectively)
+  - [Debounce Dynamic Updates](#debounce-dynamic-updates)
+  - [Cache Data Client-Side](#cache-data-client-side)
 - [Complete Advanced Example](#complete-advanced-example)
 
 ## Annotations

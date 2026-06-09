@@ -1,17 +1,45 @@
 # Bubbles
 
 ## Table of Contents
+
 - [Overview](#overview)
 - [Adding Bubbles](#adding-bubbles)
+  - [Basic Bubble Setup](#basic-bubble-setup)
+  - [Bubble Data Structure](#bubble-data-structure)
 - [Bubble Sizing](#bubble-sizing)
+  - [Value Path](#value-path)
+  - [Radius Range](#radius-range)
+  - [Example: Population Bubbles](#example-population-bubbles)
 - [Bubble Shapes](#bubble-shapes)
+  - [Circle (Default)](#circle-default)
+  - [Square](#square)
 - [Bubble Customization](#bubble-customization)
+  - [Fill Color](#fill-color)
+  - [Color by Value (Color Value Path)](#color-by-value-color-value-path)
+  - [Border Styling](#border-styling)
+  - [Animation](#animation)
 - [Bubble Tooltips](#bubble-tooltips)
+  - [Basic Tooltip](#basic-tooltip)
+  - [Custom Tooltip Template](#custom-tooltip-template)
+  - [Styled Tooltip](#styled-tooltip)
 - [Multiple Bubble Sets](#multiple-bubble-sets)
 - [Bubble Selection](#bubble-selection)
 - [Complete Examples](#complete-examples)
+  - [Example 1: World Population Bubbles](#example-1-world-population-bubbles)
+  - [Example 2: Sales Performance by Region](#example-2-sales-performance-by-region)
 - [Best Practices](#best-practices)
+  - [1. Choose Appropriate Radius Range](#1-choose-appropriate-radius-range)
+  - [2. Use Opacity for Overlapping Bubbles](#2-use-opacity-for-overlapping-bubbles)
+  - [3. Limit Data Points](#3-limit-data-points)
+  - [4. Color Coding](#4-color-coding)
+  - [5. Provide Clear Tooltips](#5-provide-clear-tooltips)
 - [Troubleshooting](#troubleshooting)
+  - [Bubbles Not Appearing](#bubbles-not-appearing)
+  - [All Bubbles Same Size](#all-bubbles-same-size)
+  - [Bubbles in Wrong Location](#bubbles-in-wrong-location)
+  - [Tooltip Shows Undefined](#tooltip-shows-undefined)
+  - [Performance Issues](#performance-issues)
+
 
 ## Overview
 

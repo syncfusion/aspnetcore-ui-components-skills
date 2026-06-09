@@ -1,13 +1,30 @@
 # Axes Configuration
 
 ## Table of Contents
+
 - [Overview](#overview)
 - [Axis Types](#axis-types)
+  - [Numeric Axis](#numeric-axis)
+  - [Category Axis](#category-axis)
+  - [DateTime Axis](#datetime-axis)
+  - [DateTimeCategory Axis](#datetimecategory-axis)
+  - [Logarithmic Axis](#logarithmic-axis)
 - [Multiple Axes](#multiple-axes)
+  - [Multiple Y Axes](#multiple-y-axes)
+  - [Multiple X Axes](#multiple-x-axes)
 - [Axis Customization](#axis-customization)
+  - [Axis Title](#axis-title)
+  - [Title Rotation](#title-rotation)
+  - [Axis Line](#axis-line)
+  - [Grid Lines](#grid-lines)
+  - [Tick Lines](#tick-lines)
 - [Axis Crossing](#axis-crossing)
 - [Inversed Axis](#inversed-axis)
 - [Axis Range and Interval](#axis-range-and-interval)
+  - [Set Range](#set-range)
+  - [Desired Intervals](#desired-intervals)
+  - [Maximum Labels](#maximum-labels)
+  - [Range Padding](#range-padding)
 
 ## Overview
 

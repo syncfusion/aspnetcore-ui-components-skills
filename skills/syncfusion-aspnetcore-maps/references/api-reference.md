@@ -10,13 +10,72 @@
 
 ## Table of Contents
 
-1. [Maps Class API](#maps-class-api)
-2. [MapsLayer Configuration](#mapslayer-configuration)
-3. [Data and Binding Classes](#data-and-binding-classes)
-4. [Styling and Appearance Classes](#styling-and-appearance-classes)
-5. [Events Reference](#events-reference)
-6. [Enumerations](#enumerations)
-7. [Related Classes and Namespaces](#related-classes-and-namespaces)
+- [Maps Class API](#maps-class-api)
+  - [Constructor](#constructor)
+  - [Properties (63 Total)](#properties-63-total)
+    - [Container & Display Properties](#container--display-properties)
+    - [Positioning & View Properties](#positioning-view-properties)
+    - [Styling & Theme Properties](#styling-theme-properties)
+    - [Map Configuration Properties](#map-configuration-properties)
+    - [UI Elements Configuration](#ui-elements-configuration)
+    - [Export & Print Properties](#export--print-properties)
+    - [Localization & Accessibility](#localization--accessibility)
+    - [State Management](#state-management)
+    - [Formatting Properties](#formatting-properties)
+- [MapsLayer Configuration](#mapslayer-configuration)
+  - [MapsLayer Properties](#mapslayer-properties)
+    - [Data Source & Binding](#data-source--binding)
+    - [Visualization Settings](#visualization-settings)
+    - [Interaction Settings](#interaction-settings)
+    - [Layer Control](#layer-control)
+- [Data and Binding Classes](#data-and-binding-classes)
+  - [MapsColorMapping](#mapscolormapping)
+  - [MapsDataLabelSettings](#mapsdatalabelsettings)
+  - [MapsMarker](#mapsmarker)
+  - [MapsBubble](#mapsbubble)
+  - [MapsNavigationLine](#mapsnavigationline)
+- [Styling and Appearance Classes](#styling-and-appearance-classes)
+  - [MapsZoomSettings](#mapszoomsettings)
+  - [MapsShapeSettings](#mapsshapesettings)
+  - [MapsLegendSettings](#mapslegendsettings)
+  - [MapsTitleSettings](#mapstitlesettings)
+  - [MapsTooltipSettings](#mapstooltipsettings)
+  - [MapsAnnotation](#mapsannotation)
+- [Events Reference](#events-reference)
+  - [Rendering Lifecycle Events](#rendering-lifecycle-events)
+  - [User Interaction Events](#user-interaction-events)
+  - [Selection & Highlighting Events](#selection--highlighting-events)
+  - [Marker Events](#marker-events)
+  - [Bubble Events](#bubble-events)
+  - [Legend & Tooltip Events](#legend--tooltip-events)
+  - [Pan & Zoom Events](#pan--zoom-events)
+  - [Other Events](#other-events)
+- [Enumerations](#enumerations)
+  - [ProjectionType](#projectiontype)
+  - [MarkerType](#markertype)
+  - [MapsTheme](#mapstheme)
+  - [TooltipGesture](#tooltipgesture)
+  - [LegendPosition](#legendposition)
+  - [LegendType](#legendtype)
+  - [LegendArrangement](#legendarrangement)
+  - [LabelPosition](#labelposition)
+  - [IntersectAction](#intersectaction)
+  - [SmartLabelMode](#smartlabelmode)
+  - [Alignment](#alignment)
+  - [Type](#type)
+- [Related Classes and Namespaces](#related-classes-and-namespaces)
+  - [Core Supporting Classes](#core-supporting-classes)
+  - [Shape & Interaction Classes](#shape--interaction-classes)
+  - [Marker-Related Classes](#marker-related-classes)
+  - [Area & Display Classes](#area--display-classes)
+  - [Built-in Themes & Palettes](#built-in-themes--palettes)
+- [Usage Patterns](#usage-patterns)
+  - [Basic Map Configuration](#basic-map-configuration)
+  - [Choropleth with Data Binding](#choropleth-with-data-binding)
+  - [Markers with Tooltips](#markers-with-tooltips)
+  - [Interactive Zoom and Pan](#interactive-zoom-and-pan)
+- [Namespace Information](#namespace-information)
+- [Additional Resources](#additional-resources)
 
 ---
 
@@ -40,12 +99,11 @@ public Maps()
 
 | Property | Type | Default | Description | API Link |
 |----------|------|---------|-------------|----------|
-| Id | string | null | Component ID attribute | [Link](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Maps.Maps.html) |
 | Width | string | null | Width of maps container (px, %, em) | [Link](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Maps.Maps.html#Syncfusion_EJ2_Maps_Maps_Width) |
 | Height | string | null | Height of maps container (px, %, em) | [Link](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Maps.Maps.html#Syncfusion_EJ2_Maps_Maps_Height) |
 | Background | string | null | Background color of map container | [Link](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Maps.Maps.html#Syncfusion_EJ2_Maps_Maps_Background) |
 | TabIndex | double | 0 | Tab navigation index | [Link](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Maps.Maps.html#Syncfusion_EJ2_Maps_Maps_TabIndex) |
-| HtmlAttributes | object | null | Custom HTML attributes (title, data-*, etc.) | [Link](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Maps.Maps.html#Syncfusion_EJ2_Maps_Maps_HtmlAttributes) |
+| HtmlAttributes | object | - | Custom HTML attributes (title, data-*, etc.) | [Link](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Maps.Maps.html#Syncfusion_EJ2_Maps_Maps_HtmlAttributes) |
 
 #### Positioning & View Properties
 
@@ -92,7 +150,7 @@ public Maps()
 
 | Property | Type | Default | Description | API Link |
 |----------|------|---------|-------------|----------|
-| Locale | string | "en-US" | Language locale code for internationalization | [Link](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Maps.Maps.html#Syncfusion_EJ2_Maps_Maps_Locale) |
+| Locale | string | "" | Language locale code for internationalization | [Link](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Maps.Maps.html#Syncfusion_EJ2_Maps_Maps_Locale) |
 | Description | string | null | Accessibility description for screen readers | [Link](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Maps.Maps.html#Syncfusion_EJ2_Maps_Maps_Description) |
 | Format | string | null | Format string for internationalized text | [Link](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Maps.Maps.html#Syncfusion_EJ2_Maps_Maps_Format) |
 | EnableRtl | bool | false | Enable right-to-left rendering for RTL languages | [Link](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Maps.Maps.html#Syncfusion_EJ2_Maps_Maps_EnableRtl) |
@@ -125,10 +183,9 @@ public Maps()
 |-------------------|----------|-----------|--------------------------------------------|----------|
 | DataSource        | object   | null      | Data to bind with shapes and elements      | [Link](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Maps.MapsLayer.html#Syncfusion_EJ2_Maps_MapsLayer_DataSource) |
 | ShapeData         | object   | null      | GeoJSON or geometry data for shapes        | [Link](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Maps.MapsLayer.html#Syncfusion_EJ2_Maps_MapsLayer_ShapeData) |
-| ShapeDataPath     | string   | null      | Data property path to match with shapes    | [Link](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Maps.MapsLayer.html#Syncfusion_EJ2_Maps_MapsLayer_ShapeDataPath) |
-| ShapePropertyPath | string[] | null      | Shape property paths to match with data    | [Link](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Maps.MapsLayer.html#Syncfusion_EJ2_Maps_MapsLayer_ShapePropertyPath) |
+| ShapeDataPath     | string   | "name"      | Data property path to match with shapes    | [Link](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Maps.MapsLayer.html#Syncfusion_EJ2_Maps_MapsLayer_ShapeDataPath) |
+| ShapePropertyPath | object | null      | Shape property paths to match with data    | [Link](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Maps.MapsLayer.html#Syncfusion_EJ2_Maps_MapsLayer_ShapePropertyPath) |
 | Type              | Type     | Layer     | Layer type (Layer, SubLayer)               | [Link](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Maps.MapsLayer.html#Syncfusion_EJ2_Maps_MapsLayer_Type) |
-| LayerType         | string   | Geometry  | Layer provider type (Geometry, Bing, OSM)  | [Link](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Maps.MapsLayer.html#Syncfusion_EJ2_Maps_MapsLayer_LayerType) |
 
 ---
 
@@ -173,10 +230,10 @@ Defines color mapping rules for data-driven visualization.
 ```csharp
 public class MapsColorMapping
 {
-    public object From { get; set; }           // Minimum range value
-    public object To { get; set; }             // Maximum range value
-    public string Color { get; set; }          // Color to apply
-    public object Value { get; set; }          // Specific value to match
+    public double From { get; set; }           // Minimum range value
+    public double To { get; set; }             // Maximum range value
+    public object Color { get; set; }          // Color to apply
+    public string Value { get; set; }          // Specific value to match
     public string Label { get; set; }          // Legend label
     public double? MinOpacity { get; set; }    // Min opacity for desaturation
     public double? MaxOpacity { get; set; }    // Max opacity for desaturation
@@ -199,14 +256,14 @@ public class MapsDataLabelSettings
 {
     public bool Visible { get; set; }                    // Show/hide labels
     public string LabelPath { get; set; }                // Data property for label text
-    public LabelPosition Position { get; set; }          // Label position
     public string Fill { get; set; }                     // Label background color
+    public double Rx { get; set; }                       // Gets or sets the x position for the data labels
+    public double Ry { get; set; }                       // Gets or sets the y position for the data labels in maps
     public MapsFont TextStyle { get; set; }              // Label font styling
     public IntersectAction IntersectAction { get; set; } // Handle overlapping labels
     public SmartLabelMode SmartLabelMode { get; set; }   // Smart label mode
-    public string BorderColor { get; set; }              // Border color
-    public double BorderWidth { get; set; }              // Border width
-    public bool AnimationDuration { get; set; }          // Animation duration
+    public MapsBorder Border { get; set; }              // Border color
+    public double AnimationDuration { get; set; }          // Animation duration
 }
 ```
 
@@ -220,16 +277,16 @@ Defines point markers on the map.
 public class MapsMarker
 {
     public object DataSource { get; set; }                    // Marker data
-    public double Latitude { get; set; }                      // Latitude coordinate
-    public double Longitude { get; set; }                     // Longitude coordinate
+    public string LatitudeValuePath { get; set; }                      // Latitude coordinate
+    public string LongitudeValuePath { get; set; }                     // Longitude coordinate
     public MarkerType Shape { get; set; }                     // Marker shape
     public double Width { get; set; }                         // Marker width
     public double Height { get; set; }                        // Marker height
     public string Fill { get; set; }                          // Fill color
     public string ImageUrl { get; set; }                      // Image URL for image markers
-    public string Border { get; set; }                        // Border styling
-    public bool Draggable { get; set; }                       // Enable drag
-    public MapsMarkerClusterSettings ClusterSettings { get; set; } // Clustering config
+    public MapsBorder Border { get; set; }                        // Border styling
+    public bool EnableDrag { get; set; }                       // Enable drag
+    public object ClusterSettings { get; set; }                // Clustering config
     public MapsTooltipSettings TooltipSettings { get; set; }  // Tooltip config
 }
 ```
@@ -245,10 +302,9 @@ public class MapsBubble
 {
     public object DataSource { get; set; }                  // Bubble data
     public string ColorValuePath { get; set; }              // Property for color
-    public string SizeValuePath { get; set; }               // Property for size
+    public string ValuePath { get; set; }                   // Property for size
     public double MinRadius { get; set; }                   // Minimum bubble radius
     public double MaxRadius { get; set; }                   // Maximum bubble radius
-    public string Palette { get; set; }                     // Color palette
     public double Opacity { get; set; }                     // Opacity (0-1)
     public List<MapsColorMapping> ColorMapping { get; set; } // Color mapping rules
 }
@@ -263,15 +319,14 @@ Defines navigation lines connecting locations.
 ```csharp
 public class MapsNavigationLine
 {
-    public object DataSource { get; set; }              // Line data
-    public double Latitude { get; set; }                // Start latitude
-    public double Longitude { get; set; }               // Start longitude
-    public double[] EndLatitude { get; set; }           // End latitude array
-    public double[] EndLongitude { get; set; }          // End longitude array
+    public double[] Latitude { get; set; }              // Start latitude
+    public double[] Longitude { get; set; }             // Start longitude
     public string Stroke { get; set; }                  // Line color
     public double StrokeWidth { get; set; }             // Line width
     public MapsArrow ArrowSettings { get; set; }        // Arrow configuration
     public bool Visible { get; set; }                   // Show/hide line
+    public MapsSelectionSettings SelectionSettings { get; set; }  // selection settings of the navigation line
+    public MapsHighlightSettings HighlightSettings { get; set; }  // highlight settings of the navigation line
 }
 ```
 
@@ -292,13 +347,11 @@ public class MapsZoomSettings
     public double ZoomFactor { get; set; }              // Zoom increment factor
     public double MinZoom { get; set; }                 // Minimum zoom level
     public double MaxZoom { get; set; }                 // Maximum zoom level
-    public bool EnableMouseWheelZoom { get; set; }      // Mouse wheel zoom
-    public bool EnablePinchZoom { get; set; }           // Touch pinch zoom
+    public bool MouseWheelZoom { get; set; }            // Mouse wheel zoom
+    public bool PinchZooming { get; set; }              // Touch pinch zoom
     public bool EnableSelectionZooming { get; set; }    // Draw-to-zoom
-    public bool EnableDoubleTapZoom { get; set; }       // Double tap zoom
-    public string[] Toolbars { get; set; }              // Toolbar buttons
-    public string ToolbarOrientation { get; set; }      // Toolbar orientation
-    public MapsButtonSettings ButtonSettings { get; set; } // Toolbar button styling
+    public bool DoubleClickZoom { get; set; }           // Double tap zoom
+    public object ToolbarSettings { get; set; }         // Toolbar buttons
 }
 ```
 
@@ -311,15 +364,14 @@ Configures shape styling and appearance.
 ```csharp
 public class MapsShapeSettings
 {
-    public string Fill { get; set; }                    // Shape fill color
-    public double Opacity { get; set; }                 // Opacity (0-1)
-    public string BorderWidth { get; set; }             // Border width
-    public string BorderColor { get; set; }             // Border color
-    public string BorderOpacity { get; set; }           // Border opacity
-    public string DashArray { get; set; }               // Dash pattern
-    public string[] Palette { get; set; }               // Color palette
-    public string ColorValuePath { get; set; }          // Property for coloring
-    public List<MapsColorMapping> ColorMapping { get; set; } // Color mapping
+    public string Fill { get; set; }                                  // Shape fill color
+    public double Opacity { get; set; }                               // Opacity (0-1)
+    public string BorderWidthValuePath { get; set; }                  // Border width
+    public string BorderColorValuePath { get; set; }                  // Border color
+    public string DashArray { get; set; }                             // Dash pattern
+    public string[] Palette { get; set; }                             // Color palette
+    public string ColorValuePath { get; set; }                        // Property for coloring
+    public List<MapsColorMapping> ColorMapping { get; set; }          // Color mapping
 }
 ```
 
@@ -335,12 +387,12 @@ public class MapsLegendSettings
     public bool Visible { get; set; }                   // Show/hide legend
     public LegendType Type { get; set; }                // Legend type
     public LegendPosition Position { get; set; }        // Legend position
-    public LegendArrangement Arrangement { get; set; }  // Horizontal/Vertical
-    public double Height { get; set; }                  // Legend height
-    public double Width { get; set; }                   // Legend width
-    public string Mode { get; set; }                    // Interactive mode
+    public Alignment Alignment { get; set; }            // Horizontal/Vertical
+    public string Height { get; set; }                  // Legend height
+    public string Width { get; set; }                   // Legend width
+    public LegendMode Mode { get; set; }                // Interactive mode
     public MapsFont TextStyle { get; set; }             // Text styling
-    public string Title { get; set; }                   // Legend title
+    public MapsCommonTitleSettings Title { get; set; }  // Legend title
     public MapsFont TitleStyle { get; set; }            // Title styling
 }
 ```
@@ -358,7 +410,7 @@ public class MapsTitleSettings
     public Alignment Alignment { get; set; }            // Text alignment
     public string Description { get; set; }             // Title description
     public MapsFont TextStyle { get; set; }             // Font styling
-    public MapsTitleSettings SubTitleSettings { get; set; } // Subtitle
+    public MapsSubTitleSettings SubTitleSettings { get; set; } // Subtitle
 }
 ```
 
@@ -375,10 +427,8 @@ public class MapsTooltipSettings
     public string ValuePath { get; set; }               // Data property for tooltip
     public string Template { get; set; }                // HTML template
     public MapsFont TextStyle { get; set; }             // Font styling
-    public string BorderColor { get; set; }             // Border color
-    public double BorderWidth { get; set; }             // Border width
-    public string BackgroundColor { get; set; }         // Background color
-    public double Opacity { get; set; }                 // Opacity
+    public MapsBorder Border { get; set; }              // Border color
+    public string Fill { get; set; }                    // Background color
 }
 ```
 
@@ -391,12 +441,12 @@ Defines custom HTML overlays on map.
 ```csharp
 public class MapsAnnotation
 {
-    public double Latitude { get; set; }                // Y-axis (latitude)
-    public double Longitude { get; set; }               // X-axis (longitude)
+    public string Y { get; set; }                       // y position of the annotation in pixel or percentage
+    public string X { get; set; }                       // x position of the annotation in pixel or percentage
     public string Content { get; set; }                 // HTML content
     public AnnotationAlignment VerticalAlignment { get; set; } // Vertical align
     public AnnotationAlignment HorizontalAlignment { get; set; } // Horizontal align
-    public double ZIndex { get; set; }                  // Z-index for layering
+    public string ZIndex { get; set; }                  // Z-index for layering
 }
 ```
 
@@ -493,11 +543,13 @@ Map projection types for different geographical representations.
 public enum ProjectionType
 {
     Mercator,                    // Web Mercator (default)
-    EquirectangularProjection,  // Plate Carée
-    MercatorProjection,          // Mercator
+    Equirectangular,             // Plate Carée
     Miller,                       // Miller cylindrical
-    NaturalEarth1,               // Natural Earth
-    NaturalEarth2                // Natural Earth 2
+    Eckert3,               
+    Eckert5,  
+    Eckert6,  
+    Winkel3,
+    AitOff             
 }
 ```
 
@@ -513,8 +565,8 @@ public enum MarkerType
     Triangle,   // Triangular marker
     Diamond,    // Diamond-shaped marker
     Image,      // Custom image
-    Letter,     // Letter/character marker
-    Template    // Custom template
+    HorizontalLine,     // HorizontalLine marker
+    Cross        // Cross marker
 }
 ```
 
@@ -558,7 +610,8 @@ public enum LegendPosition
     Top,
     Bottom,
     Left,
-    Right
+    Right,
+    Float
 }
 ```
 
@@ -583,7 +636,8 @@ Legend arrangement direction.
 public enum LegendArrangement
 {
     Horizontal,  // Horizontal layout
-    Vertical     // Vertical layout
+    Vertical,    // Vertical layout
+    None
 }
 ```
 
@@ -594,9 +648,8 @@ Data label positioning on shapes.
 ```csharp
 public enum LabelPosition
 {
-    Near,
-    Center,
-    Far
+    After,
+    Before
 }
 ```
 
@@ -709,7 +762,7 @@ public enum Type
 
 ### Basic Map Configuration
 
-```csharp
+```cshtml
 <ejs-maps id="maps">
     <e-maps-layers>
         <e-maps-layer shapeData="@worldMapData">
@@ -721,7 +774,7 @@ public enum Type
 
 ### Choropleth with Data Binding
 
-```csharp
+```cshtml
 var colorMapping = new List<MapsColorMapping> {
     new MapsColorMapping { From = 0, To = 100, Color = "#F0E68C" },
     new MapsColorMapping { From = 100, To = 500, Color = "#CD853F" }
@@ -735,7 +788,7 @@ var colorMapping = new List<MapsColorMapping> {
 
 ### Markers with Tooltips
 
-```csharp
+```cshtml
 <e-layersettings-markersettings>
     <e-layersettings-markersetting dataSource="@cities" shape="Circle">
         <e-layersettings-markersetting-tooltipsettings visible="true" valuePath="Name">
@@ -746,10 +799,10 @@ var colorMapping = new List<MapsColorMapping> {
 
 ### Interactive Zoom and Pan
 
-```csharp
+```cshtml
 <e-maps-zoomsettings enable="true" 
-                     enableMouseWheelZoom="true" 
-                     enablePinchZoom="true"
+                     MouseWheelZoom="true" 
+                     PinchZooming="true"
                      toolbars='new string[] {"Zoom", "ZoomIn", "ZoomOut", "Pan"}'>
 </e-maps-zoomsettings>
 ```
@@ -769,6 +822,5 @@ var colorMapping = new List<MapsColorMapping> {
 
 - **Official Documentation:** https://ej2.syncfusion.com/aspnetcore/documentation/maps/getting-started
 - **API Reference (Complete):** https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Maps.html
-- **Sample Projects:** https://github.com/SyncfusionExamples/ej2-aspnetcore-samples/tree/master/Pages/Maps
 - **Getting Started:** https://ej2.syncfusion.com/aspnetcore/documentation/maps/getting-started
 

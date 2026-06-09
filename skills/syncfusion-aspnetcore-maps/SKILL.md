@@ -12,6 +12,65 @@ metadata:
 
 The Syncfusion Maps component is a powerful tool for visualizing geographical data using Scalable Vector Graphics (SVG). It supports GeoJSON data, multiple layers, map providers (Bing, Azure, OpenStreetMap), and rich interactive features like zooming, panning, tooltips, and selection.
 
+## Table of Contents
+
+- [When to Use This Skill](#when-to-use-this-skill)
+- [Component Overview](#component-overview)
+- [Documentation and Navigation Guide](#documentation-and-navigation-guide)
+  - [Getting Started and Installation](#getting-started-and-installation)
+  - [Layers and GeoJSON Data](#layers-and-geojson-data)
+  - [Data Binding and Population](#data-binding-and-population)
+  - [Markers](#markers)
+  - [Bubbles](#bubbles)
+  - [Data Labels](#data-labels)
+  - [Color Mapping](#color-mapping)
+  - [Legend](#legend)
+  - [Annotations](#annotations)
+  - [User Interactions](#user-interactions)
+  - [Map Providers Integration](#map-providers-integration)
+  - [Advanced Features](#advanced-features)
+- [Quick Start Example](#quick-start-example)
+  - [Basic Map with GeoJSON and Color Mapping](#basic-map-with-geojson-and-color-mapping)
+  - [Map with Markers](#map-with-markers)
+- [API Reference](#api-reference)
+  - [Maps Class](#maps-class)
+    - [Core Properties (63 total)](#core-properties-63-total)
+    - [Maps Events (28 total)](#maps-events-28-total)
+  - [MapsLayer Class](#mapslayer-class)
+    - [Key Properties of MapsLayer](#key-properties-of-mapslayer)
+  - [MapsZoomSettings Class](#mapszoomsettings-class)
+    - [Key Properties of MapsZoomSettings](#key-properties-of-mapszoomsettings)
+  - [MapsShapeSettings Class](#mapsshapesettings-class)
+    - [Key Properties of MapsShapeSettings](#key-properties-of-mapsshapesettings)
+  - [MapsMarker Class](#mapsmarker-class)
+    - [Key Properties of MapsMarker](#key-properties-of-mapsmarker)
+  - [Related Classes (40+ classes available)](#related-classes-40-classes-available)
+  - [Enumerations](#enumerations)
+    - [ProjectionType](#projectiontype)
+    - [MarkerType](#markertype)
+    - [MapsTheme](#mapstheme)
+    - [TooltipGesture](#tooltipgesture)
+    - [LegendType](#legendtype)
+- [Common Patterns](#common-patterns)
+  - [Pattern 1: Choropleth Map with Data Binding](#pattern-1-choropleth-map-with-data-binding)
+  - [Pattern 2: Interactive Map with Zoom and Selection](#pattern-2-interactive-map-with-zoom-and-selection)
+  - [Pattern 3: Multiple Data Layers](#pattern-3-multiple-data-layers)
+  - [Pattern 4: Bing Maps Integration](#pattern-4-bing-maps-integration)
+- [Key Properties Reference](#key-properties-reference)
+  - [Essential Properties](#essential-properties)
+  - [Layer Configuration](#layer-configuration)
+  - [Interaction Settings](#interaction-settings)
+- [Common Use Cases](#common-use-cases)
+  - [Use Case 1: Sales Dashboard by Region](#use-case-1-sales-dashboard-by-region)
+  - [Use Case 2: Store Locator](#use-case-2-store-locator)
+  - [Use Case 3: Population Density Visualization](#use-case-3-population-density-visualization)
+  - [Use Case 4: Election Results Map](#use-case-4-election-results-map)
+  - [Use Case 5: Shipping Routes Visualization](#use-case-5-shipping-routes-visualization)
+  - [Use Case 6: Weather Map Dashboard](#use-case-6-weather-map-dashboard)
+  - [Use Case 7: Real Estate Property Map](#use-case-7-real-estate-property-map)
+- [Related Components](#related-components)
+- [Additional Resources](#additional-resources)
+
 ## When to Use This Skill
 
 Use the Syncfusion Maps component when you need to:
@@ -396,7 +455,7 @@ Defines the configuration for individual map layers supporting geometry data, ma
 
 **[Official API Reference](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Maps.MapsLayer.html)**
 
-#### Key Properties
+#### Key Properties of MapsLayer
 
 | Property | Type | Default | Description |
 |----------|------|---------|-------------|
@@ -421,7 +480,7 @@ Manages map zoom and pan behavior.
 
 **[Official API Reference](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Maps.MapsZoomSettings.html)**
 
-#### Key Properties
+#### Key Properties of MapsZoomSettings
 
 | Property | Type | Default | Description |
 |----------|------|---------|-------------|
@@ -442,7 +501,7 @@ Configures appearance and behavior of shapes in the map.
 
 **[Official API Reference](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Maps.MapsShapeSettings.html)**
 
-#### Key Properties
+#### Key Properties of MapsShapeSettings
 
 | Property | Type | Default | Description |
 |----------|------|---------|-------------|
@@ -459,7 +518,7 @@ Defines markers to be displayed on the map at specified coordinates.
 
 **[Official API Reference](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Maps.MapsMarker.html)**
 
-#### Key Properties
+#### Key Properties of MapsMarker
 
 | Property | Type | Default | Description |
 |----------|------|---------|-------------|

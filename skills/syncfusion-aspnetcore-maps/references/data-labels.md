@@ -1,15 +1,42 @@
 # Data Labels
 
 ## Table of Contents
+
 - [Overview](#overview)
 - [Enabling Data Labels](#enabling-data-labels)
+  - [Basic Shape Labels](#basic-shape-labels)
+  - [Label Path](#label-path)
+  - [Labels with Data Binding](#labels-with-data-binding)
 - [Smart Label Modes](#smart-label-modes)
+  - [Trim Mode](#trim-mode)
+  - [Hide Mode](#hide-mode)
+  - [None Mode](#none-mode)
+  - [Comparison Example](#comparison-example)
 - [Label Styling](#label-styling)
-- [Template-Based Labels](#template-based-labels)
+  - [Font Customization](#font-customization)
+  - [Border and Background](#border-and-background)
+  - [Complete Styling Example](#complete-styling-example)
+- [Template-Based Label](#template-based-label)
+  - [Basic Template](#basic-template)
 - [Intersection Actions](#intersection-actions)
+  - [Hide on Intersection](#hide-on-intersection)
+  - [Trim on Intersection](#trim-on-intersection)
+  - [None (Allow Overlap)](#none-allow-overlap)
 - [Complete Examples](#complete-examples)
+  - [Example 1: US States with Names and Codes](#example-1-us-states-with-names-and-codes)
+  - [Example 2: Population Data with Formatted Labels](#example-2-population-data-with-formatted-labels)
 - [Best Practices](#best-practices)
+  - [1. Use Smart Label Modes](#1-use-smart-label-modes)
+  - [2. Font Size Guidelines](#2-font-size-guidelines)
+  - [3. Readability](#3-readability)
+  - [4. Performance](#4-performance)
+  - [5. Accessibility](#5-accessibility)
 - [Troubleshooting](#troubleshooting)
+  - [Labels Not Showing](#labels-not-showing)
+  - [Label Text is Wrong Property](#label-text-is-wrong-property)
+  - [Labels Overlapping](#labels-overlapping)
+  - [Template Not Rendering](#template-not-rendering)
+  - [Poor Performance with Many Labels](#poor-performance-with-many-labels)
 
 ## Overview
 

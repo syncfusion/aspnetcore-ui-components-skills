@@ -169,9 +169,12 @@ Use this skill when you need to:
 
 ### Taskbar
 📄 **Read:** [references/taskbar.md](references/taskbar.md)
-- Taskbar height, custom templates, milestone appearance
-- Progress bar customization and connector line configuration
-- Segment taskbars (split tasks) rendering
+- Taskbar templates using `text/x-jsrender` (`taskbarTemplate`, `parentTaskbarTemplate`, `milestoneTemplate`)
+- Control taskbar size with `taskbarHeight` (must be less than `rowHeight`)
+- Dynamic taskbar/progress styling with `queryTaskbarInfo` (e.g., `taskbarBgColor`, `progressBarBgColor`, `isCritical`)
+- Change the drag gripper icon via CSS overrides
+- Customize dependency connector lines with `connectorLineWidth` and `connectorLineBackground`
+- Multi-taskbar display in project view using `enableMultiTaskbar="true"`
 
 ### Labels and Tooltips
 📄 **Read:** [references/labels-and-tooltips.md](references/labels-and-tooltips.md)

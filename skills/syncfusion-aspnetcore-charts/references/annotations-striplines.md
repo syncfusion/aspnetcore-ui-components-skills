@@ -3,14 +3,37 @@
 This guide covers comprehensive annotations and striplines configuration in Syncfusion ASP.NET Core Charts, including text, shapes, images, positioning, stripline patterns, and customization options.
 
 ## Table of Contents
+
 - [Chart Annotations](#chart-annotations)
+  - [Basic Text Annotation](#basic-text-annotation)
+  - [Multiple Annotations](#multiple-annotations)
 - [Text Annotations](#text-annotations)
+  - [Styled Text Annotation](#styled-text-annotation)
+  - [Text with Arrow](#text-with-arrow)
+  - [Multi-Line Text Annotation](#multi-line-text-annotation)
 - [Shape Annotations](#shape-annotations)
+  - [Circle Annotation](#circle-annotation)
+  - [Rectangle Annotation](#rectangle-annotation)
+  - [Custom SVG Shape](#custom-svg-shape)
 - [Image Annotations](#image-annotations)
+  - [Basic Image Annotation](#basic-image-annotation)
+  - [Image with Text](#image-with-text)
 - [Annotation Positioning](#annotation-positioning)
+  - [Point Coordinate Units](#point-coordinate-units)
+  - [Pixel Coordinate Units](#pixel-coordinate-units)
+  - [Alignment Options](#alignment-options)
 - [Striplines Basics](#striplines-basics)
+  - [Horizontal Stripline](#horizontal-stripline)
+  - [Vertical Stripline](#vertical-stripline)
+  - [Multiple Striplines](#multiple-striplines)
 - [Stripline Patterns](#stripline-patterns)
+  - [Recurrence Striplines](#recurrence-striplines)
+  - [Segmented Stripline](#segmented-stripline)
+  - [Stripline with Border](#stripline-with-border)
 - [Advanced Striplines](#advanced-striplines)
+  - [Stripline with Custom Text Position](#stripline-with-custom-text-position)
+  - [Gradient Stripline](#gradient-stripline)
+  - [Combined Annotations and Striplines](#combined-annotations-and-striplines)
 - [When to Use](#when-to-use)
 
 ## Chart Annotations

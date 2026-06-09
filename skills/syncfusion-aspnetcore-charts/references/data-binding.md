@@ -1,14 +1,37 @@
 # Data Binding
 
 ## Table of Contents
+
 - [Overview](#overview)
 - [Local Data Sources](#local-data-sources)
+  - [Simple Object Array](#simple-object-array)
+  - [Strongly Typed Model](#strongly-typed-model)
+  - [From Database Entity Framework](#from-database-entity-framework)
+  - [Multiple Series with Different Data Sources](#multiple-series-with-different-data-sources)
 - [Remote Data Sources](#remote-data-sources)
+  - [Web API Integration](#web-api-integration)
+  - [AJAX Data Loading](#ajax-data-loading)
 - [DataManager Integration](#datamanager-integration)
+  - [Basic DataManager](#basic-datamanager)
+  - [With Custom Adaptor](#with-custom-adaptor)
+  - [OData Service](#odata-service)
+  - [DataManager with Query](#datamanager-with-query)
 - [Complex Property Binding](#complex-property-binding)
+  - [Nested Object Binding](#nested-object-binding)
 - [Dynamic Data Updates](#dynamic-data-updates)
+  - [Add New Data Points](#add-new-data-points)
+  - [Replace Entire Dataset](#replace-entire-dataset)
+  - [Real-Time Data Updates](#real-time-data-updates)
 - [Empty Points Handling](#empty-points-handling)
+  - [Empty Point Modes](#empty-point-modes)
+  - [Example with Null Data](#example-with-null-data)
+  - [Custom Empty Point Style](#custom-empty-point-style)
 - [Best Practices](#best-practices)
+  - [Performance Optimization](#performance-optimization)
+  - [Data Validation](#data-validation)
+  - [Error Handling](#error-handling)
+  - [Memory Management](#memory-management)
+  - [Secure API Endpoints](#secure-api-endpoints)
 
 ## Overview
 

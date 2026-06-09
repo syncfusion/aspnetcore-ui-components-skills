@@ -11,6 +11,54 @@ metadata:
 
 A comprehensive skill for implementing Syncfusion's ASP.NET Core Accumulation Chart component. This component renders circular data visualizations including Pie, Doughnut, Pyramid, and Funnel charts using Scalable Vector Graphics (SVG).
 
+## Table of Contents
+
+- [When to Use This Skill](#when-to-use-this-skill)
+- [Component Overview](#component-overview)
+- [Documentation and Navigation Guide](#documentation-and-navigation-guide)
+  - [Getting Started](#getting-started)
+  - [Chart Types and Variants](#chart-types-and-variants)
+  - [Data Visualization Features](#data-visualization-features)
+  - [Data Handling](#data-handling)
+  - [Advanced Features](#advanced-features)
+  - [Accessibility](#accessibility)
+- [Quick Start Example](#quick-start-example)
+  - [1. Install Package](#1-install-package)
+  - [2. Register Tag Helper (~/Pages/_ViewImports.cshtml)](#2-register-tag-helper-pagesviewimportscshtml)
+  - [3. Add Scripts (~/Pages/Shared/_Layout.cshtml)](#3-add-scripts-pagessharedlayoutcshtml)
+  - [4. Create Pie Chart (~/Pages/Index.cshtml)](#4-create-pie-chart-pagesindexcshtml)
+  - [5. Define Data Model (~/Pages/Index.cshtml.cs or separate class)](#5-define-data-model-pagesindexcshtmlcs-or-separate-class)
+- [Common Patterns](#common-patterns)
+  - [Pattern 1: Doughnut Chart with Center Label](#pattern-1-doughnut-chart-with-center-label)
+  - [Pattern 2: Pie Chart with Smart Labels and Tooltips](#pattern-2-pie-chart-with-smart-labels-and-tooltips)
+  - [Pattern 3: Grouped Data with Small Values](#pattern-3-grouped-data-with-small-values)
+  - [Pattern 4: Funnel Chart with Export](#pattern-4-funnel-chart-with-export)
+- [API Reference](#api-reference)
+  - [AccumulationChart Class](#accumulationchart-class)
+  - [AccumulationSeries Class](#accumulationseries-class)
+  - [AccumulationDataLabelSettings Class](#accumulationdatalabelsettings-class)
+  - [AccumulationChartLegendSettings Class](#accumulationchartlegendsettings-class)
+  - [AccumulationChartTooltipSettings Class](#accumulationcharttooltipsettings-class)
+  - [Available Enumerations](#available-enumerations)
+  - [Related Classes](#related-classes)
+- [Key Properties](#key-properties)
+  - [AccumulationChart Properties](#accumulationchart-properties)
+  - [AccumulationSeries Properties](#accumulationseries-properties)
+  - [DataLabel Properties](#datalabel-properties)
+- [Common Use Cases](#common-use-cases)
+  - [1. Market Share Analysis](#1-market-share-analysis)
+  - [2. Budget Allocation](#2-budget-allocation)
+  - [3. Survey Results](#3-survey-results)
+  - [4. Sales Funnel Tracking](#4-sales-funnel-tracking)
+  - [5. Organizational Hierarchy](#5-organizational-hierarchy)
+  - [6. Mobile Dashboards](#6-mobile-dashboards)
+  - [7. Report Generation](#7-report-generation)
+  - [8. Real-Time Monitoring](#8-real-time-monitoring)
+- [Related Components](#related-components)
+- [Browser Support](#browser-support)
+- [Additional Resources](#additional-resources)
+
+
 ## When to Use This Skill
 
 Use this skill when you need to:

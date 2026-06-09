@@ -1,17 +1,18 @@
 # Trendlines and Error Bars
 
 ## Table of Contents
+
 - [Trendlines](#trendlines)
-    - [Linear Trendline](#linear-trendline)
-    - [Trendline Types](#trendline-types)
-    - [Forecasting](#forecasting)
-    - [Trendline Customization](#trendline-customization)
+  - [Linear Trendline](#linear-trendline)
+  - [Trendline Types](#trendline-types)
+  - [Forecasting](#forecasting)
+  - [Trendline Customization](#trendline-customization)
 - [Error Bars](#error-bars)
-    - [Basic Error Bars](#basic-error-bars)
-    - [Error Bar Types](#error-bar-types)
-    - [Error Bar Modes](#error-bar-modes)
-    - [Error Bar Direction](#error-bar-direction)
-    - [Customization](#customization)
+  - [Basic Error Bars](#basic-error-bars)
+  - [Error Bar Types](#error-bar-types)
+  - [Error Bar Modes](#error-bar-modes)
+  - [Error Bar Direction](#error-bar-direction)
+  - [Customization](#customization)
 - [Use Cases](#use-cases)
 
 Analyze data trends and visualize uncertainty with trendlines and error bars.

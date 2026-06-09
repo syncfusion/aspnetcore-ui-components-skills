@@ -3,13 +3,35 @@
 This guide covers comprehensive crosshair and trackball configuration in Syncfusion ASP.NET Core Charts, including customization, tooltip integration, line styles, and shared tooltip features.
 
 ## Table of Contents
+
 - [Crosshair Basics](#crosshair-basics)
+  - [Enable Basic Crosshair](#enable-basic-crosshair)
+  - [Crosshair with Multiple Series](#crosshair-with-multiple-series)
+  - [Crosshair on DateTime Axis](#crosshair-on-datetime-axis)
 - [Crosshair Customization](#crosshair-customization)
+  - [Line Color and Width](#line-color-and-width)
+  - [Vertical Line Only](#vertical-line-only)
+  - [Horizontal Line Only](#horizontal-line-only)
+  - [Dashed Crosshair Lines](#dashed-crosshair-lines)
 - [Trackball Mode](#trackball-mode)
+  - [Basic Trackball](#basic-trackball)
+  - [Trackball with Markers](#trackball-with-markers)
 - [Tooltip Integration](#tooltip-integration)
+  - [Crosshair with Tooltip](#crosshair-with-tooltip)
+  - [Styled Tooltip with Crosshair](#styled-tooltip-with-crosshair)
+  - [Tooltip Template with Crosshair](#tooltip-template-with-crosshair)
 - [Line Styles and Labels](#line-styles-and-labels)
+  - [Crosshair with Axis Labels](#crosshair-with-axis-labels)
+  - [Custom Label Format](#custom-label-format)
+  - [Styled Crosshair Labels](#styled-crosshair-labels)
 - [Shared Tooltips](#shared-tooltips)
+  - [Basic Shared Tooltip](#basic-shared-tooltip)
+  - [Shared Tooltip with Custom Format](#shared-tooltip-with-custom-format)
+  - [Shared Tooltip Template](#shared-tooltip-template)
 - [Advanced Configuration](#advanced-configuration)
+  - [Crosshair with Animation](#crosshair-with-animation)
+  - [Event Handling](#event-handling)
+  - [Multiple Axes with Crosshair](#multiple-axes-with-crosshair)
 - [When to Use](#when-to-use)
 
 ## Crosshair Basics

@@ -3,6 +3,7 @@
 This guide covers all visual customization features for accumulation charts including data labels, tooltips, legends, titles, colors, and gradients.
 
 ## Table of Contents
+
 - [Data Labels](#data-labels)
   - [Basic Data Labels](#basic-data-labels)
   - [Label Positioning](#label-positioning)

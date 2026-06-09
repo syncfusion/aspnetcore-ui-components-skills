@@ -1,13 +1,35 @@
 # Financial Charts
 
 ## Table of Contents
+
 - [Overview](#overview)
 - [Candlestick Chart](#candlestick-chart)
-- [OHLC/HiLoOpenClose Chart](#ohlchiloopenclose-customization)
+  - [Basic Candlestick Chart](#basic-candlestick-chart)
+  - [Candlestick Anatomy](#candlestick-anatomy)
+  - [Customizing Candlestick Colors](#customizing-candlestick-colors)
+  - [Hollow Candles](#hollow-candles)
+- [OHLC Chart](#ohlc-chart)
+  - [OHLC/HiLoOpenClose Customization](#ohlchiloopenclose-customization)
 - [HiLo Charts](#hilo-charts)
 - [Technical Indicators](#technical-indicators)
+  - [Simple Moving Average (SMA)](#simple-moving-average-sma)
+  - [Exponential Moving Average (EMA)](#exponential-moving-average-ema)
+  - [Bollinger Bands](#bollinger-bands)
+  - [RSI (Relative Strength Index)](#rsi-relative-strength-index)
+  - [MACD (Moving Average Convergence Divergence)](#macd-moving-average-convergence-divergence)
+  - [Stochastic Oscillator](#stochastic-oscillator)
+  - [ATR (Average True Range)](#atr-average-true-range)
+  - [Accumulation Distribution](#accumulation-distribution)
 - [Customization Options](#customization-options)
+  - [Volume Chart with Price](#volume-chart-with-price)
+  - [Zooming for Detailed Analysis](#zooming-for-detailed-analysis)
+  - [Custom Tooltip](#custom-tooltip)
+  - [Striplines for Key Levels](#striplines-for-key-levels)
 - [Best Practices](#best-practices)
+  - [Data Preparation](#data-preparation)
+  - [Performance](#performance)
+  - [User Experience](#user-experience)
+  - [Common Patterns](#common-patterns)
 
 ## Overview
 
@@ -428,7 +450,7 @@ Mark support/resistance levels:
 <e-chart-primaryyaxis minimum="0" maximum="30" interval="10" rangePadding="@Syncfusion.EJ2.Charts.ChartRangePadding.None" stripLines="@Model.yaxisstriplines" title="Wind Speed and Gust (km/h)"></e-chart-primaryyaxis>
 ```
 
-``csharp
+```csharp
 public class StripLineModel : PageModel{
     public List<ChartStripLine>  yaxisstriplines { get; set; }
     public void OnGet()

@@ -1,12 +1,33 @@
 # Specialized Charts
 
 ## Table of Contents
+
 - [Box and Whisker Chart](#box-and-whisker-chart)
+  - [Basic Box and Whisker](#basic-box-and-whisker)
+  - [Box Plot Components](#box-plot-components)
+  - [Box Plot Modes](#box-plot-modes)
+  - [Customization](#customization)
 - [Histogram](#histogram)
+  - [Basic Histogram](#basic-histogram)
+  - [Histogram Properties](#histogram-properties)
 - [Pareto Chart](#pareto-chart)
+  - [Basic Pareto Chart](#basic-pareto-chart)
 - [Waterfall Chart](#waterfall-chart)
+  - [Basic Waterfall Chart](#basic-waterfall-chart)
+  - [Waterfall Properties](#waterfall-properties)
 - [Polar and Radar Charts](#polar-and-radar-charts)
+  - [Polar Chart](#polar-chart)
+  - [Radar Chart](#radar-chart)
+  - [Draw Types](#draw-types)
+  - [Start Angle](#start-angle)
+  - [Coefficient](#coefficient)
 - [When to Use](#when-to-use)
+  - [Box and Whisker Usage](#box-and-whisker-usage)
+  - [Histogram Usage](#histogram-usage)
+  - [Pareto Usage](#pareto-usage)
+  - [Waterfall Usage](#waterfall-usage)
+  - [Polar/Radar Usage](#polarradar-usage)
+- [Performance and Best Practices](#performance-and-best-practices)
 
 ## Box and Whisker Chart
 
@@ -360,31 +381,31 @@ Higher coefficient = larger radius
 
 ## When to Use
 
-### Box and Whisker
+### Box and Whisker Usage
 - Statistical analysis and distribution
 - Identifying outliers
 - Comparing distributions across categories
 - Quality control and six sigma analysis
 
-### Histogram
+### Histogram Usage
 - Frequency distribution
 - Data spread and range
 - Normal distribution verification
 - Process capability analysis
 
-### Pareto
+### Pareto Usage
 - Identifying top contributors (80-20 rule)
 - Prioritizing problems or opportunities
 - Quality improvement (defect analysis)
 - Showing cumulative impact
 
-### Waterfall
+### Waterfall Usage
 - Sequential value changes
 - Financial statements (P&L)
 - Inventory movements
 - Bridge analysis (variance analysis)
 
-### Polar/Radar
+### Polar/Radar Usage
 - Cyclical or directional data
 - Multi-variable comparison
 - Skills/performance assessment

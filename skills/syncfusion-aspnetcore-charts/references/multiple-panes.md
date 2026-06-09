@@ -1,16 +1,20 @@
 # Multiple Panes
 
 ## Table of Contents
+- [Table of Contents](#table-of-contents)
 - [Basic Multiple Panes](#basic-multiple-panes)
 - [Pane Configuration](#pane-configuration)
-    - [Define Rows](#define-rows)
-    - [Define Columns](#define-columns)
+  - [Define Rows](#define-rows)
+  - [Define Columns](#define-columns)
 - [Axis Association](#axis-association)
+  - [Associate Axis with Pane](#associate-axis-with-pane)
 - [Synchronized Axes](#synchronized-axes)
 - [Common Use Cases](#common-use-cases)
+  - [Stock Chart with Volume](#stock-chart-with-volume)
+  - [Multiple Metrics Dashboard](#multiple-metrics-dashboard)
 - [Pane Customization](#pane-customization)
-    - [Borders](#borders)
-    - [Background](#background)
+  - [Borders](#borders)
+  - [Background](#background)
 
 Create charts with multiple plotting areas for comparing related datasets on different scales.
 

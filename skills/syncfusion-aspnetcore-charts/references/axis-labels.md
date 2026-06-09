@@ -3,13 +3,32 @@
 This guide covers comprehensive axis label configuration in Syncfusion ASP.NET Core Charts, including smart labels, multilevel labels, formatting, templates, and edge label handling.
 
 ## Table of Contents
+
 - [Smart Label Management](#smart-label-management)
+  - [Trim Labels](#trim-labels)
+  - [Wrap Labels](#wrap-labels)
+  - [Auto Rotation](#auto-rotation)
+  - [Hide Overlapping Labels](#hide-overlapping-labels)
 - [Label Formatting](#label-formatting)
+  - [Numeric Format](#numeric-format)
+  - [Percentage Format](#percentage-format)
+  - [Custom Format](#custom-format)
+  - [Date Format](#date-format)
 - [Multilevel Labels](#multilevel-labels)
 - [Label Templates](#label-templates)
+  - [Custom Label Template](#custom-label-template)
+  - [Styled Template](#styled-template)
 - [Edge Label Handling](#edge-label-handling)
+  - [Edge Label Placement](#edge-label-placement)
+  - [Hide Edge Labels](#hide-edge-labels)
 - [Label Rotation and Alignment](#label-rotation-and-alignment)
+  - [Label Rotation](#label-rotation)
+  - [Label Alignment](#label-alignment)
+  - [Axis label Rotation](#axis-label-rotation)
 - [Custom Label Placement](#custom-label-placement)
+  - [Inside Labels](#inside-labels)
+  - [Opposed Position](#opposed-position)
+  - [Label Padding](#label-padding)
 - [When to Use](#when-to-use)
 
 ## Smart Label Management

@@ -1,18 +1,41 @@
 # Line and Area Charts
 
 ## Table of Contents
+
+- [Table of Contents](#table-of-contents)
 - [Overview](#overview)
 - [Line Chart](#line-chart)
+  - [Basic Line Chart](#basic-line-chart)
+  - [Multiple Line Series](#multiple-line-series)
+  - [Line with Markers](#line-with-markers)
 - [Step Line Chart](#step-line-chart)
 - [Spline Chart](#spline-chart)
 - [Area Chart](#area-chart)
+  - [Multiple Area Series](#multiple-area-series)
 - [Step Area Chart](#step-area-chart)
 - [Spline Area Chart](#spline-area-chart)
 - [Stacked Area Charts](#stacked-area-charts)
+  - [Standard Stacked Area](#standard-stacked-area)
+  - [100% Stacked Area](#100-stacked-area)
 - [Range Area Charts](#range-area-charts)
+  - [Range Area](#range-area)
+  - [Spline Range Area](#spline-range-area)
+  - [Range Step Area](#range-step-area)
 - [Multicolored Line](#multicolored-line)
 - [Customization Options](#customization-options)
+  - [Line Width and Style](#line-width-and-style)
+  - [Fill and Opacity](#fill-and-opacity)
+  - [Border Customization](#border-customization)
+  - [Empty Points](#empty-points)
+  - [Tooltips](#tooltips)
 - [When to Use](#when-to-use)
+  - [Line Chart Usage](#line-chart-usage)
+  - [Step Line Chart Usage](#step-line-chart-usage)
+  - [Spline Chart Usage](#spline-chart-usage)
+  - [Area Chart Usage](#area-chart-usage)
+  - [Stacked Area Usage](#stacked-area-usage)
+  - [Range Area Usage](#range-area-usage)
+- [Performance Tips](#performance-tips)
 
 ## Overview
 
@@ -510,32 +533,32 @@ Handle missing or null data points:
 
 ## When to Use
 
-### Line Chart
+### Line Chart Usage
 - **Use for:** Time series data, trends over intervals, continuous data
 - **Best when:** Showing change over time, comparing multiple trends
 - **Examples:** Stock prices, temperature changes, website traffic
 
-### Step Line Chart
+### Step Line Chart Usage
 - **Use for:** Data that changes at discrete intervals
 - **Best when:** Values remain constant between changes
 - **Examples:** Signal levels, state changes, step functions
 
-### Spline Chart
+### Spline Chart Usage
 - **Use for:** Smooth trend visualization
 - **Best when:** Emphasizing overall pattern over exact values
 - **Examples:** Growth trends, projections, natural phenomena
 
-### Area Chart
+### Area Chart Usage
 - **Use for:** Cumulative data, volume over time
 - **Best when:** Emphasizing magnitude of change
 - **Examples:** Revenue accumulation, resource usage, population growth
 
-### Stacked Area
+### Stacked Area Usage
 - **Use for:** Part-to-whole relationships over time
 - **Best when:** Showing composition changes and total trend
 - **Examples:** Market share, resource allocation, budget breakdown
 
-### Range Area
+### Range Area Usage
 - **Use for:** Data with upper and lower bounds
 - **Best when:** Showing variation or uncertainty ranges
 - **Examples:** Temperature ranges, price fluctuations, confidence intervals

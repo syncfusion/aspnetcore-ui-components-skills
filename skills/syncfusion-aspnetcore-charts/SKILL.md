@@ -11,6 +11,45 @@ metadata:
 
 The Syncfusion ASP.NET Core Chart component is a feature-rich data visualization control that supports 25+ interactive chart types. It provides extensive customization options, multiple axes, data binding capabilities, and interactive features like zooming, panning, crosshair, and tooltips.
 
+## Table of Contents
+
+- [When to Use This Skill](#when-to-use-this-skill)
+- [Component Overview](#component-overview)
+- [Documentation and Navigation Guide](#documentation-and-navigation-guide)
+  - [Getting Started](#getting-started)
+  - [Chart Types](#chart-types)
+  - [Data Binding](#data-binding)
+  - [Axes Configuration](#axes-configuration)
+  - [Series Configuration](#series-configuration)
+  - [Visual Elements](#visual-elements)
+  - [Interactivity Features](#interactivity-features)
+  - [Advanced Features](#advanced-features)
+  - [Appearance and Theming](#appearance-and-theming)
+  - [Accessibility and Localization](#accessibility-and-localization)
+- [Quick Start Example](#quick-start-example)
+- [Common Patterns](#common-patterns)
+  - [Multiple Series Chart](#multiple-series-chart)
+  - [Chart with Data Labels and Markers](#chart-with-data-labels-and-markers)
+  - [Combination Chart](#combination-chart)
+  - [Chart with Zooming and Crosshair](#chart-with-zooming-and-crosshair)
+- [Key Configuration Options](#key-configuration-options)
+  - [Chart-Level Properties](#chart-level-properties)
+  - [Primary Axis (e-chart-primaryxaxis)](#primary-axis-e-chart-primaryxaxis)
+  - [Series Properties (e-series)](#series-properties-e-series)
+  - [Interactive Features](#interactive-features)
+  - [Visual Elements Options](#visual-elements-options)
+- [Common Use Cases](#common-use-cases)
+  - [1. Sales Dashboard](#1-sales-dashboard)
+  - [2. Financial Analysis](#2-financial-analysis)
+  - [3. Trend Analysis](#3-trend-analysis)
+  - [4. Statistical Distribution](#4-statistical-distribution)
+  - [5. Performance Monitoring](#5-performance-monitoring)
+  - [6. Comparison Analysis](#6-comparison-analysis)
+- [Troubleshooting Tips](#troubleshooting-tips)
+- [Related Components](#related-components)
+- [API Reference](#api-reference)
+- [Additional Resources](#additional-resources)
+
 ## When to Use This Skill
 
 Use this skill when you need to:
@@ -341,7 +380,7 @@ public IActionResult Index()
 - `e-chart-tooltipsettings`: Tooltip customization
 - `e-chart-legendsettings`: Legend configuration
 
-### Visual Elements
+### Visual Elements Options
 - `e-series-marker`: Data point markers
 - `e-series-datalabel`: Labels on data points
 - `e-chart-annotations`: Custom annotations

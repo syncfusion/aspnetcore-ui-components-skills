@@ -1,21 +1,42 @@
-````markdown
 # Accessibility
 
 This guide covers implementing accessibility features in Syncfusion ASP.NET Core Accumulation Charts to ensure WCAG 2.2 compliance and support for users with disabilities.
 
 ## Table of Contents
+
 - [Accessibility Standards](#accessibility-standards)
 - [Keyboard Navigation](#keyboard-navigation)
+  - [Supported Keyboard Shortcuts](#supported-keyboard-shortcuts)
+  - [Example: Keyboard Navigation](#example-keyboard-navigation)
 - [ARIA Attributes](#aria-attributes)
+  - [ARIA Roles Used](#aria-roles-used)
+  - [ARIA Attributes Used](#aria-attributes-used)
+  - [Automatic ARIA Support](#automatic-aria-support)
 - [Basic Accessible Chart Setup](#basic-accessible-chart-setup)
+  - [Minimal Accessible Chart](#minimal-accessible-chart)
 - [Chart Accessibility Configuration](#chart-accessibility-configuration)
+  - [AccumulationChart Accessibility Properties](#accumulationchart-accessibility-properties)
+  - [Accessibility Properties Reference](#accessibility-properties-reference)
 - [Series Accessibility Configuration](#series-accessibility-configuration)
+  - [Series-Level Accessibility](#series-level-accessibility)
 - [Legend Accessibility Configuration](#legend-accessibility-configuration)
+  - [Legend with Accessibility](#legend-with-accessibility)
 - [Screen Reader Support](#screen-reader-support)
+  - [Screen Reader-Friendly Setup](#screen-reader-friendly-setup)
 - [Focus Management](#focus-management)
+  - [Custom Focus Configuration](#custom-focus-configuration)
+  - [Focus Border Customization](#focus-border-customization)
 - [Color Contrast and Themes](#color-contrast-and-themes)
+  - [High Contrast Theme](#high-contrast-theme)
+  - [Available Accessible Themes](#available-accessible-themes)
+  - [Custom Color Palette for Accessibility](#custom-color-palette-for-accessibility)
 - [Testing Accessibility](#testing-accessibility)
+  - [Automated Testing](#automated-testing)
+  - [Manual Testing Checklist](#manual-testing-checklist)
+  - [Chrome DevTools Lighthouse Audit](#chrome-devtools-lighthouse-audit)
+  - [Keyboard Navigation Testing](#keyboard-navigation-testing)
 - [Troubleshooting](#troubleshooting)
+  - [Common Accessibility Issues and Solutions](#common-accessibility-issues-and-solutions)
 - [Accessibility Resources](#accessibility-resources)
 - [Summary](#summary)
 
@@ -603,5 +624,3 @@ Key points for accessible accumulation charts:
 8. **Test with real users** - Get feedback from users with disabilities
 
 By implementing these accessibility features, you ensure your accumulation charts are usable by everyone, regardless of ability or technology used.
-
-````

@@ -3,14 +3,41 @@
 ## Table of Contents
 - [Overview](#overview)
 - [Bing Maps](#bing-maps)
+  - [Prerequisites for Bing Maps](#prerequisites-for-bing-maps)
+  - [Basic Bing Maps Integration](#basic-bing-maps-integration)
+  - [Bing Map Types](#bing-map-types)
+  - [Bing Maps with Markers](#bing-maps-with-markers)
 - [Azure Maps](#azure-maps)
+  - [Prerequisites for Azure Maps](#prerequisites-for-azure-maps)
+  - [Basic Azure Maps Integration](#basic-azure-maps-integration)
+  - [Azure Maps Tilesets](#azure-maps-tilesets)
+  - [Azure Maps with Authentication](#azure-maps-with-authentication)
 - [OpenStreetMap](#openstreetmap)
+  - [Basic OSM Integration](#basic-osm-integration)
+  - [OSM with Custom Styling](#osm-with-custom-styling)
+  - [OSM with Data Overlays](#osm-with-data-overlays)
 - [Custom Tile Servers](#custom-tile-servers)
-- [Offline Maps](#offline-maps)
+  - [Using Custom Tile Server](#using-custom-tile-server)
+  - [Mapbox Integration](#mapbox-integration)
+  - [Thunderforest Integration](#thunderforest-integration)
 - [Hybrid Approaches](#hybrid-approaches)
+  - [Multiple Layers (Base + Data)](#multiple-layers-base--data)
 - [Complete Examples](#complete-examples)
+  - [Example 1: Enterprise App with Azure Maps](#example-1-enterprise-app-with-azure-maps)
+  - [Example 2: Public Website with OpenStreetMap](#example-2-public-website-with-openstreetmap)
 - [Best Practices](#best-practices)
+  - [1. API Key Security](#1-api-key-security)
+  - [2. Performance Optimization](#2-performance-optimization)
+  - [3. License Compliance](#3-license-compliance)
+  - [4. Fallback Strategies](#4-fallback-strategies)
+  - [5. Cost Management](#5-cost-management)
 - [Troubleshooting](#troubleshooting)
+  - [Bing Maps Not Loading](#bing-maps-not-loading)
+  - [Azure Maps 401 Unauthorized](#azure-maps-401-unauthorized)
+  - [OSM Tiles Loading Slowly](#osm-tiles-loading-slowly)
+  - [Mixed Content Errors (HTTPS)](#mixed-content-errors-https)
+  - [Tiles Not Matching Data Overlays](#tiles-not-matching-data-overlays)
+ 
 
 ## Overview
 
@@ -30,7 +57,7 @@ Map providers supply the base map imagery and data. The Maps component supports 
 
 ## Bing Maps
 
-### Prerequisites
+### Prerequisites for Bing Maps
 
 1. **Get Bing Maps Key:**
    - Visit [Bing Maps Dev Center](https://www.bingmapsportal.com/)
@@ -152,7 +179,7 @@ Map providers supply the base map imagery and data. The Maps component supports 
 
 ## Azure Maps
 
-### Prerequisites
+### Prerequisites for Azure Maps
 
 1. **Create Azure Maps Account:**
    - Sign in to [Azure Portal](https://portal.azure.com/)

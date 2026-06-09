@@ -3,13 +3,38 @@
 This guide covers comprehensive tooltip configuration in Syncfusion ASP.NET Core Charts, including enabling, customizing, templates, shared tooltips, formatting, styling, and animations.
 
 ## Table of Contents
+
 - [Basic Tooltips](#basic-tooltips)
+  - [Enable Basic Tooltip](#enable-basic-tooltip)
+  - [Tooltip for Multiple Series](#tooltip-for-multiple-series)
+  - [Series-Specific Tooltip](#series-specific-tooltip)
 - [Tooltip Customization](#tooltip-customization)
+  - [Custom Fill Color](#custom-fill-color)
+  - [Border and Shadow](#border-and-shadow)
+  - [Rounded Corners](#rounded-corners)
+  - [Opacity and Fade](#opacity-and-fade)
 - [Tooltip Templates](#tooltip-templates)
+  - [Basic Template](#basic-template)
+  - [Rich Template with Icons](#rich-template-with-icons)
+  - [Multi-Value Template](#multi-value-template)
+  - [Image in Template](#image-in-template)
 - [Shared Tooltips](#shared-tooltips)
+  - [Basic Shared Tooltip](#basic-shared-tooltip)
+  - [Shared Tooltip with Header](#shared-tooltip-with-header)
+  - [Shared Tooltip Template](#shared-tooltip-template)
 - [Format and Styling](#format-and-styling)
+  - [Currency Format](#currency-format)
+  - [Percentage Format](#percentage-format)
+  - [Font Styling](#font-styling)
+  - [Multi-Line Format](#multi-line-format)
 - [Tooltip Animations](#tooltip-animations)
+  - [Enable Animation](#enable-animation)
+  - [Fade Duration](#fade-duration)
 - [Advanced Features](#advanced-features)
+  - [Tooltip Events](#tooltip-events)
+  - [Conditional Tooltips](#conditional-tooltips)
+  - [Position Control](#position-control)
+  - [Marker in Tooltip](#marker-in-tooltip)
 - [When to Use](#when-to-use)
 
 ## Basic Tooltips
