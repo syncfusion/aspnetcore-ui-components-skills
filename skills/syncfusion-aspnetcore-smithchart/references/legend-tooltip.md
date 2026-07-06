@@ -41,9 +41,9 @@ Enable the legend using the `legendsettings` element:
     <e-smithchart-legendsettings visible="true">
     </e-smithchart-legendsettings>
     <e-smithchart-smithchartseriescollection>
-        <e-smithchart-smithchartseries dataSource="Data1" name="Series 1">
+        <e-smithchart-smithchartseries dataSource="Data1" name="Series 1" resistance="resistance" reactance="reactance">
         </e-smithchart-smithchartseries>
-        <e-smithchart-smithchartseries dataSource="Data2" name="Series 2">
+        <e-smithchart-smithchartseries dataSource="Data2" name="Series 2" resistance="resistance" reactance="reactance">
         </e-smithchart-smithchartseries>
     </e-smithchart-smithchartseriescollection>
 </ejs-smithchart>
@@ -230,7 +230,7 @@ Enable tooltips using the `tooltipsettings` element:
 ```cshtml
 <ejs-smithchart id="smithchart">
     <e-smithchart-smithchartseriescollection>
-        <e-smithchart-smithchartseries dataSource="TransmissionData" name="Transmission Line">
+        <e-smithchart-smithchartseries dataSource="TransmissionData" name="Transmission Line" resistance="resistance" reactance="reactance">
         <e-smithchartseries-tooltip visible="true">
         </e-smithchartseries-tooltip>
         </e-smithchart-smithchartseries>
@@ -252,7 +252,7 @@ Tooltips can be customized for each series or globally:
 
 **Series-specific tooltip:**
 ```cshtml
-<e-smithchart-smithchartseries dataSource="Data1" name="Series 1">
+<e-smithchart-smithchartseries dataSource="Data1" name="Series 1" resistance="resistance" reactance="reactance">
     <e-smithchartseries-tooltip visible="true" fill="lightblue">
     </e-smithchartseries-tooltip>
 </e-smithchart-smithchartseries>
@@ -277,15 +277,15 @@ Legend at bottom with toggle visibility and basic tooltips:
     <e-smithchart-legendsettings visible="true" position="Bottom" toggleVisibility="true">
     </e-smithchart-legendsettings>
     <e-smithchart-smithchartseriescollection>
-        <e-smithchart-smithchartseries dataSource="TransmissionLine1" name="Line A" fill="blue">
+        <e-smithchart-smithchartseries dataSource="TransmissionLine1" name="Line A" fill="blue" resistance="resistance" reactance="reactance">
         <e-smithchartseries-tooltip visible="true">
         </e-smithchartseries-tooltip>
         </e-smithchart-smithchartseries>
-        <e-smithchart-smithchartseries dataSource="TransmissionLine2" name="Line B" fill="red">
+        <e-smithchart-smithchartseries dataSource="TransmissionLine2" name="Line B" fill="red" resistance="resistance" reactance="reactance">
         <e-smithchartseries-tooltip visible="true">
         </e-smithchartseries-tooltip>
         </e-smithchart-smithchartseries>
-        <e-smithchart-smithchartseries dataSource="TransmissionLine3" name="Line C" fill="green">
+        <e-smithchart-smithchartseries dataSource="TransmissionLine3" name="Line C" fill="green" resistance="resistance" reactance="reactance">
         <e-smithchartseries-tooltip visible="true">
         </e-smithchartseries-tooltip>
         </e-smithchart-smithchartseries>
@@ -303,11 +303,11 @@ Minimal legend at right, subtle tooltips:
                       itemPadding="8" shapePadding="4" toggleVisibility="true">
     </e-smithchart-legendsettings>
     <e-smithchart-smithchartseriescollection>
-        <e-smithchart-smithchartseries dataSource="Status1" name="Status 1" fill="darkblue">
+        <e-smithchart-smithchartseries dataSource="Status1" name="Status 1" fill="darkblue" resistance="resistance" reactance="reactance">
             <e-smithchartseries-tooltip visible="true" fill="lightyellow" opacity="0.8">
             </e-smithchartseries-tooltip>
         </e-smithchart-smithchartseries>
-        <e-smithchart-smithchartseries dataSource="Status2" name="Status 2" fill="darkgreen">
+        <e-smithchart-smithchartseries dataSource="Status2" name="Status 2" fill="darkgreen" resistance="resistance" reactance="reactance">
             <e-smithchartseries-tooltip visible="true" fill="lightyellow" opacity="0.8">
             </e-smithchartseries-tooltip>
         </e-smithchart-smithchartseries>
@@ -329,11 +329,11 @@ Legend at top with custom shapes, no toggle for consistency:
     <e-smithchartseries-tooltip visible="true" fill="white" opacity="1.0">
     </e-smithchartseries-tooltip>
     <e-smithchart-smithchartseriescollection>
-        <e-smithchart-smithchartseries dataSource="Measurement" name="Measured" fill="navy">
+        <e-smithchart-smithchartseries dataSource="Measurement" name="Measured" fill="navy" resistance="resistance" reactance="reactance">
         </e-smithchart-smithchartseries>
-        <e-smithchart-smithchartseries dataSource="Simulation" name="Simulated" fill="lightblue">
+        <e-smithchart-smithchartseries dataSource="Simulation" name="Simulated" fill="lightblue" resistance="resistance" reactance="reactance">
         </e-smithchart-smithchartseries>
-        <e-smithchart-smithchartseries dataSource="Reference" name="Reference" fill="gray">
+        <e-smithchart-smithchartseries dataSource="Reference" name="Reference" fill="gray" resistance="resistance" reactance="reactance">
         </e-smithchart-smithchartseries>
     </e-smithchart-smithchartseriescollection>
 </ejs-smithchart>
@@ -353,11 +353,11 @@ Custom legend position to avoid data, series-specific tooltips:
         </e-smithchartlegendsettings-location>
     </e-smithchart-legendsettings>
     <e-smithchart-smithchartseriescollection>
-        <e-smithchart-smithchartseries dataSource="HighQ" name="High Q Load" fill="purple">
+        <e-smithchart-smithchartseries dataSource="HighQ" name="High Q Load" fill="purple" resistance="resistance" reactance="reactance">
             <e-smithchartseries-tooltip visible="true" fill="lavender">
             </e-smithchartseries-tooltip>
         </e-smithchart-smithchartseries>
-        <e-smithchart-smithchartseries dataSource="LowQ" name="Low Q Load" fill="orange">
+        <e-smithchart-smithchartseries dataSource="LowQ" name="Low Q Load" fill="orange" resistance="resistance" reactance="reactance">
             <e-smithchartseries-tooltip visible="true" fill="lightyellow">
             </e-smithchartseries-tooltip>
         </e-smithchart-smithchartseries>
@@ -377,7 +377,7 @@ Compact legend for small screens:
                       itemPadding="5" shapePadding="2" toggleVisibility="true">
     </e-smithchart-legendsettings>
     <e-smithchart-smithchartseriescollection>
-        <e-smithchart-smithchartseries dataSource="Data1" name="Measurement 1">
+        <e-smithchart-smithchartseries dataSource="Data1" name="Measurement 1" resistance="resistance" reactance="reactance">
         <e-smithchartseries-tooltip visible="true">
         </e-smithchartseries-tooltip>
         </e-smithchart-smithchartseries>
@@ -395,19 +395,19 @@ Many series with clear legend separation:
                       width="200" itemPadding="15" toggleVisibility="true">
     </e-smithchart-legendsettings>
     <e-smithchart-smithchartseriescollection>
-        <e-smithchart-smithchartseries dataSource="Freq100MHz" name="100 MHz">
+        <e-smithchart-smithchartseries dataSource="Freq100MHz" name="100 MHz" resistance="resistance" reactance="reactance">
         <e-smithchartseries-tooltip visible="true" fill="white" opacity="0.95">
         </e-smithchartseries-tooltip>
         </e-smithchart-smithchartseries>
-        <e-smithchart-smithchartseries dataSource="Freq500MHz" name="500 MHz">
+        <e-smithchart-smithchartseries dataSource="Freq500MHz" name="500 MHz" resistance="resistance" reactance="reactance">
         <e-smithchartseries-tooltip visible="true" fill="green" opacity="0.95">
         </e-smithchartseries-tooltip>
         </e-smithchart-smithchartseries>
-        <e-smithchart-smithchartseries dataSource="Freq1GHz" name="1 GHz">
+        <e-smithchart-smithchartseries dataSource="Freq1GHz" name="1 GHz" resistance="resistance" reactance="reactance">
         <e-smithchartseries-tooltip visible="true" fill="red" opacity="0.95">
         </e-smithchartseries-tooltip>
         </e-smithchart-smithchartseries>
-        <e-smithchart-smithchartseries dataSource="Freq5GHz" name="5 GHz">
+        <e-smithchart-smithchartseries dataSource="Freq5GHz" name="5 GHz" resistance="resistance" reactance="reactance">
         <e-smithchartseries-tooltip visible="true" fill="yellow" opacity="0.95">
         </e-smithchartseries-tooltip>
         </e-smithchart-smithchartseries>
@@ -427,7 +427,7 @@ Legend and tooltips in corners, non-intrusive:
         </e-smithchartlegendsettings-location>
     </e-smithchart-legendsettings>
     <e-smithchart-smithchartseriescollection>
-        <e-smithchart-smithchartseries dataSource="Analysis" name="Circuit Analysis" fill="darkblue">
+        <e-smithchart-smithchartseries dataSource="Analysis" name="Circuit Analysis" fill="darkblue" resistance="resistance" reactance="reactance">
         <e-smithchartseries-tooltip visible="true" fill="white" opacity="0.85">
         </e-smithchartseries-tooltip>
         </e-smithchart-smithchartseries>

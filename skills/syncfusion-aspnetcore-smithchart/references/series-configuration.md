@@ -33,11 +33,12 @@ Series configuration allows you to customize how transmission line data is displ
 Every series should have a name identifier, used in legends and tooltips:
 
 ```cshtml
-<e-smithchart-smithchartseries dataSource="TransmissionData" name="Transmission Line 1">
+<e-smithchart-smithchartseries dataSource="TransmissionData" name="Transmission Line 1" 
+                               resistance="resistance" reactance="reactance">
 </e-smithchart-smithchartseries>
 ```
 
-The name appears in the legend and helps users identify which data series they're examining.
+The name appears in the legend and helps users identify which data series they're examining. The `resistance` and `reactance` attributes map your C# properties to the chart axes.
 
 ## Series Appearance Customization
 
@@ -46,13 +47,16 @@ The name appears in the legend and helps users identify which data series they'r
 Change the line color for a series using the `fill` property:
 
 ```cshtml
-<e-smithchart-smithchartseries dataSource="TransmissionData1" name="Line A" fill="blue">
+<e-smithchart-smithchartseries dataSource="TransmissionData1" name="Line A" fill="blue" 
+                               resistance="resistance" reactance="reactance">
 </e-smithchart-smithchartseries>
 
-<e-smithchart-smithchartseries dataSource="TransmissionData2" name="Line B" fill="red">
+<e-smithchart-smithchartseries dataSource="TransmissionData2" name="Line B" fill="red" 
+                               resistance="resistance" reactance="reactance">
 </e-smithchart-smithchartseries>
 
-<e-smithchart-smithchartseries dataSource="TransmissionData3" name="Line C" fill="green">
+<e-smithchart-smithchartseries dataSource="TransmissionData3" name="Line C" fill="green" 
+                               resistance="resistance" reactance="reactance">
 </e-smithchart-smithchartseries>
 ```
 
@@ -66,7 +70,8 @@ This is useful for:
 Customize the thickness of the series line using the `width` property:
 
 ```cshtml
-<e-smithchart-smithchartseries dataSource="TransmissionData" name="Transmission Line" width="2">
+<e-smithchart-smithchartseries dataSource="TransmissionData" name="Transmission Line" width="2" 
+                               resistance="resistance" reactance="reactance">
 </e-smithchart-smithchartseries>
 ```
 
@@ -81,7 +86,8 @@ Typical values:
 Control transparency using the `opacity` property (0 to 1):
 
 ```cshtml
-<e-smithchart-smithchartseries dataSource="TransmissionData" name="Transmission Line" opacity="0.7">
+<e-smithchart-smithchartseries dataSource="TransmissionData" name="Transmission Line" opacity="0.7" 
+                               resistance="resistance" reactance="reactance">
 </e-smithchart-smithchartseries>
 ```
 
@@ -97,17 +103,17 @@ Values:
     <e-smithchart-smithchartseriescollection>
         <!-- Primary measurement - thick blue -->
         <e-smithchart-smithchartseries dataSource="PrimaryData" name="Primary Measurement" 
-                  fill="blue" width="3" opacity="1.0">
+                  fill="blue" width="3" opacity="1.0" resistance="resistance" reactance="reactance">
         </e-smithchart-smithchartseries>
 
         <!-- Secondary measurement - thin red, transparent -->
         <e-smithchart-smithchartseries dataSource="SecondaryData" name="Secondary Measurement" 
-                  fill="red" width="1" opacity="0.6">
+                  fill="red" width="1" opacity="0.6" resistance="resistance" reactance="reactance">
         </e-smithchart-smithchartseries>
 
         <!-- Reference - green, standard -->
         <e-smithchart-smithchartseries dataSource="ReferenceData" name="Reference" 
-                  fill="green" width="2" opacity="0.8">
+                  fill="green" width="2" opacity="0.8" resistance="resistance" reactance="reactance">
         </e-smithchart-smithchartseries>
     </e-smithchart-smithchartseriescollection>
 </ejs-smithchart>

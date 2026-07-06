@@ -381,10 +381,10 @@ Sublayers are layers rendered on top of the base layer, useful for:
         
         <!-- Sublayer 2: City markers -->
         <e-maps-layer type="SubLayer">
-            <e-layersettings-markersettings>
-                <e-layersettings-markersetting dataSource="cities" visible="true">
-                </e-layersettings-markersetting>
-            </e-layersettings-markersettings>
+            <e-layersettings-markers>
+                <e-layersettings-marker dataSource="cities" visible="true">
+                </e-layersettings-marker>
+            </e-layersettings-markers>
         </e-maps-layer>
     </e-maps-layers>
 </ejs-maps>

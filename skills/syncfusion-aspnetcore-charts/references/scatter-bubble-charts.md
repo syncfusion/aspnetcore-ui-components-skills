@@ -136,10 +136,10 @@ Add a trendline to show the relationship:
           type="@Syncfusion.EJ2.Charts.ChartSeriesType.Scatter">
     <e-series-marker height="10" width="10"></e-series-marker>
     <e-series-trendlines>
-        <e-series-trendline type="@Syncfusion.EJ2.Charts.TrendlineTypes.Linear" 
+        <e-trendline type="@Syncfusion.EJ2.Charts.TrendlineTypes.Linear" 
                            width="2" 
                            fill="#FF6347">
-        </e-series-trendline>
+        </e-trendline>
     </e-series-trendlines>
 </e-series>
 ```
@@ -379,26 +379,25 @@ Boston Consulting Group matrix for portfolio analysis:
                   size="Revenue"
                   type="@Syncfusion.EJ2.Charts.ChartSeriesType.Bubble"
                   minRadius="10" maxRadius="30">
-            <e-series-datalabel visible="true" name="ProductName">
-            </e-series-datalabel>
+            <e-series-labelsettings visible="true"></e-series-labelsettings>
         </e-series>
     </e-series-collection>
     <!-- Add striplines for quadrants -->
     <e-chart-primaryxaxis>
-        <e-striplines>
-            <e-axis-stripline start="50" 
+        <e-primaryxaxis-striplines>
+            <e-primaryxaxis-stripline start="50" 
                              zIndex="Behind" 
                              color="rgba(200,200,200,0.2)">
-            </e-axis-stripline>
-        </e-striplines>
+            </e-primaryxaxis-stripline>
+        </e-primaryxaxis-striplines>
     </e-chart-primaryxaxis>
     <e-chart-primaryyaxis>
-        <e-striplines>
-            <e-axis-stripline start="10" 
+        <e-primaryyaxis-striplines>
+            <e-primaryyaxis-stripline start="10" 
                              zIndex="Behind" 
                              color="rgba(200,200,200,0.2)">
-            </e-axis-stripline>
-        </e-striplines>
+            </e-primaryyaxis-stripline>
+        </e-primaryyaxis-striplines>
     </e-chart-primaryyaxis>
 </ejs-chart>
 ```

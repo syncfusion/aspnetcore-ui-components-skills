@@ -3,7 +3,7 @@ name: syncfusion-aspnetcore-scheduler
 description: Implement Syncfusion ASP.NET Core Scheduler component for scheduling appointments, events, and resource management. Use this when creating calendar scheduling solutions with appointment management, resource scheduling, multiple calendar views (day, week, month, timeline), recurring events, and CRUD operations. This skill covers data binding, timezone support, event templates, and timescale configuration.
 metadata:
   author: "Syncfusion Inc"
-  version: "33.1.44"
+  version: "34.1.29"
   category: "Calendars"
 ---
 

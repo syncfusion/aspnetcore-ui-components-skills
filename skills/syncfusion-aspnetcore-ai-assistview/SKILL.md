@@ -3,7 +3,7 @@ name: syncfusion-aspnetcore-ai-assistview
 description: Implement the Syncfusion ASP.NET Core AI AssistView control for interactive AI-powered assistance interfaces. Use this skill when implementing AI assistants, prompt suggestions, custom views, file attachments, markdown responses, customizable templates, assistance features, file uploads, or customizing AI conversation UI in ASP.NET Core applications.
 metadata:
   author: "Syncfusion Inc"
-  version: "33.1.44"
+  version: "34.1.29"
 ---
 
 # Syncfusion ASP.NET Core AI AssistView Control

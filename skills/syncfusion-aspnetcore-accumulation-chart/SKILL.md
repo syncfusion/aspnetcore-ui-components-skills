@@ -3,7 +3,7 @@ name: syncfusion-aspnetcore-accumulation-chart
 description: Implement Syncfusion ASP.NET Core Accumulation Charts for proportional data visualization. Use this when creating pie charts, doughnut charts, pyramid charts, or funnel charts in ASP.NET Core applications. This skill covers chart setup, data binding, legends, tooltips, data labels, grouping, and accessibility features. Suitable for visualizing market share, sales distribution, survey results, and other percentage-based data representations.
 metadata:
   author: "Syncfusion Inc"
-  version: "33.1.44"
+  version: "34.1.29"
   category: "Data Visualization"
 ---
 
@@ -229,13 +229,26 @@ Install-Package Syncfusion.EJ2.AspNet.Core -Version <your_version_here>
     };
 }
 
-<ejs-accumulationchart id="pieChart">
+<ejs-accumulationchart id="pieChart" enableSmartLabels="true" title="Browser Market Share" subTitle="Pie chart showing browser usage distribution">
     <e-accumulation-series-collection>
-        <e-accumulation-series dataSource="@chartData" xName="xValue" yName="yValue">
+        <e-accumulation-series dataSource="@chartData" xName="xValue" yName="yValue" name="Browsers">
+            <e-accumulationseries-datalabel visible="true" position="Outside" name="text" format="p0">
+                <e-connectorstyle type="Curve" length="20"></e-connectorstyle>
+                <e-font fontWeight="600"></e-font>
+            </e-accumulationseries-datalabel>
         </e-accumulation-series>
     </e-accumulation-series-collection>
+    <e-accumulationchart-legendsettings position="Bottom" alignment="Center" toggleVisibility="true">
+    </e-accumulationchart-legendsettings>
+    <e-accumulationchart-tooltipsettings enable="true" format="${point.x}: <b>${point.y}%</b>" header="Browser">
+    </e-accumulationchart-tooltipsettings>
 </ejs-accumulationchart>
 ```
+
+**Key Points:**
+- `title` and `subTitle` are **direct attributes** on `<ejs-accumulationchart>`, NOT child tags
+- `<e-font>` is the correct child tag inside `<e-accumulationseries-datalabel>`, NOT `<e-datalabelfont>`
+- Use `format="p0"` for percentage without decimals
 
 ### 5. Define Data Model (~/Pages/Index.cshtml.cs or separate class)
 
@@ -251,12 +264,13 @@ public class PieChartData
 
 ## Common Patterns
 
-### Pattern 1: Doughnut Chart with Center Label
+### Pattern 1: Doughnut/Donut Chart with Center Label
 
 ```cshtml
 <ejs-accumulationchart id="container">
     <e-accumulation-series-collection>
         <e-accumulation-series dataSource="chartData" xName="x" yName="y" innerRadius="65%">
+            <!-- innerRadius goes on series, NOT on chart -->
         </e-accumulation-series>
     </e-accumulation-series-collection>
     <e-accumulationchart-centerlabel text="Mobile<br>Browsers<br>Statistics">
@@ -271,17 +285,21 @@ public class PieChartData
 ### Pattern 2: Pie Chart with Smart Labels and Tooltips
 
 ```cshtml
-<ejs-accumulationchart id="smartLabelChart" enableSmartLabels="true">
+<ejs-accumulationchart id="smartLabelChart" enableSmartLabels="true" title="Market Share" subTitle="Distribution by browser">
     <e-accumulation-series-collection>
         <e-accumulation-series dataSource="@chartData" xName="xValue" yName="yValue">
             <e-accumulationseries-datalabel visible="true" 
                                           position="Outside" 
-                                          name="text">
-                <e-connectorstyle type="Curve"></e-connectorstyle>
+                                          name="text"
+                                          format="p0">
+                <e-connectorstyle type="Curve" length="20"></e-connectorstyle>
+                <e-font fontWeight="600"></e-font>
             </e-accumulationseries-datalabel>
         </e-accumulation-series>
     </e-accumulation-series-collection>
-    <e-accumulationchart-tooltipsettings enable="true" format="${point.x}: ${point.y}%">
+    <e-accumulationchart-legendsettings position="Bottom" alignment="Center" toggleVisibility="true">
+    </e-accumulationchart-legendsettings>
+    <e-accumulationchart-tooltipsettings enable="true" format="${point.x}: <b>${point.y}%</b>" header="Browser">
     </e-accumulationchart-tooltipsettings>
 </ejs-accumulationchart>
 ```

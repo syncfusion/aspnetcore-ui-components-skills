@@ -3,7 +3,7 @@ name: syncfusion-aspnetcore-chat-ui
 description: Implement the Syncfusion ASP.NET Core Chat-UI control for interactive, real-time messaging components. Use this skill when implementing chat interfaces, message management, file uploads and attachments, appearance customization with templates, message events, typing indicators, or internationalization and RTL layouts in ASP.NET Core applications.
 metadata:
   author: "Syncfusion Inc"
-  version: "33.1.44"
+  version: "34.1.29"
 ---
 
 # Syncfusion ASP.NET Core Chat-UI Control

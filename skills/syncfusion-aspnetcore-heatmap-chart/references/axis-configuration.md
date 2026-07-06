@@ -33,6 +33,12 @@
 
 The Syncfusion ASP.NET Core HeatMap Chart supports different axis value types for representing category, numeric, and date-time based matrix data.
 
+**Important:** Unlike other Syncfusion chart components, the HeatMap axis does NOT support a `title` property. 
+
+For Razor Pages, the recommended approach is:
+
+- Keep HeatMap markup in `Pages/Index.cshtml`.
+- Keep labels, data, palettes, and reusable configuration objects in `Pages/Index.cshtml.cs`.
 For Razor Pages, the recommended approach is:
 
 - Keep HeatMap markup in `Pages/Index.cshtml`.

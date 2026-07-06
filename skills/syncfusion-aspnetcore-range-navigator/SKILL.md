@@ -3,7 +3,7 @@ name: syncfusion-aspnetcore-range-navigator
 description: Implement Syncfusion RangeNavigator (Range Selector) in ASP.NET Core applications for interactive data range selection and navigation. Use this skill when user needs to select data ranges, visualize time-series data with interactive sliders, add period selectors, customize range appearance, export range visualizations, or integrate range selection into dashboards and charts.
 metadata:
   author: "Syncfusion Inc"
-  version: "33.1.44"
+  version: "34.1.29"
 ---
 
 # Syncfusion ASP.NET Core RangeNavigator

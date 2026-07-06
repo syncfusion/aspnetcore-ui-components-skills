@@ -3,7 +3,7 @@ name: syncfusion-aspnetcore-dashboard-layout
 description: Implement responsive, resizable, and draggable panel layouts with the Syncfusion ASP.NET Core Dashboard Layout component.
 metadata:
   author: "Syncfusion Inc"
-  version: "33.1.44"
+  version: "34.1.29"
 ---
 
 # Implementing Dashboard Layout

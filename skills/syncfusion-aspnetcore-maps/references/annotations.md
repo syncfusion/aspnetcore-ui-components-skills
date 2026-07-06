@@ -700,15 +700,15 @@ Add multiple annotations to display various information across the map.
         <e-maps-layers>
             <e-maps-layer shapeData="ViewBag.worldMap">
                 <e-layersettings-shapesettings fill="#E5E5E5"></e-layersettings-shapesettings>
-                <e-layersettings-markersettings>
-                    <e-layersettings-markersetting visible="true" 
+                <e-layersettings-markers>
+                    <e-layersettings-marker visible="true" 
                                                    shape="Circle"
                                                    fill="#FF6B6B"
                                                    height="10"
                                                    width="10"
                                                    dataSource="ViewBag.cityMarkers">
-                    </e-layersettings-markersetting>
-                </e-layersettings-markersettings>
+                    </e-layersettings-marker>
+                </e-layersettings-markers>
             </e-maps-layer>
         </e-maps-layers>
     </ejs-maps>

@@ -68,16 +68,16 @@ Control where axis labels appear relative to the axis line using the `labelPosit
 
 ```cshtml
 <ejs-smithchart id="smithchart">
-    <e-smithchart-horizontalaxis labelPosition="outside">
+    <e-smithchart-horizontalaxis labelPosition="Outside">
     </e-smithchart-horizontalaxis>
-    <e-smithchart-radialaxis labelPosition="outside">
+    <e-smithchart-radialaxis labelPosition="Outside">
     </e-smithchart-radialaxis>
 </ejs-smithchart>
 ```
 
 Options:
-- `inside` - Labels positioned inside the chart boundary
-- `outside` - Labels positioned outside the chart boundary (default for clarity)
+- `Inside` - Labels positioned inside the chart boundary
+- `Outside` - Labels positioned outside the chart boundary (default for clarity)
 
 ### Label Intersection Handling
 
@@ -85,9 +85,9 @@ When labels become too crowded, use `labelIntersectAction` to prevent overlappin
 
 ```cshtml
 <ejs-smithchart id="smithchart">
-    <e-smithchart-horizontalaxis labelIntersectAction="hide">
+    <e-smithchart-horizontalaxis labelIntersectAction="Hide">
     </e-smithchart-horizontalaxis>
-    <e-smithchart-radialaxis labelIntersectAction="hide">
+    <e-smithchart-radialaxis labelIntersectAction="Hide">
     </e-smithchart-radialaxis>
 </ejs-smithchart>
 ```
@@ -221,7 +221,7 @@ Clean, clear formatting suitable for technical publications:
 
 ```cshtml
 <ejs-smithchart id="smithchart">
-    <e-smithchart-horizontalaxis labelPosition="outside" labelIntersectAction="hide">
+    <e-smithchart-horizontalaxis labelPosition="Outside" labelIntersectAction="Hide">
         <e-smithchartaxis-labelstyle fontFamily="Arial" fontSize="11" fontColor="#333333">
         </e-smithchartaxis-labelstyle>
         <e-smithchartaxis-majorgridlines visible="true" width="1.5" opacity="0.8">
@@ -231,7 +231,7 @@ Clean, clear formatting suitable for technical publications:
         <e-smithchartaxis-axisline visible="true" width="1">
         </e-smithchartaxis-axisline>
     </e-smithchart-horizontalaxis>
-    <e-smithchart-radialaxis labelPosition="outside" labelIntersectAction="hide">
+    <e-smithchart-radialaxis labelPosition="Outside" labelIntersectAction="Hide">
         <e-smithchartaxis-labelstyle fontFamily="Arial" fontSize="11" fontColor="#333333">
         </e-smithchartaxis-labelstyle>
         <e-smithchartaxis-majorgridlines visible="true" width="1.5" opacity="0.8">
@@ -254,7 +254,7 @@ Subtle gridlines for a clean dashboard appearance:
 
 ```cshtml
 <ejs-smithchart id="smithchart">
-    <e-smithchart-horizontalaxis labelPosition="outside">
+    <e-smithchart-horizontalaxis labelPosition="Outside">
         <e-smithchartaxis-labelstyle fontFamily="Verdana" fontSize="10" fontColor="#666666">
         </e-smithchartaxis-labelstyle>
         <e-smithchartaxis-majorgridlines visible="true" width="1" opacity="0.3" dashArray="3">
@@ -264,7 +264,7 @@ Subtle gridlines for a clean dashboard appearance:
         <e-smithchartaxis-axisline visible="true" width="0.5">
         </e-smithchartaxis-axisline>
     </e-smithchart-horizontalaxis>
-    <e-smithchart-radialaxis labelPosition="outside">
+    <e-smithchart-radialaxis labelPosition="Outside">
         <e-smithchartaxis-labelstyle fontFamily="Verdana" fontSize="10" fontColor="#666666">
         </e-smithchartaxis-labelstyle>
         <e-smithchartaxis-majorgridlines visible="true" width="1" opacity="0.3" dashArray="3">
@@ -287,7 +287,7 @@ High-detail gridlines for precise value reading:
 
 ```cshtml
 <ejs-smithchart id="smithchart">
-    <e-smithchart-horizontalaxis labelPosition="inside" labelIntersectAction="hide">
+    <e-smithchart-horizontalaxis labelPosition="Inside" labelIntersectAction="Hide">
         <e-smithchartaxis-labelstyle fontFamily="Courier" fontSize="10" fontColor="black" fontWeight="bold">
         </e-smithchartaxis-labelstyle>
         <e-smithchartaxis-majorgridlines visible="true" width="2" opacity="1" dashArray="0">
@@ -297,7 +297,7 @@ High-detail gridlines for precise value reading:
         <e-smithchartaxis-axisline visible="true" width="1.5">
         </e-smithchartaxis-axisline>
     </e-smithchart-horizontalaxis>
-    <e-smithchart-radialaxis labelPosition="inside" labelIntersectAction="hide">
+    <e-smithchart-radialaxis labelPosition="Inside" labelIntersectAction="Hide">
         <e-smithchartaxis-labelstyle fontFamily="Courier" fontSize="10" fontColor="black" fontWeight="bold">
         </e-smithchartaxis-labelstyle>
         <e-smithchartaxis-majorgridlines visible="true" width="2" opacity="1" dashArray="0">
@@ -320,7 +320,7 @@ Bold, easy-to-read configuration for presentations:
 
 ```cshtml
 <ejs-smithchart id="smithchart">
-    <e-smithchart-horizontalaxis labelPosition="outside">
+    <e-smithchart-horizontalaxis labelPosition="Outside">
         <e-smithchartaxis-labelstyle fontFamily="Segoe UI" fontSize="14" fontColor="#0066CC" fontWeight="bold">
         </e-smithchartaxis-labelstyle>
         <e-smithchartaxis-majorgridlines visible="true" width="2" opacity="0.7" dashArray="0">
@@ -330,7 +330,7 @@ Bold, easy-to-read configuration for presentations:
         <e-smithchartaxis-axisline visible="true" width="2">
         </e-smithchartaxis-axisline>
     </e-smithchart-horizontalaxis>
-    <e-smithchart-radialaxis labelPosition="outside">
+    <e-smithchart-radialaxis labelPosition="Outside">
         <e-smithchartaxis-labelstyle fontFamily="Segoe UI" fontSize="14" fontColor="#0066CC" fontWeight="bold">
         </e-smithchartaxis-labelstyle>
         <e-smithchartaxis-majorgridlines visible="true" width="2" opacity="0.7" dashArray="0">
@@ -353,7 +353,7 @@ Bold, easy-to-read configuration for presentations:
 2. **Ensure Readability** - Use sufficient contrast between gridlines and background
 3. **Balance Detail** - Enough gridlines for precision without overwhelming the chart
 4. **Consistent Styling** - Keep horizontal and radial axis formatting consistent unless specific comparison is needed
-5. **Label Overlap Prevention** - Always use `labelIntersectAction="hide"` for crowded displays
+5. **Label Overlap Prevention** - Always use `labelIntersectAction="Hide"` for crowded displays
 6. **Test at Scale** - View your final chart at intended display size to verify label readability
 
 Proper axis configuration is crucial for making Smith Charts both functional and professional-looking across different contexts and use cases.

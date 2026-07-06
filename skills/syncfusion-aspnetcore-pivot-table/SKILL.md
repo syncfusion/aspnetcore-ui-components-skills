@@ -3,7 +3,7 @@ name: syncfusion-aspnetcore-pivot-table
 description: Use this skill when users ask how to build Syncfusion PivotView/pivot tables in ASP.NET Core apps. Trigger for server integration, data binding (API/DB/remote), OLAP, aggregation, drill-down, grouping, filtering, conditional formatting, exporting (Excel/PDF/CSV), or pivot charts in ASP.NET Core. Not for MVC/Blazor/JS.
 metadata:
   author: "Syncfusion Inc"
-  version: "33.1.44"
+  version: "34.1.29"
   category: "Grids"
 ---
 

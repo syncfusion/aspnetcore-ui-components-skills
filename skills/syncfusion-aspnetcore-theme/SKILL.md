@@ -3,7 +3,7 @@ name: syncfusion-aspnetcore-theme
 description: "**THEMING & APPEARANCE GUIDE** — Assist with Syncfusion ASP.NET Core EJ2 component theming, customization, size modes, and dynamic theme switching. Use when: applying themes (Bootstrap, Material, Tailwind, Fluent, etc.), customizing theme variables, implementing theme switchers, enabling touch mode, or customizing icons and appearance."
 metadata:
   author: "Syncfusion Inc"
-  version: "33.1.44"
+  version: "34.1.29"
 ---
 
 # Syncfusion ASP.NET Core — Theming & Appearance

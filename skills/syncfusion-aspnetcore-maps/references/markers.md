@@ -85,16 +85,16 @@ Markers require a data source with `latitude` and `longitude` properties:
         <e-maps-layer shapeData="worldMap">
             <e-layersettings-shapesettings fill="#C3E6ED"></e-layersettings-shapesettings>
             
-            <e-layersettings-markersettings>
-                <e-layersettings-markersetting 
+            <e-layersettings-markers>
+                <e-layersettings-marker 
                     visible="true" 
                     dataSource="cities"
                     shape="Circle"
                     fill="#FF6347"
                     height="15"
                     width="15">
-                </e-layersettings-markersetting>
-            </e-layersettings-markersettings>
+                </e-layersettings-marker>
+            </e-layersettings-markers>
         </e-maps-layer>
     </e-maps-layers>
 </ejs-maps>
@@ -148,37 +148,37 @@ Syncfusion Maps supports 12 built-in marker shapes:
 ### Using Different Shapes
 
 ```cshtml
-<e-layersettings-markersettings>
+<e-layersettings-markers>
     <!-- Circle markers -->
-    <e-layersettings-markersetting 
+    <e-layersettings-marker 
         visible="true"
         dataSource="@officeLocations"
         shape="Circle"
         fill="#1E90FF"
         height="20"
         width="20">
-    </e-layersettings-markersetting>
+    </e-layersettings-marker>
     
     <!-- Star markers for featured locations -->
-    <e-layersettings-markersetting 
+    <e-layersettings-marker 
         visible="true"
         dataSource="@featuredLocations"
         shape="Star"
         fill="#FFD700"
         height="25"
         width="25">
-    </e-layersettings-markersetting>
+    </e-layersettings-marker>
     
     <!-- Diamond markers for warehouses -->
-    <e-layersettings-markersetting 
+    <e-layersettings-marker 
         visible="true"
         dataSource="@warehouses"
         shape="Diamond"
         fill="#32CD32"
         height="20"
         width="20">
-    </e-layersettings-markersetting>
-</e-layersettings-markersettings>
+    </e-layersettings-marker>
+</e-layersettings-markers>
 ```
 
 ### Image Markers
@@ -196,14 +196,14 @@ Use custom images as markers:
     };
 }
 
-<e-layersettings-markersetting 
+<e-layersettings-marker 
     visible="true"
     dataSource="storeLocations"
     shape="Image"
     imageUrl="/images/markers/store-icon.png"
     height="30"
     width="30">
-</e-layersettings-markersetting>
+</e-layersettings-marker>
 ```
 
 **Image Best Practices:**
@@ -217,51 +217,57 @@ Use custom images as markers:
 ### Size and Dimensions
 
 ```cshtml
-<e-layersettings-markersetting 
+<e-layersettings-marker 
     height="25"           <!-- Height in pixels -->
     width="25"            <!-- Width in pixels -->
     visible="true"
     dataSource="locations">
-</e-layersettings-markersetting>
+</e-layersettings-marker>
 ```
 
 ### Colors and Fill
 
 ```cshtml
-<e-layersettings-markersetting 
+<e-layersettings-marker 
     fill="#FF6347"        <!-- Fill color -->
     opacity="0.8"         <!-- Transparency (0-1) -->
     visible="true"
     dataSource="locations">
-</e-layersettings-markersetting>
+</e-layersettings-marker>
 ```
 
 ### Border Styling
 
 ```cshtml
-<e-layersettings-markersetting 
+@using Syncfusion.EJ2.Maps
+@{
+    var border = new MapsBorder
+    {
+        Color = "#000000",
+        Width = 2,
+        Opacity = 1
+    };
+}
+<e-layersettings-marker 
     visible="true"
     dataSource="locations"
     shape="Circle"
+    border="border"
     fill="#FF6347"
     height="20"
     width="20">
-    <e-markersettings-border 
-        color="#000000"   <!-- Border color -->
-        width="2">        <!-- Border width -->
-    </e-markersettings-border>
-</e-layersettings-markersetting>
+</e-layersettings-marker>
 ```
 
 ### Animation
 
 ```cshtml
-<e-layersettings-markersetting 
+<e-layersettings-marker 
     animationDuration="1000"    <!-- Animation duration in ms -->
     animationDelay="0"          <!-- Delay before animation starts -->
     visible="true"
     dataSource="locations">
-</e-layersettings-markersetting>
+</e-layersettings-marker>
 ```
 
 ### Offset Positioning
@@ -272,10 +278,10 @@ Fine-tune marker position relative to coordinates:
 @{    
     var offset = new { x = 35, y = -10 };
 }
-<e-layersettings-markersetting 
+<e-layersettings-marker 
     visible="true"
     dataSource="locations" offset="offset">
-</e-layersettings-markersetting>
+</e-layersettings-marker>
 ```
 
 **Offset Use Cases:**
@@ -296,10 +302,9 @@ Create custom HTML markers for advanced visualizations:
     };
 }
 
-<e-layersettings-markersetting 
-    visible="true"
-    dataSource="cities" template="template">
-</e-layersettings-markersetting>
+<e-layersettings-marker 
+    dataSource="cities" template="#template">
+</e-layersettings-marker>
 
 <div id="template" style="background: #FF6347; color: white; padding: 5px 10px; border-radius: 5px; font-size: 12px;">
     <strong>${Name}</strong><br/>
@@ -317,10 +322,10 @@ Create custom HTML markers for advanced visualizations:
     };
 }
 
-<e-layersettings-markersetting 
+<e-layersettings-marker 
     visible="true"
     dataSource="stores" template="template">
-</e-layersettings-markersetting>
+</e-layersettings-marker>
 
 <div id="template" style="background: ${Status === 'Active' ? '#28a745' : '#dc3545'}; 
             color: white; 
@@ -337,8 +342,8 @@ Create custom HTML markers for advanced visualizations:
 ### Template with Icons
 
 ```cshtml
-<e-layersettings-markersetting visible="true" dataSource="stores" template="template">
-</e-layersettings-markersetting>
+<e-layersettings-marker visible="true" dataSource="stores" template="template">
+</e-layersettings-marker>
 
 <div id="template" style="text-align: center;">
     <i class="fas fa-map-marker-alt" style="font-size: 30px; color: #FF6347;"></i>
@@ -358,6 +363,9 @@ Create custom HTML markers for advanced visualizations:
 Display different types of markers on the same map:
 
 ```cshtml
+
+@using Syncfusion.EJ2.Maps
+
 @{
     var worldMap = JsonConvert.DeserializeObject(System.IO.File.ReadAllText("wwwroot/maps/world.json"));
     
@@ -375,6 +383,12 @@ Display different types of markers on the same map:
         new { Name = "DC 1", Latitude = 33.4484, Longitude = -112.0740 },
         new { Name = "DC 2", Latitude = 39.7392, Longitude = -104.9903 }
     };
+
+    var tooltip = new MapsTooltipSettings
+    {
+        Visible = true,
+        ValuePath = "Name"
+    };
 }
 
 <ejs-maps id="maps" height="600px">
@@ -382,49 +396,40 @@ Display different types of markers on the same map:
         <e-maps-layer shapeData="worldMap">
             <e-layersettings-shapesettings fill="#E8E8E8"></e-layersettings-shapesettings>
             
-            <e-layersettings-markersettings>
+            <e-layersettings-markers>
                 <!-- Office markers (stars) -->
-                <e-layersettings-markersetting 
+                <e-layersettings-marker 
                     visible="true"
                     dataSource="offices"
                     shape="Star"
                     fill="#FFD700"
                     height="25"
-                    width="25">
-                    <e-markersettings-tooltipsettings 
-                        visible="true" 
-                        valuePath="Name">
-                    </e-markersettings-tooltipsettings>
-                </e-layersettings-markersetting>
+                    width="25"
+                    tooltipsettings="tooltip">
+                </e-layersettings-marker>
                 
                 <!-- Warehouse markers (rectangles) -->
-                <e-layersettings-markersetting 
+                <e-layersettings-marker 
                     visible="true"
                     dataSource="warehouses"
                     shape="Rectangle"
                     fill="#32CD32"
                     height="20"
-                    width="20">
-                    <e-markersettings-tooltipsettings 
-                        visible="true" 
-                        valuePath="Name">
-                    </e-markersettings-tooltipsettings>
-                </e-layersettings-markersetting>
+                    width="20"
+                    tooltipsettings="tooltip">
+                </e-layersettings-marker>
                 
                 <!-- Distribution center markers (diamonds) -->
-                <e-layersettings-markersetting 
+                <e-layersettings-marker 
                     visible="true"
                     dataSource="distributionCenters"
                     shape="Diamond"
                     fill="#1E90FF"
                     height="20"
-                    width="20">
-                    <e-markersettings-tooltipsettings 
-                        visible="true" 
-                        valuePath="Name">
-                    </e-markersettings-tooltipsettings>
-                </e-layersettings-markersetting>
-            </e-layersettings-markersettings>
+                    width="20"
+                    tooltipsettings="tooltip">
+                </e-layersettings-marker>
+            </e-layersettings-markers>
         </e-maps-layer>
     </e-maps-layers>
 </ejs-maps>
@@ -438,12 +443,12 @@ Display different types of markers on the same map:
 <ejs-maps id="maps" markerClick="onMarkerClick">
     <e-maps-layers>
         <e-maps-layer shapeData="worldMap">
-            <e-layersettings-markersettings>
-                <e-layersettings-markersetting 
+            <e-layersettings-markers>
+                <e-layersettings-marker 
                     visible="true"
                     dataSource="locations">
-                </e-layersettings-markersetting>
-            </e-layersettings-markersettings>
+                </e-layersettings-marker>
+            </e-layersettings-markers>
         </e-maps-layer>
     </e-maps-layers>
 </ejs-maps>
@@ -484,25 +489,38 @@ Display different types of markers on the same map:
 ### Basic Tooltip
 
 ```cshtml
-<e-layersettings-markersetting 
+@using Syncfusion.EJ2.Maps
+@{
+    var tooltip = new MapsTooltipSettings
+    {
+        Visible = true,
+        ValuePath = "name"
+    };
+}
+<e-layersettings-marker 
     visible="true"
-    dataSource="cities">
-    <e-markersettings-tooltipsettings 
-        visible="true" 
-        valuePath="Name">
-    </e-markersettings-tooltipsettings>
-</e-layersettings-markersetting>
+    dataSource="cities"
+    tooltipsettings="tooltip">
+</e-layersettings-marker>
 ```
 
 ### Custom Tooltip Template
 
-```cshtml
-<e-layersettings-markersetting 
+```cshtm
+@using Syncfusion.EJ2.Maps
+@{
+    var tooltip = new MapsTooltipSettings
+    {
+        Visible = true,
+        ValuePath = "Name"
+        Template = "template"
+    };
+}l
+<e-layersettings-marker 
     visible="true"
-    dataSource="cities">
-    <e-markersettings-tooltipsettings visible="true" template="template">
-    </e-markersettings-tooltipsettings>
-</e-layersettings-markersetting>
+    dataSource="cities"
+    tooltipsettings="tooltip">
+</e-layersettings-marker>
 
 <div id="template" style="padding: 10px; background: white; border-radius: 5px;">
     <h4 style="margin: 0 0 5px 0;">${Name}</h4>
@@ -515,17 +533,22 @@ Display different types of markers on the same map:
 ### Styled Tooltip
 
 ```cshtml
-<e-markersettings-tooltipsettings visible="true">
-    <e-marker-tooltip-textstyle 
-        fontFamily="Arial"
-        size="14px"
-        color="#FFFFFF">
-    </e-marker-tooltip-textstyle>
-    <e-marker-tooltip-border 
-        color="#FF6347"
-        width="2">
-    </e-marker-tooltip-border>
-</e-markersettings-tooltipsettings>
+var tooltip = new MapsTooltipSettings
+    {
+        Visible = true,
+        ValuePath = "name",
+        TextStyle = new MapsFont
+        {
+            FontFamily = "Arial",
+            Size = "14px",
+            Color = "green"
+        },
+        Border = new MapsBorder
+        {
+            Color = "#FF6347",
+            Width = 2
+        }
+    };
 ```
 
 ## Marker Legend
@@ -542,23 +565,23 @@ Add legend for different marker types:
     
     <e-maps-layers>
         <e-maps-layer shapeData="worldMap">
-            <e-layersettings-markersettings>
-                <e-layersettings-markersetting 
+            <e-layersettings-markers>
+                <e-layersettings-marker 
                     visible="true"
                     dataSource="offices"
                     shape="Star"
                     fill="#FFD700"
                     legendText="Offices">
-                </e-layersettings-markersetting>
+                </e-layersettings-marker>
                 
-                <e-layersettings-markersetting 
+                <e-layersettings-marker 
                     visible="true"
                     dataSource="warehouses"
                     shape="Rectangle"
                     fill="#32CD32"
                     legendText="Warehouses">
-                </e-layersettings-markersetting>
-            </e-layersettings-markersettings>
+                </e-layersettings-marker>
+            </e-layersettings-markers>
         </e-maps-layer>
     </e-maps-layers>
 </ejs-maps>
@@ -582,6 +605,12 @@ Add legend for different marker types:
         new { Name = "Chicago Store", Latitude = 41.8781, Longitude = -87.6298, Status = "Closed", Sales = 150000 },
         new { Name = "Houston Store", Latitude = 29.7604, Longitude = -95.3698, Status = "Open", Sales = 280000 }
     };
+
+    var tooltip = new MapsTooltipSettings
+    {
+        Visible = true,
+        Template = "#tooltipTemplate"
+    };
 }
 
 <div style="padding: 20px;">
@@ -596,17 +625,15 @@ Add legend for different marker types:
                     <e-layers-shapesettings-border color="#FFFFFF" width="1"></e-layers-shapesettings-border>
                 </e-layersettings-shapesettings>
                 
-                <e-layersettings-markersettings>
-                    <e-layersettings-markersetting 
+                <e-layersettings-markers>
+                    <e-layersettings-marker 
                         visible="true"
                         dataSource="stores"
                         shape="Circle"
                         height="20"
-                        width="20" template="markerTemplate">
-                        <e-markersettings-tooltipsettings visible="true" template="tooltipTemplate">
-                        </e-markersettings-tooltipsettings>
-                    </e-layersettings-markersetting>
-                </e-layersettings-markersettings>
+                        width="20" template="markerTemplate" tooltipsettings="tooltip">
+                    </e-layersettings-marker>
+                </e-layersettings-markers>
             </e-maps-layer>
         </e-maps-layers>
     </ejs-maps>
@@ -633,6 +660,10 @@ Add legend for different marker types:
 ### Example 2: Event Map with Custom Icons
 
 ```cshtml
+@page
+@using Syncfusion.EJ2.Maps
+@using Newtonsoft.Json
+
 @{
     var worldMap = JsonConvert.DeserializeObject(System.IO.File.ReadAllText("wwwroot/maps/world.json"));
     
@@ -641,25 +672,28 @@ Add legend for different marker types:
         new { City = "Berlin", Latitude = 52.5200, Longitude = 13.4050, Type = "Workshop" },
         new { City = "London", Latitude = 51.5074, Longitude = -0.1278, Type = "Meetup" }
     };
+
+    var tooltip = new MapsTooltipSettings
+    {
+        Visible = true,
+        Template = "#tooltipTemplate"
+    };
 }
 
 <ejs-maps id="eventMap" height="600px">
     <e-maps-layers>
         <e-maps-layer shapeData="worldMap">
-            <e-layersettings-markersettings>
-                <e-layersettings-markersetting 
+            <e-layersettings-markers>
+                <e-layersettings-marker 
                     visible="true"
                     dataSource="events"
                     shape="Balloon"
                     fill="#FF6347"
                     height="25"
-                    width="25">
-                    <e-markersettings-tooltipsettings 
-                        visible="true" 
-                        valuePath="City" template="tooltipTemplate">
-                    </e-markersettings-tooltipsettings>
-                </e-layersettings-markersetting>
-            </e-layersettings-markersettings>
+                    width="25"
+                    tooltipsettings="tooltip">
+                </e-layersettings-marker>
+            </e-layersettings-markers>
         </e-maps-layer>
     </e-maps-layers>
 </ejs-maps>

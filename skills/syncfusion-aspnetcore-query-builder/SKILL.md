@@ -4,7 +4,7 @@ description: Complete guide to implementing the Syncfusion QueryBuilder componen
 metadata:
   author: "Syncfusion Inc"
   category: "Forms"
-  version: "33.1.44"
+  version: "34.1.29"
 ---
 
 # Implementing QueryBuilder in ASP.NET Core

@@ -3,7 +3,7 @@ name: syncfusion-aspnetcore-splitter
 description: Implement Syncfusion ASP.NET Core Splitter component for building responsive multi-pane layouts. Use this when implementing splitter layouts, configuring panes, enabling resize functionality, or creating complex nested layouts with multiple split sections.
 metadata:
   author: "Syncfusion Inc"
-  version: "33.1.44"
+  version: "34.1.29"
   category: "Layout Components"
 ---
 

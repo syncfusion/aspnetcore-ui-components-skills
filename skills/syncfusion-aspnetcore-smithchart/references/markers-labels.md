@@ -33,7 +33,8 @@ Markers are visual indicators placed at each data point on the Smith Chart serie
 Enable markers for a series by setting `visible="true"`:
 
 ```cshtml
-<e-smithchart-smithchartseries dataSource="TransmissionData" name="Transmission Line">
+<e-smithchart-smithchartseries dataSource="TransmissionData" name="Transmission Line" 
+                               resistance="resistance" reactance="reactance">
     <e-smithchartseries-marker visible="true">
     </e-smithchartseries-marker>
 </e-smithchart-smithchartseries>
@@ -121,7 +122,8 @@ Available shapes:
 ### Complete Marker Configuration Example
 
 ```cshtml
-<e-smithchart-smithchartseries dataSource="MeasuredData" name="Measurement Points">
+<e-smithchart-smithchartseries dataSource="MeasuredData" name="Measurement Points" 
+                               resistance="resistance" reactance="reactance">
     <e-smithchartseries-marker visible="true" width="10" height="10" fill="navy" opacity="0.9" shape="Circle">
         <e-series-marker-border width="1" color="white">
         </e-series-marker-border>
@@ -198,7 +200,8 @@ This creates visible label boxes, useful for:
 Enable automatic label positioning to prevent overlaps:
 
 ```cshtml
-<e-smithchart-smithchartseries dataSource="DenseData" name="Data" enableSmartLabels="true">
+<e-smithchart-smithchartseries dataSource="DenseData" name="Data" enableSmartLabels="true" 
+                               resistance="resistance" reactance="reactance">
     <e-smithchartseries-marker visible="true">
         <e-series-marker-datalabel visible="true">
         </e-series-marker-datalabel>
@@ -219,7 +222,8 @@ Use markers and data labels together for comprehensive point identification:
 ### Basic Combined Usage
 
 ```cshtml
-<e-smithchart-smithchartseries dataSource="RFMeasurement" name="RF Analysis">
+<e-smithchart-smithchartseries dataSource="RFMeasurement" name="RF Analysis" 
+                               resistance="resistance" reactance="reactance">
     <e-smithchartseries-marker>
         <e-series-marker-datalabel visible="true">
         </e-series-marker-datalabel>
@@ -233,7 +237,8 @@ Use markers and data labels together for comprehensive point identification:
 <ejs-smithchart id="smithchart">
     <e-smithchart-smithchartseriescollection>
         <!-- Primary series - prominent markers and labels -->
-        <e-smithchart-smithchartseries dataSource="PrimaryData" name="Primary Measurement" fill="navy" enableSmartLabels="true">
+        <e-smithchart-smithchartseries dataSource="PrimaryData" name="Primary Measurement" fill="navy" enableSmartLabels="true" 
+                                       resistance="resistance" reactance="reactance">
             <e-smithchartseries-marker>
                 <e-series-marker-datalabel visible="true" fill="lightyellow" opacity="0.9">
                 </e-series-marker-datalabel>
@@ -241,7 +246,8 @@ Use markers and data labels together for comprehensive point identification:
         </e-smithchart-smithchartseries>
 
         <!-- Secondary series - subtle markers, no labels -->
-        <e-smithchart-smithchartseries dataSource="SecondaryData" name="Secondary Measurement" fill="lightblue">
+        <e-smithchart-smithchartseries dataSource="SecondaryData" name="Secondary Measurement" fill="lightblue" 
+                                       resistance="resistance" reactance="reactance">
             <e-smithchartseries-marker visible="true" width="5" height="5" fill="gray" opacity="0.6">
             </e-smithchartseries-marker>
         </e-smithchart-smithchartseries>
@@ -273,7 +279,8 @@ Use markers and data labels together for comprehensive point identification:
 Display specific measurement values:
 
 ```cshtml
-<e-smithchart-smithchartseries dataSource="CircuitMeasurements" name="Component Testing">
+<e-smithchart-smithchartseries dataSource="CircuitMeasurements" name="Component Testing" 
+                               resistance="resistance" reactance="reactance">
     <e-smithchartseries-marker visible="true" width="7" height="7" fill="red">
         <e-series-marker-border width="1" color="darkred">
         </e-series-marker-border>
@@ -289,7 +296,8 @@ Show progression along a transmission line:
 ```cshtml
 <ejs-smithchart id="smithchart">
     <e-smithchart-smithchartseriescollection>
-        <e-smithchart-smithchartseries dataSource="ImpedancePath" name="Impedance Evolution" fill="purple" enableSmartLabels="true">
+        <e-smithchart-smithchartseries dataSource="ImpedancePath" name="Impedance Evolution" fill="purple" enableSmartLabels="true" 
+                                       resistance="resistance" reactance="reactance">
             <e-smithchartseries-marker visible="true" width="8" height="8" fill="purple" shape="Circle">
             </e-smithchartseries-marker>
         </e-smithchart-smithchartseries>
@@ -305,19 +313,22 @@ Distinguish multiple measurement sets:
 <ejs-smithchart id="smithchart">
     <e-smithchart-smithchartseriescollection>
         <!-- Simulated data -->
-        <e-smithchart-smithchartseries dataSource="SimulatedData" name="Simulation" fill="green">
+        <e-smithchart-smithchartseries dataSource="SimulatedData" name="Simulation" fill="green" 
+                                       resistance="resistance" reactance="reactance">
             <e-smithchartseries-marker visible="true" width="6" height="6" fill="darkgreen" shape="Diamond">
             </e-smithchartseries-marker>
         </e-smithchart-smithchartseries>
 
         <!-- Measured data -->
-        <e-smithchart-smithchartseries dataSource="MeasuredData" name="Measurement" fill="orange">
+        <e-smithchart-smithchartseries dataSource="MeasuredData" name="Measurement" fill="orange" 
+                                       resistance="resistance" reactance="reactance">
             <e-smithchartseries-marker visible="true" width="6" height="6" fill="darkorange" shape="Circle">
             </e-smithchartseries-marker>
         </e-smithchart-smithchartseries>
 
         <!-- Calculated reference -->
-        <e-smithchart-smithchartseries dataSource="CalculatedData" name="Calculated" fill="gray">
+        <e-smithchart-smithchartseries dataSource="CalculatedData" name="Calculated" fill="gray" 
+                                       resistance="resistance" reactance="reactance">
             <e-smithchartseries-marker visible="true" width="6" height="6" fill="darkgray" shape="Rectangle">
             </e-smithchartseries-marker>
         </e-smithchart-smithchartseries>
@@ -335,7 +346,7 @@ Maximum detail for publication-quality charts:
     </e-title>
     <e-smithchart-smithchartseriescollection>
         <e-smithchart-smithchartseries dataSource="PrecisionData" name="Measured Impedance" 
-                  fill="darkblue" width="2" enableSmartLabels="true">
+                  fill="darkblue" width="2" enableSmartLabels="true" resistance="resistance" reactance="reactance">
             <e-smithchartseries-marker>
                 <e-series-marker-datalabel visible="true" fill="lightyellow" opacity="0.95">
                     </e-textstyle>
@@ -369,7 +380,8 @@ Clean dashboard appearance with subtle markers:
 ```cshtml
 <ejs-smithchart id="dashboard-chart">
     <e-smithchart-smithchartseriescollection>
-        <e-smithchart-smithchartseries dataSource="DashboardData" name="Status">
+        <e-smithchart-smithchartseries dataSource="DashboardData" name="Status" 
+                                       resistance="resistance" reactance="reactance">
             <e-smithchartseries-marker visible="true" width="4" height="4" fill="#0066CC" opacity="0.7">
             </e-smithchartseries-marker>
         </e-smithchart-smithchartseries>

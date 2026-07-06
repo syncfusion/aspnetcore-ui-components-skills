@@ -78,12 +78,13 @@ Enhance accessibility by providing descriptive labels:
 <ejs-smithchart id="smithchart" 
                  aria-label="Smith Chart: RF Circuit Analysis - Impedance Matching Visualization">
     <e-smithchart-title text="Impedance Analysis" visible="true" aria-label="Chart title: Impedance Analysis">
-        <e-smithchart-subtitle text="Transmission Line Parameters" 
+        <e-title-subtitle text="Transmission Line Parameters" 
                     aria-label="Chart subtitle: Transmission Line Parameters">
-        </e-smithchart-subtitle>
+        </e-title-subtitle>
     </e-smithchart-title>
     <e-smithchart-smithchartseriescollection>
         <e-smithchart-smithchartseries dataSource="Data1" name="Series 1" 
+                  resistance="resistance" reactance="reactance"
                   aria-label="Series 1: Transmission line impedance data">
         </e-smithchart-smithchartseries>
     </e-smithchart-smithchartseriescollection>
@@ -130,7 +131,8 @@ The focus is visible on all interactive elements, with clear focus indicators.
     <e-smithchart-legendsettings visible="true" toggleVisibility="true">
     </e-smithchart-legendsettings>  
     <e-smithchart-smithchartseriescollection>
-        <e-smithchart-smithchartseries dataSource="Data" name="Transmission Line">
+        <e-smithchart-smithchartseries dataSource="Data" name="Transmission Line" 
+                                       resistance="resistance" reactance="reactance">
             <e-smithchartseries-tooltip visible="true"></e-smithchartseries-tooltip>
         </e-smithchart-smithchartseries>
     </e-smithchart-smithchartseriescollection>
@@ -169,9 +171,11 @@ Screen readers announce Smith Chart content to visually impaired users. Implemen
                      aria-describedby="chart-description"
                      aria-label="Smith Chart visualization of impedance data">
         <e-smithchart-smithchartseriescollection>
-            <e-smithchart-smithchartseries dataSource="Measured" name="Measured Impedance" fill="blue">
+            <e-smithchart-smithchartseries dataSource="Measured" name="Measured Impedance" fill="blue" 
+                                           resistance="resistance" reactance="reactance">
             </e-smithchart-smithchartseries>
-            <e-smithchart-smithchartseries dataSource="Reference" name="Reference" fill="red">
+            <e-smithchart-smithchartseries dataSource="Reference" name="Reference" fill="red" 
+                                           resistance="resistance" reactance="reactance">
             </e-smithchart-smithchartseries>
         </e-smithchart-smithchartseriescollection>
     </ejs-smithchart>
@@ -225,19 +229,24 @@ Use colors that remain distinct:
 - White (#FFFFFF)
 
 ```cshtml
-<e-smithchart-smithchartseries dataSource="Data1" name="Series 1" fill="blue">
+<e-smithchart-smithchartseries dataSource="Data1" name="Series 1" fill="blue" 
+                               resistance="resistance" reactance="reactance">
 </e-smithchart-smithchartseries>
-<e-smithchart-smithchartseries dataSource="Data2" name="Series 2" fill="yellow">
+<e-smithchart-smithchartseries dataSource="Data2" name="Series 2" fill="yellow" 
+                               resistance="resistance" reactance="reactance">
 </e-smithchart-smithchartseries>
 ```
 
 **General Best Practices:**
 ```cshtml
-<e-smithchart-smithchartseries dataSource="Data1" name="Series 1" fill="#0066CC" opacity="1.0">
+<e-smithchart-smithchartseries dataSource="Data1" name="Series 1" fill="#0066CC" opacity="1.0" 
+                               resistance="resistance" reactance="reactance">
 </e-smithchart-smithchartseries>
-<e-smithchart-smithchartseries dataSource="Data2" name="Series 2" fill="#FF6600" opacity="1.0">
+<e-smithchart-smithchartseries dataSource="Data2" name="Series 2" fill="#FF6600" opacity="1.0" 
+                               resistance="resistance" reactance="reactance">
 </e-smithchart-smithchartseries>
-<e-smithchart-smithchartseries dataSource="Data3" name="Series 3" fill="#00AA00" opacity="1.0">
+<e-smithchart-smithchartseries dataSource="Data3" name="Series 3" fill="#00AA00" opacity="1.0" 
+                               resistance="resistance" reactance="reactance">
 </e-smithchart-smithchartseries>
 ```
 
@@ -255,7 +264,8 @@ Smith Chart is fully responsive and accessible on mobile devices:
 <ejs-smithchart id="smithchart" width="100%" height="100%"
                  aria-label="Interactive Smith Chart for mobile devices">
     <e-smithchart-smithchartseriescollection>
-        <e-smithchart-smithchartseries dataSource="Data" name="Series">
+        <e-smithchart-smithchartseries dataSource="Data" name="Series" 
+                                       resistance="resistance" reactance="reactance">
             <e-smithchartseries-marker visible="true" width="10" height="10">
             </e-smithchartseries-marker>
         </e-smithchart-smithchartseries>
@@ -322,15 +332,17 @@ This allows users to zoom, critical for accessibility on mobile devices.
                        aria-label="Smith Chart: Transmission line impedance visualization"
                        width="100%" height="500px">
             <e-smithchart-title text="Impedance Analysis">
-                <e-smithchart-subtitle text="Transmission Line Characterization">
-                </e-smithchart-subtitle>
+                <e-title-subtitle text="Transmission Line Characterization">
+                </e-title-subtitle>
             </e-smithchart-title>
             <e-smithchart-legendsettings visible="true" toggleVisibility="true">
             </e-smithchart-legendsettings>
             <e-smithchart-smithchartseriescollection>
-                <e-smithchart-smithchartseries dataSource="Model.MeasuredData" name="Measured" fill="#0066CC">
+                <e-smithchart-smithchartseries dataSource="Model.MeasuredData" name="Measured" fill="#0066CC" 
+                                               resistance="resistance" reactance="reactance">
                 </e-smithchart-smithchartseries>
-                <e-smithchart-smithchartseries dataSource="Model.ReferenceData" name="Reference" fill="#FF6600">
+                <e-smithchart-smithchartseries dataSource="Model.ReferenceData" name="Reference" fill="#FF6600" 
+                                               resistance="resistance" reactance="reactance">
                 </e-smithchart-smithchartseries>
             </e-smithchart-smithchartseriescollection>
         </ejs-smithchart>

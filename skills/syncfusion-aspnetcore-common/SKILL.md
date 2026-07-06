@@ -3,7 +3,7 @@ name: syncfusion-aspnetcore-common
 description: "**CONFIGURATION GUIDE** — Assist with Syncfusion ASP.NET Core EJ2 components setup, localization, and version compatibility. Use when: installing Syncfusion packages, configuring globalization/localization, selecting compatible versions."
 metadata:
   author: "Syncfusion Inc"
-  version: "33.1.44"
+  version: "34.1.29"
 ---
 
 # Syncfusion ASP.NET Core — Common Configuration

@@ -206,8 +206,8 @@ ViewBag.PieData = new[]
                   yName="Sales" 
                   type="@Syncfusion.EJ2.Charts.ChartSeriesType.Column">
             <e-series-marker>
-                <e-datalabel visible="true" position="@Syncfusion.EJ2.Charts.LabelPosition.Top" alignment="@Syncfusion.EJ2.Charts.Alignment.Center" margin="margin">
-                </e-datalabel>
+                <e-series-datalabel visible="true" position="@Syncfusion.EJ2.Charts.LabelPosition.Top" alignment="@Syncfusion.EJ2.Charts.Alignment.Center" margin="margin">
+                </e-series-datalabel>
             </e-series-marker>
         </e-series>
     </e-series-collection>
@@ -227,8 +227,8 @@ ViewBag.PieData = new[]
                   yName="Sales" 
                   type="@Syncfusion.EJ2.Charts.ChartSeriesType.Column">
             <e-series-marker>
-                <e-datalabel visible="true" template="#template">
-                </e-datalabel>
+                <e-series-datalabel visible="true" template="#template">
+                </e-series-datalabel>
             </e-series-marker>
         </e-series>
     </e-series-collection>
@@ -252,8 +252,8 @@ ViewBag.PieData = new[]
                   yName="Sales" 
                   type="@Syncfusion.EJ2.Charts.ChartSeriesType.Column">
             <e-series-marker>
-                <e-datalabel visible="true" template="#template">
-                </e-datalabel>
+                <e-series-datalabel visible="true" template="#template">
+                </e-series-datalabel>
             </e-series-marker>
         </e-series>
     </e-series-collection>
@@ -274,8 +274,8 @@ ViewBag.PieData = new[]
                   yName="Sales" 
                   type="@Syncfusion.EJ2.Charts.ChartSeriesType.Column">
             <e-series-marker>
-                <e-datalabel visible="true" template="#template">
-                </e-datalabel>
+                <e-series-datalabel visible="true" template="#template">
+                </e-series-datalabel>
             </e-series-marker>
         </e-series>
     </e-series-collection>
@@ -296,8 +296,8 @@ ViewBag.PieData = new[]
                   yName="Sales" 
                   type="@Syncfusion.EJ2.Charts.ChartSeriesType.Column">
             <e-series-marker>
-                <e-datalabel visible="true" template="#template">
-                </e-datalabel>
+                <e-series-datalabel visible="true" template="#template">
+                </e-series-datalabel>
             </e-series-marker>
         </e-series>
     </e-series-collection>
@@ -330,7 +330,7 @@ ViewBag.DetailedData = new[]
                   yName="Revenue" 
                   type="@Syncfusion.EJ2.Charts.ChartSeriesType.Column">
             <e-series-marker>
-                <e-datalabel visible="true" format="c1"></e-datalabel>
+                <e-series-datalabel visible="true" format="c1"></e-series-datalabel>
             </e-series-marker>
         </e-series>
     </e-series-collection>
@@ -358,7 +358,7 @@ ViewBag.RevenueData = new[]
                   yName="Growth" 
                   type="@Syncfusion.EJ2.Charts.ChartSeriesType.Line">
             <e-series-marker visible="true" width="10" height="10">
-                <e-datalabel visible="true" format="p1"></e-datalabel>
+                <e-series-datalabel visible="true" format="p1"></e-series-datalabel>
             </e-series-marker>
         </e-series>
     </e-series-collection>
@@ -376,7 +376,7 @@ ViewBag.RevenueData = new[]
                   yName="Units" 
                   type="@Syncfusion.EJ2.Charts.ChartSeriesType.Column">
             <e-series-marker>
-                <e-datalabel visible="true" format="{value} units"></e-datalabel>
+                <e-series-datalabel visible="true" format="{value} units"></e-series-datalabel>
             </e-series-marker>
         </e-series>
     </e-series-collection>
@@ -394,7 +394,7 @@ ViewBag.RevenueData = new[]
                   yName="Rating" 
                   type="@Syncfusion.EJ2.Charts.ChartSeriesType.Column">
             <e-series-marker>
-                <e-datalabel visible="true" format="n2"></e-datalabel>
+                <e-series-datalabel visible="true" format="n2"></e-series-datalabel>
             </e-series-marker>
         </e-series>
     </e-series-collection>
@@ -414,7 +414,7 @@ ViewBag.RevenueData = new[]
                   yName="Sales" 
                   type="@Syncfusion.EJ2.Charts.ChartSeriesType.Column">
             <e-series-marker>
-                <e-datalabel visible="true" name="Label"></e-datalabel>
+                <e-series-datalabel visible="true" name="Label"></e-series-datalabel>
             </e-series-marker>
         </e-series>
     </e-series-collection>
@@ -445,7 +445,7 @@ ViewBag.MappedData = new[]
                   yName="Y" 
                   type="@Syncfusion.EJ2.Charts.ChartSeriesType.Column">
             <e-series-marker>
-                <e-datalabel visible="true" enableRotation="true" angle="-45"></e-datalabel>
+                <e-series-datalabel visible="true" enableRotation="true" angle="-45"></e-series-datalabel>
             </e-series-marker>
         </e-series>
     </e-series-collection>
@@ -480,9 +480,9 @@ ViewBag.MappedData = new[]
                   yName="Sales" 
                   type="@Syncfusion.EJ2.Charts.ChartSeriesType.Column">
             <e-series-marker>
-                <e-datalabel visible="true">
+                <e-series-datalabel visible="true">
                     <e-font fontFamily="Arial" size="14px" fontWeight="600" color="#0078D4"></e-font>
-                </e-datalabel>
+                </e-series-datalabel>
             </e-series-marker>
         </e-series>
     </e-series-collection>
@@ -504,7 +504,7 @@ ViewBag.MappedData = new[]
                   yName="Value" 
                   type="@Syncfusion.EJ2.Charts.ChartSeriesType.Column">
             <e-series-marker>
-                <e-datalabel visible="true" fill="#FFE5B4" border="border" margin="margin"></e-datalabel>
+                <e-series-datalabel visible="true" fill="#FFE5B4" border="border" margin="margin"></e-series-datalabel>
             </e-series-marker>
         </e-series>
     </e-series-collection>
@@ -525,9 +525,9 @@ ViewBag.MappedData = new[]
                   yName="Sales" 
                   type="@Syncfusion.EJ2.Charts.ChartSeriesType.Column">
             <e-series-marker>
-                <e-datalabel visible="true" fill="#0078D4" rx="5" ry="5" margin="margin">
+                <e-series-datalabel visible="true" fill="#0078D4" rx="5" ry="5" margin="margin">
                     <e-font color="#ffffff" fontWeight="600"></e-font>
-                </e-datalabel>
+                </e-series-datalabel>
             </e-series-marker>
         </e-series>
     </e-series-collection>

@@ -59,7 +59,7 @@ Add and customize the main chart title.
 
 ### Basic Title
 
-```csharp
+```cshtml
 <ejs-stockchart id="stockChart" title="Apple Inc. Stock Price">
 </ejs-stockchart>
 ```
@@ -68,7 +68,7 @@ Add and customize the main chart title.
 
 Customize title appearance:
 
-```csharp
+```cshtml
 <ejs-stockchart id="stockChart" title="Apple Inc. Stock Price">
     <e-stockchart-titlestyle 
         color="#333333" 
@@ -93,7 +93,7 @@ Customize title appearance:
 
 Control text wrapping for long titles:
 
-```csharp
+```cshtml
 <ejs-stockchart id="stockChart" title="Stock Price Chart for Apple Inc. with Real-Time Data">
     <e-title-text-style 
         size="16px" 
@@ -135,7 +135,7 @@ Control text wrapping for long titles:
 
 **Description:** Sets the background color of the Stock Chart. Accepts hex, rgba, or named color values.
 
-```csharp
+```cshtml
 <ejs-stockchart id="stockChart" 
     background="#f5f5f5">
 </ejs-stockchart>
@@ -143,7 +143,7 @@ Control text wrapping for long titles:
 
 With transparency:
 
-```csharp
+```cshtml
 <ejs-stockchart id="stockChart" 
     background="rgba(245, 245, 245, 0.5)">
 </ejs-stockchart>
@@ -159,7 +159,7 @@ With transparency:
 
 **Description:** Configures the border color and width of the Stock Chart.
 
-```csharp
+```cshtml
 <ejs-stockchart id="stockChart">
     <e-stockchart-border 
         color="#0066cc" 
@@ -182,7 +182,7 @@ With transparency:
 
 **Description:** Configures the border and background of the chart plotting area (excludes title, legend, axes labels).
 
-```csharp
+```cshtml
 <ejs-stockchart id="stockChart">
     <e-stockchart-chartarea 
         background="white"
@@ -210,7 +210,7 @@ With transparency:
 
 **Description:** Customizes the space around the chart (left, right, top, bottom).
 
-```csharp
+```cshtml
 <ejs-stockchart id="stockChart">
     <e-stockchart-margin 
         left="40" 
@@ -249,7 +249,7 @@ Change overall chart appearance with built-in themes.
 
 ### Apply Theme
 
-```csharp
+```cshtml
 <ejs-stockchart id="stockChart" theme="Material">
 </ejs-stockchart>
 ```
@@ -266,7 +266,7 @@ Themes automatically change:
 
 ### Example: Dark Theme
 
-```csharp
+```cshtml
 <ejs-stockchart id="stockChart" theme="MaterialDark" title="Stock Price">
     <e-stockchart-series-collection>
         <e-stockchart-series 
@@ -285,7 +285,7 @@ Control chart size and layout.
 
 ### Width and Height
 
-```csharp
+```cshtml
 <ejs-stockchart id="stockChart" 
     width="100%" 
     height="500">
@@ -301,7 +301,7 @@ Control chart size and layout.
 
 Make chart responsive to container:
 
-```csharp
+```cshtml
 <ejs-stockchart id="stockChart" 
     width="100%" 
     height="500">
@@ -353,7 +353,7 @@ With CSS:
 
 **Description:** Renders the Stock Chart in transposed manner (swaps X and Y axes).
 
-```csharp
+```cshtml
 <ejs-stockchart id="stockChart" isTransposed="true">
     <e-stockchart-series-collection>
         <e-stockchart-series 
@@ -385,7 +385,7 @@ With CSS:
 
 **Description:** Overrides the global culture and localization value for the Stock Chart.
 
-```csharp
+```cshtml
 <ejs-stockchart id="stockChart" locale="de-DE">
 </ejs-stockchart>
 ```
@@ -406,7 +406,7 @@ Requires loading locale files:
 
 **Description:** Enables right-to-left rendering for the Stock Chart.
 
-```csharp
+```cshtml
 <ejs-stockchart id="stockChart" enableRtl="true">
 </ejs-stockchart>
 ```
@@ -424,7 +424,7 @@ Requires loading locale files:
 
 Add titles to axes:
 
-```csharp
+```cshtml
 <ejs-stockchart id="stockChart">
     <e-stockchart-primaryxaxis 
         title="Date" 
@@ -437,7 +437,7 @@ Add titles to axes:
 
 ### Axis Title Styling
 
-```csharp
+```cshtml
 <ejs-stockchart id="stockChart">
     <e-stockchart-primaryyaxis title="Price (USD)">        
         <e-titlestyle 
@@ -453,7 +453,7 @@ Add titles to axes:
 
 Format axis values:
 
-```csharp
+```cshtml
 <ejs-stockchart id="stockChart">
     <!-- Date format for X-axis -->
     <e-stockchart-primaryxaxis 
@@ -470,7 +470,7 @@ Format axis values:
 
 Define minimum and maximum axis values:
 
-```csharp
+```cshtml
 <ejs-stockchart id="stockChart">
     <e-stockchart-primaryyaxis 
         minimum="100" 
@@ -482,7 +482,7 @@ Define minimum and maximum axis values:
 
 ### Axis Line Styling
 
-```csharp
+```cshtml
 <ejs-stockchart id="stockChart">
     <e-stockchart-primaryyaxis>
         <e-linestyle color="red" width="2">
@@ -493,7 +493,7 @@ Define minimum and maximum axis values:
 
 ### Grid Line Styling
 
-```csharp
+```cshtml
 <ejs-stockchart id="stockChart">
     <e-stockchart-primaryyaxis>
         <e-majorgridlines color="lightgray" width="1" dashArray="5,5">
@@ -506,7 +506,7 @@ Define minimum and maximum axis values:
 
 ### Series Color
 
-```csharp
+```cshtml
 @{
     var stockData = new List<object>
     {
@@ -538,7 +538,7 @@ Define minimum and maximum axis values:
 
 ### Series Opacity
 
-```csharp
+```cshtml
 <ejs-stockchart id="stockChart">
      <e-stockchart-series-collection>
         <e-stockchart-series dataSource="stockData"
@@ -556,7 +556,7 @@ Define minimum and maximum axis values:
 
 For line series:
 
-```csharp
+```cshtml
 <ejs-stockchart id="stockChart">
      <e-stockchart-series-collection>
         <e-stockchart-series dataSource="stockData"
@@ -571,7 +571,7 @@ For line series:
 
 ### Candle Styling
 
-```csharp
+```cshtml
 @{
     var stockData = new List<object>
     {
@@ -618,7 +618,7 @@ For line series:
 
 Add patterns for accessibility:
 
-```csharp
+```cshtml
 @{
     var stockData = new List<object>
     {
@@ -667,7 +667,7 @@ Apply gradient fills for visual enhancement.
 
 ### Linear Gradient
 
-```csharp
+```cshtml
 @{
     var stockData = new List<object>
     {
@@ -708,7 +708,7 @@ Apply gradient fills for visual enhancement.
 
 ### Radial Gradient
 
-```csharp
+```cshtml
 @{
     var stockData = new List<object>
     {
@@ -753,7 +753,7 @@ Apply gradient fills for visual enhancement.
 
 The rendered stock chart can be exported to JPEG, PNG, SVG, or PDF format using the export dropdown button in the period selector toolbar. You can choose the required format using the export dropdown button in stock-chart.
 
-```csharp
+```cshtml
 <ejs-stockchart id="stockChart">
 </ejs-stockchart>
 ```
@@ -771,14 +771,14 @@ The rendered stock chart can be exported to JPEG, PNG, SVG, or PDF format using 
 
 The rendered stock chart can be printed directly using print button in period selector toolbar.
 
-```csharp
+```cshtml
 <ejs-stockchart id="stockChart">
 </ejs-stockchart>
 ```
 
 ## Complete Customization Example
 
-```csharp
+```cshtml
 @{
     var stockData = new List<object>
     {

@@ -3,7 +3,7 @@ name: syncfusion-aspnetcore-circular-chart-3d
 description: Create interactive 3D Circular Charts with Syncfusion ASP.NET Core. Implement pie/donut series, data labels, legends, tooltips, custom styling, titles, empty point handling, and print/export functionality. Use this skill when the user needs to build or configure pie charts, donut charts, circular data visualizations, or charts showing proportional data in ASP.NET Core applications.
 metadata:
   author: "Syncfusion Inc"
-  version: "33.1.44"
+  version: "34.1.29"
 ---
 
 # Syncfusion ASP.NET Core 3D Circular Chart

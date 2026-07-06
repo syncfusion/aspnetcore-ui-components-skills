@@ -3,7 +3,7 @@ name: syncfusion-aspnetcore-smithchart
 description: Implement Smith Chart visualization for RF and transmission line analysis. Use this skill when building high-frequency circuit applications, impedance/admittance series plots, or transmission line parameter visualizations. Perfect for network analysis dashboards, component testing interfaces, or technical engineering applications requiring Smith chart data representation.
 metadata:
   author: "Syncfusion Inc"
-  version: "33.1.44"
+  version: "34.1.29"
   category: "Data Visualization"
 ---
 
@@ -110,13 +110,13 @@ The Smith Chart control provides:
 
 ```cshtml
 <ejs-smithchart id="smithchart">
-    <e-seriescollection>
-        <e-series dataSource="TransmissionData" name="Transmission 1">
-            <e-marker visible="true">
-                <e-datalabel visible="true"></e-datalabel>
-            </e-marker>
-        </e-series>
-    </e-seriescollection>
+    <e-smithchart-smithchartseriescollection>
+        <e-smithchart-smithchartseries dataSource="TransmissionData" name="Transmission 1" resistance="resistance" reactance="reactance">
+            <e-smithchartseries-marker visible="true">
+                <e-series-marker-datalabel visible="true"></e-series-marker-datalabel>
+            </e-smithchartseries-marker>
+        </e-smithchart-smithchartseries>
+    </e-smithchart-smithchartseriescollection>
 </ejs-smithchart>
 ```
 

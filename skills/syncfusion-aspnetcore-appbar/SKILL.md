@@ -3,7 +3,7 @@ name: syncfusion-aspnetcore-appbar
 description: Implement Syncfusion AppBar component to provide consistent top-level navigation and actions in your ASP.NET Core applications.
 metadata:
   author: "Syncfusion Inc"
-  version: "33.1.44"
+  version: "34.1.29"
   category: "Navigation Components"
 ---
 

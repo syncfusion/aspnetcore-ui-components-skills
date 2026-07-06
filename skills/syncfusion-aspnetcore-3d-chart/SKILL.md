@@ -3,7 +3,7 @@ name: syncfusion-aspnetcore-3d-chart
 description: Guide for implementing Syncfusion 3D Chart in ASP.NET Core. Always use this skill when user needs 3D chart functionality, data visualization, series configuration, axes setup, or interactive chart features like tooltips and selection. Covers setup, data binding, chart types, styling, and user interactions.
 metadata:
   author: "Syncfusion Inc"
-  version: "33.1.44"
+  version: "34.1.29"
   category: "Charts"
 ---
 

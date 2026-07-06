@@ -422,7 +422,7 @@ ViewBag.DataWithGaps = new[]
                   yName="Sales" 
                   type="@Syncfusion.EJ2.Charts.ChartSeriesType.Column">
             <e-series-emptypointsettings mode="@Syncfusion.EJ2.Charts.EmptyPointMode.Average" fill="#E74C3C">
-                <e-border color="#C0392B" width="2"></e-border>
+                <e-emptypointsettings-border color="#C0392B" width="2"></e-emptypointsettings-border>
             </e-series-emptypointsettings>
         </e-series>
     </e-series-collection>

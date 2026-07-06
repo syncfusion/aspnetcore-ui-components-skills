@@ -7,7 +7,6 @@ This guide covers comprehensive tooltip configuration in Syncfusion ASP.NET Core
 - [Basic Tooltips](#basic-tooltips)
   - [Enable Basic Tooltip](#enable-basic-tooltip)
   - [Tooltip for Multiple Series](#tooltip-for-multiple-series)
-  - [Series-Specific Tooltip](#series-specific-tooltip)
 - [Tooltip Customization](#tooltip-customization)
   - [Custom Fill Color](#custom-fill-color)
   - [Border and Shadow](#border-and-shadow)
@@ -44,7 +43,7 @@ This guide covers comprehensive tooltip configuration in Syncfusion ASP.NET Core
 ```cshtml
 <ejs-chart id="chart">
     <e-chart-primaryxaxis valueType="@Syncfusion.EJ2.Charts.ValueType.Category"></e-chart-primaryxaxis>
-    <e-chart-tooltip enable="true"></e-chart-tooltip>
+    <e-chart-tooltipsettings enable="true"></e-chart-tooltipsettings>
     <e-series-collection>
         <e-series dataSource="ViewBag.ChartData" 
                   xName="Month" 
@@ -79,7 +78,7 @@ public class ChartController : Controller
 ```cshtml
 <ejs-chart id="chart">
     <e-chart-primaryxaxis valueType="@Syncfusion.EJ2.Charts.ValueType.Category"></e-chart-primaryxaxis>
-    <e-chart-tooltip enable="true"></e-chart-tooltip>
+    <e-chart-tooltipsettings enable="true"></e-chart-tooltipsettings>
     <e-series-collection>
         <e-series dataSource="ViewBag.Sales2023" 
                   xName="Month" 
@@ -97,30 +96,6 @@ public class ChartController : Controller
 </ejs-chart>
 ```
 
-### Series-Specific Tooltip
-
-```cshtml
-<ejs-chart id="chart">
-    <e-chart-primaryxaxis valueType="@Syncfusion.EJ2.Charts.ValueType.Category"></e-chart-primaryxaxis>
-    <e-series-collection>
-        <e-series dataSource="ViewBag.ProductA" 
-                  xName="Month" 
-                  yName="Sales" 
-                  name="Product A"
-                  type="@Syncfusion.EJ2.Charts.ChartSeriesType.Line">
-            <e-series-tooltip enable="true" format="Product A<br/>${point.x} : <b>${point.y}</b>"></e-series-tooltip>
-        </e-series>
-        <e-series dataSource="ViewBag.ProductB" 
-                  xName="Month" 
-                  yName="Sales" 
-                  name="Product B"
-                  type="@Syncfusion.EJ2.Charts.ChartSeriesType.Line">
-            <e-series-tooltip enable="true" format="Product B<br/>${point.x} : <b>${point.y}</b>"></e-series-tooltip>
-        </e-series>
-    </e-series-collection>
-</ejs-chart>
-```
-
 ## Tooltip Customization
 
 ### Custom Fill Color
@@ -128,9 +103,9 @@ public class ChartController : Controller
 ```cshtml
 <ejs-chart id="chart">
     <e-chart-primaryxaxis valueType="@Syncfusion.EJ2.Charts.ValueType.Category"></e-chart-primaryxaxis>
-    <e-chart-tooltip enable="true" fill="#0078D4" opacity="0.9">
-        <e-tooltip-textstyle color="#ffffff"></e-tooltip-textstyle>
-    </e-chart-tooltip>
+    <e-chart-tooltipsettingssettings enable="true" fill="#0078D4" opacity="0.9">
+        <e-tooltipsettings-textstyle color="#ffffff"></e-tooltipsettings-textstyle>
+    </e-chart-tooltipsettings>
     <e-series-collection>
         <e-series dataSource="ViewBag.ChartData" 
                   xName="Month" 
@@ -146,10 +121,10 @@ public class ChartController : Controller
 ```cshtml
 <ejs-chart id="chart">
     <e-chart-primaryxaxis valueType="@Syncfusion.EJ2.Charts.ValueType.Category"></e-chart-primaryxaxis>
-    <e-chart-tooltip enable="true" fill="#ffffff">
-        <e-tooltip-border width="2" color="#0078D4"></e-tooltip-border>
-        <e-tooltip-textstyle color="#333" fontSize="14px" fontWeight="500"></e-tooltip-textstyle>
-    </e-chart-tooltip>
+    <e-chart-tooltipsettings enable="true" fill="#ffffff">
+        <e-tooltipsettings-border width="2" color="#0078D4"></e-tooltipsettings-border>
+        <e-tooltipsettings-textstyle color="#333" fontSize="14px" fontWeight="500"></e-tooltipsettings-textstyle>
+    </e-chart-tooltipsettings>
     <e-series-collection>
         <e-series dataSource="ViewBag.ChartData" 
                   xName="Month" 
@@ -165,13 +140,13 @@ public class ChartController : Controller
 ```cshtml
 <ejs-chart id="chart">
     <e-chart-primaryxaxis valueType="@Syncfusion.EJ2.Charts.ValueType.Category"></e-chart-primaryxaxis>
-    <e-chart-tooltip enable="true" 
+    <e-chart-tooltipsettings enable="true" 
                    fill="#107C10" 
                    opacity="0.9"
                    rx="10"
                    ry="10">
-        <e-tooltip-textstyle color="#ffffff" fontWeight="600"></e-tooltip-textstyle>
-    </e-chart-tooltip>
+        <e-tooltipsettings-textstyle color="#ffffff" fontWeight="600"></e-tooltipsettings-textstyle>
+    </e-chart-tooltipsettings>
     <e-series-collection>
         <e-series dataSource="ViewBag.ChartData" 
                   xName="Category" 
@@ -187,12 +162,12 @@ public class ChartController : Controller
 ```cshtml
 <ejs-chart id="chart">
     <e-chart-primaryxaxis valueType="@Syncfusion.EJ2.Charts.ValueType.Category"></e-chart-primaryxaxis>
-    <e-chart-tooltip enable="true" 
+    <e-chart-tooltipsettings enable="true" 
                    fill="#FFB900" 
                    opacity="0.8"
                    fadeOutDuration="1000">
-        <e-tooltip-textstyle color="#333"></e-tooltip-textstyle>
-    </e-chart-tooltip>
+        <e-tooltipsettings-textstyle color="#333"></e-tooltipsettings-textstyle>
+    </e-chart-tooltipsettings>
     <e-series-collection>
         <e-series dataSource="ViewBag.ChartData" 
                   xName="Month" 
@@ -210,9 +185,9 @@ public class ChartController : Controller
 ```cshtml
 <ejs-chart id="chart">
     <e-chart-primaryxaxis valueType="@Syncfusion.EJ2.Charts.ValueType.Category"></e-chart-primaryxaxis>
-    <e-chart-tooltip enable="true" 
+    <e-chart-tooltipsettings enable="true" 
                    template="<div style='background:#0078D4;color:white;padding:10px;border-radius:5px'><b>${point.x}</b><br/>Sales: <b>${point.y}</b></div>">
-    </e-chart-tooltip>
+    </e-chart-tooltipsettings>
     <e-series-collection>
         <e-series dataSource="ViewBag.ChartData" 
                   xName="Month" 
@@ -228,9 +203,9 @@ public class ChartController : Controller
 ```cshtml
 <ejs-chart id="chart">
     <e-chart-primaryxaxis valueType="@Syncfusion.EJ2.Charts.ValueType.Category"></e-chart-primaryxaxis>
-    <e-chart-tooltip enable="true" 
+    <e-chart-tooltipsettings enable="true" 
                    template="<div style='background:#f5f5f5;padding:12px;border:2px solid #0078D4;border-radius:8px;box-shadow:0 2px 4px rgba(0,0,0,0.1)'><div style='display:flex;align-items:center;margin-bottom:5px'><div style='width:12px;height:12px;background:${series.fill};margin-right:8px;border-radius:50%'></div><span style='font-weight:bold;color:#0078D4'>${series.name}</span></div><div style='color:#666'>${point.x}: <b style='color:#333'>${point.y}</b></div></div>">
-    </e-chart-tooltip>
+    </e-chart-tooltipsettings>
     <e-series-collection>
         <e-series dataSource="ViewBag.Sales" 
                   xName="Month" 
@@ -247,9 +222,9 @@ public class ChartController : Controller
 ```cshtml
 <ejs-chart id="chart">
     <e-chart-primaryxaxis valueType="@Syncfusion.EJ2.Charts.ValueType.Category"></e-chart-primaryxaxis>
-    <e-chart-tooltip enable="true" 
+    <e-chart-tooltipsettings enable="true" 
                    template="<div style='background:white;padding:15px;border:2px solid #0078D4;border-radius:5px'><div style='font-weight:bold;color:#0078D4;margin-bottom:10px'>${point.x}</div><table style='font-size:12px'><tr><td>Sales:</td><td style='text-align:right;padding-left:10px'><b>${point.y}</b></td></tr><tr><td>Target:</td><td style='text-align:right;padding-left:10px'><b>${point.target}</b></td></tr><tr><td>Achievement:</td><td style='text-align:right;padding-left:10px'><b>${point.achievement}%</b></td></tr></table></div>">
-    </e-chart-tooltip>
+    </e-chart-tooltipsettings>
     <e-series-collection>
         <e-series dataSource="ViewBag.DetailedData" 
                   xName="Month" 
@@ -275,9 +250,9 @@ ViewBag.DetailedData = new[]
 ```cshtml
 <ejs-chart id="chart">
     <e-chart-primaryxaxis valueType="@Syncfusion.EJ2.Charts.ValueType.Category"></e-chart-primaryxaxis>
-    <e-chart-tooltip enable="true" 
+    <e-chart-tooltipsettings enable="true" 
                    template="<div style='background:white;padding:10px;border:1px solid #ddd;border-radius:5px;text-align:center'><img src='/images/${point.x}.png' style='width:40px;height:40px'/><div style='margin-top:5px;font-weight:bold'>${point.x}</div><div style='color:#0078D4;font-weight:bold'>${point.y} units</div></div>">
-    </e-chart-tooltip>
+    </e-chart-tooltipsettings>
     <e-series-collection>
         <e-series dataSource="ViewBag.ProductData" 
                   xName="Product" 
@@ -295,7 +270,7 @@ ViewBag.DetailedData = new[]
 ```cshtml
 <ejs-chart id="chart">
     <e-chart-primaryxaxis valueType="@Syncfusion.EJ2.Charts.ValueType.Category"></e-chart-primaryxaxis>
-    <e-chart-tooltip enable="true" shared="true"></e-chart-tooltip>
+    <e-chart-tooltipsettings enable="true" shared="true"></e-chart-tooltipsettings>
     <e-series-collection>
         <e-series dataSource="ViewBag.Sales2023" 
                   xName="Month" 
@@ -318,10 +293,10 @@ ViewBag.DetailedData = new[]
 ```cshtml
 <ejs-chart id="chart">
     <e-chart-primaryxaxis valueType="@Syncfusion.EJ2.Charts.ValueType.Category"></e-chart-primaryxaxis>
-    <e-chart-tooltip enable="true" 
+    <e-chart-tooltipsettings enable="true" 
                    shared="true"
                    header="${point.x}">
-    </e-chart-tooltip>
+    </e-chart-tooltipsettings>
     <e-series-collection>
         <e-series dataSource="ViewBag.ProductA" 
                   xName="Month" 
@@ -350,10 +325,10 @@ ViewBag.DetailedData = new[]
 ```cshtml
 <ejs-chart id="chart">
     <e-chart-primaryxaxis valueType="@Syncfusion.EJ2.Charts.ValueType.DateTime" ></e-chart-primaryxaxis>
-    <e-chart-tooltip enable="true" 
+    <e-chart-tooltipsettings enable="true" 
                    shared="true"
                    template="<div style='background:#f8f9fa;padding:12px;border-radius:5px;border:1px solid #dee2e6'><div style='font-weight:bold;margin-bottom:8px;padding-bottom:5px;border-bottom:2px solid #0078D4'>${point.x}</div><div style='margin-top:5px'><span style='color:${series.fill};font-weight:bold'>\u25CF</span> ${series.name}: <b>${point.y}</b></div></div>">
-    </e-chart-tooltip>
+    </e-chart-tooltipsettings>
     <e-series-collection>
         <e-series dataSource="ViewBag.Sales" 
                   xName="Date" 
@@ -378,7 +353,7 @@ ViewBag.DetailedData = new[]
 ```cshtml
 <ejs-chart id="chart">
     <e-chart-primaryxaxis valueType="@Syncfusion.EJ2.Charts.ValueType.Category"></e-chart-primaryxaxis>
-    <e-chart-tooltip enable="true" format="${point.x} : ${point.y}"></e-chart-tooltip>
+    <e-chart-tooltipsettings enable="true" format="${point.x} : ${point.y}"></e-chart-tooltipsettings>
     <e-series-collection>
         <e-series dataSource="ViewBag.RevenueData" 
                   xName="Month" 
@@ -404,7 +379,7 @@ ViewBag.RevenueData = new[]
 ```cshtml
 <ejs-chart id="chart">
     <e-chart-primaryxaxis valueType="@Syncfusion.EJ2.Charts.ValueType.Category"></e-chart-primaryxaxis>
-    <e-chart-tooltip enable="true" format="${point.x} : ${point.y}%"></e-chart-tooltip>
+    <e-chart-tooltipsettings enable="true" format="${point.x} : ${point.y}%"></e-chart-tooltipsettings>
     <e-series-collection>
         <e-series dataSource="ViewBag.GrowthData" 
                   xName="Quarter" 
@@ -420,13 +395,13 @@ ViewBag.RevenueData = new[]
 ```cshtml
 <ejs-chart id="chart">
     <e-chart-primaryxaxis valueType="@Syncfusion.EJ2.Charts.ValueType.Category"></e-chart-primaryxaxis>
-    <e-chart-tooltip enable="true" fill="#0078D4">
-        <e-tooltip-textstyle fontFamily="Arial" 
+    <e-chart-tooltipsettings enable="true" fill="#0078D4">
+        <e-tooltipsettings-textstyle fontFamily="Arial" 
                            fontSize="14px" 
                            fontWeight="600" 
                            color="#ffffff">
-        </e-tooltip-textstyle>
-    </e-chart-tooltip>
+        </e-tooltipsettings-textstyle>
+    </e-chart-tooltipsettings>
     <e-series-collection>
         <e-series dataSource="ViewBag.ChartData" 
                   xName="Month" 
@@ -442,9 +417,9 @@ ViewBag.RevenueData = new[]
 ```cshtml
 <ejs-chart id="chart">
     <e-chart-primaryxaxis valueType="@Syncfusion.EJ2.Charts.ValueType.Category"></e-chart-primaryxaxis>
-    <e-chart-tooltip enable="true" 
+    <e-chart-tooltipsettings enable="true" 
                    format="<b>${point.x}</b><br/>Sales: ${point.y}<br/>Target: 40">
-    </e-chart-tooltip>
+    </e-chart-tooltipsettings>
     <e-series-collection>
         <e-series dataSource="ViewBag.ChartData" 
                   xName="Month" 
@@ -462,10 +437,10 @@ ViewBag.RevenueData = new[]
 ```cshtml
 <ejs-chart id="chart">
     <e-chart-primaryxaxis valueType="@Syncfusion.EJ2.Charts.ValueType.Category"></e-chart-primaryxaxis>
-    <e-chart-tooltip enable="true" 
+    <e-chart-tooltipsettings enable="true" 
                    enableAnimation="true"
                    duration="500">
-    </e-chart-tooltip>
+    </e-chart-tooltipsettings>
     <e-series-collection>
         <e-series dataSource="ViewBag.ChartData" 
                   xName="Month" 
@@ -481,10 +456,10 @@ ViewBag.RevenueData = new[]
 ```cshtml
 <ejs-chart id="chart">
     <e-chart-primaryxaxis valueType="@Syncfusion.EJ2.Charts.ValueType.Category"></e-chart-primaryxaxis>
-    <e-chart-tooltip enable="true" 
+    <e-chart-tooltipsettings enable="true" 
                    enableAnimation="true"
                    fadeOutDuration="2000">
-    </e-chart-tooltip>
+    </e-chart-tooltipsettings>
     <e-series-collection>
         <e-series dataSource="ViewBag.ChartData" 
                   xName="Category" 
@@ -502,7 +477,7 @@ ViewBag.RevenueData = new[]
 ```cshtml
 <ejs-chart id="chart" tooltipRender="tooltipRender">
     <e-chart-primaryxaxis valueType="@Syncfusion.EJ2.Charts.ValueType.Category"></e-chart-primaryxaxis>
-    <e-chart-tooltip enable="true"></e-chart-tooltip>
+    <e-chart-tooltipsettings enable="true"></e-chart-tooltipsettings>
     <e-series-collection>
         <e-series dataSource="ViewBag.ChartData" 
                   xName="Month" 
@@ -531,7 +506,7 @@ ViewBag.RevenueData = new[]
 ```cshtml
 <ejs-chart id="chart" tooltipRender="conditionalTooltip">
     <e-chart-primaryxaxis valueType="@Syncfusion.EJ2.Charts.ValueType.Category"></e-chart-primaryxaxis>
-    <e-chart-tooltip enable="true"></e-chart-tooltip>
+    <e-chart-tooltipsettings enable="true"></e-chart-tooltipsettings>
     <e-series-collection>
         <e-series dataSource="ViewBag.ChartData" 
                   xName="Month" 
@@ -558,11 +533,11 @@ ViewBag.RevenueData = new[]
 ```cshtml
 <ejs-chart id="chart">
     <e-chart-primaryxaxis valueType="@Syncfusion.EJ2.Charts.ValueType.Category"></e-chart-primaryxaxis>
-    <e-chart-tooltip enable="true" 
+    <e-chart-tooltipsettings enable="true" 
                    location-x="100"
                    location-y="50"
                    enableMarker="true">
-    </e-chart-tooltip>
+    </e-chart-tooltipsettings>
     <e-series-collection>
         <e-series dataSource="ViewBag.ChartData" 
                   xName="Month" 
@@ -578,7 +553,7 @@ ViewBag.RevenueData = new[]
 ```cshtml
 <ejs-chart id="chart">
     <e-chart-primaryxaxis valueType="@Syncfusion.EJ2.Charts.ValueType.Category"></e-chart-primaryxaxis>
-    <e-chart-tooltip enable="true" enableMarker="true"></e-chart-tooltip>
+    <e-chart-tooltipsettings enable="true" enableMarker="true"></e-chart-tooltipsettings>
     <e-series-collection>
         <e-series dataSource="ViewBag.ProductA" 
                   xName="Month" 

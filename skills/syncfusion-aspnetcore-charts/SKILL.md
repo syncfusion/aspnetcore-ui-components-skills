@@ -3,7 +3,7 @@ name: syncfusion-aspnetcore-charts
 description: Implements Syncfusion ASP.NET Core Chart (SfChart) for data visualization. Use this when building charts, visualizing time-series or categorical data, or creating dashboards. Covers series configuration (line, bar, pie), axes, tooltips, legends, and customization for ASP.NET Core applications.
 metadata:
     author: "Syncfusion Inc"
-    version: "33.1.44"
+    version: "34.1.29"
     category: "Data Visualization"
 ---
 
@@ -309,9 +309,9 @@ public IActionResult Index()
         <e-series dataSource="@ViewBag.Data" xName="X" yName="Y" 
                   type="@Syncfusion.EJ2.Charts.ChartSeriesType.Line">
             <e-series-marker visible="true" height="10" width="10">
+                <e-series-datalabel visible="true" position="Top">
+                </e-series-datalabel>
             </e-series-marker>
-            <e-series-datalabel visible="true" position="Top">
-            </e-series-datalabel>
         </e-series>
     </e-series-collection>
 </ejs-chart>

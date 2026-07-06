@@ -789,12 +789,12 @@ var colorMapping = new List<MapsColorMapping> {
 ### Markers with Tooltips
 
 ```cshtml
-<e-layersettings-markersettings>
-    <e-layersettings-markersetting dataSource="@cities" shape="Circle">
+<e-layersettings-markers>
+    <e-layersettings-marker dataSource="@cities" shape="Circle">
         <e-layersettings-markersetting-tooltipsettings visible="true" valuePath="Name">
         </e-layersettings-markersetting-tooltipsettings>
-    </e-layersettings-markersetting>
-</e-layersettings-markersettings>
+    </e-layersettings-marker>
+</e-layersettings-markers>
 ```
 
 ### Interactive Zoom and Pan

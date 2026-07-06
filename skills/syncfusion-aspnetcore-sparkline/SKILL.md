@@ -3,7 +3,7 @@ name: syncfusion-aspnetcore-sparkline
 description: When user needs to create sparklines (compact data visualizations) in ASP.NET Core applications, always use this skill to implement sparkline components, configure chart types (line, column, area, win-loss, pie), bind data, customize appearance, add markers and data labels, enable user interactions (tooltips, track lines), and ensure accessibility compliance immediately.
 metadata:
   author: "Syncfusion Inc"
-  version: "33.1.44"
+  version: "34.1.29"
   category: "Data Visualization - Charts"
 ---
 

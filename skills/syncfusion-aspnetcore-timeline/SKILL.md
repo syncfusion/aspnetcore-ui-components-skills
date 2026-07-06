@@ -3,7 +3,7 @@ name: syncfusion-aspnetcore-timeline
 description: Display temporal sequences with Syncfusion Timeline component. Supports vertical/horizontal orientations, flexible item alignment (Before/After/Alternate), rich templating for content and dots, content positioning strategies, and comprehensive event handling for item rendering lifecycle. Essential for chronological visualization in ASP.NET Core applications.
 metadata:
   author: "Syncfusion Inc"
-  version: "33.1.44"
+  version: "34.1.29"
   category: "Layout Components"
 ---
 

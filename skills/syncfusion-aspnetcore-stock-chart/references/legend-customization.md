@@ -28,7 +28,7 @@ Legends provide information about the series rendered in the Stock Chart. Enable
 
 **Basic legend enablement:**
 
-```csharp
+```cshtml
 <ejs-stockchart id="stockChart">
     <e-stockchart-legendsettings visible="true">
     </e-stockchart-legendsettings>
@@ -78,25 +78,25 @@ Control where the legend appears relative to the chart using the `position` prop
 ### Available Positions
 
 **Bottom (Default):**
-```csharp
+```cshtml
 <e-stockchart-legendsettings visible="true" position="Bottom">
 </e-stockchart-legendsettings>
 ```
 
 **Top:**
-```csharp
+```cshtml
 <e-stockchart-legendsettings visible="true" position="Top">
 </e-stockchart-legendsettings>
 ```
 
 **Left:**
-```csharp
+```cshtml
 <e-stockchart-legendsettings visible="true" position="Left">
 </e-stockchart-legendsettings>
 ```
 
 **Right:**
-```csharp
+```cshtml
 <e-stockchart-legendsettings visible="true" position="Right">
 </e-stockchart-legendsettings>
 ```
@@ -104,7 +104,7 @@ Control where the legend appears relative to the chart using the `position` prop
 **Custom Position:**
 For arbitrary positioning, use Custom position with x and y coordinates:
 
-```csharp
+```cshtml
 <e-stockchart-legendsettings visible="true" position="Custom">
     <e-stockchartlegendsettings-location x="100" y="50"></e-stockchartlegendsettings-location>
 </e-stockchart-legendsettings>
@@ -119,7 +119,7 @@ When legend is positioned horizontally (Top/Bottom), align it relative to the ch
 ### Alignment Options
 
 **Center (Default):**
-```csharp
+```cshtml
 <e-stockchart-legendsettings 
     visible="true" 
     position="Bottom" 
@@ -128,7 +128,7 @@ When legend is positioned horizontally (Top/Bottom), align it relative to the ch
 ```
 
 **Near (Left side):**
-```csharp
+```cshtml
 <e-stockchart-legendsettings 
     visible="true" 
     position="Bottom" 
@@ -137,7 +137,7 @@ When legend is positioned horizontally (Top/Bottom), align it relative to the ch
 ```
 
 **Far (Right side):**
-```csharp
+```cshtml
 <e-stockchart-legendsettings 
     visible="true" 
     position="Bottom" 
@@ -151,7 +151,7 @@ When legend is positioned horizontally (Top/Bottom), align it relative to the ch
 
 Control legend dimensions with `width` and `height` properties:
 
-```csharp
+```cshtml
 <e-stockchart-legendsettings 
     visible="true" 
     position="Right" 
@@ -168,7 +168,7 @@ By default:
 
 Customize the shape of legend icons using the series `legendShape` property:
 
-```csharp
+```cshtml
 <e-stockchart-series 
     name="Stock Price"
     dataSource="stockData" 
@@ -185,7 +185,7 @@ Available shapes: Circle, Rectangle, Diamond, Triangle, Cross, Plus, HorizontalL
 
 Customize individual legend item icon size:
 
-```csharp
+```cshtml
 <e-stockchart-legendsettings 
     visible="true" 
     shapeWidth="15" 
@@ -210,7 +210,7 @@ Control spacing between legend items through CSS:
 
 Add a title to the legend and customize its appearance:
 
-```csharp
+```cshtml
 <e-stockchart-legendsettings visible="true" 
     title="Market Data"
     titlePosition="Top">
@@ -233,7 +233,7 @@ Add a title to the legend and customize its appearance:
 
 Customize title font properties:
 
-```csharp
+```cshtml
 <e-stockchartlegendsettings-titlestyle
     color="#333333" 
     size="14px" 
@@ -248,7 +248,7 @@ Customize title font properties:
 
 Create custom legend item templates for branded styling or enhanced content:
 
-```csharp
+```cshtml
 <ejs-stockchart id="stockChart">
     <e-stockchart-legendsettings visible="true">
         <e-content-template>
@@ -272,7 +272,7 @@ Template supports:
 
 Prevent a series from appearing in the legend by setting an empty name:
 
-```csharp
+```cshtml
 <e-stockchart-series 
     name=""
     dataSource="stockData" 
@@ -286,7 +286,7 @@ Prevent a series from appearing in the legend by setting an empty name:
 
 Use legend click to toggle series visibility. This is enabled by default:
 
-```csharp
+```cshtml
 <e-stockchart-legendsettings 
     visible="true" 
     toggleVisibility="true">
@@ -299,7 +299,7 @@ Users can click legend items to show/hide the corresponding series in the chart.
 
 If you want legend items clickable but not to toggle visibility:
 
-```csharp
+```cshtml
 <e-stockchart-legendsettings 
     visible="true" 
     toggleVisibility="false">
@@ -308,7 +308,7 @@ If you want legend items clickable but not to toggle visibility:
 
 ## Complete Legend Example
 
-```csharp
+```cshtml
 <ejs-stockchart id="stockChart">
     <e-stockchart-legendsettings 
         visible="true" 

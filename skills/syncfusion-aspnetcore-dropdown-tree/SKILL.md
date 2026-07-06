@@ -3,7 +3,7 @@ name: syncfusion-aspnetcore-dropdown-tree
 description: Implement the Syncfusion ASP.NET Core DropDownTree component to bind hierarchical and self-referential data, enable checkbox selection, customize templates, implement keyboard accessibility, and handle tree interactions when building multi-level dropdown selections.
 metadata:
   author: "Syncfusion Inc"
-  version: "33.1.44"
+  version: "34.1.29"
   category: "Dropdowns"
 ---
 

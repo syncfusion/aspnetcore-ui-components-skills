@@ -3,7 +3,7 @@ name: syncfusion-aspnetcore-treemap
 description: Implement interactive hierarchical TreeMap visualizations in ASP.NET Core using Syncfusion. Create tree maps for hierarchical data with multiple layouts, color mapping, drill-down capabilities, and interactive features. Use this skill whenever the user needs to visualize hierarchical data structures, display nested categories with relative sizes, implement interactive drill-down navigation, or enable data exploration through tree maps.
 metadata:
   author: "Syncfusion Inc"
-  version: "33.1.44"
+  version: "34.1.29"
 ---
 
 # Implementing Syncfusion TreeMap in ASP.NET Core

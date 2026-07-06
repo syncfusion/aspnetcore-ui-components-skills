@@ -29,11 +29,11 @@ Show overall data patterns and forecast future values.
         <e-series dataSource="@ViewBag.ChartData" 
                   xName="X" yName="Y">
             <e-series-trendlines>
-                <e-series-trendline type="@Syncfusion.EJ2.Charts.TrendlineTypes.Linear" 
+                <e-trendline type="@Syncfusion.EJ2.Charts.TrendlineTypes.Linear" 
                                    width="2" 
                                    fill="#FF6347"
                                    name="Linear Trend">
-                </e-series-trendline>
+                </e-trendline>
             </e-series-trendlines>
         </e-series>
     </e-series-collection>
@@ -44,32 +44,32 @@ Show overall data patterns and forecast future values.
 
 **Linear:** Straight line fit
 ```cshtml
-<e-series-trendline type="@Syncfusion.EJ2.Charts.TrendlineTypes.Linear"></e-series-trendline>
+<e-trendline type="@Syncfusion.EJ2.Charts.TrendlineTypes.Linear"></e-trendline>
 ```
 
 **Exponential:** Exponential curve
 ```cshtml
-<e-series-trendline type="@Syncfusion.EJ2.Charts.TrendlineTypes.Exponential"></e-series-trendline>
+<e-trendline type="@Syncfusion.EJ2.Charts.TrendlineTypes.Exponential"></e-trendline>
 ```
 
 **Logarithmic:** Logarithmic curve
 ```cshtml
-<e-series-trendline type="@Syncfusion.EJ2.Charts.TrendlineTypes.Logarithmic"></e-series-trendline>
+<e-trendline type="@Syncfusion.EJ2.Charts.TrendlineTypes.Logarithmic"></e-trendline>
 ```
 
 **Polynomial:** Polynomial curve (specify order)
 ```cshtml
-<e-series-trendline type="@Syncfusion.EJ2.Charts.TrendlineTypes.Polynomial" polynomialOrder="3"></e-series-trendline>
+<e-trendline type="@Syncfusion.EJ2.Charts.TrendlineTypes.Polynomial" polynomialOrder="3"></e-trendline>
 ```
 
 **Power:** Power curve
 ```cshtml
-<e-series-trendline type="@Syncfusion.EJ2.Charts.TrendlineTypes.Power"></e-series-trendline>
+<e-trendline type="@Syncfusion.EJ2.Charts.TrendlineTypes.Power"></e-trendline>
 ```
 
 **Moving Average:** Smoothed trend
 ```cshtml
-<e-series-trendline type="@Syncfusion.EJ2.Charts.TrendlineTypes.MovingAverage" period="3"></e-series-trendline>
+<e-trendline type="@Syncfusion.EJ2.Charts.TrendlineTypes.MovingAverage" period="3"></e-trendline>
 ```
 
 ### Forecasting
@@ -77,22 +77,22 @@ Show overall data patterns and forecast future values.
 Project trendline into future or past:
 
 ```cshtml
-<e-series-trendline type="@Syncfusion.EJ2.Charts.TrendlineTypes.Linear" 
+<e-trendline type="@Syncfusion.EJ2.Charts.TrendlineTypes.Linear" 
                    forwardForecast="3" 
                    backwardForecast="2">
-</e-series-trendline>
+</e-trendline>
 ```
 
 ### Trendline Customization
 
 ```cshtml
-<e-series-trendline type="@Syncfusion.EJ2.Charts.TrendlineTypes.Linear" 
+<e-trendline type="@Syncfusion.EJ2.Charts.TrendlineTypes.Linear" 
                    fill="#4CAF50" 
                    width="3" 
                    dashArray="5,5"
                    opacity="0.8">
     <e-trendline-marker visible="true"></e-trendline-marker>
-</e-series-trendline>
+</e-trendline>
 ```
 
 ## Error Bars

@@ -101,9 +101,11 @@ To display meaningful data, add series to your Smith Chart. The Smith Chart requ
 ```cshtml
 <ejs-smithchart id="smithchart">
     <e-smithchart-smithchartseriescollection>
-        <e-smithchart-smithchartseries dataSource="SeriesData1" name="Transmission Line 1">
+        <e-smithchart-smithchartseries dataSource="SeriesData1" name="Transmission Line 1" 
+                                       resistance="resistance" reactance="reactance">
         </e-smithchart-smithchartseries>
-        <e-smithchart-smithchartseries dataSource="SeriesData2" name="Transmission Line 2">
+        <e-smithchart-smithchartseries dataSource="SeriesData2" name="Transmission Line 2" 
+                                       resistance="resistance" reactance="reactance">
         </e-smithchart-smithchartseries>
     </e-smithchart-smithchartseriescollection>
 </ejs-smithchart>
@@ -121,23 +123,23 @@ public void OnGet()
 {
     SeriesData1 = new List<SmithChartData>
     {
-        new SmithChartData { Resistance = 10, Reactance = 25 },
-        new SmithChartData { Resistance = 20, Reactance = 50 },
-        new SmithChartData { Resistance = 30, Reactance = 75 }
+        new SmithChartData { resistance = 10, reactance = 25 },
+        new SmithChartData { resistance = 20, reactance = 50 },
+        new SmithChartData { resistance = 30, reactance = 75 }
     };
 
     SeriesData2 = new List<SmithChartData>
     {
-        new SmithChartData { Resistance = 5, Reactance = 15 },
-        new SmithChartData { Resistance = 15, Reactance = 45 },
-        new SmithChartData { Resistance = 25, Reactance = 65 }
+        new SmithChartData { resistance = 5, reactance = 15 },
+        new SmithChartData { resistance = 15, reactance = 45 },
+        new SmithChartData { resistance = 25, reactance = 65 }
     };
 }
 
 public class SmithChartData
 {
-    public double Resistance { get; set; }
-    public double Reactance { get; set; }
+    public double resistance { get; set; }  
+    public double reactance { get; set; } 
 }
 ```
 
@@ -148,10 +150,10 @@ Enhance your Smith Chart with a title and subtitle:
 ```cshtml
 <ejs-smithchart id="smithchart">
     <e-smithchart-title text="Transmission Line Analysis">
-        <e-smithchart-subtitle text="RF Circuit Impedance Matching"></e-smithchart-subtitle>
+        <e-title-subtitle text="RF Circuit Impedance Matching"></e-title-subtitle>
     </e-smithchart-title>
     <e-smithchart-smithchartseriescollection>
-        <e-smithchart-smithchartseries dataSource="SeriesData1" name="Transmission Line 1">
+        <e-smithchart-smithchartseries dataSource="SeriesData1" name="Transmission Line 1" resistance="resistance" reactance="reactance">
         </e-smithchart-smithchartseries>
     </e-smithchart-smithchartseriescollection>
 </ejs-smithchart>
@@ -164,7 +166,7 @@ Enhance your Smith Chart with a title and subtitle:
 Display markers at each data point:
 
 ```cshtml
-<e-smithchart-smithchartseries dataSource="SeriesData1" name="Transmission Line 1">
+<e-smithchart-smithchartseries dataSource="SeriesData1" name="Transmission Line 1" resistance="resistance" reactance="reactance">
     <e-smithchartseries-marker visible="true">
     </e-smithchartseries-marker>
 </e-smithchart-smithchartseries>
@@ -175,7 +177,7 @@ Display markers at each data point:
 Show data values near markers:
 
 ```cshtml
-<e-smithchart-smithchartseries dataSource="SeriesData1" name="Transmission Line 1">
+<e-smithchart-smithchartseries dataSource="SeriesData1" name="Transmission Line 1" resistance="resistance" reactance="reactance">
     <e-smithchartseries-marker visible="true">
         <e-series-marker-datalabel visible="true"></e-series-marker-datalabel>
     </e-smithchartseries-marker>
@@ -191,7 +193,7 @@ Display a legend to identify series:
     <e-smithchart-legendsettings visible="true">
     </e-smithchart-legendsettings>
     <e-smithchart-smithchartseriescollection>
-        <e-smithchart-smithchartseries dataSource="SeriesData1" name="Transmission Line 1">
+        <e-smithchart-smithchartseries dataSource="SeriesData1" name="Transmission Line 1" resistance="resistance" reactance="reactance">
         </e-smithchart-smithchartseries>
     </e-smithchart-smithchartseriescollection>
 </ejs-smithchart>
@@ -204,7 +206,7 @@ Show information on hover:
 ```cshtml
 <ejs-smithchart id="smithchart">
     <e-smithchart-smithchartseriescollection>
-        <e-smithchart-smithchartseries dataSource="SeriesData1" name="Transmission Line 1">
+        <e-smithchart-smithchartseries dataSource="SeriesData1" name="Transmission Line 1" resistance="resistance" reactance="reactance">
             <e-smithchartseries-tooltip visible="true">
             </e-smithchartseries-tooltip>
         </e-smithchart-smithchartseries>
@@ -222,12 +224,12 @@ Here's a complete getting-started example:
 
 <ejs-smithchart id="smithchart">
     <e-smithchart-title text="Smith Chart - Getting Started">
-        <e-smithchart-subtitle text="RF Circuit Analysis Example"></e-smithchart-subtitle>
+        <e-title-subtitle text="RF Circuit Analysis Example"></e-title-subtitle>
     </e-smithchart-title>
     <e-smithchart-legendsettings visible="true">
     </e-smithchart-legendsettings>
     <e-smithchart-smithchartseriescollection>
-        <e-smithchart-smithchartseries dataSource="Model.TransmissionData" name="Transmission 1">
+        <e-smithchart-smithchartseries dataSource="Model.TransmissionData" name="Transmission 1" resistance="resistance" reactance="reactance">
             <e-smithchartseries-tooltip visible="true">
             </e-smithchartseries-tooltip>
             <e-smithchartseries-marker visible="true">
@@ -249,10 +251,10 @@ public class IndexModel : PageModel
     {
         TransmissionData = new List<SmithChartData>
         {
-            new SmithChartData { Resistance = 10, Reactance = 25 },
-            new SmithChartData { Resistance = 20, Reactance = 50 },
-            new SmithChartData { Resistance = 30, Reactance = 75 },
-            new SmithChartData { Resistance = 40, Reactance = 60 }
+            new SmithChartData { resistance = 10, reactance = 25 },
+            new SmithChartData { resistance = 20, reactance = 50 },
+            new SmithChartData { resistance = 30, reactance = 75 },
+            new SmithChartData { resistance = 40, reactance = 60 }
         };
     }
 }

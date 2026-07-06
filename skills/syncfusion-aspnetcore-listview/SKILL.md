@@ -3,7 +3,7 @@ name: syncfusion-aspnetcore-listview
 description: Master the Syncfusion ListView component for ASP.NET Core to create interactive, data-bound lists with advanced features like grouping, virtualization, templates, and nested navigation.
 metadata:
   author: "Syncfusion Inc"
-  version: "33.1.44"
+  version: "34.1.29"
 ---
 
 # Implementing ListView in ASP.NET Core

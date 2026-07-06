@@ -3,7 +3,7 @@ name: syncfusion-aspnetcore-lineargauge
 description: Implement Syncfusion Linear Gauge component to visualize numerical values in a linear manner with support for pointers, ranges, annotations, and interactive features. Use this skill to create responsive gauge controls with customizable appearance, animations, and accessibility.
 metadata:
   author: "Syncfusion Inc"
-  version: "33.1.44"
+  version: "34.1.29"
   category: "Gauges"
 ---
 

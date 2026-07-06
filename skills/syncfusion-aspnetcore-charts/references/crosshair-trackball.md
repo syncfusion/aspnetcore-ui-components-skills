@@ -213,7 +213,7 @@ ViewBag.TimeSeriesData = new[]
 ```cshtml
 <ejs-chart id="chart">
     <e-chart-primaryxaxis valueType="@Syncfusion.EJ2.Charts.ValueType.Category"></e-chart-primaryxaxis>
-    <e-chart-tooltip enable="true" shared="true"></e-chart-tooltip>
+    <e-chart-tooltipsettings enable="true" shared="true"></e-chart-tooltipsettings>
     <e-chart-crosshairsettings enable="true" lineType="@Syncfusion.EJ2.Charts.LineType.Vertical"></e-chart-crosshairsettings>
     <e-series-collection>
         <e-series dataSource="ViewBag.Sales" 
@@ -258,7 +258,7 @@ ViewBag.Profit = new[]
 ```cshtml
 <ejs-chart id="chart">
     <e-chart-primaryxaxis valueType="@Syncfusion.EJ2.Charts.ValueType.DateTime"></e-chart-primaryxaxis>
-    <e-chart-tooltip enable="true" shared="true"></e-chart-tooltip>
+    <e-chart-tooltipsettings enable="true" shared="true"></e-chart-tooltipsettings>
     <e-chart-crosshairsettings enable="true" lineType="@Syncfusion.EJ2.Charts.LineType.Vertical"></e-chart-crosshairsettings>
     <e-series-collection>
         <e-series dataSource="ViewBag.Product1" 
@@ -454,7 +454,7 @@ ViewBag.RevenueData = new[]
 ```cshtml
 <ejs-chart id="chart">
     <e-chart-primaryxaxis valueType="@Syncfusion.EJ2.Charts.ValueType.Category"></e-chart-primaryxaxis>
-    <e-chart-tooltip enable="true" shared="true"></e-chart-tooltip>
+    <e-chart-tooltipsettings enable="true" shared="true"></e-chart-tooltipsettings>
     <e-chart-crosshairsettings enable="true" lineType="@Syncfusion.EJ2.Charts.LineType.Vertical"></e-chart-crosshairsettings>
     <e-series-collection>
         <e-series dataSource="ViewBag.Sales2023" 
@@ -478,10 +478,10 @@ ViewBag.RevenueData = new[]
 ```cshtml
 <ejs-chart id="chart">
     <e-chart-primaryxaxis valueType="@Syncfusion.EJ2.Charts.ValueType.Category"></e-chart-primaryxaxis>
-    <e-chart-tooltip enable="true" 
+    <e-chart-tooltipsettings enable="true" 
                    shared="true"
                    header="${point.x}">
-    </e-chart-tooltip>
+    </e-chart-tooltipsettings>
     <e-chart-crosshairsettings enable="true" lineType="@Syncfusion.EJ2.Charts.LineType.Vertical"></e-chart-crosshairsettings>
     <e-series-collection>
         <e-series dataSource="ViewBag.ProductA" 
@@ -514,10 +514,10 @@ ViewBag.RevenueData = new[]
 ```cshtml
 <ejs-chart id="chart">
     <e-chart-primaryxaxis valueType="@Syncfusion.EJ2.Charts.ValueType.Category"></e-chart-primaryxaxis>
-    <e-chart-tooltip enable="true" 
+    <e-chart-tooltipsettings enable="true" 
                    shared="true"
                    template="<div style='background:#f5f5f5;padding:10px;border:2px solid #0078D4;border-radius:5px'><div style='font-weight:bold;margin-bottom:5px;color:#0078D4'>${point.x}</div>${series.name}: <b>${point.y}</b></div>">
-    </e-chart-tooltip>
+    </e-chart-tooltipsettings>
     <e-chart-crosshairsettings enable="true" lineType="@Syncfusion.EJ2.Charts.LineType.Vertical"></e-chart-crosshairsettings>
     <e-series-collection>
         <e-series dataSource="ViewBag.Sales" 
@@ -543,7 +543,7 @@ ViewBag.RevenueData = new[]
 ```cshtml
 <ejs-chart id="chart">
     <e-chart-primaryxaxis valueType="@Syncfusion.EJ2.Charts.ValueType.Category"></e-chart-primaryxaxis>
-    <e-chart-tooltip enable="true" enableAnimation="true" duration="1000"></e-chart-tooltip>
+    <e-chart-tooltipsettings enable="true" enableAnimation="true" duration="1000"></e-chart-tooltipsettings>
     <e-chart-crosshairsettings enable="true"></e-chart-crosshairsettings>
     <e-series-collection>
         <e-series dataSource="ViewBag.ChartData" 
@@ -561,7 +561,7 @@ ViewBag.RevenueData = new[]
 ```cshtml
 <ejs-chart id="chart" tooltipRender="tooltipRender">
     <e-chart-primaryxaxis valueType="@Syncfusion.EJ2.Charts.ValueType.Category"></e-chart-primaryxaxis>
-    <e-chart-tooltip enable="true"></e-chart-tooltip>
+    <e-chart-tooltipsettings enable="true"></e-chart-tooltipsettings>
     <e-chart-crosshairsettings enable="true"></e-chart-crosshairsettings>
     <e-series-collection>
         <e-series dataSource="ViewBag.ChartData" 
@@ -599,7 +599,7 @@ ViewBag.RevenueData = new[]
             <e-crosshairtooltip enable="true"></e-crosshairtooltip>
         </e-chart-axis>
     </e-chart-axes>
-    <e-chart-tooltip enable="true" shared="true"></e-chart-tooltip>
+    <e-chart-tooltipsettings enable="true" shared="true"></e-chart-tooltipsettings>
     <e-chart-crosshairsettings enable="true"></e-chart-crosshairsettings>
     <e-series-collection>
         <e-series dataSource="ViewBag.RevenueData" 

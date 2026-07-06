@@ -3,7 +3,7 @@ name: syncfusion-aspnetcore-stepper
 description: Create and configure ASP.NET Core Stepper controls to support multi-step workflows and progressive user interfaces. This skill should be applied when implementing step navigation, wizards, progress trackers, form flows, checkout processes, or any sequential step-based UI. It is also relevant whenever requirements involve steppers, step validation, step navigation, linear flows, or step-based state management.
 metadata:
   author: "Syncfusion Inc"
-  version: "33.1.44"
+  version: "34.1.29"
   category: "Navigation Controls"
 ---
 

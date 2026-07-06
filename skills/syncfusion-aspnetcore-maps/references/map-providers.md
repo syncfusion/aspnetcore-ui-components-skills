@@ -129,12 +129,20 @@ Map providers supply the base map imagery and data. The Maps component supports 
 ### Bing Maps with Markers
 
 ```cshtml
+@using Syncfusion.EJ2.Maps
+
 @{
     
     var cities = new[] {
         new { Name = "Seattle", Latitude = 47.6062, Longitude = -122.3321 },
         new { Name = "San Francisco", Latitude = 37.7749, Longitude = -122.4194 },
         new { Name = "Los Angeles", Latitude = 34.0522, Longitude = -118.2437 }
+    };
+
+    var tooltip = new MapsTooltipSettings
+    {
+        Visible = true,
+        ValuePath = "Name",
     };
 }
 
@@ -147,8 +155,8 @@ Map providers supply the base map imagery and data. The Maps component supports 
     
     <e-maps-layers>
         <e-maps-layer>
-            <e-layersettings-markersettings>
-                <e-layersettings-markersetting 
+            <e-layersettings-markers>
+                <e-layersettings-marker 
                     visible="true"
                     dataSource="cities"
                     latitudeValuePath="Latitude"
@@ -156,12 +164,11 @@ Map providers supply the base map imagery and data. The Maps component supports 
                     shape="Circle"
                     fill="#FF6347"
                     height="15"
-                    width="15">
+                    width="15"
+                    tooltipsettings="tooltip">
                     
-                    <e-markersettings-tooltipsettings visible="true" valuePath="Name">
-                    </e-markersettings-tooltipsettings>
-                </e-layersettings-markersetting>
-            </e-layersettings-markersettings>
+                </e-layersettings-marker>
+            </e-layersettings-markers>
         </e-maps-layer>
     </e-maps-layers>
 </ejs-maps>
@@ -347,11 +354,19 @@ Use different OSM tile servers:
 Combine OSM with custom data layers:
 
 ```cshtml
+@using Syncfusion.EJ2.Maps
+
 @{
     var cities = new[] {
         new { Name = "Paris", Latitude = 48.8566, Longitude = 2.3522, Population = "2.2M" },
         new { Name = "Berlin", Latitude = 52.5200, Longitude = 13.4050, Population = "3.7M" },
         new { Name = "Madrid", Latitude = 40.4168, Longitude = -3.7038, Population = "3.3M" }
+    };
+
+    var tooltip = new MapsTooltipSettings
+    {
+        Visible = true,
+        Template = "#tooltipTemplate"
     };
 }
 
@@ -363,8 +378,8 @@ Combine OSM with custom data layers:
         <e-maps-layer 
             urlTemplate="https://tile.openstreetmap.org/{z}/{x}/{y}.png">
             
-            <e-layersettings-markersettings>
-                <e-layersettings-markersetting 
+            <e-layersettings-markers>
+                <e-layersettings-marker 
                     visible="true"
                     dataSource="cities"
                     latitudeValuePath="Latitude"
@@ -372,12 +387,11 @@ Combine OSM with custom data layers:
                     shape="Circle"
                     fill="#FF6347"
                     height="15"
-                    width="15">
+                    width="15"
+                    tooltipsettings="tooltip">
                     
-                    <e-markersettings-tooltipsettings visible="true" template="tooltipTemplate">
-                    </e-markersettings-tooltipsettings>
-                </e-layersettings-markersetting>
-            </e-layersettings-markersettings>
+                </e-layersettings-marker>
+            </e-layersettings-markers>
         </e-maps-layer>
     </e-maps-layers>
 </ejs-maps>
@@ -524,6 +538,12 @@ Combine tile provider with GeoJSON shapes:
         new { Name = "Suburb Store", Address = "456 Oak Ave", Latitude = 47.6101, Longitude = -122.3421, Type = "Regular" },
         new { Name = "Mall Store", Address = "789 Pine Rd", Latitude = 47.6000, Longitude = -122.3150, Type = "Regular" }
     };
+
+    var tooltip = new MapsTooltipSettings
+    {
+        Visible = true,
+        Template = "#tooltipTemplate"
+    };
 }
 
 <div style="padding: 20px;">
@@ -542,8 +562,8 @@ Combine tile provider with GeoJSON shapes:
             <e-maps-layer 
                 urlTemplate="https://atlas.microsoft.com/map/tile?api-version=2.0&tilesetId=microsoft.base.road&zoom={z}&x={x}&y={y}&subscription-key=@azureKey">
                 
-                <e-layersettings-markersettings>
-                    <e-layersettings-markersetting 
+                <e-layersettings-markers>
+                    <e-layersettings-marker 
                         visible="true"
                         dataSource="stores"
                         latitudeValuePath="Latitude"
@@ -551,12 +571,11 @@ Combine tile provider with GeoJSON shapes:
                         shape="Image"
                         imageUrl="/images/store-marker.png"
                         height="30"
-                        width="30">
+                        width="30"
+                        tooltipsettings="tooltip">
                         
-                        <e-markersettings-tooltipsettings visible="true" template="tooltipTemplate">
-                        </e-markersettings-tooltipsettings>
-                    </e-layersettings-markersetting>
-                </e-layersettings-markersettings>
+                    </e-layersettings-marker>
+                </e-layersettings-markers>
             </e-maps-layer>
         </e-maps-layers>
     </ejs-maps>
@@ -593,6 +612,19 @@ Combine tile provider with GeoJSON shapes:
         new { Name = "Arc de Triomphe", Latitude = 48.8738, Longitude = 2.2950, Description = "Famous monument" },
         new { Name = "Notre-Dame", Latitude = 48.8530, Longitude = 2.3499, Description = "Gothic cathedral" }
     };
+
+    var tooltip = new MapsTooltipSettings
+    {
+        Visible = true,
+        Template = "#tooltipTemplate"
+    };
+
+    var border = new MapsBorder
+    {
+        Color = "#FFFFFF",
+        Width = 2,
+        Opacity = 1
+    };
 }
 
 <div style="padding: 20px;">
@@ -613,21 +645,20 @@ Combine tile provider with GeoJSON shapes:
                 layerType="OSM"
                 urlTemplate="https://tile.openstreetmap.org/{z}/{x}/{y}.png">
                 
-                <e-layersettings-markersettings>
-                    <e-layersettings-markersetting 
+                <e-layersettings-markers>
+                    <e-layersettings-marker 
                         visible="true"
                         dataSource="touristAttractions"
                         latitudeValuePath="Latitude"
                         longitudeValuePath="Longitude"
                         shape="Diamond"
+                        border="border"
                         fill="#FF1744"
                         height="20"
-                        width="20">
-                        <e-markersettings-border color="#FFFFFF" width="2"></e-markersettings-border>
-                        <e-markersettings-tooltipsettings visible="true" template="tooltipTemplate">
-                        </e-markersettings-tooltipsettings>
-                    </e-layersettings-markersetting>
-                </e-layersettings-markersettings>
+                        width="20"
+                        tooltipsettings="tooltip">
+                    </e-layersettings-marker>
+                </e-layersettings-markers>
             </e-maps-layer>
         </e-maps-layers>
     </ejs-maps>

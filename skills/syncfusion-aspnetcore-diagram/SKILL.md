@@ -4,7 +4,7 @@ description: "Implement Syncfusion ASP.NET Core Diagram component (EJ2 Tag Helpe
 metadata:
   author: "Syncfusion Inc"
   category: "data-visualization"
-  version: "33.1.44"
+  version: "34.1.29"
 ---
 
 # ⚠️ STRICT USAGE RULES — MANDATORY FOR ALL CODE GENERATION

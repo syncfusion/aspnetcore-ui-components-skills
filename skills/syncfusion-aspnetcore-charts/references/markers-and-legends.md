@@ -296,9 +296,9 @@ public class ChartController : Controller
                   yName="Sales" 
                   type="@Syncfusion.EJ2.Charts.ChartSeriesType.Line">
             <e-series-marker visible="true" width="10" height="10" shape="@Syncfusion.EJ2.Charts.ChartShape.Circle">
-                <e-datalabel visible="true" position="@Syncfusion.EJ2.Charts.LegendPosition.Top">
+                <e-series-datalabel visible="true" position="@Syncfusion.EJ2.Charts.LegendPosition.Top">
                     <e-margin bottom="10"></e-margin>
-                </e-datalabel>
+                </e-series-datalabel>
             </e-series-marker>
         </e-series>
     </e-series-collection>
@@ -405,7 +405,7 @@ public class ChartController : Controller
 <ejs-chart id="chart">
     <e-chart-primaryxaxis valueType="@Syncfusion.EJ2.Charts.ValueType.Category"></e-chart-primaryxaxis>
     <e-chart-legendsettings visible="true" position="@Syncfusion.EJ2.Charts.LegendPosition.Custom">
-        <e-location x="100" y="50"></e-location>
+        <e-legendsettings-location x="100" y="50"></e-legendsettings-location>
     </e-chart-legendsettings>
     <e-series-collection>
         <e-series dataSource="ViewBag.ChartData" xName="Month" yName="Sales" name="Sales" type="@Syncfusion.EJ2.Charts.ChartSeriesType.Column"></e-series>

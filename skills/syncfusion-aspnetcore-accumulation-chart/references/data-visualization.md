@@ -640,6 +640,28 @@ Enable animation when clicking legend items:
 </ejs-accumulationchart>
 ```
 
+### Legend TextStyle
+
+Use separate `<e-legendsettings-textstyle>` tag inside legend settings:
+
+```cshtml
+<ejs-accumulationchart id="styledLegend">
+    <e-accumulationchart-legendsettings visible="true" 
+                                       position="Right" 
+                                       alignment="Center" 
+                                       toggleVisibility="true"
+                                       title="Browsers">
+        <e-legendsettings-textstyle color="#374151" size="13px"></e-legendsettings-textstyle>
+    </e-accumulationchart-legendsettings>
+    <e-accumulation-series-collection>
+        <e-accumulation-series dataSource="@chartData" xName="Category" yName="Value">
+        </e-accumulation-series>
+    </e-accumulation-series-collection>
+</ejs-accumulationchart>
+```
+
+**Important:** `textStyle` must NOT be an inline attribute like `textStyle="color: #374151"`. Always use the separate `<e-legendsettings-textstyle>` child tag with individual properties.
+
 ### Legend Layout
 
 Control horizontal vs vertical layout:

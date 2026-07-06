@@ -65,7 +65,7 @@ Stock Chart supports 6 trend line types:
 
 Simplest trend line showing best-fit straight line:
 
-```csharp
+```cshtml
 <ejs-stockchart id="stockChart">
     <e-stockchart-series-collection>
         <e-stockchart-series 
@@ -89,7 +89,7 @@ Simplest trend line showing best-fit straight line:
 
 Curved line for accelerating changes:
 
-```csharp
+```cshtml
 <e-trendline 
     type="Exponential" 
     fill="blue" 
@@ -103,7 +103,7 @@ Curved line for accelerating changes:
 
 Curved line for decreasing rate of change:
 
-```csharp
+```cshtml
 <e-trendline 
     type="Logarithmic" 
     fill="green" 
@@ -115,7 +115,7 @@ Curved line for decreasing rate of change:
 
 Flexible curved line for complex patterns:
 
-```csharp
+```cshtml
 <e-trendline 
     type="Polynomial" 
     polynomialOrder="3" 
@@ -130,7 +130,7 @@ Flexible curved line for complex patterns:
 
 Best fit for data with specific growth rate:
 
-```csharp
+```cshtml
 <e-trendline 
     type="Power" 
     fill="orange" 
@@ -142,7 +142,7 @@ Best fit for data with specific growth rate:
 
 Smooths out price fluctuations:
 
-```csharp
+```cshtml
 <e-trendline 
     type="MovingAverage" 
     period="5" 
@@ -157,7 +157,7 @@ Smooths out price fluctuations:
 
 Combine different trend lines for comprehensive analysis:
 
-```csharp
+```cshtml
 <e-stockchart-series 
     dataSource="stockData" 
     xName="x" 
@@ -185,7 +185,7 @@ Annotations on chart to mark important market events (earnings, dividends, stock
 
 ### Add Stock Events
 
-```csharp
+```cshtml
 <ejs-stockchart id="stockChart">
     @{
         var stockEvents = new List<object>
@@ -224,7 +224,7 @@ Annotations on chart to mark important market events (earnings, dividends, stock
 
 ### Event Customization
 
-```csharp
+```cshtml
  <e-stockchart-stockevent date="new DateTime(2023, 2, 15)"
                           type="Flag"
                           description="Dividend: $0.25"
@@ -241,7 +241,7 @@ Annotations allow adding custom notes, shapes, or images to specific chart locat
 
 ### Add Text Annotation
 
-```csharp
+```cshtml
 <ejs-stockchart id="stockChart">
     <e-stockchart-annotations>
         <e-stockchart-annotation 
@@ -270,7 +270,7 @@ Annotations allow adding custom notes, shapes, or images to specific chart locat
 
 ### Image Annotation
 
-```csharp
+```cshtml
 <e-stockchart-annotation 
     content="<img src='logo.png' width='50' height='50' />"
     x="2023-05-01"
@@ -282,7 +282,7 @@ Annotations allow adding custom notes, shapes, or images to specific chart locat
 
 ### Shape Annotation
 
-```csharp
+```cshtml
 <e-stockchart-annotation 
     content="<div style='width:100px;height:50px;background:red;opacity:0.5;'></div>"
     x="2023-04-01"
@@ -299,7 +299,7 @@ Annotations allow adding custom notes, shapes, or images to specific chart locat
 
 ### Multiple Annotations
 
-```csharp
+```cshtml
 <e-stockchart-annotations>
     <e-stockchart-annotation 
         content="<div>Support Level</div>"
@@ -325,7 +325,7 @@ Add secondary axes for displaying multiple series with different scales.
 
 ### Add Secondary Y-Axis
 
-```csharp
+```cshtml
 <ejs-stockchart id="stockChart">
     <!-- Primary Y-axis for price -->
     <e-stockchart-primaryyaxis 
@@ -384,7 +384,7 @@ Add secondary axes for displaying multiple series with different scales.
 
 ### Multiple X-Axes
 
-```csharp
+```cshtml
 <e-stockchart-axes>
     <e-stockchart-axis 
         name="secondaryXAxis"
@@ -400,7 +400,7 @@ Split chart vertically into multiple plotting areas.
 
 ### Create Multiple Rows
 
-```csharp
+```cshtml
 <ejs-stockchart id="stockChart">
     <!-- Define rows -->
     <e-stockchart-rows>
@@ -461,7 +461,7 @@ Split chart vertically into multiple plotting areas.
 
 ### Row Height Distribution
 
-```csharp
+```cshtml
 <e-stockchart-rows>
     <e-stockchart-row height="60%"></e-stockchart-row>  <!-- Main price chart -->
     <e-stockchart-row height="20%"></e-stockchart-row>  <!-- Volume -->
@@ -475,7 +475,7 @@ Allows users to select specific time ranges to filter chart data.
 
 ### Enable Range Selector
 
-```csharp
+```cshtml
 <ejs-stockchart id="stockChart" enableSelector="true">
     <e-stockchart-stockchartperiods>
         <e-stockchart-stockchartperiod interval="1" intervalType="Years" text="1Y"></e-stockchart-stockchartperiod>
@@ -506,7 +506,7 @@ Allows users to switch between different time intervals (Daily, Weekly, Monthly)
 
 ### Enable Period Selector
 
-```csharp
+```cshtml
 <ejs-stockchart id="stockChart" enablePeriodSelector="true">  
     <e-stockchart-stockchartperiods>
         <e-stockchart-stockchartperiod intervalType="Minutes" interval="15" text="15m"></e-stockchart-stockchartperiod>
@@ -532,7 +532,7 @@ Allows users to switch between different time intervals (Daily, Weekly, Monthly)
 
 Enable keyboard access to chart interactions:
 
-```csharp
+```cshtml
 <ejs-stockchart id="stockChart">
     <!-- Chart configuration -->
 </ejs-stockchart>
@@ -548,7 +548,7 @@ Enable keyboard access to chart interactions:
 
 Proper ARIA labels and roles for screen reader compatibility:
 
-```csharp
+```cshtml
 <ejs-stockchart id="stockChart">
    <e-stockchart-series-collection>
         <e-stockchart-series 
@@ -565,7 +565,7 @@ Proper ARIA labels and roles for screen reader compatibility:
 
 Support for high contrast themes:
 
-```csharp
+```cshtml
 <ejs-stockchart id="stockChart" theme="HighContrast">
 </ejs-stockchart>
 ```
@@ -576,7 +576,7 @@ Available themes: Material, Fabric, Bootstrap, HighContrastLight, MaterialDark, 
 
 Avoid color-only differentiation. Use patterns or styles:
 
-```csharp
+```cshtml
 <e-stockchart-series 
     type="Line" 
     fill="red" 
@@ -589,7 +589,7 @@ Avoid color-only differentiation. Use patterns or styles:
 
 Ensure readable text sizes:
 
-```csharp
+```cshtml
 <e-stockchart-tooltipsettings>
     <e-stocktooltipsettings-textstyle size="16px">  <!-- Minimum readable size -->
     </e-stocktooltipsettings-textstyle>
@@ -598,7 +598,7 @@ Ensure readable text sizes:
 
 ### Complete Accessible Configuration
 
-```csharp
+```cshtml
 <ejs-stockchart id="stockChart"
     theme="HighContrast">    
     <e-stockchart-tooltipsettings enable="true">

@@ -3,7 +3,7 @@ name: syncfusion-aspnetcore-bullet-chart
 description: Guide for implementing Syncfusion Bullet Chart in ASP.NET Core applications. Use this skill when building comparative performance visualizations, KPI dashboards, progress tracking, goal comparison charts, or any scenario requiring actual vs. target value display. Bullet charts effectively compare actual performance against target benchmarks in a compact format—ideal for dashboards, executive summaries, and performance monitoring systems. Trigger when user mentions bullet chart, performance comparison, target visualization, KPI dashboard, progress bars with targets.
 metadata:
   author: "Syncfusion Inc"
-  version: "33.1.44"
+  version: "34.1.29"
 ---
 
 # Syncfusion ASP.NET Core Bullet Chart

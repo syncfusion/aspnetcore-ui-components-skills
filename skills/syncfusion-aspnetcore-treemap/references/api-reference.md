@@ -34,6 +34,8 @@ The TreeMap component consists of the following primary classes:
 | [`TreeMapLeafItemSettings`](#treemapleafitemsettings-class) | [TreeMapLeafItemSettings](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.TreeMap.TreeMapLeafItemSettings.html) | Configures leaf item appearance and behavior |
 | [`TreeMapLevel`](#treemaplevel-class) | [TreeMapLevel](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.TreeMap.TreeMapLevel.html) | Defines hierarchical levels for grouping |
 | [`TreeMapLegendSettings`](#treemaplegends-settings-class) | [TreeMapLegendSettings](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.TreeMap.TreeMapLegendSettings.html) | Configures legend display and behavior |
+| [`TreeMapCommonTitleSettings`](#treemapcommontitlesettings-class) | [TreeMapCommonTitleSettings](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.TreeMap.TreeMapCommonTitleSettings.html) | Configures common title settings for legend |
+| [`LegendSettingsTextStyleLegendSettings`](#legendsettingstextstylelegendsettings-class) | [LegendSettingsTextStyleLegendSettings](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.TreeMap.LegendSettingsTextStyleLegendSettings.html) | Legend title text styling |
 | [`TreeMapTitleSettings`](#treemaptitlesettings-class) | [TreeMapTitleSettings](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.TreeMap.TreeMapTitleSettings.html) | Configures title display and formatting |
 | [`TreeMapTooltipSettings`](#treemaptooltipsettings-class) | [TreeMapTooltipSettings](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.TreeMap.TreeMapTooltipSettings.html) | Configures tooltip display and formatting |
 | [`TreeMapHighlightSettings`](#treemaphighlightsettings-class) | [TreeMapHighlightSettings](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.TreeMap.TreeMapHighlightSettings.html) | Configures highlight behavior on hover |
@@ -239,6 +241,53 @@ Configures legend display and behavior.
 | [`ValuePath`](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.TreeMap.TreeMapLegendSettings.html#Syncfusion_EJ2_TreeMap_TreeMapLegendSettings_ValuePath) | string | null | Sets and gets the value path from the data source for legend |
 | [`Visible`](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.TreeMap.TreeMapLegendSettings.html#Syncfusion_EJ2_TreeMap_TreeMapLegendSettings_Visible) | bool | false | Sets and gets the visibility of the legend |
 | [`Width`](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.TreeMap.TreeMapLegendSettings.html#Syncfusion_EJ2_TreeMap_TreeMapLegendSettings_Width) | string | "" | Sets and gets the width of the legend |
+
+---
+
+## TreeMapCommonTitleSettings Class
+
+**Namespace:** [`Syncfusion.EJ2.TreeMap`](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.TreeMap.html)
+
+**API Reference:** [`TreeMapCommonTitleSettings`](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.TreeMap.TreeMapCommonTitleSettings.html)
+
+Configures common title settings for legend and other components.
+
+###Properties
+
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| [`Description`](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.TreeMap.TreeMapCommonTitleSettings.html) | string | "" | Sets and gets the description of the title for accessibility |
+| [`Text`](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.TreeMap.TreeMapCommonTitleSettings.html) | string | "" | Sets and gets the title text |
+
+### Usage Example
+
+```csharp
+// In PageModel
+LegendSettings = new TreeMapLegendSettings
+{
+    Visible = true,
+    Position = LegendPosition.Bottom,
+    Title = new TreeMapCommonTitleSettings
+    {
+        Text = "Stock Status"
+    }
+};
+```
+
+---
+
+## LegendSettingsTextStyleLegendSettings Class
+
+**Namespace:** [`Syncfusion.EJ2.TreeMap`](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.TreeMap.html)
+
+**API Reference:** [`LegendSettingsTextStyleLegendSettings`](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.TreeMap.LegendSettingsTextStyleLegendSettings.html)
+
+Inherits from [`TreeMapFont`](#treemapfont-class). Used specifically for legend title text styling.
+
+### Properties
+
+Inherits all properties from `TreeMapFont`:
+- `Color`, `FontFamily`, `FontStyle`, `FontWeight`, `Opacity`, `Size`
 
 ---
 

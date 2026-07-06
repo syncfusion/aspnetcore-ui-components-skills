@@ -3,7 +3,7 @@ name: syncfusion-aspnetcore-carousel
 description: Implement Syncfusion ASP.NET Core Carousel component for displaying rotating content and image galleries with customizable animations, navigation controls, and event handling.
 metadata:
   author: "Syncfusion Inc"
-  version: "33.1.44"
+  version: "34.1.29"
   category: "Navigators"
 ---
 

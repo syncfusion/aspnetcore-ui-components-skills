@@ -4,7 +4,7 @@ description: Implement the Syncfusion ASP.NET Core Image Editor (EJ2) component.
 metadata:
   author: "Syncfusion Inc"
   category: "File Viewers & Editors"
-  version: "33.1.44"
+  version: "34.1.29"
 ---
 
 # Implementing Syncfusion ASP.NET Core Image Editor

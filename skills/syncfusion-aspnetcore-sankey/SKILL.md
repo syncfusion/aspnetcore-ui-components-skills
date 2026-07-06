@@ -3,7 +3,7 @@ name: syncfusion-aspnetcore-sankey
 description: Build interactive Sankey Chart visualizations showing weighted flows and relationships between categories using nodes and links. Use this skill whenever the user mentions Sankey diagrams, flow visualization, process flows, value flows between categories, node and link styling, or wants to create diagrams that display the magnitude and direction of flows across stages or systems. The Sankey Chart is perfect for visualizing supply chains, energy flows, revenue streams, customer journeys, and data transformations.
 metadata:
   author: "Syncfusion Inc"
-  version: "33.1.44"
+  version: "34.1.29"
 ---
 
 # Implementing Syncfusion Sankey Chart

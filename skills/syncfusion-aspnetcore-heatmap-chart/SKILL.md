@@ -3,7 +3,7 @@ name: syncfusion-aspnetcore-heatmap-chart
 description: Implementing Syncfusion HeatMap Chart component for ASP.NET Core Razor Pages. Use this skill ALWAYS when the user needs to create heat maps to visualize two-dimensional data, customize cells with gradients or fixed colors, configure axes with multiple types, add legends with flexible positioning, bind array or JSON data, enable tooltips and cell selection, create bubble heat maps, or customize appearance and styling. Essential for data visualization, pattern detection, and matrix visualization use cases.
 metadata:
   author: "Syncfusion Inc"
-  version: "33.1.44"
+  version: "34.1.29"
   category: "Data Visualization"
 ---
 

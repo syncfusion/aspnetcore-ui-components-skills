@@ -36,7 +36,7 @@ Crosshairs display vertical and horizontal lines at the mouse position to help u
 
 ### Enable Crosshair
 
-```csharp
+```cshtml
 <ejs-stockchart id="stockChart">
     <e-stockchart-crosshairsettings enable="true" lineType="Vertical">
     </e-stockchart-crosshairsettings>
@@ -50,7 +50,7 @@ Crosshairs display vertical and horizontal lines at the mouse position to help u
 - **Horizontal**: Only horizontal line
 - **Both**: Both vertical and horizontal lines (default)
 
-```csharp
+```cshtml
 <e-stockchart-crosshairsettings 
     enable="true" 
     lineType="Both">
@@ -61,7 +61,7 @@ Crosshairs display vertical and horizontal lines at the mouse position to help u
 
 Customize line appearance:
 
-```csharp
+```cshtml
 <e-stockchart-crosshairsettings enable="true" lineType="Both">
     <e-crosshairsettings-line color="red" width="2" dashArray="5,5">
     </e-crosshairsettings-line>
@@ -77,7 +77,7 @@ Customize line appearance:
 
 Display axis values in tooltip labels:
 
-```csharp
+```cshtml
 <e-stockchart-primaryxaxis valueType="DateTime">
     <e-crosshairtooltip enable="true">
     </e-crosshairtooltip>
@@ -93,7 +93,7 @@ Display axis values in tooltip labels:
 
 Align crosshair with nearest data point instead of exact mouse position:
 
-```csharp
+```cshtml
 <e-stockchart-crosshairsettings 
     enable="true" 
     snapToData="true">
@@ -106,7 +106,7 @@ Align crosshair with nearest data point instead of exact mouse position:
 
 Customize crosshair label appearance:
 
-```csharp
+```cshtml
 <e-stockchart-crosshairsettings enable="true" lineType="Both">    
 </e-stockchart-crosshairsettings>
 <e-crosshairtooltip 
@@ -143,7 +143,7 @@ Trackball highlights the closest data point to the mouse and displays informatio
 
 Enable trackball by setting crosshair and tooltip properties:
 
-```csharp
+```cshtml
 <ejs-stockchart id="stockChart">
     <e-stockchart-crosshairsettings enable="true">
     </e-stockchart-crosshairsettings>
@@ -164,7 +164,7 @@ Enable trackball by setting crosshair and tooltip properties:
 
 ### Trackball with Multiple Series
 
-```csharp
+```cshtml
 <ejs-stockchart id="stockChart">
     <e-stockchart-crosshairsettings enable="true">
     </e-stockchart-crosshairsettings>
@@ -201,7 +201,7 @@ Tooltips display data point information on hover.
 
 ### Enable Tooltip
 
-```csharp
+```cshtml
 <ejs-stockchart id="stockChart">
     <e-stockchart-tooltipsettings enable="true">
     </e-stockchart-tooltipsettings>
@@ -212,7 +212,7 @@ Tooltips display data point information on hover.
 
 Customize tooltip appearance and behavior:
 
-```csharp
+```cshtml
 <e-stockchart-tooltipsettings 
     enable="true" 
     fill="lightyellow"
@@ -235,7 +235,7 @@ Customize tooltip appearance and behavior:
 
 Display single tooltip for all series:
 
-```csharp
+```cshtml
 <e-stockchart-tooltipsettings enable="true" shared="true">
 </e-stockchart-tooltipsettings>
 ```
@@ -246,7 +246,7 @@ Display single tooltip for all series:
 
 Define tooltip content format:
 
-```csharp
+```cshtml
 <ejs-stockchart id="stockChart">
     <e-stockchart-tooltipsettings enable="true" format="<b>${seriesName}</b><br/>Date: ${point.x}<br/>Close: ${point.close}"></e-stockchart-tooltipsettings>
 </ejs-stockchart>
@@ -295,7 +295,7 @@ Enable users to select data points by clicking or dragging.
 
 ### Point Selection
 
-```csharp
+```cshtml
 <ejs-stockchart id="stockChart" selectionMode="Point">
 </ejs-stockchart>
 ```
@@ -307,7 +307,7 @@ Enable users to select data points by clicking or dragging.
 
 ### Series Selection
 
-```csharp
+```cshtml
 <ejs-stockchart id="stockChart" selectionMode="Series">
 </ejs-stockchart>
 ```
@@ -316,7 +316,7 @@ Enable users to select data points by clicking or dragging.
 
 Customize selection appearance:
 
-```csharp
+```cshtml
 <ejs-stockchart id="stockChart">
     <e-stockchart-series-collection>
         <e-stockchart-series 
@@ -376,7 +376,7 @@ Customize selection appearance:
 
 ### Pre-select Data Points
 
-```csharp
+```cshtml
 <ejs-stockchart id="stockChart"
     selectionMode="Point"
     isMultiSelect="true">
@@ -393,7 +393,7 @@ Enable users to zoom in/out and pan through data.
 
 ### Enable Zoom
 
-```csharp
+```cshtml
 <ejs-stockchart id="stockChart">
     <e-stockchart-zoomsettings enableSelectionZooming="true" mode="XY">
     </e-stockchart-zoomsettings>
@@ -409,7 +409,7 @@ Enable users to zoom in/out and pan through data.
 
 Built-in toolbar for zoom controls:
 
-```csharp
+```cshtml
 <e-stockchart-zoomsettings enableSelectionZooming="true"
                            mode="X"
                            toolbarItems="ViewBag.toolBarItems">
@@ -430,7 +430,7 @@ public IActionResult Index()
 
 ### Enable Pan
 
-```csharp
+```cshtml
 <e-stockchart-zoomsettings 
     enableSelectionZooming="true" 
     enablePan="true" 
@@ -459,7 +459,7 @@ public IActionResult Index()
 
 ### Complete Zoom Configuration
 
-```csharp
+```cshtml
 <ejs-stockchart id="stockChart">
     <e-stockchart-zoomsettings 
         enableSelectionZooming="true"
@@ -475,7 +475,7 @@ public IActionResult Index()
 
 ### Mouse Wheel Zooming
 
-```csharp
+```cshtml
 <e-stockchart-zoomsettings 
     enableMouseWheelZooming="true">
 </e-stockchart-zoomsettings>
@@ -485,7 +485,7 @@ Allows zooming with mouse scroll wheel without clicking zoom button.
 
 ### Pinch Zooming
 
-```csharp
+```cshtml
 <e-stockchart-zoomsettings 
     enablePinchZooming="true">
 </e-stockchart-zoomsettings>
@@ -497,7 +497,7 @@ Enables pinch-to-zoom gesture on touch-enabled devices.
 
 ### Complete Interaction Setup
 
-```csharp
+```cshtml
 <ejs-stockchart id="stockChart" selectionMode="Point">
     <!-- Crosshair for precise reading -->
     <e-stockchart-crosshairsettings 
@@ -544,7 +544,7 @@ This configuration provides:
 
 ### Disable Specific Interactions
 
-```csharp
+```cshtml
 <!-- Disable zoom -->
 <e-stockchart-zoomsettings enableSelectionZooming="false">
 </e-stockchart-zoomsettings>
@@ -562,7 +562,7 @@ This configuration provides:
 
 For very large datasets, disable unnecessary interactions to improve performance:
 
-```csharp
+```cshtml
 <!-- Minimal configuration for large data -->
 <ejs-stockchart id="stockChart">
     <e-stockchart-tooltipsettings enable="false">

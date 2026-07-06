@@ -402,7 +402,7 @@ Search filters all items first, then virtualizes results:
     enableVirtualization="true"
     height="600px">
     <e-filemanager-searchsettings allowSearchOnTyping="true" 
-        filterType="contains" 
+        filterType="Contains" 
         ignoreCase="true">
     </e-filemanager-searchsettings>
     <e-filemanager-ajaxsettings url="/FileManager/FileManager">

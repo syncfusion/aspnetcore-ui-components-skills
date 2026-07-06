@@ -143,13 +143,14 @@ public class VariableRadiusData
 
 ## Doughnut Chart
 
-A doughnut chart is a **pie chart with a hollow center**, created by setting the `innerRadius` property. There is no separate "Doughnut" type - it's simply a Pie chart variant.
+A doughnut chart is a **pie chart with a hollow center**, created by setting the `innerRadius` property on the **`<e-accumulation-series>`** tag (not on `<ejs-accumulationchart>`). There is no separate "Doughnut" type - it's simply a Pie chart variant.
 
 ### Basic Doughnut Chart
 
 ```cshtml
 <ejs-accumulationchart id="doughnutChart">
     <e-accumulation-series-collection>
+        <!-- innerRadius goes on series, NOT on chart tag -->
         <e-accumulation-series dataSource="@chartData" 
                               xName="Category" 
                               yName="Value"
@@ -503,7 +504,9 @@ Create semi-pie or semi-doughnut charts by customizing start and end angles.
     </e-accumulation-series-collection>
 </ejs-accumulationchart>
 ```
-
+**Angle Reference:**
+- **0°** = 3 o'clock (right) | **90°** = 6 o'clock (bottom)
+- **180°** = 9 o'clock (left) | **270°** = 12 o'clock (top)
 ### Angle Reference
 
 - **0°** = 3 o'clock (right)

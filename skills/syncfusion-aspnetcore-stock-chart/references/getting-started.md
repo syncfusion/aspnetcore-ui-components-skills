@@ -115,7 +115,7 @@ The script manager must be registered after all component declarations to ensure
 
 In your page (e.g., `~/Pages/Index.cshtml`), add the Stock Chart tag helper:
 
-```csharp
+```cshtml
 <ejs-stockchart id="container">
     <e-stockchart-series-collection>
         <e-stockchart-series></e-stockchart-series>
@@ -139,7 +139,7 @@ When creating a Stock Chart, you can configure these essential properties:
 
 **Example with properties:**
 
-```csharp
+```cshtml
 <ejs-stockchart id="stockChart" 
     width="100%" 
     height="600" 
@@ -163,7 +163,7 @@ Stock Chart requires specific data structure for proper rendering. The data obje
 
 ### Basic Data Binding
 
-```csharp
+```cshtml
 @{
     var stockData = new List<object>
     {
@@ -190,7 +190,7 @@ Stock Chart requires specific data structure for proper rendering. The data obje
 
 When binding DateTime data, set the primary X-axis valueType to DateTime:
 
-```csharp
+```cshtml
 <e-stockchart-primaryxaxis valueType="DateTime">
 </e-stockchart-primaryxaxis>
 ```
@@ -201,7 +201,7 @@ By default, the axis valueType is Numeric. DateTime configuration enables proper
 
 For candlestick visualization, configure the series with OHLC fields:
 
-```csharp
+```cshtml
 <e-stockchart-series 
     dataSource="stockData" 
     xName="x" 
@@ -221,7 +221,7 @@ Stock Chart provides various events for handling user interactions and lifecycle
 
 ### Lifecycle Events
 
-```csharp
+```cshtml
 <ejs-stockchart id="stockChart" 
     load="onLoad" 
     loaded="onLoaded">
@@ -242,7 +242,7 @@ Stock Chart provides various events for handling user interactions and lifecycle
 
 ### User Interaction Events
 
-```csharp
+```cshtml
 <ejs-stockchart id="stockChart" 
     pointClick="onPointClick" 
     stockChartMouseMove="onMouseMove"
@@ -279,7 +279,7 @@ Stock Chart provides various events for handling user interactions and lifecycle
 
 ### Enable/Disable Features
 
-```csharp
+```cshtml
 <ejs-stockchart id="stockChart"
     enablePeriodSelector="true"
     enableSelector="true"
@@ -298,7 +298,7 @@ Stock Chart provides various events for handling user interactions and lifecycle
 
 ### Selection Configuration
 
-```csharp
+```cshtml
 <ejs-stockchart id="stockChart"
     selectionMode="Point"
     isMultiSelect="true"

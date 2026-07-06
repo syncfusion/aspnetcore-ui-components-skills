@@ -3,7 +3,7 @@ name: syncfusion-aspnetcore-maps
 description: Implement Syncfusion Maps component for ASP.NET Core to visualize geographical data. Use this when working with maps, GeoJSON files, choropleth visualizations, or spatial data display. This skill covers map layers, markers, bubbles, map providers (Bing Maps, Azure Maps, OpenStreetMap), data binding, color mapping, and user interactions like zooming and panning. Suitable for world maps, country maps, regional visualizations, and location-based data presentation.
 metadata:
   author: "Syncfusion Inc"
-  version: "33.1.44"
+  version: "34.1.29"
   category: "Data Visualization"
   platform: "ASP.NET Core"
 ---
@@ -288,7 +288,7 @@ When user needs to:
 
 <ejs-maps id="maps" height="600px">
     <e-maps-titlesettings text="World Population by Country">
-        <e-maps-titlesettings-textstyle size="16px" fontWeight="500"></e-maps-titlesettings-textstyle>
+        <e-titlesettings-textstyle size="16px" fontWeight="500"></e-titlesettings-textstyle>
     </e-maps-titlesettings>
     
     <e-maps-legendsettings visible="true" position="Bottom"></e-maps-legendsettings>
@@ -304,17 +304,19 @@ When user needs to:
                 colorMapping="colorMapping">
             </e-layersettings-shapesettings>
             
-            <e-layersettings-tooltipsettings visible="true" valuePath="Country">
-                <e-tooltipsettings-template>
-                    <div style="padding: 8px;">
-                        <strong>${Country}</strong><br/>
-                        Population: ${Population}
-                    </div>
-                </e-tooltipsettings-template>
+            <e-layersettings-tooltipsettings visible="true" valuePath="Country" template="#tooltipTemplate">
             </e-layersettings-tooltipsettings>
         </e-maps-layer>
     </e-maps-layers>
 </ejs-maps>
+
+<div id="tooltipTemplate" style="background: white; padding: 12px; border-radius: 4px; box-shadow: 0 2px 8px rgba(0,0,0,0.15);">
+    <h4 style="margin: 0 0 8px 0; color: #333;">${Country}</h4>
+    <div style="font-size: 14px;">
+        <div><strong>Population:</strong> ${Population}</div>
+        <div><strong>Capital:</strong> ${Capital}</div>
+    </div>
+</div>
 ```
 
 ### Map with Markers
@@ -333,6 +335,12 @@ When user needs to:
         new { Name = "London", Latitude = 51.5074, Longitude = -0.1278, Population = "9.0M" },
         new { Name = "Sydney", Latitude = -33.8688, Longitude = 151.2093, Population = "5.3M" }
     };
+
+    var tooltip = new MapsTooltipSettings
+    {
+        Visible = true,
+        ValuePath = "Name"
+    };
 }
 
 <ejs-maps id="maps" height="600px">
@@ -342,26 +350,17 @@ When user needs to:
         <e-maps-layer shapeData="worldMapData">
             <e-layersettings-shapesettings fill="#C3E6ED"></e-layersettings-shapesettings>
             
-            <e-layersettings-markersettings>
-                <e-layersettings-markersetting 
+            <e-layersettings-markers>
+                <e-layersettings-marker 
                     visible="true" 
                     dataSource="cities"
                     shape="Circle"
                     fill="#FF6347"
                     height="15"
-                    width="15">
-                    <e-layersettings-markersetting-tooltipsettings 
-                        visible="true" 
-                        valuePath="Name">
-                        <e-markersetting-tooltipsettings-template>
-                            <div style="padding: 8px;">
-                                <strong>${Name}</strong><br/>
-                                Population: ${Population}
-                            </div>
-                        </e-markersetting-tooltipsettings-template>
-                    </e-layersettings-markersetting-tooltipsettings>
-                </e-layersettings-markersetting>
-            </e-layersettings-markersettings>
+                    width="15"
+                    tooltipSettings="tooltip">
+                </e-layersettings-marker>
+            </e-layersettings-markers>
         </e-maps-layer>
     </e-maps-layers>
 </ejs-maps>
@@ -682,9 +681,9 @@ Defines legend types.
     
     <!-- Data layer: Markers -->
     <e-maps-layer type="Layer">
-        <e-layersettings-markersettings>
-            <e-layersettings-markersetting dataSource="@locations" shape="Circle"></e-layersettings-markersetting>
-        </e-layersettings-markersettings>
+        <e-layersettings-markers>
+            <e-layersettings-marker dataSource="@locations" shape="Circle"></e-layersettings-marker>
+        </e-layersettings-markers>
     </e-maps-layer>
 </e-maps-layers>
 ```

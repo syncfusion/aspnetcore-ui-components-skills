@@ -3,7 +3,7 @@ name: syncfusion-aspnetcore-gantt-chart
 description: Implement Syncfusion ASP.NET Core Gantt Chart component (EJ2) for project management and task scheduling. Use this when working with Gantt charts, project timelines, task dependencies, or resource allocation in ASP.NET Core applications (Tag Helper/Razor Pages/MVC). This skill covers data binding, task management, editing, filtering, export, and timeline customization.
 metadata:
   author: "Syncfusion Inc"
-  version: "33.1.44"
+  version: "34.1.29"
 ---
 
 # Syncfusion ASP.NET Core Gantt Chart

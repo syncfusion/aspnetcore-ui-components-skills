@@ -431,32 +431,32 @@ Enable marker legend by setting `Type` property to "Markers". Use `LegendText` p
         <e-maps-layers>
             <e-maps-layer shapeData="ViewBag.worldMap">
                 <e-layersettings-shapesettings fill="#C3E6ED"></e-layersettings-shapesettings>
-                <e-layersettings-markersettings>
-                    <e-layersettings-markersetting visible="true" 
+                <e-layersettings-markers>
+                    <e-layersettings-marker visible="true" 
                                                    shape="Circle"
                                                    fill="#FF0000"
                                                    height="15"
                                                    width="15"
                                                    legendText="Capital Cities"
                                                    dataSource="ViewBag.capitalCities">
-                    </e-layersettings-markersetting>
-                    <e-layersettings-markersetting visible="true" 
+                    </e-layersettings-marker>
+                    <e-layersettings-marker visible="true" 
                                                    shape="Diamond"
                                                    fill="#00FF00"
                                                    height="15"
                                                    width="15"
                                                    legendText="Major Ports"
                                                    dataSource="ViewBag.majorPorts">
-                    </e-layersettings-markersetting>
-                    <e-layersettings-markersetting visible="true" 
+                    </e-layersettings-marker>
+                    <e-layersettings-marker visible="true" 
                                                    shape="Star"
                                                    fill="#0000FF"
                                                    height="15"
                                                    width="15"
                                                    legendText="Tourist Attractions"
                                                    dataSource="ViewBag.touristSpots">
-                    </e-layersettings-markersetting>
-                </e-layersettings-markersettings>
+                    </e-layersettings-marker>
+                </e-layersettings-markers>
             </e-maps-layer>
         </e-maps-layers>
     </ejs-maps>
@@ -704,14 +704,14 @@ Set `RemoveDuplicateLegend` to **true** to hide duplicate legend entries.
                             <e-shapesettings-colormapping value="Africa" color='@new[] { "#FFD93D" }' label="Africa"></e-shapesettings-colormapping>
                         </e-shapesettings-colormappings>
                     </e-layersettings-shapesettings>
-                    <e-layersettings-markersettings>
-                        <e-layersettings-markersetting visible="true" 
+                    <e-layersettings-markers>
+                        <e-layersettings-marker visible="true" 
                                                        shape="Circle"
                                                        fill="#FF0000"
                                                        legendText="Major Cities"
                                                        dataSource="ViewBag.cities">
-                        </e-layersettings-markersetting>
-                    </e-layersettings-markersettings>
+                        </e-layersettings-marker>
+                    </e-layersettings-markers>
                 </e-maps-layer>
             </e-maps-layers>
         </ejs-maps>

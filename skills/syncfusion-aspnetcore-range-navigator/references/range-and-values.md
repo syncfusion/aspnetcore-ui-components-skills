@@ -334,6 +334,47 @@ Fires when the range selection changes:
 - `args.end` - End date/value
 - `args.label` - Formatted label
 
+### Synchronizing Chart with RangeNavigator
+
+The `changed` event can be used to synchronize a chart with the RangeNavigator selection. When the user moves or resizes the selected range, the chart updates automatically using the `zoomFactor` and `zoomPosition` properties of the chart axis.
+
+```cshtml
+<!-- Area Chart -->
+<ejs-chart id="areaChart">
+    <e-chart-primaryxaxis valueType="DateTime">
+    </e-chart-primaryxaxis>
+    <e-series-collection>
+        <e-series dataSource="@Model.Data"
+                  xName="x"
+                  yName="y"
+                  type="@Syncfusion.EJ2.Charts.ChartSeriesType.xArea">
+        </e-series>
+    </e-series-collection>
+</ejs-chart>
+<!-- Range Navigator -->
+<ejs-rangenavigator id="rangeNavigator"
+                    valueType="DateTime"
+                    changed="rangeChanged">
+    <e-rangenavigator-rangenavigatorseriescollection>
+        <e-rangenavigator-rangenavigatorseries
+            dataSource="@Model.Data"
+            xName="x"
+            yName="y"
+            type="Area">
+        </e-rangenavigator-rangenavigatorseries>
+    </e-rangenavigator-rangenavigatorseriescollection>
+</ejs-rangenavigator>
+<script>
+    function rangeChanged(args) {
+        var chart = document.getElementById('areaChart').ej2_instances[0];
+        // Synchronize chart zoom with selected range
+        chart.primaryXAxis.zoomFactor = args.zoomFactor;
+        chart.primaryXAxis.zoomPosition = args.zoomPosition;
+        chart.dataBind();
+    }
+</script>
+```
+
 ### Loaded Event
 
 Fires when component is fully initialized:

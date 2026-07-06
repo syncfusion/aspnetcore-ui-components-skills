@@ -3,7 +3,7 @@ name: syncfusion-aspnetcore-security
 description: "**CONTENT SECURITY POLICY (CSP) GUIDE** — Assist with configuring Syncfusion ASP.NET Core EJ2 components to work with strict Content Security Policy (CSP) headers. Use when: implementing CSP headers, generating and applying nonces to inline scripts/styles, configuring external font allowlists, or troubleshooting CSP violations."
 metadata:
   author: "Syncfusion Inc"
-  version: "33.1.44"
+  version: "34.1.29"
 ---
 
 # Content Security Policy (CSP) — Syncfusion ASP.NET Core (Security)

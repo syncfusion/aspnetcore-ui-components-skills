@@ -3,7 +3,7 @@ name: syncfusion-aspnetcore-file-manager
 description: Implement the Syncfusion ASP.NET Core File Manager component for file browsing, management, and organization. Use this when building file browsers, implementing file operations (upload/download), customizing toolbars and context menus, enabling drag-and-drop, and configuring data binding for file systems. This skill covers file access, file events, search and filtering, and layout customization.
 metadata:
   author: "Syncfusion Inc"
-  version: "33.1.44"
+  version: "34.1.29"
   components: "File Manager"
 ---
 
@@ -358,11 +358,11 @@ Navigate to the appropriate reference file based on your implementation needs:
     <e-filemanager-ajaxsettings url="/FileManager/FileManager">
     </e-filemanager-ajaxsettings>
     <e-filemanager-detailsviewsettings>
-        <e-filemanager-detailsviewsettings-columns>
-            <e-detailsviewcolumn field="name" headerText="Name" minWidth="150" width="200"></e-detailsviewcolumn>
-            <e-detailsviewcolumn field="_fm_modified" headerText="Date Modified" type="dateTime" minWidth="120" width="150"></e-detailsviewcolumn>
-            <e-detailsviewcolumn field="size" headerText="Size" minWidth="90" width="120"></e-detailsviewcolumn>
-        </e-filemanager-detailsviewsettings-columns>
+        <e-detailsviewsettings-columns>
+            <e-detailsviewsettings-column field="name" headerText="Name" minWidth="150" width="200"></e-detailsviewsettings-column>
+            <e-detailsviewsettings-column field="_fm_modified" headerText="Date Modified" type="dateTime" minWidth="120" width="150"></e-detailsviewsettings-column>
+            <e-detailsviewsettings-column field="size" headerText="Size" minWidth="90" width="120"></e-detailsviewsettings-column>
+        </e-detailsviewsettings-columns>
     </e-filemanager-detailsviewsettings>
 </ejs-filemanager>
 ```
@@ -397,7 +397,7 @@ Navigate to the appropriate reference file based on your implementation needs:
     <e-filemanager-ajaxsettings url="/FileManager/FileManager">
     </e-filemanager-ajaxsettings>
     <e-filemanager-searchsettings allowSearchOnTyping="true"
-        filterType="contains"
+        filterType="Contains"
         ignoreCase="true">
     </e-filemanager-searchsettings>
 </ejs-filemanager>

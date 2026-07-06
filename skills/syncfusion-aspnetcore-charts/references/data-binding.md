@@ -467,9 +467,7 @@ Handle null, undefined, or missing data points.
 
 ```cshtml
 <e-series dataSource="@ViewBag.ChartData" xName="x" yName="y">
-    <e-series-emptypoint fill="lightgray">
         <e-series-emptypointsettings mode="@Syncfusion.EJ2.Charts.EmptyPointMode.Gap"></e-series-emptypointsettings>
-    </e-series-emptypoint>
 </e-series>
 ```
 

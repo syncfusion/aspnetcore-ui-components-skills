@@ -3,7 +3,7 @@ name: syncfusion-aspnetcore-tabs
 description: Implement tabbed navigation interfaces in ASP.NET Core using Syncfusion Tab component for organizing and switching between content sections. Use this skill when implementing tab-based navigation, multi-panel content organization, wizards, or any scenario requiring organized content sections with header-based selection.
 metadata:
   author: "Syncfusion Inc"
-  version: "33.1.44"
+  version: "34.1.29"
 ---
 
 # Implementing Syncfusion Core Tabs

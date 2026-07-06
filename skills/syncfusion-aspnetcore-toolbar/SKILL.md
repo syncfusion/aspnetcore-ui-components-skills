@@ -3,7 +3,7 @@ name: syncfusion-aspnetcore-toolbar
 description: A simple toolbar component that organizes command buttons and responsive controls into a horizontal interface. Ideal for document editors, content management systems, and application headers to trigger actions and manage user workflows efficiently.
 metadata:
   author: "Syncfusion Inc"
-  version: "33.1.44"
+  version: "34.1.29"
   category: "Navigation"
 ---
 

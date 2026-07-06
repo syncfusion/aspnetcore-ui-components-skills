@@ -3,7 +3,7 @@ name: syncfusion-aspnetcore-smart-textarea
 description: Implement the Syncfusion ASP.NET Core Smart TextArea for AI-powered inline or popup text autocompletion. Covers OpenAI, Azure OpenAI, Ollama, and custom IChatInferenceService backends, plus UserRole, UserPhrases, and suggestion display mode customization.
 metadata:
   author: "Syncfusion Inc"
-  version: "33.1.44"
+  version: "34.1.29"
 ---
 
 # Syncfusion ASP.NET Core Smart TextArea

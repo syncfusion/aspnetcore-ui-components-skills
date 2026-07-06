@@ -382,6 +382,72 @@ dotnet run
    <e-maps-layer shapeData="mapData">
    ```
 
+### World Map Not Rendering or Shapes Appear Incorrect
+
+**Problem:** The map loads but geographical shapes are missing, distorted, incomplete, or do not resemble an actual world map.
+
+**Possible Causes:**
+1. No GeoJSON file was provided.
+2. An invalid or custom-generated GeoJSON file is being used.
+3. The GeoJSON file path is incorrect.
+4. The `shapeData` property is not bound correctly.
+5. The GeoJSON file does not contain valid world map boundaries.
+
+**Solutions:**
+
+1. **Use the official World Map GeoJSON file**
+
+   Download the official World Map GeoJSON:
+
+   ```text
+   https://www.syncfusion.com/downloads/support/directtrac/general/ze/WorldMap-637657487
+   ```
+
+2. **Place the file in the correct location**
+
+   ```text
+   wwwroot/scripts/MapsData/WorldMap.json
+   ```
+
+3. **Verify the file exists**
+
+   ```csharp
+   string path = "wwwroot/scripts/MapsData/WorldMap.json";
+
+   if (!System.IO.File.Exists(path))
+   {
+       throw new FileNotFoundException(
+           "WorldMap.json was not found.",
+           path);
+   }
+   ```
+
+4. **Load the GeoJSON correctly**
+
+   ```cshtml
+   @using Newtonsoft.Json
+
+   @{
+       string geoJsonText =
+           System.IO.File.ReadAllText(
+               "wwwroot/scripts/MapsData/WorldMap.json");
+
+       var worldMapData =
+           JsonConvert.DeserializeObject(geoJsonText);
+   }
+   ```
+
+5. **Bind the GeoJSON to the map layer**
+
+   ```cshtml
+   <ejs-maps id="maps">
+       <e-maps-layers>
+           <e-maps-layer shapeData="worldMapData">
+           </e-maps-layer>
+       </e-maps-layers>
+   </ejs-maps>
+   ```
+
 ### Script Errors / Component Not Loading
 
 **Problem:** JavaScript errors in browser console.

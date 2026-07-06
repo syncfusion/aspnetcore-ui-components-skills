@@ -3,7 +3,7 @@ name: syncfusion-aspnetcore-progress-bar
 description: Guide for implementing and customizing the Syncfusion Progress Bar component in ASP.NET Core applications. Use this skill when the user needs to create progress indicators showing task completion, file upload/download status, data loading states, circular progress visualizations, segmented progress tracking, or animated progress bars. Essential for building user-friendly feedback mechanisms that clearly communicate progress to end users.
 metadata:
   author: "Syncfusion Inc"
-  version: "33.1.44"
+  version: "34.1.29"
 ---
 
 # Implementing Syncfusion Progress Bar

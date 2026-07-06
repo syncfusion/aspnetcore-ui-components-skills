@@ -424,7 +424,7 @@ public class SmithchartSmithchartPoint
 ```cshtml
 <ejs-smithchart id="smithchart" width="100%" height="420px">
     <e-smithchart-title text="Transmission Line Analysis">
-        <e-smithchart-subtitle text="Impedance Matching"></e-smithchart-subtitle>
+        <e-title-subtitle text="Impedance Matching"></e-title-subtitle>
     </e-smithchart-title>
     <e-smithchart-smithchartseriescollection>
         <e-smithchart-smithchartseries dataSource="@ViewBag.TransmissionData" 

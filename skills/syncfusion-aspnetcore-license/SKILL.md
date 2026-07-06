@@ -3,7 +3,7 @@ name: syncfusion-aspnetcore-license
 description: "**LICENSE REGISTRATION GUIDE** — Assist with Syncfusion ASP.NET Core EJ2 license key generation, registration, troubleshooting, and error resolution. Use when: registering license keys, handling licensing errors, upgrading from trial to paid, generating version-specific keys, or handling platform-specific licensing."
 metadata:
   author: "Syncfusion Inc"
-  version: "33.1.44"
+  version: "34.1.29"
 ---
 
 # Syncfusion ASP.NET Core — License Registration

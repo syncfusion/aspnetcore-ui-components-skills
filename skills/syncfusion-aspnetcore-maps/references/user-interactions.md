@@ -268,19 +268,26 @@ Customize tooltip appearance:
 Separate tooltips for markers:
 
 ```cshtml
-<e-layersettings-markersettings>
-    <e-layersettings-markersetting 
+@using Syncfusion.EJ2.Maps
+
+@{
+    var tooltip = new MapsTooltipSettings
+    {
+        Visible = true,
+        Template = "#markerTemplate"
+    };
+}
+
+<e-layersettings-markers>
+    <e-layersettings-marker 
         visible="true"
         dataSource="cities"
         latitudeValuePath="Latitude"
-        longitudeValuePath="Longitude">
+        longitudeValuePath="Longitude"
+        tooltipsettings="tooltip">
         
-        <e-markersettings-tooltipsettings 
-            visible="true"
-            valuePath="CityName" template="#markerTemplate">
-        </e-markersettings-tooltipsettings>
-    </e-layersettings-markersetting>
-</e-layersettings-markersettings>
+    </e-layersettings-marker>
+</e-layersettings-markers>
 
 <div id="markerTemplate" style="padding: 10px;">
     <strong>${CityName}</strong><br/>

@@ -3,7 +3,7 @@ name: syncfusion-aspnetcore-accordion
 description: Implement Syncfusion Accordion component for organizing expandable navigation and content sections with single or multiple pane expansion support.
 metadata:
   author: "Syncfusion Inc"
-  version: "33.1.44"
+  version: "34.1.29"
   category: "Navigation"
 ---
 

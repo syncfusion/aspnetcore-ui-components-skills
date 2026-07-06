@@ -3,7 +3,7 @@ name: syncfusion-aspnetcore-markdown-converter
 description: Guides implementation of the Syncfusion ASP.NET Core Markdown Converter (Syncfusion.EJ2 NuGet). Use this skill when the user needs to convert Markdown text to HTML, use the MarkdownConverter toHtml method, configure MarkdownConverterOptions (async, gfm, lineBreak, silence), or integrate the Markdown Converter with the Syncfusion Rich Text Editor tag helper for live preview or side-by-side editing in ASP.NET Core MVC or Razor Pages projects. Trigger when user mentions markdown to HTML conversion, MarkdownConverter, toHtml, ej2-markdown-converter, markdown preview, or RTE markdown mode.
 metadata:
   author: "Syncfusion Inc"
-  version: "33.1.44"
+  version: "34.1.29"
   category: "File Viewers & Editors"
 ---
 

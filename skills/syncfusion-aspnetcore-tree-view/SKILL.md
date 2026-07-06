@@ -3,7 +3,7 @@ name: syncfusion-aspnetcore-tree-view
 description: Implement the Syncfusion ASP.NET Core TreeView component for hierarchical data visualization. Use this when working with tree structures, node selection, checkboxes, or drag-and-drop operations. This skill covers data binding, node editing, and advanced tree configurations.
 metadata:
   author: "Syncfusion Inc"
-  version: "33.1.44"
+  version: "34.1.29"
   category: "Navigation Components"
 ---
 

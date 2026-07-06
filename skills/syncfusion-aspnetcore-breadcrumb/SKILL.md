@@ -3,7 +3,7 @@ name: syncfusion-aspnetcore-breadcrumb
 description: Display hierarchical navigation paths with the ASP.NET Core Breadcrumb control. Use this skill when implementing breadcrumb navigation, handling item binding, configuring overflow behavior, or customizing templates and icons.
 metadata:
   author: "Syncfusion Inc"
-  version: "33.1.44"
+  version: "34.1.29"
   category: "Navigation"
 ---
 

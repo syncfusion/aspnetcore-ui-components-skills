@@ -13,7 +13,6 @@
   - [Option B: NPM Package](#option-b-npm-package)
   - [Option C: Static Files (Local Copy)](#option-c-static-files-local-copy)
 - [Step 4: Register Script Manager](#step-4-register-script-manager)
-- [Step 5: Add CSS Theme (Optional but Recommended)](#step-5-add-css-theme-optional-but-recommended)
 - [Step 6: Create Your First Chart](#step-6-create-your-first-chart)
   - [Razor Pages Example](#razor-pages-example)
   - [MVC Example](#mvc-example)
@@ -98,9 +97,6 @@ Add the script reference in the `<head>` section of `~/Pages/Shared/_Layout.csht
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - My App</title>
     
-    <!-- Syncfusion Material Theme -->
-    <link href="https://cdn.syncfusion.com/ej2/33.1.44/material.css" rel="stylesheet" />
-    
     <!-- Syncfusion ASP.NET Core controls scripts -->
     <script src="https://cdn.syncfusion.com/ej2/33.1.44/dist/ej2.min.js"></script>
 </head>
@@ -115,8 +111,6 @@ npm install @syncfusion/ej2-charts
 Then reference the local scripts:
 
 ```html
-<link href="~/node_modules/@syncfusion/ej2-base/styles/material.css" rel="stylesheet" />
-<link href="~/node_modules/@syncfusion/ej2-charts/styles/material.css" rel="stylesheet" />
 <script src="~/node_modules/@syncfusion/ej2-charts/dist/ej2-charts.iife.min.js"></script>
 ```
 
@@ -145,29 +139,6 @@ Add the script manager tag at the **end of the `<body>`** section in your layout
 ```
 
 **Important:** The `<ejs-scripts>` tag must be placed after the `@RenderBody()` and before the closing `</body>` tag.
-
-## Step 5: Add CSS Theme (Optional but Recommended)
-
-Add theme CSS in the `<head>` section for better appearance:
-
-```html
-<head>
-    <!-- ... -->
-    
-    <!-- Syncfusion Material Theme -->
-    <link href="https://cdn.syncfusion.com/ej2/{{ site.ej2version }}/material.css" rel="stylesheet" />
-</head>
-```
-
-**Available themes:**
-- `material.css` - Material Design
-- `bootstrap5.css` - Bootstrap 5
-- `bootstrap4.css` - Bootstrap 4
-- `fabric.css` - Microsoft Fabric
-- `fluent.css` - Microsoft Fluent
-- `tailwind.css` - Tailwind CSS
-- `bootstrap.css` - Bootstrap 3
-- `highcontrast.css` - High Contrast
 
 ## Step 6: Create Your First Chart
 
@@ -496,16 +467,6 @@ public class Startup
 3. Verify CDN URL is accessible
 4. Try clearing browser cache
 
-### Styling Issues
-
-**Issue:** Chart looks unstyled or has wrong colors
-
-**Solutions:**
-1. Add CSS theme reference in `<head>` (see Step 5)
-2. Ensure CSS file loads successfully (check Network tab in browser)
-3. Verify theme name matches available themes
-4. Check for CSS conflicts with other libraries
-
 ## Complete Working Example
 
 Here's a complete, copy-paste ready example:
@@ -548,7 +509,6 @@ app.Run();
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"]</title>
-    <link rel="stylesheet" href="https://cdn.syncfusion.com/ej2/33.1.44/material.css" />
     <script src="https://cdn.syncfusion.com/ej2/33.1.44/dist/ej2.min.js"></script>
 </head>
 <body>

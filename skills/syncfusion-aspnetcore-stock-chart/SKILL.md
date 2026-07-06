@@ -3,7 +3,7 @@ name: syncfusion-aspnetcore-stock-chart
 description: Create and configure Syncfusion Stock Chart controls in ASP.NET Core applications. Use this skill when building financial data visualizations with stock charts, candlestick series, technical indicators, or trading dashboards. Covers setup, series types, data binding, legends, indicators, and user interactions.
 metadata:
   author: "Syncfusion Inc"
-  version: "33.1.44"
+  version: "34.1.29"
   category: "Data Visualization"
 ---
 
@@ -109,7 +109,7 @@ The Stock Chart component provides:
 
 ## Quick Start
 
-```csharp
+```cshtml
 @{
     var stockData = new[]
     {
@@ -134,7 +134,7 @@ The Stock Chart component provides:
 ### Pattern 1: Candlestick Chart with DateTime Axis
 Create a financial chart showing OHLC (Open, High, Low, Close) data:
 
-```csharp
+```cshtml
 <ejs-stockchart id="stockChart">
     <e-stockchart-primaryxaxis 
         valueType="DateTime">
@@ -153,7 +153,7 @@ Create a financial chart showing OHLC (Open, High, Low, Close) data:
 ### Pattern 2: Adding Technical Indicators
 Enhance analysis with moving averages:
 
-```csharp
+```cshtml
 <ejs-stockchart id="stockChart">
     <e-stockchart-indicators>
         <e-stockchart-indicator 
@@ -168,7 +168,7 @@ Enhance analysis with moving averages:
 ### Pattern 3: Interactive Features
 Enable crosshairs and tooltips for user interaction:
 
-```csharp
+```cshtml
 <ejs-stockchart id="stockChart">
     <e-stockchart-tooltipsettings enable="true"></e-stockchart-tooltipsettings>
     <e-stockchart-crosshairsettings lineType="Vertical">
@@ -180,7 +180,7 @@ Enable crosshairs and tooltips for user interaction:
 ### Pattern 4: Legend Configuration
 Position and customize the legend:
 
-```csharp
+```cshtml
 <ejs-stockchart id="stockChart">
     <e-stockchart-legendsettings 
         visible="true" 

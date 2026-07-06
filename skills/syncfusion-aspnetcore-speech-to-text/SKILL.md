@@ -3,7 +3,7 @@ name: syncfusion-aspnetcore-speech-to-text
 description: Implement the Syncfusion ASP.NET Core SpeechToText control for converting spoken words to text using Web Speech API. Use this skill when implementing speech recognition with Razor Tag Helpers, converting voice to text in ASP.NET Core applications, handling microphone input, processing speech events, customizing button appearance, managing listening states, or building accessible voice-enabled forms. Covers setup, speech recognition features, Razor Tag Helper syntax, events, methods, globalization, and security.
 metadata:
   author: "Syncfusion Inc"
-  version: "33.1.44"
+  version: "34.1.29"
 ---
 
 # Syncfusion ASP.NET Core SpeechToText Control

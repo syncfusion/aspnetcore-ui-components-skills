@@ -3,7 +3,7 @@ name: syncfusion-aspnetcore-rich-text-editor
 description: "Implements the Syncfusion ASP.NET Core Rich Text Editor (ejs-richtexteditor tag helper) supporting HTML (WYSIWYG) and Markdown editing modes. Set editorMode='Markdown' for Markdown; default is HTML. Use this skill for toolbar configuration, image upload, table editing, inline or iframe mode, AI assistant integration, mentions, and form validation with rich text in ASP.NET Core projects."
 metadata:
   author: "Syncfusion Inc"
-  version: "33.1.44"
+  version: "34.1.29"
   category: "File Viewers & Editors"
 ---
 

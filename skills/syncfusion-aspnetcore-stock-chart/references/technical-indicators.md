@@ -55,7 +55,7 @@ Stock Chart supports 10 types of technical indicators, each serving different an
 
 Add indicators using the `indicator-collection` within the Stock Chart:
 
-```csharp
+```cshtml
 <ejs-stockchart id="stockChart">
     <e-stockchart-indicators>
         <e-stockchart-indicator 
@@ -91,7 +91,7 @@ Moving averages smooth price data to identify trends.
 
 Calculates average of prices over specified period:
 
-```csharp
+```cshtml
 <e-stockchart-indicator 
     type="Sma" 
     field="Close" 
@@ -105,7 +105,7 @@ Calculates average of prices over specified period:
 
 Gives more weight to recent prices, responds faster to changes:
 
-```csharp
+```cshtml
 <e-stockchart-indicator 
     type="Ema" 
     field="Close" 
@@ -119,7 +119,7 @@ Gives more weight to recent prices, responds faster to changes:
 
 Double smoothing of moving average, reduces noise:
 
-```csharp
+```cshtml
 <e-stockchart-indicator 
     type="Tma" 
     field="Close" 
@@ -137,7 +137,7 @@ Momentum indicators measure the rate of change in price.
 
 Shows speed at which price is changing:
 
-```csharp
+```cshtml
 <e-stockchart-indicator 
     type="Momentum" 
     field="Close" 
@@ -152,7 +152,7 @@ Shows speed at which price is changing:
 
 Compares two exponential moving averages:
 
-```csharp
+```cshtml
 <e-stockchart-indicator 
     type="Macd" 
     field="Close" 
@@ -169,7 +169,7 @@ Compares two exponential moving averages:
 
 Measures overbought/oversold conditions:
 
-```csharp
+```cshtml
 <e-stockchart-indicator 
     type="Rsi" 
     field="Close" 
@@ -191,7 +191,7 @@ Volatility indicators measure price movement range.
 
 Measures volatility by comparing current and previous values:
 
-```csharp
+```cshtml
 <e-stockchart-indicator 
     type="Atr" 
     field="Close" 
@@ -205,7 +205,7 @@ Measures volatility by comparing current and previous values:
 
 Shows upper and lower bands around a moving average:
 
-```csharp
+```cshtml
 <e-stockchart-indicator 
     type="BollingerBands" 
     field="Close" 
@@ -221,7 +221,7 @@ Shows upper and lower bands around a moving average:
 
 Compares closing price to price range:
 
-```csharp
+```cshtml
 <e-stockchart-indicator 
     type="Stochastic" 
     field="Close" 
@@ -238,7 +238,7 @@ Compares closing price to price range:
 
 Combines price and volume to show money flow:
 
-```csharp
+```cshtml
 <e-stockchart-indicator 
     type="AccumulationDistribution" 
     field="Close" 
@@ -256,7 +256,7 @@ Combines price and volume to show money flow:
 
 Clear the indicator collection:
 
-```csharp
+```cshtml
 <e-stockchart-indicators>
     <!-- Empty collection removes all indicators -->
 </e-stockchart-indicators>
@@ -284,7 +284,7 @@ chart.refresh();
 
 Customize indicator appearance:
 
-```csharp
+```cshtml
 <e-stockchart-indicator 
     type="Ema" 
     field="Close" 
@@ -298,7 +298,7 @@ Customize indicator appearance:
 
 Combine multiple indicators for comprehensive analysis:
 
-```csharp
+```cshtml
 <e-stockchart-indicators>
     <!-- Trend indicator -->
     <e-stockchart-indicator 
@@ -333,7 +333,7 @@ Combine multiple indicators for comprehensive analysis:
 
 Different periods suit different timeframes:
 
-```csharp
+```cshtml
 <!-- Day trading (shorter periods) -->
 <e-stockchart-indicator type="Ema" field="Close" period="5"></e-stockchart-indicator>
 

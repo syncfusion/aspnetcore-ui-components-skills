@@ -3,7 +3,7 @@ name: syncfusion-aspnetcore-blockeditor
 description: Implement Syncfusion Block Editor control in ASP.NET Core applications using Razor Tag Helpers. Use this skill when working with Syncfusion Block Editor, EJ2 BlockEditor, ASP.NET Core block-based content editing, or <ejs-blockeditor> syntax. Covers block management, nested content structures, drag-and-drop functionality, content sanitization, installation, tag helper setup, block types, content manipulation, events, menus, and advanced features for creating rich block-based document editors.
 metadata:
   author: "Syncfusion Inc"
-  version: "33.1.44"
+  version: "34.1.29"
 ---
 
 # Syncfusion ASP.NET Core Block Editor Control

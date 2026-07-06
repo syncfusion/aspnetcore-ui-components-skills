@@ -463,16 +463,15 @@ Use cases:
 
 A legend title improves readability by describing what the legend values represent.
 
-For maintainable Razor Pages code, define the legend title text style in `Index.cshtml.cs` and bind it in `Index.cshtml` if your installed Syncfusion ASP.NET Core package exposes the supported legend title syntax. If the nested legend title Tag Helper is not recognized in your package version, use a nearby HTML label or heading above the HeatMap as a safe alternative.
+Use `<e-legendsettings-title>` inside `<e-heatmap-legendsettings>` to add a legend title.
 
-#### Safe Legend Title Alternative
+#### Legend Title Example
 
 ```cshtml
-<div class="heatmap-legend-caption">Sales Performance</div>
-
 <ejs-heatmap
     id="heatmap"
-    dataSource="@Model.SalesData">
+    dataSource="@Model.SalesData"
+    showTooltip="true">
 
     <e-heatmap-datasourcesettings
         isJsonData="true"
@@ -485,8 +484,31 @@ For maintainable Razor Pages code, define the legend title text style in `Index.
     <e-heatmap-legendsettings
         visible="true"
         position="Right"
-        showLabel="true">
+        showLabel="true" textStyle="@Model.LegendTitleTextStyle">
+        <e-legendsettings-title text="Sales Volume"></e-legendsettings-title>
     </e-heatmap-legendsettings>
+</ejs-heatmap>
+```
+
+#### Pages/Index.cshtml.cs
+
+```csharp
+public HeatMapFont LegendTitleTextStyle { get; set; } = new HeatMapFont
+{
+    Size = "13px",
+    FontWeight = "500",
+    FontFamily = "Segoe UI"
+};
+```
+
+#### Safe Legend Title Alternative
+
+If the `<e-legendsettings-title>` tag is not recognized in your Syncfusion package version, use an HTML element outside the HeatMap component:
+
+```cshtml
+<div class="heatmap-legend-caption">Sales Performance</div>
+
+<ejs-heatmap ...>
 </ejs-heatmap>
 ```
 

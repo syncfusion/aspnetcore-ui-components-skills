@@ -30,14 +30,22 @@ Smith Chart supports two primary methods for binding data:
 
 The `dataSource` property binds an entire collection of data objects to a series. This approach is ideal when you have data available in your page model or retrieved from a service.
 
+**⚠️ CRITICAL:** When using `dataSource`, you MUST specify the `resistance` and `reactance` attributes to map your data properties to the chart axes:
+
 ```cshtml
 <ejs-smithchart id="smithchart">
     <e-smithchart-smithchartseriescollection>
-        <e-smithchart-smithchartseries dataSource="TransmissionLineData" name="TL1">
+        <e-smithchart-smithchartseries dataSource="TransmissionLineData" name="TL1" 
+                                       resistance="resistance" reactance="reactance">
         </e-smithchart-smithchartseries>
     </e-smithchart-smithchartseriescollection>
 </ejs-smithchart>
 ```
+
+- `resistance="resistance"` - Maps the data property to horizontal axis (real part)
+- `reactance="reactance"` - Maps the data property to circular component (imaginary part)
+
+These attribute names must match your C# class property names (case-sensitive).
 
 In your page model:
 
@@ -48,16 +56,18 @@ public void OnGet()
 {
     TransmissionLineData = new List<SmithChartData>
     {
-        new SmithChartData { Resistance = 10, Reactance = 25 },
-        new SmithChartData { Resistance = 20, Reactance = 50 },
-        new SmithChartData { Resistance = 30, Reactance = 75 }
+        // Property names MUST match the attribute names in your tag helper
+        new SmithChartData { resistance = 10, reactance = 25 },
+        new SmithChartData { resistance = 20, reactance = 50 },
+        new SmithChartData { resistance = 30, reactance = 75 }
     };
 }
 
 public class SmithChartData
 {
-    public double Resistance { get; set; }
-    public double Reactance { get; set; }
+    // Property names must be lowercase and match tag helper attributes
+    public double resistance { get; set; }
+    public double reactance { get; set; }
 }
 ```
 
@@ -98,15 +108,20 @@ Smith Charts can display multiple series simultaneously, allowing comparison of 
 ```cshtml
 <ejs-smithchart id="smithchart">
     <e-smithchart-smithchartseriescollection>
-        <e-smithchart-smithchartseries dataSource="TransmissionLine1Data" name="Line A">
+        <e-smithchart-smithchartseries dataSource="TransmissionLine1Data" name="Line A" 
+                                       resistance="resistance" reactance="reactance">
         </e-smithchart-smithchartseries>
-        <e-smithchart-smithchartseries dataSource="TransmissionLine2Data" name="Line B">
+        <e-smithchart-smithchartseries dataSource="TransmissionLine2Data" name="Line B" 
+                                       resistance="resistance" reactance="reactance">
         </e-smithchart-smithchartseries>
-        <e-smithchart-smithchartseries dataSource="TransmissionLine3Data" name="Line C">
+        <e-smithchart-smithchartseries dataSource="TransmissionLine3Data" name="Line C" 
+                                       resistance="resistance" reactance="reactance">
         </e-smithchart-smithchartseries>
     </e-smithchart-smithchartseriescollection>
 </ejs-smithchart>
 ```
+
+**IMPORTANT:** Every series using `dataSource` MUST have both `resistance` and `reactance` attributes specified.
 
 In your page model:
 
@@ -119,23 +134,23 @@ public void OnGet()
 {
     TransmissionLine1Data = new List<SmithChartData>
     {
-        new SmithChartData { Resistance = 10, Reactance = 25 },
-        new SmithChartData { Resistance = 20, Reactance = 50 },
-        new SmithChartData { Resistance = 30, Reactance = 75 }
+        new SmithChartData { resistance = 10, reactance = 25 },
+        new SmithChartData { resistance = 20, reactance = 50 },
+        new SmithChartData { resistance = 30, reactance = 75 }
     };
 
     TransmissionLine2Data = new List<SmithChartData>
     {
-        new SmithChartData { Resistance = 5, Reactance = 15 },
-        new SmithChartData { Resistance = 15, Reactance = 45 },
-        new SmithChartData { Resistance = 25, Reactance = 65 }
+        new SmithChartData { resistance = 5, reactance = 15 },
+        new SmithChartData { resistance = 15, reactance = 45 },
+        new SmithChartData { resistance = 25, reactance = 65 }
     };
 
     TransmissionLine3Data = new List<SmithChartData>
     {
-        new SmithChartData { Resistance = 15, Reactance = 35 },
-        new SmithChartData { Resistance = 25, Reactance = 55 },
-        new SmithChartData { Resistance = 35, Reactance = 70 }
+        new SmithChartData { resistance = 15, reactance = 35 },
+        new SmithChartData { resistance = 25, reactance = 55 },
+        new SmithChartData { resistance = 35, reactance = 70 }
     };
 }
 ```
@@ -149,15 +164,15 @@ For RF circuit measurements, resistance typically represents impedance component
 ```csharp
 public class RFMeasurement
 {
-    public double Resistance { get; set; }  // Real impedance (Ohms)
-    public double Reactance { get; set; }   // Imaginary impedance (Ohms)
+    public double resistance { get; set; }  // Real impedance (Ohms)
+    public double reactance { get; set; }   // Imaginary impedance (Ohms)
 }
 
 var rfData = new List<RFMeasurement>
 {
-    new RFMeasurement { Resistance = 50, Reactance = 0 },     // Matched load
-    new RFMeasurement { Resistance = 75, Reactance = 25 },    // Mismatched
-    new RFMeasurement { Resistance = 100, Reactance = -50 }   // Reactive load
+    new RFMeasurement { resistance = 50, reactance = 0 },     // Matched load
+    new RFMeasurement { resistance = 75, reactance = 25 },    // Mismatched
+    new RFMeasurement { resistance = 100, reactance = -50 }   // Reactive load
 };
 ```
 
@@ -168,10 +183,10 @@ When visualizing impedance matching along a transmission line:
 ```csharp
 var matchingData = new List<SmithChartData>
 {
-    new SmithChartData { Resistance = 50, Reactance = 0 },      // Start point
-    new SmithChartData { Resistance = 60, Reactance = 20 },     // Quarter wave
-    new SmithChartData { Resistance = 100, Reactance = 50 },    // Half wave
-    new SmithChartData { Resistance = 50, Reactance = 0 }       // Full wave (match)
+    new SmithChartData { resistance = 50, reactance = 0 },      // Start point
+    new SmithChartData { resistance = 60, reactance = 20 },     // Quarter wave
+    new SmithChartData { resistance = 100, reactance = 50 },    // Half wave
+    new SmithChartData { resistance = 50, reactance = 0 }       // Full wave (match)
 };
 ```
 
@@ -180,9 +195,9 @@ var matchingData = new List<SmithChartData>
 Comparing different load impedances:
 
 ```csharp
-var openCircuit = new SmithChartData { Resistance = 0, Reactance = 0 };      // Left edge
-var shortCircuit = new SmithChartData { Resistance = 0, Reactance = 0 };     // Left edge
-var matchedLoad = new SmithChartData { Resistance = 50, Reactance = 0 };     // Center
+var openCircuit = new SmithChartData { resistance = 0, reactance = 0 };      // Left edge
+var shortCircuit = new SmithChartData { resistance = 0, reactance = 0 };     // Left edge
+var matchedLoad = new SmithChartData { resistance = 50, reactance = 0 };     // Center
 var capacitiveLoad = new SmithChartData { Resistance = 50, Reactance = -25 };  // Below center
 var inductiveLoad = new SmithChartData { Resistance = 50, Reactance = 25 };    // Above center
 ```

@@ -3,7 +3,7 @@ name: syncfusion-aspnetcore-inline-ai-assist
 description: Implement Syncfusion ASP.NET Core Inline AI Assist control for real-time text processing and AI-powered features. Use this skill when users need intelligent prompt suggestions, AI-assisted content generation, command popups, response actions, or positioning AI assist popups in ASP.NET Core applications.
 metadata:
   author: "Syncfusion Inc"
-  version: "33.1.44"
+  version: "34.1.29"
 ---
 
 # Syncfusion ASP.NET Core Inline AI Assist Control

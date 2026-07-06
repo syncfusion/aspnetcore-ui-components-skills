@@ -3,7 +3,7 @@ name: syncfusion-aspnetcore-barcodes
 description: "Implement Syncfusion ASP.NET Core Barcode components including BarcodeGenerator (1D codes like Code39, Code128, Codabar), QR Code Generator, and DataMatrix Generator. Use this when rendering barcodes, implementing QR codes with logo embedding, or generating DataMatrix codes. This skill covers barcode type selection, color and dimension customization, display text configuration, and export functionality (JPG, PNG, Base64)."
 metadata:
   author: "Syncfusion Inc"
-  version: "33.1.44"
+  version: "34.1.29"
   category: "Data Visualization"
 ---
 

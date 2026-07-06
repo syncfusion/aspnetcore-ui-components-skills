@@ -3,7 +3,7 @@ name: "syncfusion-aspnetcore-cards"
 description: "Complete guide to implementing Syncfusion ASP.NET Core Card component with layout structures, headers, images, actions, and advanced customization. Use this skill when building card-based layouts, displaying content with headers and images, creating action buttons, or organizing responsive card designs."
 metadata:
   author: "Syncfusion Inc"
-  version: "33.1.44"
+  version: "34.1.29"
   category: "Layout Components"
 ---
 

@@ -3,7 +3,7 @@ name: syncfusion-aspnetcore-circulargauge
 description: Creating and customizing Syncfusion Circular Gauge - a circular data visualization component for displaying numeric values. ALWAYS use this skill when users need to implement circular gauges, display metrics on a circular scale, configure gauge axes, add pointers or ranges, create data visualization gauges, customize gauge appearance, handle user interactions with gauges, or build dashboards with circular gauge components.
 metadata:
   author: "Syncfusion Inc"
-  version: "33.1.44"
+  version: "34.1.29"
   category: "Data Visualization"
 ---
 

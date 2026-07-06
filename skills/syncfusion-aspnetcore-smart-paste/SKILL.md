@@ -3,7 +3,7 @@ name: syncfusion-aspnetcore-smart-paste
 description: Implement the Syncfusion ASP.NET Core Smart Paste Button for AI-powered form auto-filling using clipboard data. Use this skill when configuring OpenAI/Azure OpenAI, creating form field annotations, customizing button appearance, implementing custom inference backends, or managing intelligent data mapping from clipboard to form fields.
 metadata:
   author: "Syncfusion Inc"
-  version: "33.1.44"
+  version: "34.1.29"
 ---
 
 # Syncfusion ASP.NET Core Smart Paste Button

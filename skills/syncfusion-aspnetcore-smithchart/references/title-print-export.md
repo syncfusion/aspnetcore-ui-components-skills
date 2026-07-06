@@ -35,11 +35,11 @@ Add descriptive titles to your Smith Chart:
 ```cshtml
 <ejs-smithchart id="smithchart">
     <e-smithchart-title text="Smith Chart Analysis">
-        <e-smithchart-subtitle text="RF Circuit Impedance Matching">
-        </e-smithchart-subtitle>
+        <e-title-subtitle text="RF Circuit Impedance Matching">
+        </e-title-subtitle>
     </e-smithchart-title>
     <e-smithchart-smithchartseriescollection>
-        <e-smithchart-smithchartseries dataSource="TransmissionData" name="Transmission Line">
+        <e-smithchart-smithchartseries dataSource="TransmissionData" name="Transmission Line" resistance="resistance" reactance="reactance">
         </e-smithchart-smithchartseries>
     </e-smithchart-smithchartseriescollection>
 </ejs-smithchart>
@@ -75,10 +75,10 @@ Text alignment options:
 Customize subtitle similarly:
 
 ```cshtml
-<e-smithchart-subtitle text="RF Circuit Impedance Matching" textAlignment="Center">
-    <e-title-font fontFamily="Arial" fontSize="14" fontColor="gray" fontStyle="italic">
-    </e-title-font>
-</e-smithchart-subtitle>
+<e-title-subtitle text="RF Circuit Impedance Matching" textAlignment="Center">
+    <e-smithchart-subtitle-font fontFamily="Arial" fontSize="14" fontColor="gray" fontStyle="italic">
+    </e-smithchart-subtitle-font>
+</e-title-subtitle>
 ```
 
 Typical subtitle font sizes: 12-14 pixels, with lighter or italic styling for distinction.
@@ -125,7 +125,7 @@ Add a button to trigger printing:
 
 <ejs-smithchart id="smithchart">
     <e-smithchart-smithchartseriescollection>
-        <e-smithchart-smithchartseries dataSource="TransmissionData" name="Transmission Line">
+        <e-smithchart-smithchartseries dataSource="TransmissionData" name="Transmission Line" resistance="resistance" reactance="reactance">
         </e-smithchart-smithchartseries>
     </e-smithchart-smithchartseriescollection>
 </ejs-smithchart>
@@ -175,11 +175,11 @@ Ensure charts print well with CSS media queries:
     
     <ejs-smithchart id="smithchart">
         <e-smithchart-title text="Impedance Analysis">
-            <e-smithchart-subtitle text="@DateTime.Now.ToString("MMMM dd, yyyy")">
-            </e-smithchart-subtitle>
+            <e-title-subtitle text="@DateTime.Now.ToString("MMMM dd, yyyy")">
+            </e-title-subtitle>
         </e-smithchart-title>
         <e-smithchart-smithchartseriescollection>
-            <e-smithchart-smithchartseries dataSource="MeasuredData" name="Measured">
+            <e-smithchart-smithchartseries dataSource="MeasuredData" name="Measured" resistance="resistance" reactance="reactance">
             </e-smithchart-smithchartseries>
         </e-smithchart-smithchartseriescollection>
     </ejs-smithchart>
@@ -227,7 +227,7 @@ Add buttons for different export formats:
 
 <ejs-smithchart id="smithchart">
     <e-smithchart-smithchartseriescollection>
-        <e-smithchart-smithchartseries dataSource="TransmissionData" name="Transmission Line">
+        <e-smithchart-smithchartseries dataSource="TransmissionData" name="Transmission Line" resistance="resistance" reactance="reactance">
         </e-smithchart-smithchartseries>
     </e-smithchart-smithchartseriescollection>
 </ejs-smithchart>
@@ -302,15 +302,15 @@ function exportChart() {
 
 <ejs-smithchart id="smithchart" width="100%" height="600px">
     <e-smithchart-title text="RF Circuit Analysis Report">
-        <e-smithchart-subtitle text="Generated: @DateTime.Now.ToString("MMMM dd, yyyy HH:mm")">
-        </e-smithchart-subtitle>
+        <e-title-subtitle text="Generated: @DateTime.Now.ToString("MMMM dd, yyyy HH:mm")">
+        </e-title-subtitle>
     </e-smithchart-title>
     <e-smithchart-legendsettings visible="true" position="Bottom" toggleVisibility="true">
     </e-smithchart-legendsettings>
     <e-smithchart-smithchartseriescollection>
-        <e-smithchart-smithchartseries dataSource="Model.CircuitData" name="Circuit Impedance" fill="navy">
+        <e-smithchart-smithchartseries dataSource="Model.CircuitData" name="Circuit Impedance" fill="navy" resistance="resistance" reactance="reactance">
         </e-smithchart-smithchartseries>
-        <e-smithchart-smithchartseries dataSource="Model.ReferenceData" name="Reference Match" fill="red" opacity="0.6">
+        <e-smithchart-smithchartseries dataSource="Model.ReferenceData" name="Reference Match" fill="red" opacity="0.6" resistance="resistance" reactance="reactance">
         </e-smithchart-smithchartseries>
     </e-smithchart-smithchartseriescollection>
 </ejs-smithchart>
@@ -372,12 +372,12 @@ public class ReportGenerationModel : PageModel
         <e-title-font fontFamily="Georgia" fontSize="20" fontColor="#003366" fontWeight="bold">
         </e-title-font>
     </e-smithchart-title>
-    <e-smithchart-subtitle text="RF Circuit Characterization Study - @Model.ProjectName" textAlignment="Center">
+    <e-title-subtitle text="RF Circuit Characterization Study - @Model.ProjectName" textAlignment="Center">
         <e-smithchart-subtitle-font fontFamily="Georgia" fontSize="14" fontColor="#666666" fontStyle="italic">
         </e-smithchart-subtitle-font>
-    </e-smithchart-subtitle>
+    </e-title-subtitle>
     <e-smithchart-smithchartseriescollection>
-        <e-smithchart-smithchartseries dataSource="Model.Data" name="Measurement">
+        <e-smithchart-smithchartseries dataSource="Model.Data" name="Measurement" resistance="resistance" reactance="reactance">
         </e-smithchart-smithchartseries>
     </e-smithchart-smithchartseriescollection>
 </ejs-smithchart>
@@ -431,7 +431,7 @@ Minimal UI, export on demand:
     </span>
     <ejs-smithchart id="widget-chart" width="100%" height="250px">
         <e-smithchart-smithchartseriescollection>
-            <e-smithchart-smithchartseries dataSource="Data" name="Status">
+            <e-smithchart-smithchartseries dataSource="Data" name="Status" resistance="resistance" reactance="reactance">
             </e-smithchart-smithchartseries>
         </e-smithchart-smithchartseriescollection>
     </ejs-smithchart>
@@ -479,8 +479,8 @@ public class ExportModel
 
 <ejs-smithchart id="analysis">
     <e-smithchart-title text="@Model.ProjectName - Analysis">
-        <e-smithchart-subtitle text="@Model.AnalysisDate.ToString("g")">
-        </e-smithchart-subtitle>
+        <e-title-subtitle text="@Model.AnalysisDate.ToString("g")">
+        </e-title-subtitle>
     </e-smithchart-title>
 </ejs-smithchart>
 

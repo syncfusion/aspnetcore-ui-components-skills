@@ -3,7 +3,7 @@ name: syncfusion-aspnetcore-kanban
 description: Guide for implementing the Syncfusion ASP.NET Core Kanban component using Tag Helper syntax. Use this skill when building task boards, configuring columns and swimlanes, or enabling drag-and-drop. Covers card settings, dialogs, and binding remote data for ASP.NET Core MVC and Razor Pages.
 metadata:
     author: "Syncfusion Inc"
-    version: "33.1.44"
+    version: "34.1.29"
     category: "Data Visualization"
 ---
 

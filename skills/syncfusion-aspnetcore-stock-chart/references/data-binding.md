@@ -22,7 +22,7 @@ The `dataSource` property binds data collection to the Stock Chart series. Data 
 
 **Basic syntax:**
 
-```csharp
+```cshtml
 @{
     var yourDataCollection = new List<object>
     {
@@ -57,7 +57,7 @@ The X-axis `valueType` determines how axis values are interpreted and displayed.
 
 For date-based stock data, configure the primary X-axis with DateTime value type:
 
-```csharp
+```cshtml
 <e-stockchart-primaryxaxis valueType="DateTime">
 </e-stockchart-primaryxaxis>
 ```
@@ -72,7 +72,7 @@ For date-based stock data, configure the primary X-axis with DateTime value type
 
 By default, the axis uses Numeric value type for sequential or numeric data:
 
-```csharp
+```cshtml
 <e-stockchart-primaryxaxis valueType="Double">
 </e-stockchart-primaryxaxis>
 ```
@@ -110,7 +110,7 @@ Bind local data collection to Stock Chart series.
 
 **Complete example:**
 
-```csharp
+```cshtml
 @{
     var stockData = new List<object>
     {
@@ -234,7 +234,7 @@ ViewBag.StockData = validData;
 
 Financial data requires precise decimal handling:
 
-```csharp
+```cshtml
 @{
     decimal openPrice = 150.25m;
     decimal highPrice = 155.50m;
@@ -274,7 +274,7 @@ Financial data requires precise decimal handling:
 
 When chart data is empty, display a custom message or placeholder:
 
-```csharp
+```cshtml
 <ejs-stockchart id="stockchart" title="AAPL Stock Price" load="load" loaded="loaded" >
     <e-stockchart-series-collection>
         <e-stockchart-series type='Candle'></e-stockchart-series>
@@ -389,7 +389,7 @@ The no data template automatically displays when the dataSource is empty or null
 
 ### Conditional Data Loading
 
-```csharp
+```cshtml
 @{
     var stockData = new List<object>{};
     var hasData = stockData != null && stockData.Count > 0;
@@ -418,7 +418,7 @@ else
 
 For live data, update the series dataSource dynamically:
 
-```csharp
+```cshtml
  <ejs-stockchart id="stockChart" title="Live Stock Price">
      <e-stockchart-series-collection>
          <e-stockchart-series dataSource="ViewBag.StockData" type="Candle" xName="x" high="high" low="low" open="open" close="close" volume="volume">
@@ -527,7 +527,7 @@ The Stock Chart uses these property mappings to bind data fields:
 
 For large datasets or real-time data, use DataManager:
 
-```csharp
+```cshtml
 @{
     var dataManager = new Syncfusion.EJ2.DataManager
     {
@@ -553,7 +553,7 @@ For large datasets or real-time data, use DataManager:
 
 Apply filters and queries to the data source:
 
-```csharp
+```cshtml
 @{
     var query = new Syncfusion.EJ2.Query()
         .Where("volume", "greaterthan", 1000000)

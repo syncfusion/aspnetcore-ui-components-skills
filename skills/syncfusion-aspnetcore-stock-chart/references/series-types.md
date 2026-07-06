@@ -23,7 +23,7 @@ Syncfusion Stock Chart supports 6 major series types to visualize financial data
 
 **Configuration:**
 
-```csharp
+```cshtml
 @{
     var stockData = new List<object>
     {
@@ -74,7 +74,7 @@ Syncfusion Stock Chart supports 6 major series types to visualize financial data
 
 **Configuration:**
 
-```csharp
+```cshtml
 @{
     var stockData = new List<object>
     {
@@ -133,7 +133,7 @@ Syncfusion Stock Chart supports 6 major series types to visualize financial data
 
 **Configuration:**
 
-```csharp
+```cshtml
 @{
     var stockData = new List<object>
     {
@@ -189,7 +189,7 @@ Syncfusion Stock Chart supports 6 major series types to visualize financial data
 
 **Configuration:**
 
-```csharp
+```cshtml
 @{
     var stockData = new List<object>
     {
@@ -240,7 +240,7 @@ Syncfusion Stock Chart supports 6 major series types to visualize financial data
 
 **Configuration:**
 
-```csharp
+```cshtml
 @{
     var stockData = new List<object>
     {
@@ -294,7 +294,7 @@ Syncfusion Stock Chart supports 6 major series types to visualize financial data
 
 **Configuration:**
 
-```csharp
+```cshtml
 @{
     var stockData = new List<object>
     {
@@ -360,7 +360,7 @@ Syncfusion Stock Chart supports 6 major series types to visualize financial data
 
 To allow users to switch series types dynamically, you can bind series type to a property:
 
-```csharp
+```cshtml
 @{
     var stockData = new List<object>
     {

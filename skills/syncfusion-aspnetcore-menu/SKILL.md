@@ -3,7 +3,7 @@ name: syncfusion-aspnetcore-menu
 description: Implement Syncfusion Core Menu component to display hierarchical navigational menus with support for data binding, icons, animations, and rich event handling for user interactions.
 metadata:
   author: "Syncfusion Inc"
-  version: "33.1.44"
+  version: "34.1.29"
   category: "Navigation"
 ---
 

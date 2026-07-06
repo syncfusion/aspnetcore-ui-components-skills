@@ -551,7 +551,7 @@ Configures search behavior:
 
 ```html
 <ejs-filemanager id="filemanager">
-    <e-filemanager-searchsettings allowSearchOnTyping="true" filterType="contains" ignoreCase="true">
+    <e-filemanager-searchsettings allowSearchOnTyping="true" filterType="Contains" ignoreCase="true">
     </e-filemanager-searchsettings>
     <e-filemanager-ajaxsettings url="/FileManager/FileManager">
     </e-filemanager-ajaxsettings>
@@ -1533,7 +1533,7 @@ Applies custom filter:
 function filterFiles() {
     const fileManager = document.getElementById('filemanager').ej2_instances[0];
     fileManager.filterFiles({
-        filterType: 'contains',
+        filterType: 'Contains',
         searchString: '.pdf'
     });
 }
@@ -2013,7 +2013,7 @@ public class FileData
     <e-filemanager-detailsviewsettings columns="@columns">
     </e-filemanager-detailsviewsettings>
     
-    <e-filemanager-searchsettings allowSearchOnTyping="true" filterType="contains" ignoreCase="true">
+    <e-filemanager-searchsettings allowSearchOnTyping="true" filterType="Contains" ignoreCase="true">
     </e-filemanager-searchsettings>
     
     <e-filemanager-ajaxsettings url="/api/FileManager/FileManager" 
