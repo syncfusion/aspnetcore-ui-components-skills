@@ -359,7 +359,7 @@ The Syncfusion `Message` component displays contextual messages with visual seve
 <ejs-message id="msg_dismiss"
              content="Your session will expire soon"
              severity="Warning"
-             show-close-icon="true"
+             showCloseIcon="true"
              visible="true"
              closed="onMessageClosed">
 </ejs-message>
@@ -374,7 +374,7 @@ The Syncfusion `Message` component displays contextual messages with visual seve
 
 #### Content Template
 ```cshtml
-<ejs-message id="msg_template" severity="Success" show-close-icon="true" closed="onTemplateClosed">
+<ejs-message id="msg_template" severity="Success" showCloseIcon="true" closed="onTemplateClosed">
     <e-content-template>
         <div>
             <h4>Build succeeded</h4>
@@ -492,11 +492,11 @@ The Syncfusion `Skeleton` component renders animated placeholder shapes that mim
     @for (var i = 1; i <= 3; i++)
     {
         <li style="display: flex; gap: 10px; margin-bottom: 12px;">
-            <ejs-skeleton id="@($"sk_av_{i}")" shape="Circle" width="40px" shimmer-effect="Pulse"></ejs-skeleton>
+            <ejs-skeleton id="@($"sk_av_{i}")" shape="Circle" width="40px" shimmerEffect="Pulse"></ejs-skeleton>
             <div style="flex: 1;">
-                <ejs-skeleton id="@($"sk_t1_{i}")" width="70%" height="14px" shimmer-effect="Pulse"></ejs-skeleton>
+                <ejs-skeleton id="@($"sk_t1_{i}")" width="70%" height="14px" shimmerEffect="Pulse"></ejs-skeleton>
                 <br />
-                <ejs-skeleton id="@($"sk_t2_{i}")" width="45%" height="12px" shimmer-effect="Pulse"></ejs-skeleton>
+                <ejs-skeleton id="@($"sk_t2_{i}")" width="45%" height="12px" shimmerEffect="Pulse"></ejs-skeleton>
             </div>
         </li>
     }
@@ -512,7 +512,7 @@ The Syncfusion `Skeleton` component renders animated placeholder shapes that mim
 | `shape` | `SkeletonType` | `Text` | Skeleton shape variant |
 | `width` | `string` | `""` | Width; required for Circle/Square |
 | `height` | `string` | `""` | Height; used for Rectangle/Text |
-| `shimmer-effect` | `ShimmerEffect` | `Wave` | Animation style |
+| `shimmerEffect` | `ShimmerEffect` | `Wave` | Animation style |
 | `visible` | `bool` | `true` | Show/hide skeleton |
 | `css-class` | `string` | `""` | Custom CSS class(es) |
 | `label` | `string` | `"Loading..."` | ARIA label for accessibility |

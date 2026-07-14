@@ -1,6 +1,6 @@
 ---
 name: syncfusion-aspnetcore-ai-assistview
-description: Implement the Syncfusion ASP.NET Core AI AssistView control for interactive AI-powered assistance interfaces. Use this skill when implementing AI assistants, prompt suggestions, custom views, file attachments, markdown responses, customizable templates, assistance features, file uploads, or customizing AI conversation UI in ASP.NET Core applications.
+description: Implement the Syncfusion ASP.NET Core AI AssistView control for interactive AI-powered assistance interfaces. Use this skill when implementing AI assistants, prompt suggestions, custom views, file attachments, markdown responses, customizable templates, regenerable responses, thinking capabilities (chain-of-thoughts), generative UI blocks, Text-to-Speech conversion, Speech-to-Text voice input, or customizing advanced AI conversation UI in ASP.NET Core applications.
 metadata:
   author: "Syncfusion Inc"
   version: "34.1.29"
@@ -33,6 +33,11 @@ The Syncfusion AI AssistView is a comprehensive component for building AI-powere
 - **Helpful Feedback**: Mark responses as helpful using `PromptModel.isResponseHelpful`
 - **Event Driven**: Full event lifecycle for complete control
 - **Methods**: Dynamic prompt execution and response management
+- **Regenerate Responses**: Request alternative AI responses for existing prompts without resubmission
+- **Thinking Capabilities**: Visualize AI reasoning stages and workflow through chain-of-thoughts blocks
+- **Generative UI**: Render dynamic interactive tools and UI elements within AI responses
+- **Text-to-Speech**: Convert AI responses into spoken audio with customizable voice settings
+- **Speech-to-Text**: Convert spoken words into text using the device's microphone for voice-based prompt input
 
 ## Navigation Guide
 
@@ -96,6 +101,7 @@ The Syncfusion AI AssistView is a comprehensive component for building AI-powere
 - Custom toolbar items with templates and events
 - `ToolbarItemClickedEventArgs` — item, dataIndex, cancel, event, name
 - `itemClicked` event for prompt and response toolbar items
+- Regenerate responses with alternative response navigation
 
 ### File Attachments
 📄 **Read:** [references/file-attachments.md](references/file-attachments.md)
@@ -104,7 +110,43 @@ The Syncfusion AI AssistView is a comprehensive component for building AI-powere
 - File type restrictions (`allowedFileTypes`)
 - Maximum file size configuration
 - Maximum attachment count limits
+- Custom attachment templates (attachmentTemplate)
 - Pre-loading attached files in prompts (`PromptModel.attachedFiles`)
+
+### Advanced Response Features
+
+#### Thinking Capabilities
+📄 **Read:** [references/chain-of-thoughts.md](references/chain-of-thoughts.md)
+- Visualizing AI reasoning stages (*thinking blocks*, *stages*, *status updates*)
+- Configuring thinking blocks with *blockType*, *title*, *content*, and *collapsed* state
+- Adding stages with completion status (`completed`, `inprogress`, `failed`)
+- Inline context items in stages with clickable badges
+- `editableContextClicked` event for custom context actions
+- Block template and item template customization
+
+#### Generative UI
+📄 **Read:** [references/generative-ui.md](references/generative-ui.md)
+- Registering custom tools with `registerToolUI` method
+- Tool templates and handlers for dynamic UI rendering
+- Adding tools to prompt responses via `blocks` property
+- Configuring AI service system prompts for generative responses
+- Tool blocks with *toolName* and *props* for interactive components
+
+#### Text-to-Speech
+📄 **Read:** [references/text-to-speech.md](references/text-to-speech.md)
+- Enabling built-in Text-to-Speech functionality with *`e-assist-audio`* icon
+- Converting AI responses into spoken audio (*Web Speech API*)
+- Configuring speech settings with `e-aiassistview-textToSpeechSettings` tag helper
+- Speech customization properties (*language*, *speechPitch*, *speechRate*, *volume*, *voice*)
+
+#### Speech-to-Text
+📄 **Read:** [references/speech-to-text.md](references/speech-to-text.md)
+- Enabling built-in Speech-to-Text functionality for voice input
+- Converting spoken words into text using *Web Speech API*
+- Configuring speech recognition with `e-aiassistview-speechToTextSettings` tag helper
+- Speech recognition properties (*language*, *buttonSettings*, *tooltipSettings*, *allowInterimResults*)
+- Handling speech events (*onStart*, *onStop*, *transcriptChanged*, *onError*)
+- Real-time transcription with interim results support
 
 ## Quick Start
 

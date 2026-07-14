@@ -75,9 +75,9 @@ public ActionResult Index()
 ```html
 <ejs-combobox id="emp-combo"
     dataSource="ViewBag.EmployeeData"
-    fields="@(new { text = "Name", value = "Id" })"
     autofill="true"
     placeholder="Type 'Al' to find Alice">
+    <e-combobox-fields text="Name" value="Id"></e-combobox-fields>
 </ejs-combobox>
 ```
 
@@ -87,10 +87,10 @@ public ActionResult Index()
 ```html
 <ejs-combobox id="emp-combo"
     dataSource="ViewBag.EmployeeData"
-    fields="@(new { text = "Name", value = "Id" })"
     autofill="true"
     allowFiltering="true"
     placeholder="Search and auto-fill">
+    <e-combobox-fields text="Name" value="Id"></e-combobox-fields>
 </ejs-combobox>
 ```
 
@@ -175,9 +175,9 @@ public JsonResult GetStates(int countryId)
     <label>Country</label>
     <ejs-combobox id="country-combo"
         dataSource="ViewBag.Countries"
-        fields="@(new { text = "CountryName", value = "CountryId" })"
         placeholder="Select a country"
         change="onCountryChange">
+        <e-combobox-fields text="CountryName" value="CountryId"></e-combobox-fields>
     </ejs-combobox>
 </div>
 
@@ -185,9 +185,9 @@ public JsonResult GetStates(int countryId)
     <label>State</label>
     <ejs-combobox id="state-combo"
         dataSource="ViewBag.States"
-        fields="@(new { text = "StateName", value = "StateId" })"
         placeholder="Select a state"
         enabled="false">
+        <e-combobox-fields text="StateName" value="StateId"></e-combobox-fields>
     </ejs-combobox>
 </div>
 
@@ -265,8 +265,8 @@ public ActionResult Index()
 ```html
 <ejs-combobox id="tech-combo"
     dataSource="ViewBag.TechData"
-    fields="@(new { text = "Name", value = "Id", iconCss = "IconClass" })"
     placeholder="Select technology">
+    <e-combobox-fields text="Name" value="Id" iconCss="IconClass"></e-combobox-fields>
 </ejs-combobox>
 ```
 
@@ -283,8 +283,8 @@ public ActionResult Index()
 ```html
 <ejs-combobox id="tech-combo"
     dataSource="ViewBag.TechData"
-    fields="@(new { text = "Name", value = "Id" })"
     itemTemplate="#itemTemplate">
+    <e-combobox-fields text="Name" value="Id"></e-combobox-fields>
 </ejs-combobox>
 
 <script id="itemTemplate" type="text/x-template">

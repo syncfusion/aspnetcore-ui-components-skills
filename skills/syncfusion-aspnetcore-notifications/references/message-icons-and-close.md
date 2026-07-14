@@ -11,7 +11,7 @@
 
 ## Severity Icons
 
-By default, `show-icon` is `true`, meaning each message displays a severity-specific icon on its left edge. The icon changes automatically based on the `severity` attribute:
+By default, `showIcon` is `true`, meaning each message displays a severity-specific icon on its left edge. The icon changes automatically based on the `severity` attribute:
 
 ```cshtml
 @* ~/Pages/Index.cshtml *@
@@ -26,31 +26,31 @@ By default, `show-icon` is `true`, meaning each message displays a severity-spec
 
 ## Disabling Severity Icons
 
-Set `show-icon="false"` to hide the severity icon for a cleaner, text-only appearance:
+Set `showIcon="false"` to hide the severity icon for a cleaner, text-only appearance:
 
 ```cshtml
 @* ~/Pages/Index.cshtml *@
-<ejs-message id="m1" content="Editing is restricted" show-icon="false"></ejs-message>
-<ejs-message id="m2" content="Please read the comments carefully" severity="Info" show-icon="false"></ejs-message>
-<ejs-message id="m3" content="Your message has been sent successfully" severity="Success" show-icon="false"></ejs-message>
-<ejs-message id="m4" content="There was a problem with your network connection" severity="Warning" show-icon="false"></ejs-message>
-<ejs-message id="m5" content="A problem occurred while submitting your data" severity="Error" show-icon="false"></ejs-message>
+<ejs-message id="m1" content="Editing is restricted" showIcon="false"></ejs-message>
+<ejs-message id="m2" content="Please read the comments carefully" severity="Info" showIcon="false"></ejs-message>
+<ejs-message id="m3" content="Your message has been sent successfully" severity="Success" showIcon="false"></ejs-message>
+<ejs-message id="m4" content="There was a problem with your network connection" severity="Warning" showIcon="false"></ejs-message>
+<ejs-message id="m5" content="A problem occurred while submitting your data" severity="Error" showIcon="false"></ejs-message>
 ```
 
 ---
 
 ## Custom Severity Icons
 
-Override the default severity icon by using the `css-class` attribute to apply a custom CSS class, then target the `.e-msg-icon` selector in your stylesheet:
+Override the default severity icon by using the `cssClass` attribute to apply a custom CSS class, then target the `.e-msg-icon` selector in your stylesheet:
 
 ```cshtml
-<ejs-message id="msg_icon" css-class="custom"
+<ejs-message id="msg_icon" cssClass="custom"
              content="Essential JS 2 is a modern JavaScript UI Controls library.">
 </ejs-message>
 ```
 
 ```css
-/* wwwroot/css/site.css — override the icon for messages with css-class="custom" */
+/* wwwroot/css/site.css — override the icon for messages with cssClass="custom" */
 .custom .e-msg-icon::before {
   content: '\e704'; /* your custom icon font character */
   font-family: 'e-icons';
@@ -63,14 +63,14 @@ This allows you to replace default icons with custom icon fonts or images that m
 
 ## Close Icon
 
-The close icon lets users dismiss messages interactively. It is hidden by default. Enable it with `show-close-icon="true"`:
+The close icon lets users dismiss messages interactively. It is hidden by default. Enable it with `showCloseIcon="true"`:
 
 ```cshtml
 @* ~/Pages/Index.cshtml *@
 <ejs-message id="msg_dismiss"
              content="Your session will expire in 5 minutes"
              severity="Warning"
-             show-close-icon="true"
+             showCloseIcon="true"
              visible="true"
              closed="onMessageClosed">
 </ejs-message>
@@ -92,11 +92,11 @@ The `closed` event fires when the user clicks the close icon (or presses Enter/S
 
 ```cshtml
 @* ~/Pages/Index.cshtml *@
-<ejs-button id="showBtn" content="Show Message" css-class="e-btn" click="onShowClick"></ejs-button>
+<ejs-button id="showBtn" content="Show Message" cssClass="e-btn" click="onShowClick"></ejs-button>
 
 <ejs-message id="msg_restore"
              content="Editing is restricted"
-             show-close-icon="true"
+             showCloseIcon="true"
              visible="true"
              closed="onMessageClosed">
 </ejs-message>
@@ -137,7 +137,7 @@ The `visible` attribute shows or hides the entire message without removing it fr
 <ejs-message id="msg_info"
              content="Please read the comments carefully"
              severity="Info"
-             show-close-icon="true"
+             showCloseIcon="true"
              visible="true"
              closed="onInfoClosed">
 </ejs-message>
@@ -145,12 +145,12 @@ The `visible` attribute shows or hides the entire message without removing it fr
 <ejs-message id="msg_error"
              content="A problem occurred while submitting your data"
              severity="Error"
-             show-close-icon="true"
+             showCloseIcon="true"
              visible="true"
              closed="onErrorClosed">
 </ejs-message>
 
-<ejs-button id="resetBtn" content="Reset Messages" css-class="e-btn" click="onReset"></ejs-button>
+<ejs-button id="resetBtn" content="Reset Messages" cssClass="e-btn" click="onReset"></ejs-button>
 
 <script>
     function onInfoClosed()  { document.getElementById('msg_info').ej2_instances[0].visible = false; }

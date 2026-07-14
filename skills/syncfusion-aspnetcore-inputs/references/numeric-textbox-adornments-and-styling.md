@@ -11,13 +11,13 @@ This guide covers styling, customization, accessibility, and prefix/suffix adorn
 
 ## CSS Classes
 
-Use the `css-class` attribute to apply predefined or custom CSS classes:
+Use the `cssClass` attribute to apply predefined or custom CSS classes:
 
 ### Predefined Size Classes
 
 ```html
 <!-- Small NumericTextBox -->
-<ejs-numerictextbox id="small" value="10" css-class="e-small">
+<ejs-numerictextbox id="small" value="10" cssClass="e-small">
 </ejs-numerictextbox>
 
 <!-- Default size -->
@@ -25,7 +25,7 @@ Use the `css-class` attribute to apply predefined or custom CSS classes:
 </ejs-numerictextbox>
 
 <!-- Large/Bigger NumericTextBox -->
-<ejs-numerictextbox id="bigger" value="10" css-class="e-bigger">
+<ejs-numerictextbox id="bigger" value="10" cssClass="e-bigger">
 </ejs-numerictextbox>
 ```
 
@@ -37,15 +37,15 @@ Use the `css-class` attribute to apply predefined or custom CSS classes:
 
 ```html
 <!-- Success State -->
-<ejs-numerictextbox id="success" value="10" css-class="e-success">
+<ejs-numerictextbox id="success" value="10" cssClass="e-success">
 </ejs-numerictextbox>
 
 <!-- Warning State -->
-<ejs-numerictextbox id="warning" value="10" css-class="e-warning">
+<ejs-numerictextbox id="warning" value="10" cssClass="e-warning">
 </ejs-numerictextbox>
 
 <!-- Error State -->
-<ejs-numerictextbox id="error" value="10" css-class="e-error">
+<ejs-numerictextbox id="error" value="10" cssClass="e-error">
 </ejs-numerictextbox>
 
 <!-- Disabled (use enabled="false" instead of class) -->
@@ -63,7 +63,7 @@ Use the `css-class` attribute to apply predefined or custom CSS classes:
 
 ### Custom CSS Classes
 
-Define your own CSS classes and apply them via `css-class`:
+Define your own CSS classes and apply them via `cssClass`:
 
 ```html
 <style>
@@ -79,7 +79,7 @@ Define your own CSS classes and apply them via `css-class`:
 </style>
 
 <!-- With custom styling -->
-<ejs-numerictextbox id="custom" value="10" css-class="custom-numeric highlight-numeric">
+<ejs-numerictextbox id="custom" value="10" cssClass="custom-numeric highlight-numeric">
 </ejs-numerictextbox>
 ```
 
@@ -111,9 +111,7 @@ Use `html-attributes` to add accessibility attributes:
 
 ```html
 <ejs-numerictextbox id="age" 
-    placeholder="Enter your age"
-    aria-label="User Age Input"
-    aria-describedby="age-help">
+    placeholder="Enter your age">
 </ejs-numerictextbox>
 <small id="age-help">Enter a value between 0 and 150</small>
 ```
@@ -205,7 +203,7 @@ NumericTextBox supports keyboard interaction:
                 min="0.01"
                 max="99999.99"
                 decimals="2"
-                strict-mode="true"
+                strictMode="true"
                 placeholder="0.00"
                 required="true">
             </ejs-numerictextbox>
@@ -219,10 +217,10 @@ NumericTextBox supports keyboard interaction:
                 min="0"
                 max="10000"
                 decimals="0"
-                strict-mode="true"
+                strictMode="true"
                 step="1"
                 placeholder="0"
-                show-spin-button="true"
+                showSpinButton="true"
                 required="true">
             </ejs-numerictextbox>
             <div class="help-text">Enter quantity between 0 and 10000</div>
@@ -237,7 +235,7 @@ NumericTextBox supports keyboard interaction:
                 max="1"
                 step="0.05"
                 decimals="2"
-                strict-mode="true"
+                strictMode="true"
                 placeholder="0%">
             </ejs-numerictextbox>
             <div class="help-text">Enter discount as percentage (0-100%)</div>
@@ -364,8 +362,8 @@ NumericTextBox supports keyboard interaction:
         max="50"
         step="1"
         decimals="0"
-        show-spin-button="true"
-        css-class="responsive-input">
+        showSpinButton="true"
+        cssClass="responsive-input">
     </ejs-numerictextbox>
 </div>
 ```

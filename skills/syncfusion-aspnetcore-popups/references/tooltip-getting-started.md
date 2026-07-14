@@ -4,7 +4,6 @@
 - [Installation](#installation)
 - [Setup](#setup)
 - [Basic Tooltip](#basic-tooltip)
-- [Tooltip on Multiple Targets](#tooltip-on-multiple-targets)
 - [Using title Attribute as Content](#using-title-attribute-as-content)
 - [Running the Application](#running-the-application)
 
@@ -66,8 +65,10 @@ In your `~/Pages/Shared/_Layout.cshtml` file, add the Syncfusion CSS and JavaScr
 The simplest usage wraps any element with `<ejs-tooltip>` Tag Helper and provides a `content` attribute:
 
 ```csharp
-<ejs-tooltip content="Tooltip Content">
-    <button class="e-btn" style="margin: 60px;">Show Tooltip</button>
+<ejs-tooltip id="tooltip" content="Tooltip Content">
+    <e-content-template>
+        <button class="e-btn" style="margin: 60px;">Show Tooltip</button>
+    <e-content-template>
 </ejs-tooltip>
 ```
 
@@ -75,8 +76,10 @@ To place the tooltip on a specific child element rather than the wrapper itself,
 
 ```csharp
 <div id="container">
-    <ejs-tooltip position="TopCenter" content="Tooltip Content" target="#target">
-        <button class="e-btn" id="target">Show Tooltip</button>
+    <ejs-tooltip id="tooltip" target="#target" position="TopCenter" content="Tooltip Content">
+        <e-content-template>
+            <button class="e-btn" id="target">Show Tooltip</button>
+        </e-content-template>
     </ejs-tooltip>
 </div>
 ```
@@ -86,67 +89,18 @@ To place the tooltip on a specific child element rather than the wrapper itself,
 
 ---
 
-## Tooltip on Multiple Targets
-
-A single `<ejs-tooltip>` can serve multiple targets within a container. Set `target` to a shared CSS selector and the tooltip reads each element's `title` attribute as its content.
-
-```csharp
-<div id="container">
-    <ejs-tooltip target=".e-info" position="RightCenter">
-        <form>
-            <table>
-                <tbody>
-                    <tr>
-                        <td>User Name</td>
-                        <td>
-                            <input
-                                type="text"
-                                class="e-info"
-                                title="Please enter your name"
-                            />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Email Address</td>
-                        <td>
-                            <input
-                                type="email"
-                                class="e-info"
-                                title="Enter a valid email address"
-                            />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Password</td>
-                        <td>
-                            <input
-                                type="password"
-                                class="e-info"
-                                title="Be at least 8 characters length"
-                            />
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </form>
-    </ejs-tooltip>
-</div>
-```
-
-> Each matched `.e-info` element's `title` attribute becomes that element's tooltip content. The `title` attribute is used as fallback when no `content` attribute is supplied.
-
----
-
 ## Using title Attribute as Content
 
 When no `content` attribute is provided, the tooltip reads each target element's `title` attribute:
 
 ```csharp
 <div id="container">
-    <ejs-tooltip target=".info-icon" position="TopCenter">
-        <button class="e-btn info-icon" title="Information">Info 1</button>
-        <button class="e-btn info-icon" title="Details">Info 2</button>
-        <button class="e-btn info-icon" title="Help">Info 3</button>
+    <ejs-tooltip id="tooltip" target=".info-icon" position="TopCenter">
+        <e-content-template>
+            <button class="e-btn info-icon" title="Information">Info 1</button>
+            <button class="e-btn info-icon" title="Details">Info 2</button>
+            <button class="e-btn info-icon" title="Help">Info 3</button>
+        </e-content-template>
     </ejs-tooltip>
 </div>
 ```

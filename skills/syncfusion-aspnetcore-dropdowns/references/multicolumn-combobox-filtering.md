@@ -18,29 +18,12 @@
 <ejs-multicolumncombobox id="combo"
     dataSource="@ViewBag.employees"
     allowFiltering="true"
-    height="300px">
+    popupHeight="300px">
     <e-multicolumncombobox-fields text="EmployeeName" value="EmployeeID"></e-multicolumncombobox-fields>
     <e-multicolumncombobox-columns>
         <e-multicolumncombobox-column field="EmployeeID" header="ID" width="60px"></e-multicolumncombobox-column>
         <e-multicolumncombobox-column field="EmployeeName" header="Name" width="150px"></e-multicolumncombobox-column>
         <e-multicolumncombobox-column field="Designation" header="Designation" width="120px"></e-multicolumncombobox-column>
-    </e-multicolumncombobox-columns>
-</ejs-multicolumncombobox>
-```
-
-### Filter Delay
-
-```cshtml
-<ejs-multicolumncombobox id="combo"
-    dataSource="@ViewBag.employees"
-    allowFiltering="true"
-    filterBarPlaceholder="Search..."
-    delay="500"
-    height="300px">
-    <e-multicolumncombobox-fields text="EmployeeName" value="EmployeeID"></e-multicolumncombobox-fields>
-    <e-multicolumncombobox-columns>
-        <e-multicolumncombobox-column field="EmployeeID" header="ID" width="60px"></e-multicolumncombobox-column>
-        <e-multicolumncombobox-column field="EmployeeName" header="Name" width="150px"></e-multicolumncombobox-column>
     </e-multicolumncombobox-columns>
 </ejs-multicolumncombobox>
 ```
@@ -56,8 +39,8 @@
     dataSource="@ViewBag.employees"
     allowFiltering="true"
     filterType="StartsWith"
-    filterBarPlaceholder="Search from beginning..."
-    height="300px">
+    placeholder="Search from beginning..."
+    popupHeight="300px">
     <e-multicolumncombobox-fields text="EmployeeName" value="EmployeeID"></e-multicolumncombobox-fields>
     <e-multicolumncombobox-columns>
         <e-multicolumncombobox-column field="EmployeeID" header="ID" width="60px"></e-multicolumncombobox-column>
@@ -73,8 +56,8 @@
     dataSource="@ViewBag.employees"
     allowFiltering="true"
     filterType="Contains"
-    filterBarPlaceholder="Search anywhere..."
-    height="300px">
+    placeholder="Search anywhere..."
+    popupHeight="300px">
     <e-multicolumncombobox-fields text="EmployeeName" value="EmployeeID"></e-multicolumncombobox-fields>
     <e-multicolumncombobox-columns>
         <e-multicolumncombobox-column field="EmployeeID" header="ID" width="60px"></e-multicolumncombobox-column>
@@ -90,8 +73,8 @@
     dataSource="@ViewBag.employees"
     allowFiltering="true"
     filterType="EndsWith"
-    filterBarPlaceholder="Search from end..."
-    height="300px">
+    placeholder="Search from end..."
+    popupHeight="300px">
     <e-multicolumncombobox-fields text="EmployeeName" value="EmployeeID"></e-multicolumncombobox-fields>
     <e-multicolumncombobox-columns>
         <e-multicolumncombobox-column field="EmployeeID" header="ID" width="60px"></e-multicolumncombobox-column>
@@ -110,9 +93,8 @@
 <ejs-multicolumncombobox id="combo"
     dataSource="@ViewBag.employees"
     allowFiltering="true"
-    fields-text="EmployeeName"
-    filterBarPlaceholder="Search in Name column..."
-    height="300px">
+    placeholder="Search in Name column..."
+    popupHeight="300px">
     <e-multicolumncombobox-fields text="EmployeeName" value="EmployeeID"></e-multicolumncombobox-fields>
     <e-multicolumncombobox-columns>
         <e-multicolumncombobox-column field="EmployeeID" header="ID" width="60px"></e-multicolumncombobox-column>
@@ -129,8 +111,8 @@
     dataSource="@ViewBag.employees"
     allowFiltering="true"
     ignoreCase="true"
-    filterBarPlaceholder="Search (case-insensitive)..."
-    height="300px">
+    placeholder="Search (case-insensitive)..."
+    popupHeight="300px">
     <e-multicolumncombobox-fields text="EmployeeName" value="EmployeeID"></e-multicolumncombobox-fields>
     <e-multicolumncombobox-columns>
         <e-multicolumncombobox-column field="EmployeeID" header="ID" width="60px"></e-multicolumncombobox-column>
@@ -146,8 +128,8 @@
     dataSource="@ViewBag.employees"
     allowFiltering="true"
     ignoreAccent="true"
-    filterBarPlaceholder="Search (accent-insensitive)..."
-    height="300px">
+    placeholder="Search (accent-insensitive)..."
+    popupHeight="300px">
     <e-multicolumncombobox-fields text="EmployeeName" value="EmployeeID"></e-multicolumncombobox-fields>
     <e-multicolumncombobox-columns>
         <e-multicolumncombobox-column field="EmployeeID" header="ID" width="60px"></e-multicolumncombobox-column>
@@ -167,7 +149,7 @@
     dataSource="@ViewBag.remoteData"
     allowFiltering="true"
     filtering="onServerFiltering"
-    height="300px">
+    popupHeight="300px">
     <e-multicolumncombobox-fields text="EmployeeName" value="EmployeeID"></e-multicolumncombobox-fields>
     <e-multicolumncombobox-columns>
         <e-multicolumncombobox-column field="EmployeeID" header="ID" width="60px"></e-multicolumncombobox-column>
@@ -263,7 +245,7 @@ let orPredicate = pred1.or(pred2);
 
 <ejs-multicolumncombobox id="combo"
     dataSource="@ViewBag.employees"
-    height="300px">
+    popupHeight="300px">
     <e-multicolumncombobox-fields text="EmployeeName" value="EmployeeID"></e-multicolumncombobox-fields>
     <e-multicolumncombobox-columns>
         <e-multicolumncombobox-column field="EmployeeID" header="ID" width="60px"></e-multicolumncombobox-column>
@@ -368,7 +350,7 @@ function filterBySalaryRange() {
 
 <ejs-multicolumncombobox id="combo"
     dataSource="@ViewBag.employees"
-    height="300px">
+    popupHeight="300px">
     <e-multicolumncombobox-fields text="EmployeeName" value="EmployeeID"></e-multicolumncombobox-fields>
     <e-multicolumncombobox-columns>
         <e-multicolumncombobox-column field="EmployeeID" header="ID" width="60px"></e-multicolumncombobox-column>

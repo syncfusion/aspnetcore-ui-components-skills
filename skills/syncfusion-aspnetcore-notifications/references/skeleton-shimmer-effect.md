@@ -11,13 +11,13 @@
 
 ## Overview
 
-Shimmer effects provide animated visual feedback that signals to users the application is actively loading content. Configure the animation style with the `shimmer-effect` attribute.
+Shimmer effects provide animated visual feedback that signals to users the application is actively loading content. Configure the animation style with the `shimmerEffect` attribute.
 
 ```cshtml
-<ejs-skeleton id="sk_pulse_circle" shape="Circle" width="48px" shimmer-effect="Pulse"></ejs-skeleton>
+<ejs-skeleton id="sk_pulse_circle" shape="Circle" width="48px" shimmerEffect="Pulse"></ejs-skeleton>
 ```
 
-Default effect is `"Wave"` when `shimmer-effect` is omitted.
+Default effect is `"Wave"` when `shimmerEffect` is omitted.
 
 ---
 
@@ -27,35 +27,35 @@ Default effect is `"Wave"` when `shimmer-effect` is omitted.
 A flowing highlight sweeps across the skeleton from left to right, mimicking a scan or reflection. Best for most general-purpose loading states.
 
 ```cshtml
-<ejs-skeleton id="sk_wave" height="15px" width="100%" shimmer-effect="Wave"></ejs-skeleton>
+<ejs-skeleton id="sk_wave" height="15px" width="100%" shimmerEffect="Wave"></ejs-skeleton>
 ```
 
 ### Pulse
 The entire skeleton fades in and out uniformly, creating a breathing or pulsing rhythm. Works well for lists and items where you want a subtler, less directional animation.
 
 ```cshtml
-<ejs-skeleton id="sk_pulse" height="15px" width="100%" shimmer-effect="Pulse"></ejs-skeleton>
+<ejs-skeleton id="sk_pulse" height="15px" width="100%" shimmerEffect="Pulse"></ejs-skeleton>
 ```
 
 ### Fade
 A gradual fade in/out animation. Provides the most subtle visual feedback; appropriate when you want a calm, non-distracting loading state.
 
 ```cshtml
-<ejs-skeleton id="sk_fade" height="15px" width="100%" shimmer-effect="Fade"></ejs-skeleton>
+<ejs-skeleton id="sk_fade" height="15px" width="100%" shimmerEffect="Fade"></ejs-skeleton>
 ```
 
 ---
 
 ## Usage
 
-Apply `shimmer-effect` directly on any `<ejs-skeleton>`. All skeletons in a layout can share the same effect or use different ones:
+Apply `shimmerEffect` directly on any `<ejs-skeleton>`. All skeletons in a layout can share the same effect or use different ones:
 
 ```cshtml
 @* ~/Pages/Index.cshtml *@
 <div style="display: flex; flex-direction: column; gap: 10px;">
-    <ejs-skeleton id="sk_wave"  height="15px" width="100%" shimmer-effect="Wave"></ejs-skeleton>
-    <ejs-skeleton id="sk_pulse" height="15px" width="80%"  shimmer-effect="Pulse"></ejs-skeleton>
-    <ejs-skeleton id="sk_fade"  height="15px" width="60%"  shimmer-effect="Fade"></ejs-skeleton>
+    <ejs-skeleton id="sk_wave"  height="15px" width="100%" shimmerEffect="Wave"></ejs-skeleton>
+    <ejs-skeleton id="sk_pulse" height="15px" width="80%"  shimmerEffect="Pulse"></ejs-skeleton>
+    <ejs-skeleton id="sk_fade"  height="15px" width="60%"  shimmerEffect="Fade"></ejs-skeleton>
 </div>
 ```
 
@@ -72,11 +72,11 @@ Pulse is ideal for list items where the whole row fades together:
     @for (var i = 1; i <= 3; i++)
     {
         <li style="display: flex; align-items: center; gap: 10px; margin-bottom: 14px;">
-            <ejs-skeleton id="@($"sk_av_{i}")" shape="Circle" width="40px" shimmer-effect="Pulse"></ejs-skeleton>
+            <ejs-skeleton id="@($"sk_av_{i}")" shape="Circle" width="40px" shimmerEffect="Pulse"></ejs-skeleton>
             <div style="flex: 1;">
-                <ejs-skeleton id="@($"sk_t1_{i}")" width="60%" height="15px" shimmer-effect="Pulse"></ejs-skeleton>
+                <ejs-skeleton id="@($"sk_t1_{i}")" width="60%" height="15px" shimmerEffect="Pulse"></ejs-skeleton>
                 <br />
-                <ejs-skeleton id="@($"sk_t2_{i}")" width="40%" height="15px" shimmer-effect="Pulse"></ejs-skeleton>
+                <ejs-skeleton id="@($"sk_t2_{i}")" width="40%" height="15px" shimmerEffect="Pulse"></ejs-skeleton>
             </div>
         </li>
     }
@@ -101,9 +101,9 @@ Pulse is ideal for list items where the whole row fades together:
 ```cshtml
 @* ~/Pages/Index.cshtml *@
 <div>
-    <ejs-skeleton id="sk_subtle_av"   shape="Circle" width="56px" shimmer-effect="Fade"></ejs-skeleton>
+    <ejs-skeleton id="sk_subtle_av"   shape="Circle" width="56px" shimmerEffect="Fade"></ejs-skeleton>
     <br />
-    <ejs-skeleton id="sk_subtle_text" height="16px" width="50%"  shimmer-effect="Fade"></ejs-skeleton>
+    <ejs-skeleton id="sk_subtle_text" height="16px" width="50%"  shimmerEffect="Fade"></ejs-skeleton>
 </div>
 ```
 

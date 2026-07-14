@@ -1,181 +1,141 @@
 # MultiColumn ComboBox API Reference
 
 This file is a focused extraction of the official Syncfusion ASP.NET Core MultiColumn ComboBox API.  
-Reference: https://help.syncfusion.com/cr/aspnetcore-js2/syncfusion.ej2.multicolumncombobox.html
+Reference: https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.MultiColumnComboBox.MultiColumnComboBox.html#properties
 
 ---
 
 ## Properties
 
+- `actionBegin` (string)
+  - Triggers before fetching data from the remote server. Default: `null`.
+
+- `actionComplete` (string)
+  - Triggers after data is fetched successfully from the remote server. Default: `null`.
+
+- `actionFailure` (string)
+  - Triggers when the data fetch request from the remote server fails. Default: `null`.
+
 - `actionFailureTemplate` (string)
-  - Template to display when a remote data request fails. Default: `'Request failed'`.
+  - Template displayed when the data fetch request from the remote server fails. Default: `'Request Failed'`.
 
 - `allowFiltering` (boolean)
-  - When set to `true`, displays a search/filter box. Default: `false`.
+  - Specifies the filter action retrieves matched items through the `filtering` event based on the characters typed in the search TextBox. If no match is found, the value of the `noRecordsTemplate` property will be displayed. Default: `true`.
 
-- `allowObjectBinding` (boolean)
-  - Enables binding object values to the component. Default: `false`.
+- `allowSorting` (boolean)
+  - Specifies whether sorting is allowed for the columns in the dropdown list. Default: `true`.
 
-- `autofill` (boolean)
-  - Suggests the first matched item when searching. Default: `false`.
+- `change` (string)
+  - Triggers when an item in a popup is selected or when the model value is changed by the user. Default: `null`.
+
+- `close` (string)
+  - Triggers when the popup is closed. Default: `null`.
+
+- `columns` (List<Column>)
+  - Specifies the number of columns and its respective fields to be displayed in the dropdown popup. Default: `null`.
+
+- `created` (string)
+  - Event callback that is raised after rendering the control. Default: `null`.
 
 - `cssClass` (string)
-  - Adds custom CSS classes to the root element. Default: `null`.
+  - Sets CSS classes to the root element of the component that allows customization of appearance. Default: `""`.
 
-- `dataSource` (array or DataManager)
-  - Accepts list items from local data or remote service. Default: `[]`.
+- `dataSource` (object)
+  - Accepts the list items either through local or remote service and binds it to the component. It can be an array of JSON Objects or an instance of `DataManager`. Default: `null`.
 
-- `debounceDelay` (number)
-  - Delay in milliseconds for filtering operations. Default: `300`.
+- `disabled` (boolean)
+  - Specifies a value that indicates whether the component is disabled or not. Default: `false`.
 
 - `enablePersistence` (boolean)
-  - Persists component state between page reloads. Default: `false`.
+  - Specifies the component's state between page reloads. If enabled, the list of states for the value will be persisted. Default: `false`.
 
 - `enableRtl` (boolean)
-  - Enables right-to-left rendering. Default: `false`.
+  - Enable or disable rendering component in right to left direction. Default: `false`.
 
 - `enableVirtualization` (boolean)
-  - Enables virtual scrolling for large datasets. Default: `false`.
+  - Defines whether to enable virtual scrolling in the component. Default: `false`.
 
-- `enabled` (boolean)
-  - Specifies whether the component is enabled. Default: `true`.
+- `fields` (MultiColumnComboBoxFieldSettings)
+  - The `fields` property maps the columns of the data table and binds the data to the component. Sub-properties:
+    - `text` — Maps the text column from data table for each list item
+    - `value` — Maps the value column from data table for each list item
+    - `groupBy` — Group the list items with its related items by mapping groupBy field
+  - Default: `null`
 
-- `fields` (FieldSettingsModel)
-  - Maps data columns to component. Sub-properties:
-    - `text` — Display field
-    - `value` — Value field
-  - Default: `{ text: null, value: null }`
-
-- `filterBarPlaceholder` (string)
-  - Placeholder text for filter bar. Default: `'Search'`.
+- `filtering` (string)
+  - Triggers on typing a character in the component. Default: `null`.
 
 - `filterType` (FilterType)
-  - Filter behavior: `'StartsWith'`, `'EndsWith'`, `'Contains'`. Default: `'StartsWith'`.
+  - Determines on which filter type, the component needs to be considered on search action. Default: `FilterType.StartsWith`.
 
 - `floatLabelType` (FloatLabelType)
-  - Float label behavior: `'Never'`, `'Always'`, `'Auto'`. Default: `'Never'`.
+  - Specifies whether to display the floating label above the input element. Possible values are: `Never`, `Always`, `Auto`. Default: `FloatLabelType.Never`.
 
 - `footerTemplate` (string)
-  - Template for dropdown footer. Default: `null`.
+  - Accepts the template design and assigns it to the footer container of the popup. Default: `null`.
+
+- `for` (ModelExpression)
+  - Overrides `Syncfusion.EJ2.EJTagHelper.For`.
+
+- `gridSettings` (MultiColumnComboBoxGridSettings)
+  - Specifies the configuration of the columns in the popup content. Default: `null`.
 
 - `groupTemplate` (string)
-  - Template for group headers. Default: `null`.
-
-- `headerTemplate` (string)
-  - Template for dropdown header. Default: `null`.
-
-- `height` (string or number)
-  - Height of popup grid. Default: `'300px'`.
+  - Accepts the template design and assigns it to the group headers present in the popup list. Default: `null`.
 
 - `htmlAttributes` (object)
-  - Additional HTML attributes as key-value pairs. Default: `{}`.
+  - Allows additional HTML attributes such as title, name, etc., and accepts n number of attributes in a key-value pair format. Default: `null`.
 
-- `ignoreAccent` (boolean)
-  - Ignores diacritical characters during filtering. Default: `false`.
+- `index` (object)
+  - Gets or sets the index of the selected item in the component. Default: `null`.
 
-- `ignoreCase` (boolean)
-  - Case-insensitive filtering. Default: `true`.
-
-- `index` (number)
-  - Index of selected item. Default: `null`.
-
-- `isDeviceFullScreen` (boolean)
-  - Enables fullscreen popup on mobile when filtering. Default: `true`.
+- `itemTemplate` (string)
+  - Accepts the template design and assigns it to each items present in the popup. Default: `null`.
 
 - `locale` (string)
-  - Localization culture. Default: `'en-US'`.
+  - Overrides the global culture and localization value for this component. Default global culture is `'en-US'`. Default: `""`.
 
 - `noRecordsTemplate` (string)
-  - Template when no data is available. Default: `'No records found'`.
+  - Accepts the template design and assigns it to popup list of component when no data is available on the component. Default: `'No records found'`.
+
+- `open` (string)
+  - Triggers when the popup opens. Default: `null`.
 
 - `placeholder` (string)
-  - Input placeholder text. Default: `null`.
+  - Specifies a short hint that describes the expected value of the multicolumn combobox component. Default: `null`.
 
-- `popupHeight` (string or number)
-  - Height of popup list. Default: `'300px'`.
+- `popupHeight` (string)
+  - Specifies the height of the popup list. Default: `'300px'`.
 
-- `popupWidth` (string or number)
-  - Width of popup list. Default: `'100%'`.
+- `popupWidth` (string)
+  - Specifies the width of the popup list. By default, the popup width sets based on the width of the component. Default: `'100%'`.
 
-- `query` (Query)
-  - External query to execute with data processing. Default: `null`.
+- `query` (string)
+  - Accepts the external Query that execute along with data processing. Default: `null`.
 
 - `readonly` (boolean)
-  - Disables user interactions when `true`. Default: `false`.
+  - Specifies the user interactions on the component are disabled. Default: `false`.
+
+- `select` (string)
+  - Triggers when an item in the popup is selected by the user either with mouse/tap or with keyboard navigation. Default: `null`.
 
 - `showClearButton` (boolean)
-  - Shows/hides clear button. Default: `true`.
+  - Default: `false`.
 
 - `sortOrder` (SortOrder)
-  - Sort order: `'None'`, `'Ascending'`, `'Descending'`. Default: `null`.
+  - Specifies the `sortOrder` to sort the data source. The available type of sort orders are, `None`, `Ascending`, `Descending`. Default: `SortOrder.None`.
+
+- `sortType` (SortType)
+  - Specifies the type of sorting to be applied for the columns. `OneColumn` - Allow sorting only one column. `MultipleColumns` - Allow sorting multiple columns. Default: `SortType.OneColumn`.
 
 - `text` (string)
-  - Display text of selected item. Default: `null`.
+  - Gets or sets the display text of the selected item. Default: `null`.
 
-- `value` (number or string)
-  - Value of selected item. Default: `null`.
+- `value` (string)
+  - Gets or sets the value of the selected item. Default: `null`.
 
-- `width` (string or number)
-  - Width of component. Default: `'100%'`.
-
-- `zIndex` (number)
-  - z-index of popup element. Default: `1000`.
-
----
-
-## Methods
-
-- `actionComplete(args)`
-  - Method to handle action complete event.
-
-- `addItem(items, itemIndex?)`
-  - Adds item(s) to the component.
-
-- `clear()`
-  - Clears the selected value.
-
-- `destroy()`
-  - Removes the component and detaches event handlers.
-
-- `disableItem(item)`
-  - Disables a specific item.
-
-- `focusIn()`
-  - Sets focus to the component.
-
-- `focusOut()`
-  - Removes focus from the component.
-
-- `getDataByValue(value)`
-  - Gets the data object matching the given value.
-
-- `getItems()`
-  - Returns all list items.
-
-- `hidePopup()`
-  - Hides the popup.
-
-- `open()`
-  - Opens the popup.
-
-- `showPopup()`
-  - Shows the popup.
-
----
-
-## Events
-
-- `actionBegin` — Triggered before fetch request.
-- `actionComplete` — Triggered after data fetch completes.
-- `actionFailure` — Triggered when data fetch fails.
-- `blur` — Triggered when component loses focus.
-- `change` — Triggered when value changes.
-- `created` — Triggered after component creation.
-- `destroyed` — Triggered after component destruction.
-- `filtering` — Triggered during filtering.
-- `focus` — Triggered when component receives focus.
-- `open` — Triggered when popup opens.
-- `select` — Triggered when item selected.
+- `width` (string)
+  - Specifies the width of the component. By default, the component width sets based on the width of its parent container. Default: `'100%'`.
 
 ---
 

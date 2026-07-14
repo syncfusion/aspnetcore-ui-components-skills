@@ -150,19 +150,6 @@ Control how the search matches items:
 | `EndsWith` | Match from end | "ton" matches "Badminton" |
 | `Contains` | Match anywhere | "min" matches "Badminton" |
 
-### Minimum Characters Before Search
-
-Set minimum characters before search triggers:
-
-```cshtml
-<ejs-combobox id="combo"
-    dataSource="@ViewBag.data"
-    allowFiltering="true"
-    minLength="2"
-    placeholder="Type at least 2 characters...">
-</ejs-combobox>
-```
-
 ### Case-Sensitive Filtering
 
 By default, filtering is case-insensitive. Enable case sensitivity:
@@ -217,19 +204,6 @@ For large datasets (1000+ items), enable virtual scrolling:
     enableVirtualization="true"
     popupHeight="300px"
     placeholder="Virtual scroll enabled...">
-</ejs-combobox>
-```
-
-### Suggestion Count Limit
-
-Limit number of suggestions shown:
-
-```cshtml
-<ejs-combobox id="combo"
-    dataSource="@ViewBag.data"
-    allowFiltering="true"
-    suggestionCount="10"
-    placeholder="Max 10 suggestions...">
 </ejs-combobox>
 ```
 
@@ -309,8 +283,6 @@ function onFiltering(e) {
     ignoreCase="true"
     ignoreAccent="true"
     debounceDelay="300"
-    minLength="1"
-    suggestionCount="8"
     enableVirtualization="true"
     noRecordsTemplate="<div>No employees found</div>"
     placeholder="Search employees...">

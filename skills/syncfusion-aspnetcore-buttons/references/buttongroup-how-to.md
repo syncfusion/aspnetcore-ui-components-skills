@@ -117,21 +117,13 @@ Stack buttons vertically for sidebar or menu-like layouts.
 **View:**
 ```cshtml
 <div class="e-btn-group e-vertical">
-    <ejs-button id="homeBtn" cssClass="e-outline">
-        <i class="e-icons e-home-icon"></i> Home
-    </ejs-button>
+    <ejs-button id="homeBtn" cssClass="e-outline" content="Home"></ejs-button>
     
-    <ejs-button id="aboutBtn" cssClass="e-outline">
-        <i class="e-icons e-info-icon"></i> About
-    </ejs-button>
+    <ejs-button id="aboutBtn" cssClass="e-outline" content="About"></ejs-button>
     
-    <ejs-button id="servicesBtn" cssClass="e-outline">
-        <i class="e-icons e-settings-icon"></i> Services
-    </ejs-button>
+    <ejs-button id="servicesBtn" cssClass="e-outline" content="Services"></ejs-button>
     
-    <ejs-button id="contactBtn" cssClass="e-outline">
-        <i class="e-icons e-mail-icon"></i> Contact
-    </ejs-button>
+    <ejs-button id="contactBtn" cssClass="e-outline" content="Contact"></ejs-button>
 </div>
 
 <style>
@@ -246,17 +238,17 @@ Use visual separators to logically group buttons.
 **View:**
 ```cshtml
 <div class="e-btn-group">
-    <ejs-button id="newBtn" cssClass="e-outline">New</ejs-button>
-    <ejs-button id="openBtn" cssClass="e-outline">Open</ejs-button>
+    <ejs-button id="newBtn" cssClass="e-outline" content="New"></ejs-button>
+    <ejs-button id="openBtn" cssClass="e-outline" content="Open"></ejs-button>
     
     <span class="e-btn-separator"></span>
     
-    <ejs-button id="saveBtn" cssClass="e-outline">Save</ejs-button>
-    <ejs-button id="deleteBtn" cssClass="e-outline e-danger">Delete</ejs-button>
+    <ejs-button id="saveBtn" cssClass="e-outline" content="Save"></ejs-button>
+    <ejs-button id="deleteBtn" cssClass="e-outline e-danger" content="Delete"></ejs-button>
     
     <span class="e-btn-separator"></span>
     
-    <ejs-button id="helpBtn" cssClass="e-outline">Help</ejs-button>
+    <ejs-button id="helpBtn" cssClass="e-outline" content="Help"></ejs-button>
 </div>
 
 <style>

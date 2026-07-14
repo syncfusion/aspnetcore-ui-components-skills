@@ -724,7 +724,7 @@ Configure global image upload behavior using the `e-blockeditor-imageblocksettin
 | `path` | string | "" | Base path for storing images on server |
 | `allowedTypes` | string[] | [".jpg", ".jpeg", ".png", ".gif"] | Allowed image file extensions |
 | `maxFileSize` | number | 30000000 | Maximum file size in bytes (default: 30MB) |
-| `saveFormat` | SaveFormat | Base64 | Format to save images: `Base64` or `Blob` |
+| `saveFormat` | SaveFormat | Blob | Format to save images: `Blob` or `Base64` |
 | `enableResize` | bool | true | Enable image resize handles |
 | `width` | string | "auto" | Default image display width |
 | `height` | string | "auto" | Default image display height |

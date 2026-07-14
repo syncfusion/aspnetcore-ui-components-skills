@@ -245,8 +245,10 @@ A tooltip component that displays helpful information or hints when users hover 
 ### Quick Start
 
 ```csharp
-<ejs-tooltip content="Tooltip Content" position="TopCenter">
-    <button class="e-btn">Show Tooltip</button>
+<ejs-tooltip id="tooltip" target="#target" position="TopCenter" content="Tooltip Content">
+    <e-content-template>
+        <button class="e-btn" id="target">Show Tooltip</button>
+    </e-content-template>
 </ejs-tooltip>
 ```
 
@@ -319,35 +321,42 @@ A tooltip component that displays helpful information or hints when users hover 
 
 **Basic Tooltip on Button:**
 ```csharp
-<ejs-tooltip content="Submit the form" position="TopCenter">
-    <button class="e-btn e-primary">Submit</button>
+<ejs-tooltip id="tooltip" target="#target" position="TopCenter" content="Submit the form">
+    <e-content-template>
+        <button class="e-btn" id="target">Submit</button>
+    </e-content-template>
 </ejs-tooltip>
 ```
 
 **Multi-Target Tooltip:**
 ```csharp
-<ejs-tooltip target=".e-info" position="RightCenter">
-    <form>
-        <input class="e-info" type="text" title="Enter your name" />
-        <input class="e-info" type="email" title="Enter a valid email" />
-    </form>
+<ejs-tooltip id="tooltip" target=".info-icon" position="TopCenter">
+    <e-content-template>
+        <button class="e-btn info-icon" title="Information">Info 1</button>
+        <button class="e-btn info-icon" title="Details">Info 2</button>
+        <button class="e-btn info-icon" title="Help">Info 3</button>
+    </e-content-template>
 </ejs-tooltip>
 ```
 
 **Click-Triggered Sticky Tooltip:**
 ```csharp
-<ejs-tooltip content="Click the × to close me" 
+<ejs-tooltip target="#target" content="Click the × to close me" 
     opensOn="Click" 
     isSticky="true" 
     position="BottomCenter">
-    <button class="e-btn">Click Me</button>
+    <e-content-template>
+        <button id="target" class="e-btn">Click Me</button>
+    </e-content-template>
 </ejs-tooltip>
 ```
 
 **Programmatic Open/Close:**
 ```csharp
-<ejs-tooltip id="tooltip" content="Tooltip opened programmatically" opensOn="Custom">
-    <button class="e-btn" onclick="toggleTooltip()">Toggle Tooltip</button>
+<ejs-tooltip id="tooltip" target="#target" content="Tooltip opened programmatically" opensOn="Custom">
+    <e-content-template>
+        <button id="target" class="e-btn" onclick="toggleTooltip()">Toggle Tooltip</button>
+    </e-content-template>
 </ejs-tooltip>
 
 <script>

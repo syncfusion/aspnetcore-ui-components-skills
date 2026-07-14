@@ -1,19 +1,19 @@
 # Skeleton Styles and Visibility
 
 ## Table of Contents
-- [Custom CSS with css-class](#custom-css-with-css-class)
+- [Custom CSS with cssClass](#custom-css-with-cssClass)
 - [Visibility Control](#visibility-control)
 - [Loading to Content Transition](#loading-to-content-transition)
 - [CSS Customization Examples](#css-customization-examples)
 
 ---
 
-## Custom CSS with css-class
+## Custom CSS with cssClass
 
-Use the `css-class` attribute to apply one or more CSS classes to an `<ejs-skeleton>`. This lets you override the default skeleton appearance — changing shimmer wave color, background color, dimensions, border radius, or animation speed.
+Use the `cssClass` attribute to apply one or more CSS classes to an `<ejs-skeleton>`. This lets you override the default skeleton appearance — changing shimmer wave color, background color, dimensions, border radius, or animation speed.
 
 ```cshtml
-<ejs-skeleton id="sk_custom" shape="Circle" width="60px" css-class="e-customize"></ejs-skeleton>
+<ejs-skeleton id="sk_custom" shape="Circle" width="60px" cssClass="e-customize"></ejs-skeleton>
 ```
 
 Define the class in your CSS file:
@@ -37,7 +37,7 @@ Define the class in your CSS file:
 Multiple classes are supported (space-separated):
 
 ```cshtml
-<ejs-skeleton id="sk_combo" height="15px" width="80%" css-class="e-custom-bg e-custom-wave"></ejs-skeleton>
+<ejs-skeleton id="sk_combo" height="15px" width="80%" cssClass="e-custom-bg e-custom-wave"></ejs-skeleton>
 ```
 
 ---
@@ -146,5 +146,5 @@ Alternatively, use the `visible` attribute to hide the skeleton while keeping it
 Apply the class:
 
 ```cshtml
-<ejs-skeleton id="sk_rounded" shape="Rectangle" width="100%" height="120px" css-class="rounded-skeleton"></ejs-skeleton>
+<ejs-skeleton id="sk_rounded" shape="Rectangle" width="100%" height="120px" cssClass="rounded-skeleton"></ejs-skeleton>
 ```

@@ -81,8 +81,8 @@ public ActionResult Index()
 ```html
 <ejs-combobox id="emp-combo"
     dataSource="ViewBag.Employees"
-    fields="@(new { text = "EmployeeName", value = "EmployeeId" })"
     placeholder="Select employee">
+    <e-combobox-fields text="EmployeeName" value="EmployeeId"></e-combobox-fields>
 </ejs-combobox>
 ```
 
@@ -157,9 +157,9 @@ public ActionResult Index()
 ```html
 <ejs-combobox id="large-combo"
     dataSource="ViewBag.LargeDataset"
-    fields="@(new { text = "Name", value = "Id" })"
     enableVirtualization="true"
     popupHeight="300px">
+    <e-combobox-fields text="Name" value="Id"></e-combobox-fields>
 </ejs-combobox>
 ```
 

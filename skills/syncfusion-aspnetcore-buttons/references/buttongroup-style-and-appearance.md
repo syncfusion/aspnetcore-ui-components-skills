@@ -21,9 +21,9 @@
 </style>
 
 <div class="custom-btn-group e-btn-group">
-    <ejs-button id="btn1">Option 1</ejs-button>
-    <ejs-button id="btn2">Option 2</ejs-button>
-    <ejs-button id="btn3">Option 3</ejs-button>
+    <ejs-button id="btn1" content="Option 1"></ejs-button>
+    <ejs-button id="btn2" content="Option 2"></ejs-button>
+    <ejs-button id="btn3" content="Option 3"></ejs-button>
 </div>
 ```
 
@@ -44,9 +44,9 @@
 
 ```cshtml
 <div class="e-btn-group">
-    <ejs-button id="btn1" cssClass="e-primary">Primary</ejs-button>
-    <ejs-button id="btn2" cssClass="e-success">Success</ejs-button>
-    <ejs-button id="btn3" cssClass="e-danger">Danger</ejs-button>
+    <ejs-button id="btn1" cssClass="e-primary" content="Primary"></ejs-button>
+    <ejs-button id="btn2" cssClass="e-success" content="Success"></ejs-button>
+    <ejs-button id="btn3" cssClass="e-danger" content="Danger"></ejs-button>
 </div>
 ```
 
@@ -69,9 +69,9 @@
 </style>
 
 <div class="e-btn-group vertical">
-    <ejs-button id="btn1">Top</ejs-button>
-    <ejs-button id="btn2">Middle</ejs-button>
-    <ejs-button id="btn3">Bottom</ejs-button>
+    <ejs-button id="btn1" content="Top"></ejs-button>
+    <ejs-button id="btn2" content="Middle"></ejs-button>
+    <ejs-button id="btn3" content="Bottom"></ejs-button>
 </div>
 ```
 

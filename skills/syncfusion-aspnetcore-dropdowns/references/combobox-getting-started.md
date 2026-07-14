@@ -1,72 +1,101 @@
 # Getting Started with ComboBox
 
 ## Table of Contents
+- [Prerequisites](#prerequisites)
 - [Installation](#installation)
-- [Basic Setup](#basic-setup)
-- [TagHelper Registration](#taghelper-registration)
+- [Setup TagHelpers](#setup-taghelpers)
+- [Add Styles and Scripts](#add-styles-and-scripts)
+- [Register Script Manager](#register-script-manager)
 - [Component Implementation](#component-implementation)
 - [Custom Values](#custom-values)
 - [Popup Configuration](#popup-configuration)
 
 ---
 
+## Prerequisites
+
+- ASP.NET Core 6.0+ project (Razor Pages or MVC)
+- Visual Studio 2022+ or VS Code
+
+System requirements: https://ej2.syncfusion.com/aspnetcore/documentation/system-requirements
+
+---
+
 ## Installation
 
-### Step 1: Install NuGet Package
+Install the NuGet package via Package Manager Console:
 
-Install the Syncfusion ASP.NET Core package via NuGet Package Manager Console:
-
-```powershell
+```bash
 Install-Package Syncfusion.EJ2.AspNet.Core
 ```
 
-Or using .NET CLI:
+Or via .NET CLI:
 
 ```bash
 dotnet add package Syncfusion.EJ2.AspNet.Core
 ```
 
-### Step 2: Verify Installation
-
-Check the `.csproj` file for the package reference:
-
-```xml
-<PackageReference Include="Syncfusion.EJ2.AspNet.Core" Version="*" />
-```
-
 ---
 
-## Basic Setup
+## Setup TagHelpers
 
-### Register Service in Startup
-
-In `Program.cs`, add Syncfusion services:
-
-```csharp
-var builder = WebApplication.CreateBuilder(args);
-
-// Add Syncfusion services
-builder.Services.AddSyncfusionEJ2();
-
-var app = builder.Build();
-app.Run();
-```
-
----
-
-## TagHelper Registration
-
-### Add TagHelper Reference
-
-Edit `_ViewImports.cshtml` to include the Syncfusion TagHelper:
+Open `~/Pages/_ViewImports.cshtml` (Razor Pages) or `~/Views/_ViewImports.cshtml` (MVC) and add:
 
 ```cshtml
 @addTagHelper *, Syncfusion.EJ2
 ```
 
-### Available TagHelper Namespace
+---
 
-The ComboBox component is available under the `Syncfusion.EJ2` namespace.
+## Add Styles and Scripts (Local Hosting Recommended)
+
+**⚠️ SECURITY:** For production, host vendor scripts locally from the NuGet package instead of using CDN to mitigate supply chain risks (W012).
+
+### Option A: Local Hosting (RECOMMENDED) ✅
+
+In `~/Pages/Shared/_Layout.cshtml` (or `~/Views/Shared/_Layout.cshtml`), add inside `<head>`:
+
+```html
+<head>
+    <!-- ✅ Serve from local NuGet package (safest) -->
+    <link rel="stylesheet" href="~/lib/ej2/fluent2.css" />
+</head>
+```
+
+### Option B: CDN with Subresource Integrity (SRI) ⚠️
+
+If CDN is mandatory, use SRI hashes + HTTPS:
+
+```html
+<head>
+    <!-- ⚠️ Pin version and add SRI hash for integrity verification -->
+    <link rel="stylesheet" 
+          href="https://cdn.syncfusion.com/ej2/{{ site.ej2version }}/fluent2.css"
+          integrity="sha384-[GET_ACTUAL_HASH_FROM_CDN]"
+          crossorigin="anonymous" />
+    <script src="https://cdn.syncfusion.com/ej2/{{ site.ej2version }}/dist/ej2.min.js"
+            integrity="sha384-[GET_ACTUAL_HASH_FROM_CDN]"
+            crossorigin="anonymous"></script>
+</head>
+```
+
+**Get SRI hashes from:** https://www.srihash.org/ or Syncfusion CDN documentation.
+
+> **Tip:** Replace `21.1.37` with your installed package version. Check current version at nuget.org.
+
+---
+
+## Register Script Manager
+
+At the end of `<body>` in `_Layout.cshtml`, register the script manager:
+
+```html
+<body>
+    @RenderBody()
+    <!-- Required: Syncfusion script manager -->
+    <ejs-scripts></ejs-scripts>
+</body>
+```
 
 ---
 
@@ -207,7 +236,6 @@ For mobile-friendly design, use percentage-based widths:
 ## First Implementation Checklist
 
 - [ ] NuGet package installed: `Syncfusion.EJ2.AspNet.Core`
-- [ ] Service registered in `Program.cs`: `builder.Services.AddSyncfusionEJ2();`
 - [ ] TagHelper added to `_ViewImports.cshtml`: `@addTagHelper *, Syncfusion.EJ2`
 - [ ] Script Manager in layout: Included in `_Layout.cshtml` or per-page view
 - [ ] ComboBox component added to view with `<ejs-combobox>`

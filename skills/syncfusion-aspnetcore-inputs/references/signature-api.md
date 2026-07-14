@@ -42,10 +42,19 @@ Complete API reference for Syncfusion ASP.NET Core Signature component propertie
 ### `enablePersistence`
 - **Type:** `boolean`
 - **Default:** `false`
-- Gets or sets whether to persist the component state between page reloads.
+- Gets or sets whether to persist the component state between page reloads. Component's property will be stored in browser local storage to persist component's state when page reloads.
 
 ```html
 <ejs-signature id="signature" enablePersistence="true"></ejs-signature>
+```
+
+### `htmlAttributes`
+- **Type:** `object`
+- **Default:** `null`
+- Allows additional HTML attributes such as `title`, `name`, etc., and accepts n number of attributes in a key-value pair format.
+
+```html
+<ejs-signature id="signature" html-attributes="@(new { title = "Signature pad", name = "signature" })"></ejs-signature>
 ```
 
 ### `isReadOnly`
@@ -302,6 +311,58 @@ Fires when the component is initialized.
             canRedo: signature.canRedo(),
             isEmpty: signature.isEmpty()
         });
+    }
+</script>
+```
+
+---
+
+## Events
+
+### `beforeSave`
+- **Type:** `string` (event callback name)
+- **Default:** `null`
+- Event callback that is raised while saving the signature. The file name and the file type can be changed using `SignatureBeforeSaveEventArgs` and `SignatureFileType`. The event callback is raised only for the keyboard action (Ctrl + S).
+
+```html
+<ejs-signature id="signature" beforeSave="onBeforeSave"></ejs-signature>
+
+<script>
+    function onBeforeSave(args) {
+        args.fileName = 'Custom_' + args.fileName;
+    }
+</script>
+```
+
+### `change`
+- **Type:** `string` (event callback name)
+- **Default:** `null`
+- Event callback that is raised for the actions like undo, redo, clear and when the user completes signing on the signature component.
+
+```html
+<ejs-signature id="signature" change="onChange"></ejs-signature>
+
+<script>
+    function onChange(args) {
+        const signature = document.getElementById('signature').ej2_instances[0];
+        console.log('Can undo:', signature.canUndo());
+        console.log('Can redo:', signature.canRedo());
+        console.log('Is empty:', signature.isEmpty());
+    }
+</script>
+```
+
+### `created`
+- **Type:** `string` (event callback name)
+- **Default:** `null`
+- Triggers once the component rendering is completed.
+
+```html
+<ejs-signature id="signature" created="onCreated"></ejs-signature>
+
+<script>
+    function onCreated() {
+        console.log('Signature component ready');
     }
 </script>
 ```

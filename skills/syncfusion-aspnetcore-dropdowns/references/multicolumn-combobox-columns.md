@@ -17,7 +17,7 @@
 ```cshtml
 <ejs-multicolumncombobox id="combo"
     dataSource="@ViewBag.employees"
-    height="300px">
+    popupHeight="300px">
     <e-multicolumncombobox-fields text="EmployeeName" value="EmployeeID"></e-multicolumncombobox-fields>
     <e-multicolumncombobox-columns>
         <e-multicolumncombobox-column field="EmployeeID" header="ID" width="60px"></e-multicolumncombobox-column>
@@ -47,7 +47,7 @@
 ```cshtml
 <ejs-multicolumncombobox id="employees"
     dataSource="@ViewBag.employees"
-    height="300px">
+    popupHeight="300px">
     <e-multicolumncombobox-fields text="EmployeeName" value="EmployeeID"></e-multicolumncombobox-fields>
     <e-multicolumncombobox-columns>
         <!-- ID Column -->
@@ -72,7 +72,7 @@
 ```cshtml
 <ejs-multicolumncombobox id="combo"
     dataSource="@ViewBag.employees"
-    height="300px">
+    popupHeight="300px">
     <e-multicolumncombobox-fields text="EmployeeName" value="EmployeeID"></e-multicolumncombobox-fields>
     <e-multicolumncombobox-columns>
         <e-multicolumncombobox-column field="EmployeeID" header="ID" width="80px"></e-multicolumncombobox-column>
@@ -87,7 +87,7 @@
 ```cshtml
 <ejs-multicolumncombobox id="combo"
     dataSource="@ViewBag.employees"
-    height="300px"
+    popupHeight="300px"
     popupWidth="500px">
     <e-multicolumncombobox-fields text="EmployeeName" value="EmployeeID"></e-multicolumncombobox-fields>
     <e-multicolumncombobox-columns>
@@ -104,7 +104,7 @@
 ```cshtml
 <ejs-multicolumncombobox id="combo"
     dataSource="@ViewBag.employees"
-    height="300px">
+    popupHeight="300px">
     <e-multicolumncombobox-fields text="EmployeeName" value="EmployeeID"></e-multicolumncombobox-fields>
     <e-multicolumncombobox-columns>
         <!-- Columns without width will auto-expand -->
@@ -139,7 +139,7 @@ combo.refresh();
 ```cshtml
 <ejs-multicolumncombobox id="combo"
     dataSource="@ViewBag.data"
-    height="300px">
+    popupHeight="300px">
     <e-multicolumncombobox-fields text="Name" value="Id"></e-multicolumncombobox-fields>
     <e-multicolumncombobox-columns>
         <!-- Left aligned (default) -->
@@ -206,7 +206,7 @@ public IActionResult Index()
 ```cshtml
 <ejs-multicolumncombobox id="combo"
     dataSource="@ViewBag.employees"
-    height="300px">
+    popupHeight="300px">
     <e-multicolumncombobox-fields text="EmployeeName" value="EmployeeID"></e-multicolumncombobox-fields>
     <e-multicolumncombobox-columns>
         <e-multicolumncombobox-column field="EmployeeID" header="ID" width="60px"></e-multicolumncombobox-column>
@@ -222,7 +222,7 @@ public IActionResult Index()
 ```cshtml
 <ejs-multicolumncombobox id="combo"
     dataSource="@ViewBag.products"
-    height="300px">
+    popupHeight="300px">
     <e-multicolumncombobox-fields text="ProductName" value="ProductID"></e-multicolumncombobox-fields>
     <e-multicolumncombobox-columns>
         <e-multicolumncombobox-column field="ProductID" header="ID" width="60px"></e-multicolumncombobox-column>
@@ -242,7 +242,7 @@ public IActionResult Index()
 ```cshtml
 <ejs-multicolumncombobox id="combo"
     dataSource="@ViewBag.employees"
-    height="300px">
+    popupHeight="300px">
     <e-multicolumncombobox-fields text="EmployeeName" value="EmployeeID"></e-multicolumncombobox-fields>
     <e-multicolumncombobox-columns>
         <e-multicolumncombobox-column field="EmployeeID" header="ID" width="60px"></e-multicolumncombobox-column>
@@ -273,7 +273,7 @@ function getStatusTemplate(props) {
 ```cshtml
 <ejs-multicolumncombobox id="combo"
     dataSource="@ViewBag.employees"
-    height="300px">
+    popupHeight="300px">
     <e-multicolumncombobox-fields text="EmployeeName" value="EmployeeID"></e-multicolumncombobox-fields>
     <e-multicolumncombobox-columns>
         <!-- Standard headers -->
@@ -368,7 +368,7 @@ toggleColumn('Department');  // Hide/show Department column
 ```cshtml
 <ejs-multicolumncombobox id="combo"
     dataSource="@ViewBag.employees"
-    height="300px">
+    popupHeight="300px">
     <e-multicolumncombobox-fields text="EmployeeName" value="EmployeeID"></e-multicolumncombobox-fields>
     <e-multicolumncombobox-columns>
         <e-multicolumncombobox-column field="EmployeeID" header="ID" width="60px"></e-multicolumncombobox-column>

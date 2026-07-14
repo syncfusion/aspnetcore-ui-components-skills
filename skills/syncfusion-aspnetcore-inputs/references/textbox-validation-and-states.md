@@ -48,7 +48,6 @@ public class ContactForm
         <ejs-textbox asp-for="Name" 
                      placeholder="Full Name"
                      floatLabelType="Auto"
-                     required="true"
                      type="text">
         </ejs-textbox>
         <span asp-validation-for="Name" class="text-danger"></span>
@@ -85,7 +84,6 @@ public class UserProfile
     <ejs-textbox asp-for="Username" 
                  placeholder="Choose username"
                  floatLabelType="Auto"
-                 required="true"
                  type="text">
     </ejs-textbox>
     <span asp-validation-for="Username" class="text-danger"></span>
@@ -112,7 +110,6 @@ public class Newsletter
     <ejs-textbox asp-for="Email" 
                  placeholder="your@email.com"
                  floatLabelType="Auto"
-                 required="true"
                  type="email">
     </ejs-textbox>
     <span asp-validation-for="Email" class="text-danger"></span>
@@ -151,7 +148,6 @@ public class PasswordReset
     <ejs-textbox asp-for="NewPassword" 
                  placeholder="Enter password"
                  floatLabelType="Auto"
-                 required="true"
                  type="password">
     </ejs-textbox>
     <span asp-validation-for="NewPassword" class="text-danger"></span>
@@ -423,7 +419,6 @@ Validate as user types:
                                  placeholder="Username"
                                  floatLabelType="Auto"
                                  input="validateUsername"
-                                 required="true"
                                  type="text">
                     </ejs-textbox>
                     <span asp-validation-for="Username" class="text-danger d-block mt-1"></span>
@@ -437,7 +432,6 @@ Validate as user types:
                                  placeholder="your@email.com"
                                  floatLabelType="Auto"
                                  change="checkEmail"
-                                 required="true"
                                  type="email">
                     </ejs-textbox>
                     <span asp-validation-for="Email" class="text-danger d-block mt-1"></span>
@@ -451,7 +445,6 @@ Validate as user types:
                                  placeholder="Password"
                                  floatLabelType="Auto"
                                  input="validatePassword"
-                                 required="true"
                                  type="password">
                     </ejs-textbox>
                     <span asp-validation-for="Password" class="text-danger d-block mt-1"></span>
@@ -467,7 +460,6 @@ Validate as user types:
                                  placeholder="Confirm Password"
                                  floatLabelType="Auto"
                                  change="validatePasswordMatch"
-                                 required="true"
                                  type="password">
                     </ejs-textbox>
                     <span asp-validation-for="ConfirmPassword" class="text-danger d-block mt-1"></span>

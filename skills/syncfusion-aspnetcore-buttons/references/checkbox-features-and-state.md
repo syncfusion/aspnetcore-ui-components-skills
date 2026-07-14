@@ -88,7 +88,7 @@ Checkboxes integrate with HTML forms using the standard `name` and `value` attri
         <ejs-checkbox id="basketball" name="Sports" value="Basketball" label="Basketball" disabled="true"></ejs-checkbox>
     </fieldset>
     
-    <ejs-button id="submit" type="submit" cssClass="e-primary">Submit</ejs-button>
+    <ejs-button id="submit" type="submit" cssClass="e-primary" content="Submit"></ejs-button>
 </form>
 ```
 

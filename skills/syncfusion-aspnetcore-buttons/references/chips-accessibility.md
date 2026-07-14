@@ -56,11 +56,11 @@ Use `HtmlAttributes` to provide an explicit accessible name:
     };
 }
 
-<ejs-chiplist id="accessible-chips" selection="Multiple" html-attributes="htmlAttributes">
+<ejs-chiplist id="accessible-chips" selection="Multiple" htmlAttributes="htmlAttributes">
     <e-chips>
-        <e-chip text="React" html-attributes="@(new Dictionary<string, object> { { "aria-label", "React framework" } })"></e-chip>
-        <e-chip text="Angular" html-attributes="@(new Dictionary<string, object> { { "aria-label", "Angular framework" } })"></e-chip>
-        <e-chip text="Vue" html-attributes="@(new Dictionary<string, object> { { "aria-label", "Vue framework" } })"></e-chip>
+        <e-chip text="React" htmlAttributes="@(new Dictionary<string, object> { { "aria-label", "React framework" } })"></e-chip>
+        <e-chip text="Angular" htmlAttributes="@(new Dictionary<string, object> { { "aria-label", "Angular framework" } })"></e-chip>
+        <e-chip text="Vue" htmlAttributes="@(new Dictionary<string, object> { { "aria-label", "Vue framework" } })"></e-chip>
     </e-chips>
 </ejs-chiplist>
 ```
@@ -129,7 +129,7 @@ Use `HtmlAttributes` to add `aria-label` to chips that don't have self-describin
 <ejs-chiplist id="avatar-chips">
     <e-chips>
         <e-chip text="Andrew" avatarText="A" 
-                html-attributes="@(new Dictionary<string, object> { { "aria-label", "Andrew, team member" } })">
+                htmlAttributes="@(new Dictionary<string, object> { { "aria-label", "Andrew, team member" } })">
         </e-chip>
     </e-chips>
 </ejs-chiplist>

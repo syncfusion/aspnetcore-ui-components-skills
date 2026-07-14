@@ -1,24 +1,35 @@
 # API Reference – ASP.NET Core Button
 
+> **Source:** [https://help.syncfusion.com/cr/aspnetcore-js2/syncfusion.ej2.buttons.button.html#properties](https://help.syncfusion.com/cr/aspnetcore-js2/syncfusion.ej2.buttons.button.html#properties)  
+> **Namespace:** `Syncfusion.EJ2.Buttons`  
+> **Assembly:** `Syncfusion.AspNetCore.Buttons.dll`  
+> **Tag Helper:** `<ejs-button>`
+
 Complete reference for all Button properties, methods, and events.
 
 ---
 
 ## Properties
 
-| Property | Type | Default | Description |
-|----------|------|---------|-------------|
-| `id` | `string` | - | Unique identifier for the button |
-| `content` | `string` | - | Text content of the button |
-| `cssClass` | `string` | - | Custom CSS classes (e.g., `e-primary`, `e-small`, `e-flat`) |
-| `disabled` | `bool` | `false` | Disables the button if set to `true` |
-| `type` | `string` | `button` | HTML button type: `button`, `submit`, or `reset` |
-| `iconCss` | `string` | - | CSS class for icon (e.g., `e-icons e-save-icon`) |
-| `iconPosition` | `string` | `Left` | Icon position: `Left` or `Right` |
-| `isPrimary` | `bool` | `false` | Applies primary styling |
-| `isToggle` | `bool` | `false` | Enables toggle state behavior |
-| `enableRtl` | `bool` | `false` | Enables right-to-left layout |
-| `htmlAttributes` | `object` | - | Additional HTML attributes as key-value pairs |
+| Property | Tag Helper Attr | Type | Default | Description |
+|----------|-----------------|------|---------|-------------|
+| `Clicked` | `clicked` | `string` (JS function) | `null` | Triggers on every click fire — both the initial press and each repeat while the button is held. Only emitted when `enableRepeat` is `true` |
+| `Content` | `content` | `string` | `""` | Defines the text content of the Button element |
+| `ContentTemplate` | `content-template` | `MvcTemplate<object>` | — | Tag template for content |
+| `Created` | `created` | `string` (JS function) | `null` | Triggers once the component rendering is completed |
+| `CssClass` | `css-class` | `string` | `""` | Defines class/multiple classes separated by a space in the Button element (type, style, size) |
+| `Disabled` | `disabled` | `bool` | `false` | Specifies a value that indicates whether the Button is disabled or not |
+| `EnableHtmlSanitizer` | `enable-html-sanitizer` | `bool` | `true` | Specifies whether to enable rendering of untrusted HTML values; sanitizes suspected untrusted strings and scripts |
+| `EnablePersistence` | `enable-persistence` | `bool` | `false` | Enable or disable persisting component's state between page reloads |
+| `EnableRepeat` | `enable-repeat` | `bool` | `false` | Enables hold-to-repeat behavior on the Button when set to `true` |
+| `EnableRtl` | `enable-rtl` | `bool` | `false` | Enable or disable rendering component in right to left direction |
+| `HtmlAttributes` | `html-attributes` | `object` | `null` | Allows additional HTML attributes such as title, name, etc. in key-value pair format |
+| `IconCss` | `icon-css` | `string` | `""` | Defines class/multiple classes separated by a space for the Button that is used to include an icon (font icon or sprite image) |
+| `IconPosition` | `icon-position` | `IconPosition` | `IconPosition.Left` | Positions the icon before/after the text content. Possible values: `Left`, `Right` |
+| `IsPrimary` | `is-primary` | `bool` | `false` | Allows the appearance of the Button to be enhanced and visually appealing when set to `true` |
+| `IsToggle` | `is-toggle` | `bool` | `false` | Makes the Button toggle; when clicked, the state changes from normal to active |
+| `RepeatDelay` | `repeat-delay` | `double` | `400` | Delay in milliseconds before repeat firing begins after the initial press (only when `enableRepeat` is `true`) |
+| `RepeatInterval` | `repeat-interval` | `double` | `0` | Interval in milliseconds between repeated `clicked` fires during a hold. When set to `0`, pointer repeat uses 100ms; keyboard repeat defers to native OS rate |
 
 ---
 
@@ -27,7 +38,7 @@ Complete reference for all Button properties, methods, and events.
 ### Basic Button
 
 ```cshtml
-<ejs-button id="button1">Click Me</ejs-button>
+<ejs-button id="button1" content="Click Me"></ejs-button>
 ```
 
 ### Button with All Properties
@@ -43,8 +54,8 @@ Complete reference for all Button properties, methods, and events.
     iconPosition="Left"
     isPrimary="true"
     isToggle="false"
-    enableRtl="false">
-</ejs-button>
+    enableRtl="false"
+    content="Save"></ejs-button>
 ```
 
 ### Button with HTML Attributes
@@ -53,43 +64,35 @@ Complete reference for all Button properties, methods, and events.
 <ejs-button 
     id="button1" 
     cssClass="e-primary"
-    htmlAttributes="@new { data_tooltip = 'Save your work', aria_label = 'Save button' }">
-    Save
-</ejs-button>
+    htmlAttributes="@new { data_tooltip = 'Save your work', aria_label = 'Save button' }"
+    content="Save"></ejs-button>
 ```
 
 ---
 
 ## Events
 
-| Event | Trigger | Callback Signature |
-|-------|---------|-------------------|
-| `created` | After button is created | `(args: CreateEventArgs) => void` |
-| `beforeClick` | Before click action | `(args: ClickEventArgs) => void` |
+| Event | Tag Helper Attr | Type | Description |
+|-------|-----------------|------|-------------|
+| `Created` | `created` | `string` (JS function) | Triggers once the component rendering is completed |
+| `Clicked` | `clicked` | `string` (JS function) | Triggers on every click fire — both the initial press and each repeat while the button is held. Only emitted when `enableRepeat` is `true` |
 
 ### Handling Events in JavaScript
 
 **View:**
 ```cshtml
-<ejs-button id="eventBtn">Click Me</ejs-button>
+<ejs-button id="eventBtn" created="onCreated" clicked="onClicked" content="Click Me"></ejs-button>
 
 <script>
-    const button = ej2_instances['eventBtn'][0];
+    function onCreated() {
+        console.log('Button created');
+    }
 
-    // Handle click event
-    button.addEventListener('click', function(e) {
-        console.log('Button was clicked!', e);
-    });
-
-    // Handle focus event
-    button.addEventListener('focus', function() {
-        console.log('Button received focus');
-    });
-
-    // Handle blur event
-    button.addEventListener('blur', function() {
-        console.log('Button lost focus');
-    });
+    function onClicked(args) {
+        // args.originalEvent - the originating DOM event
+        // args.isRepeat - false for first press, true for repeat fires (only when enableRepeat is true)
+        console.log('Button was clicked!', args);
+    }
 </script>
 ```
 
@@ -97,37 +100,7 @@ Complete reference for all Button properties, methods, and events.
 
 ## Methods
 
-| Method | Description | Syntax |
-|--------|-------------|--------|
-| `click()` | Programmatically trigger button click | `button.click()` |
-| `focusIn()` | Set focus on button | `button.focusIn()` |
-| `destroy()` | Destroy the button instance | `button.destroy()` |
-
-### Using Methods
-
-**View:**
-```cshtml
-<ejs-button id="targetBtn">Target</ejs-button>
-<ejs-button id="controlBtn" onclick="controlTargetButton()">Control</ejs-button>
-
-<script>
-    function controlTargetButton() {
-        const targetBtn = ej2_instances['targetBtn'][0];
-        
-        // Programmatically click the target button
-        targetBtn.click();
-        
-        // Or focus it
-        targetBtn.focusIn();
-    }
-
-    // Destroy button on demand
-    function destroyButton() {
-        const btn = ej2_instances['targetBtn'][0];
-        btn.destroy();
-    }
-</script>
-```
+> The official `Syncfusion.EJ2.Buttons.Button` API page does not document a public Methods section. Component instance methods can be invoked via the underlying EJ2 widget reference (e.g. `document.getElementById('id').ej2_instances[0]`). For guaranteed behavior, prefer the documented properties and events above.
 
 ---
 
@@ -136,13 +109,13 @@ Complete reference for all Button properties, methods, and events.
 ### Primary Action Button
 
 ```cshtml
-<ejs-button id="saveBtn" cssClass="e-primary" type="submit">Save Changes</ejs-button>
+<ejs-button id="saveBtn" cssClass="e-primary" type="submit" content="Save Changes"></ejs-button>
 ```
 
 ### Danger Action Button
 
 ```cshtml
-<ejs-button id="deleteBtn" cssClass="e-danger" onclick="confirmDelete()">Delete</ejs-button>
+<ejs-button id="deleteBtn" cssClass="e-danger" onclick="confirmDelete()" content="Delete"></ejs-button>
 
 <script>
     function confirmDelete() {
@@ -162,7 +135,7 @@ Complete reference for all Button properties, methods, and events.
 ### Disabled State
 
 ```cshtml
-<ejs-button id="submitBtn" disabled="@(!Model.IsFormValid)">Submit</ejs-button>
+<ejs-button id="submitBtn" disabled="@(!Model.IsFormValid)" content="Submit"></ejs-button>
 ```
 
 ### Round Button (Circular)
@@ -174,7 +147,7 @@ Complete reference for all Button properties, methods, and events.
 ### Toggle Button
 
 ```cshtml
-<ejs-button id="toggleBtn" isToggle="true" cssClass="e-flat">Toggle State</ejs-button>
+<ejs-button id="toggleBtn" isToggle="true" cssClass="e-flat" content="Toggle State"></ejs-button>
 ```
 
 ---
@@ -210,35 +183,35 @@ Complete reference for all Button properties, methods, and events.
     <!-- Primary Actions -->
     <section class="actions">
         <h3>Primary Actions</h3>
-        <ejs-button id="saveBtn" cssClass="e-primary" type="submit">Save</ejs-button>
-        <ejs-button id="cancelBtn" cssClass="e-outline">Cancel</ejs-button>
+        <ejs-button id="saveBtn" cssClass="e-primary" type="submit" content="Save"></ejs-button>
+        <ejs-button id="cancelBtn" cssClass="e-outline" content="Cancel"></ejs-button>
     </section>
 
     <!-- Danger Actions -->
     <section class="actions">
         <h3>Danger Actions</h3>
-        <ejs-button id="deleteBtn" cssClass="e-danger">Delete</ejs-button>
-        <ejs-button id="resetBtn" type="reset">Reset</ejs-button>
+        <ejs-button id="deleteBtn" cssClass="e-danger" content="Delete"></ejs-button>
+        <ejs-button id="resetBtn" type="reset" content="Reset"></ejs-button>
     </section>
 
     <!-- Icon Buttons -->
     <section class="actions">
         <h3>Icon Buttons</h3>
         <ejs-button id="addBtn" cssClass="e-small" iconCss="e-icons e-plus-icon"></ejs-button>
-        <ejs-button id="editBtn" cssClass="e-small" iconCss="e-icons e-edit-icon">Edit</ejs-button>
+        <ejs-button id="editBtn" cssClass="e-small" iconCss="e-icons e-edit-icon" content="Edit"></ejs-button>
         <ejs-button id="searchBtn" cssClass="e-small e-primary" iconCss="e-icons e-search-icon"></ejs-button>
     </section>
 
     <!-- Disabled -->
     <section class="actions">
         <h3>Disabled Button</h3>
-        <ejs-button id="disabledBtn" disabled="true">Cannot Click</ejs-button>
+        <ejs-button id="disabledBtn" disabled="true" content="Cannot Click"></ejs-button>
     </section>
 
     <!-- Custom Styling -->
     <section class="actions">
         <h3>Custom Styled</h3>
-        <ejs-button id="customBtn" cssClass="custom-style">Custom</ejs-button>
+        <ejs-button id="customBtn" cssClass="custom-style" content="Custom"></ejs-button>
     </section>
 </div>
 

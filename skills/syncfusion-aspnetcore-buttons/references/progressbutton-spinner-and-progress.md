@@ -28,11 +28,35 @@
 
 ## With Spinner
 
+You can construct a strongly-typed `ProgressButtonSpinSettings` instance server-side and pass it to the view (preferred for complex settings):
+
+```csharp
+using Microsoft.AspNetCore.Mvc;
+using Syncfusion.EJ2.Buttons;
+
+public class HomeController : Controller
+{
+    public IActionResult Index()
+    {
+        var spinSettings = new ProgressButtonSpinSettings
+        {
+            Position = SpinPosition.Right,
+            Width = "20", // or "20px"
+            Template = "<div class='template'></div>"
+        };
+        ViewBag.SpinSettings = spinSettings;
+        return View();
+    }
+}
+```
+
+Then in the Razor view reference the server-side object:
+
 ```cshtml
 <ejs-progressbutton 
     id="progressBtn" 
     content="Processing"
-    spinSettings="@new { position = 'Left' }">
+    spinSettings="@(ViewBag.SpinSettings)">
 </ejs-progressbutton>
 ```
 

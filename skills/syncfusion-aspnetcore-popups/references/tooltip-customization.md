@@ -40,10 +40,12 @@ Apply custom CSS classes to style the tooltip:
     }
 </style>
 
-<ejs-tooltip content="Custom Styled Tooltip" 
+<ejs-tooltip id="tooltip" target="#target" content="Custom Styled Tooltip" 
     position="TopCenter" 
     cssClass="custom-tooltip">
-    <button class="e-btn">Styled Tooltip</button>
+    <e-content-template>
+        <button id="target" class="e-btn">Styled Tooltip</button>
+    </e-content-template>
 </ejs-tooltip>
 ```
 
@@ -55,34 +57,42 @@ Control visibility and position of the arrow tip:
 
 ```csharp
 @* Hide tip pointer *@
-<ejs-tooltip content="No tip pointer" 
+<ejs-tooltip id="tooltip" target="#target" content="No tip pointer" 
     position="TopCenter" 
     showTipPointer="false">
-    <button class="e-btn">No Tip</button>
+    <e-content-template>
+        <button id="target" class="e-btn">No Tip</button>
+    </e-content-template>
 </ejs-tooltip>
 
 @* Show tip pointer at start edge *@
-<ejs-tooltip content="Tip at start" 
+<ejs-tooltip id="tooltip" target="#target" content="Tip at start" 
     position="RightCenter" 
     showTipPointer="true" 
     tipPointerPosition="Start">
-    <button class="e-btn">Tip Start</button>
+    <e-content-template>
+        <button id="target" class="e-btn">Tip Start</button>
+    </e-content-template>
 </ejs-tooltip>
 
 @* Show tip pointer at middle (default) *@
-<ejs-tooltip content="Tip at middle" 
+<ejs-tooltip id="tooltip" target="#target" content="Tip at middle" 
     position="RightCenter" 
     showTipPointer="true" 
     tipPointerPosition="Middle">
-    <button class="e-btn">Tip Middle</button>
+    <e-content-template>
+        <button id="target" class="e-btn">Tip Middle</button>
+    </e-content-template>
 </ejs-tooltip>
 
 @* Show tip pointer at end edge *@
-<ejs-tooltip content="Tip at end" 
+<ejs-tooltip id="tooltip" target="#target" content="Tip at end" 
     position="RightCenter" 
     showTipPointer="true" 
     tipPointerPosition="End">
-    <button class="e-btn">Tip End</button>
+    <e-content-template>
+        <button id="target" class="e-btn">Tip End</button>
+    </e-content-template>
 </ejs-tooltip>
 ```
 
@@ -94,26 +104,32 @@ Set explicit width and height for tooltips:
 
 ```csharp
 @* Fixed width with auto height *@
-<ejs-tooltip content="This is a tooltip with a fixed width of 200px. The height automatically adjusts based on content." 
+<ejs-tooltip id="tooltip" target="#target" content="This is a tooltip with a fixed width of 200px. The height automatically adjusts based on content." 
     position="TopCenter" 
     width="200px">
-    <button class="e-btn">Fixed Width</button>
+    <e-content-template>
+        <button id="target" class="e-btn">Fixed Width</button>
+    </e-content-template>
 </ejs-tooltip>
 
 @* Fixed height with scroll on overflow *@
-<ejs-tooltip content="Line 1<br/>Line 2<br/>Line 3<br/>Line 4<br/>Line 5<br/>Line 6<br/>Line 7<br/>Line 8" 
+<ejs-tooltip id="tooltip" target="#target" content="Line 1<br/>Line 2<br/>Line 3<br/>Line 4<br/>Line 5<br/>Line 6<br/>Line 7<br/>Line 8" 
     position="TopCenter" 
     width="300px" 
     height="150px">
-    <button class="e-btn">Scrollable</button>
+    <e-content-template>
+        <button id="target" class="e-btn">Scrollable</button>
+    </e-content-template>
 </ejs-tooltip>
 
 @* Auto dimensions (fits content) *@
-<ejs-tooltip content="Auto sized tooltip" 
+<ejs-tooltip id="tooltip" target="#target" content="Auto sized tooltip" 
     position="TopCenter" 
     width="auto" 
     height="auto">
-    <button class="e-btn">Auto Size</button>
+    <e-content-template>
+        <button id="target" class="e-btn">Auto Size</button>
+    </e-content-template>
 </ejs-tooltip>
 ```
 
@@ -125,10 +141,12 @@ Enable right-to-left rendering for languages like Arabic, Hebrew, etc.:
 
 ```csharp
 @* RTL mode enabled *@
-<ejs-tooltip content="مرحبا - Tooltip in RTL" 
+<ejs-tooltip id="tooltip" target="#target" content="مرحبا - Tooltip in RTL" 
     position="TopCenter" 
     enableRtl="true">
-    <button class="e-btn" dir="rtl">RTL Tooltip</button>
+    <e-content-template>
+        <button id="target" class="e-btn" dir="rtl">RTL Tooltip</button>
+    </e-content-template>
 </ejs-tooltip>
 ```
 
@@ -139,13 +157,15 @@ Enable right-to-left rendering for languages like Arabic, Hebrew, etc.:
 Enable the tooltip to follow the mouse cursor:
 
 ```csharp
-<ejs-tooltip content="I follow your mouse!" 
+<ejs-tooltip id="tooltip" target="#target" content="I follow your mouse!" 
     position="TopCenter" 
     mouseTrail="true" 
     showTipPointer="false">
-    <div style="width: 300px; height: 200px; background: #f0f0f0; padding: 20px;">
-        Move your mouse over this area
-    </div>
+    <e-content-template>
+        <div id="target" style="width: 300px; height: 200px; background: #f0f0f0; padding: 20px;">
+            Move your mouse over this area
+        </div>
+    </e-content-template>
 </ejs-tooltip>
 ```
 
@@ -164,7 +184,7 @@ Enable the tooltip to follow the mouse cursor:
     }
 </style>
 
-<ejs-tooltip 
+<ejs-tooltip id="tooltip" target="#target" 
     content="<strong>Info:</strong> This is a fully customized tooltip"
     position="RightCenter"
     cssClass="info-tooltip"
@@ -172,6 +192,8 @@ Enable the tooltip to follow the mouse cursor:
     tipPointerPosition="Middle"
     offsetX="10"
     offsetY="5">
-    <button class="e-btn e-info">Customized</button>
+    <e-content-template>
+        <button id="target" class="e-btn e-info">Customized</button>
+    </e-content-template>
 </ejs-tooltip>
 ```

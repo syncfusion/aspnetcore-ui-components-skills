@@ -1,5 +1,10 @@
 # API Reference – ASP.NET Core Checkbox
 
+> **Source:** [https://help.syncfusion.com/cr/aspnetcore-js2/syncfusion.ej2.buttons.checkbox.html#properties](https://help.syncfusion.com/cr/aspnetcore-js2/syncfusion.ej2.buttons.checkbox.html#properties)  
+> **Namespace:** `Syncfusion.EJ2.Buttons`  
+> **Assembly:** `Syncfusion.AspNetCore.Buttons.dll`  
+> **Tag Helper:** `<ejs-checkbox>`
+
 Complete API reference for the Syncfusion ASP.NET Core Checkbox component.
 
 ---
@@ -15,21 +20,24 @@ Complete API reference for the Syncfusion ASP.NET Core Checkbox component.
 
 ## Properties
 
-| Property | Type | Default | Description |
-|----------|------|---------|-------------|
-| `id` | `string` | - | Unique identifier for the checkbox |
-| `label` | `string` | `''` | Checkbox label text |
-| `checked` | `bool` | `false` | Initial checked state |
-| `disabled` | `bool` | `false` | Disable checkbox (prevent interaction) |
-| `indeterminate` | `bool` | `false` | Indeterminate state (partial selection) |
-| `name` | `string` | `''` | Form field name for submission |
-| `value` | `string` | `''` | Form field value when checked |
-| `cssClass` | `string` | `''` | Additional CSS classes (e.g., `e-primary`, `e-small`) |
-| `labelPosition` | `string` | `'After'` | Label placement (`'Before'` or `'After'`) |
-| `enableRtl` | `bool` | `false` | Enable right-to-left layout |
-| `enableHtmlSanitizer` | `bool` | `true` | Sanitize HTML content in label for security |
-| `enablePersistence` | `bool` | `false` | Persist checkbox state across page reloads |
-| `htmlAttributes` | `Dictionary` | - | Additional HTML attributes |
+| Property | Tag Helper Attr | Type | Default | Description |
+|----------|-----------------|------|---------|-------------|
+| `Change` | `change` | `string` (JS function) | `null` | Triggers when the CheckBox state has been changed by user interaction |
+| `Checked` | `checked` | `bool` | `false` | Specifies a value that indicates whether the CheckBox is `checked` or not |
+| `Created` | `created` | `string` (JS function) | `null` | Triggers once the component rendering is completed |
+| `CssClass` | `cssClass` | `string` | `""` | Defines class/multiple classes separated by a space in the CheckBox element |
+| `Disabled` | `disabled` | `bool` | `false` | Specifies a value that indicates whether the CheckBox is `disabled` or not |
+| `EnableHtmlSanitizer` | `enableHtmlSanitizer` | `bool` | `true` | Specifies whether to enable rendering of untrusted HTML values; sanitizes suspected untrusted strings and scripts |
+| `EnablePersistence` | `enablePersistence` | `bool` | `false` | Enable or disable persisting component's state between page reloads |
+| `EnableRtl` | `enableRtl` | `bool` | `false` | Enable or disable rendering component in right to left direction |
+| `For` | `for` | `ModelExpression` | — | Overrides `Syncfusion.EJ2.EJTagHelper.For` |
+| `HtmlAttributes` | `htmlAttributes` | `object` | `null` | Add additional HTML attributes (e.g., disabled, value). If both property and equivalent HTML attribute are configured, the component considers the property value |
+| `Indeterminate` | `indeterminate` | `bool` | `false` | Specifies a value that indicates whether the CheckBox is in `indeterminate` state or not |
+| `Label` | `label` | `string` | `""` | Defines the caption for the CheckBox that describes its purpose |
+| `LabelPosition` | `labelPosition` | `LabelPosition` | `LabelPosition.After` | Positions label `before`/`after` the CheckBox. Possible values: `Before`, `After` |
+| `Locale` | `locale` | `string` | `""` | Overrides the global culture and localization value. Default global culture is `'en-US'` |
+| `Name` | `name` | `string` | `""` | Defines `name` attribute for the CheckBox. Used to reference form data after form submission |
+| `Value` | `value` | `string` | `""` | Defines `value` attribute for the CheckBox. Form data passed to the server when submitting the form |
 
 ---
 
@@ -78,66 +86,42 @@ Persist checkbox state across page reloads:
 
 ---
 
-## Methods
+## Events
 
-| Method | Description |
-|--------|-------------|
-| `click()` | Programmatically click the checkbox |
-| `focusIn()` | Set focus to the checkbox |
-| `destroy()` | Destroy the component |
+| Event | Tag Helper Attr | Type | Description |
+|-------|-----------------|------|-------------|
+| `Change` | `change` | `string` (JS function) | Triggers when the CheckBox state has been changed by user interaction |
+| `Created` | `created` | `string` (JS function) | Triggers once the component rendering is completed |
 
-**Usage Example:**
+**Event Usage Example:**
 ```cshtml
-<ejs-checkbox id="myCheckbox" label="Toggle Me"></ejs-checkbox>
+<ejs-checkbox id="eventCheckbox" label="Change Event Checkbox" change="onChange" created="onCreated"></ejs-checkbox>
 
-<ejs-button id="toggleBtn" onclick="toggleCheckbox()">Toggle Checkbox</ejs-button>
+<div id="eventLog"></div>
 
 <script>
-    function toggleCheckbox() {
-        var checkbox = document.getElementById('myCheckbox').ej2_instances[0];
-        checkbox.click(); // Programmatically click
+    function onChange(args) {
+        var log = document.getElementById('eventLog');
+        log.textContent = 'Checkbox changed to: ' + args.checked;
+    }
+
+    function onCreated() {
+        console.log('Checkbox created');
     }
 </script>
 ```
 
 ---
 
-## Events
+## Methods
 
-| Event | Description |
-|-------|-------------|
-| `created` | Fired when component is created |
-| `beforeChange` | Fired before state changes (can be cancelled) |
-| `change` | Fired after state change |
-
-**Event Usage Example:**
-```cshtml
-<ejs-checkbox id="eventCheckbox" label="Change Event Checkbox"></ejs-checkbox>
-
-<div id="eventLog"></div>
-
-<script>
-    var checkbox = document.getElementById('eventCheckbox');
-    
-    // Handle change event
-    checkbox.addEventListener('change', function(e) {
-        var log = document.getElementById('eventLog');
-        log.textContent = 'Checkbox changed to: ' + e.target.checked;
-    });
-    
-    // Handle before change (can prevent change)
-    checkbox.addEventListener('beforeChange', function(e) {
-        console.log('About to change to:', e.checked);
-        // e.cancel = true; // Cancel the change if needed
-    });
-</script>
-```
+> The official `Syncfusion.EJ2.Buttons.CheckBox` API page does not document a public Methods section. Component instance methods can be invoked via the underlying EJ2 widget reference (e.g. `document.getElementById('id').ej2_instances[0]`). For guaranteed behavior, prefer the documented properties and events above.
 
 ---
 
 ## Tag Helper Attributes
 
-All properties are available as tag helper attributes:
+All documented properties are available as tag helper attributes (PascalCase, matching the C# property names):
 
 ```cshtml
 <ejs-checkbox 
@@ -153,6 +137,7 @@ All properties are available as tag helper attributes:
     enableRtl="false"
     enableHtmlSanitizer="true"
     enablePersistence="false"
+    locale="en-US"
     htmlAttributes="@new { data_custom = 'value' }">
 </ejs-checkbox>
 ```
@@ -221,7 +206,7 @@ All properties are available as tag helper attributes:
             </ul>
         </div>
         
-        <ejs-button id="submit" type="submit" cssClass="e-primary">Save Settings</ejs-button>
+        <ejs-button id="submit" type="submit" cssClass="e-primary" content="Save Settings"></ejs-button>
     </fieldset>
 </form>
 

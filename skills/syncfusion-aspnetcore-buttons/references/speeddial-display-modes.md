@@ -6,10 +6,19 @@ Items display in a line:
 
 ```cshtml
 @{
-    List<object> items = new List<object>();
-    items.Add(new { text = "Cut" });
-    items.Add(new { text = "Copy" });
-    items.Add(new { text = "Paste" });
+    List<SpeedDialItem> items = new List<SpeedDialItem>();
+    items.Add(new SpeedDialItem
+    {
+        Text = "Cut"
+    });
+    items.Add(new SpeedDialItem
+    {
+        Text = "Copy"
+    });
+    items.Add(new SpeedDialItem
+    {
+        Text = "Paste"
+    });
 }
 
 <ejs-speeddial 

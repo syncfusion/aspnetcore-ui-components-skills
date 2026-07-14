@@ -8,6 +8,7 @@
 - [Adding Header Toolbar Items](#adding-header-toolbar-items)
 - [Built-in Toolbar Items](#built-in-toolbar-items)
 - [Adding Custom Toolbar Items](#adding-custom-toolbar-items)
+- [Regenerate Responses](#regenerate-responses)
 
 ## Configure Footer Toolbar
 
@@ -891,4 +892,163 @@ You can use the `itemClicked` event on `e-aiassistview-responsetoolbarsettings` 
         console.log('Response toolbar item clicked at index:', args.dataIndex);
     }
 </script>
+```
+
+## Regenerate Responses
+
+The AI AssistView allows users to `regenerate` responses to request a new response for the same prompt. The navigation buttons with `previous` and `next` buttons are rendered along with a response index indicator (e.g., `1 / 3`) allowing users to navigate between all regenerated responses for the prompt.
+
+> The navigation UI appears automatically once more than one response is available for a prompt either regenerated or preloaded using the `RegeneratedResponses` property in the `prompts` collection.
+
+### Adding Regenerate Item
+
+You can enable the regenerate button by adding the `e-assist-regenerate` icon to the `e-aiassistview-responsetoolbarsettings` tag helper.
+
+### Adding Regenerated Response
+
+When regenerated, it triggers the `promptRequest` event with the existing prompt, enabling you to call your preferred AI service again and update the response using the `addPromptResponse` method.
+
+In the following example, AI AssistView control rendered with the built-in `regenerate` toolbar item in the response toolbar.
+
+```razor
+@using Syncfusion.EJ2.InteractiveChat;
+@using System.Text.Json;
+
+<div class="aiassist-container" style="height: 350px; width: 650px;">
+    <ejs-aiassistview id="aiAssistView" prompts="@(ViewData["Prompts"])" promptRequest="onPromptRequest" created="onCreated">
+        <e-aiassistview-responsetoolbarsettings items="@(ViewData["ToolbarItems"])" ></e-aiassistview-responsetoolbarsettings>
+    </ejs-aiassistview>
+</div>
+
+<script>
+    var assistObj = null;
+
+    var regenerateResponses = @Html.Raw(JsonSerializer.Serialize(ViewData["RegenerateResponses"]));
+
+    function onCreated() {
+        assistObj = ej.base.getComponent(document.getElementById('aiAssistView'), 'aiassistview');
+    }
+
+    function onPromptRequest(args) {
+        setTimeout(function () {
+            var foundPrompt = assistObj.prompts.find(prompt => prompt.prompt == args.prompt);
+            var defaultResponse = 'For real-time prompt processing, connect the AIAssistView component to your preferred AI service, such as OpenAI or Azure Cognitive Services. Ensure you obtain the necessary API credentials to authenticate and enable seamless integration.';
+            var response;
+            if (foundPrompt) {
+                var randomIndex = Math.floor(Math.random() * regenerateResponses.length);
+                response = regenerateResponses[randomIndex];
+                } else {
+                    response = "For real-time prompt processing, connect the AIAssistView component to your preferred AI service, such as OpenAI or Azure Cognitive Services.";
+                }
+                assistObj.addPromptResponse(response);
+            }, 1000);
+    }
+</script>
+```
+
+```csharp
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Collections.Generic;
+
+namespace WebApplication.Pages
+{
+    public class RegenerateResponseModel : PageModel
+    {
+        public void OnGet()
+        {
+            var regenerateResponses = new[] {
+                "AI, or Artificial Intelligence, refers to the simulation of human intelligence in machines programmed to think and learn like humans.",
+                "Artificial Intelligence is the development of computer systems capable of performing tasks that typically require human intelligence.",
+                "AI is a branch of computer science focused on building machines that can perform tasks requiring human-like intelligence."
+            };
+
+            ViewData["Prompts"] = new[]
+            {
+                new {
+                    prompt = "What is AI?",
+                    response = "<div> AI stands for Artificial Intelligence, enabling machines to mimic human intelligence for tasks such as learning, problem-solving, and decision-making.</div>",
+                    suggestionData = new List<string>(),
+                    regeneratedResponses = regenerateResponses
+                }
+            };
+
+            ViewData["ToolbarItems"] = new[] {
+                new { type = "Button", iconCss = "e-icons e-assist-copy", tooltip = "Copy" },
+                new { type = "Button", iconCss = "e-icons e-assist-like", tooltip = "Like" },
+                new { type = "Button", iconCss = "e-icons e-assist-dislike", tooltip = "Need Improvement" },
+                new { type = "Button", iconCss = "e-icons e-assist-regenerate", tooltip = "Regenerate" }
+            };
+
+            ViewData["RegenerateResponses"] = regenerateResponses;
+        }
+    }
+}
+```
+
+### Pre-loading Regenerated Responses
+
+You can use the `RegeneratedResponses` property in the `prompts` collection to pre-load multiple responses for a prompt at the initial render, without requiring the user to trigger the regenerate action. Users can navigate between the pre-loaded responses using the `previous` and `next` buttons in the response navigation UI.
+
+In the following example, the `RegeneratedResponses` property is used to pre-load multiple responses for a prompt.
+
+```razor
+@using Syncfusion.EJ2.InteractiveChat;
+
+<div class="aiassist-container" style="height: 350px; width: 650px;">
+	<ejs-aiassistview id="aiAssistView" prompts="@(ViewData["Prompts"])" promptRequest="onPromptRequest" created="onCreated">
+		<e-aiassistview-responsetoolbarsettings items="@(ViewData["ToolbarItems"])" ></e-aiassistview-responsetoolbarsettings>
+	</ejs-aiassistview>
+</div>
+
+<script>
+	var assistObj = null;
+
+	function onCreated() {
+		assistObj = ej.base.getComponent(document.getElementById('aiAssistView'), 'aiassistview');
+	}
+
+	function onPromptRequest(args) {
+		setTimeout(function () {
+			var foundPrompt = assistObj.prompts.find(prompt => prompt.prompt == args.prompt);
+			var defaultResponse = 'For real-time prompt processing, connect the AIAssistView component to your preferred AI service, such as OpenAI or Azure Cognitive Services. Ensure you obtain the necessary API credentials to authenticate and enable seamless integration.';
+			assistObj.addPromptResponse(foundPrompt ? foundPrompt.response : defaultResponse);
+		}, 1000);
+	}
+
+</script>
+```
+
+```csharp
+using System.Collections.Generic;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+
+namespace WebApplication.Pages
+{
+    public class RegeneratePreloadModel : PageModel
+    {
+        // Core (Razor Pages) sample action providing prompts and toolbar items
+        public void OnGet()
+        {
+            ViewData["Prompts"] = new[]
+            {
+                new {
+                    prompt = "What is AI?",
+                    response = "<div> AI stands for Artificial Intelligence, enabling machines to mimic human intelligence for tasks such as learning, problem-solving, and decision-making.</div>",
+                    regeneratedResponses = new[] {
+                        "AI, or Artificial Intelligence, refers to the simulation of human intelligence in machines programmed to think and learn like humans.",
+                        "Artificial Intelligence is the development of computer systems capable of performing tasks that typically require human intelligence.",
+                        "AI is a branch of computer science focused on building machines that can perform tasks requiring human-like intelligence."
+                    }
+                }
+            };
+
+            ViewData["ToolbarItems"] = new[] {
+                new { type = "Button", iconCss = "e-icons e-assist-copy", tooltip = "Copy" },
+                new { type = "Button", iconCss = "e-icons e-assist-like", tooltip = "Like" },
+                new { type = "Button", iconCss = "e-icons e-assist-dislike", tooltip = "Need Improvement" },
+                new { type = "Button", iconCss = "e-icons e-assist-regenerate", tooltip = "Regenerate" }
+            };
+        }
+    }
+}
 ```

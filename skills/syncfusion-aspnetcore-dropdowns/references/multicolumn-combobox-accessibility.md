@@ -51,7 +51,7 @@ Ensure sufficient contrast ratio (minimum 4.5:1 for normal text, 3:1 for large t
 ```cshtml
 <ejs-multicolumncombobox id="combo"
     dataSource="@ViewBag.employees"
-    height="300px">
+    popupHeight="300px">
     <e-multicolumncombobox-fields text="EmployeeName" value="EmployeeID"></e-multicolumncombobox-fields>
     <e-multicolumncombobox-columns>
         <e-multicolumncombobox-column field="EmployeeID" header="ID" width="60px"></e-multicolumncombobox-column>
@@ -93,10 +93,7 @@ Ensure sufficient contrast ratio (minimum 4.5:1 for normal text, 3:1 for large t
     
     <ejs-multicolumncombobox id="employee-combo"
         dataSource="@ViewBag.employees"
-        ariaLabel="Select an employee from the list"
-        ariaLabelledby="combo-label"
-        ariaDescribedby="combo-help"
-        height="300px">
+        popupHeight="300px">
         <e-multicolumncombobox-fields text="EmployeeName" value="EmployeeID"></e-multicolumncombobox-fields>
         <e-multicolumncombobox-columns>
             <e-multicolumncombobox-column field="EmployeeID" header="ID" width="60px"></e-multicolumncombobox-column>
@@ -131,7 +128,7 @@ Ensure sufficient contrast ratio (minimum 4.5:1 for normal text, 3:1 for large t
 ```cshtml
 <ejs-multicolumncombobox id="combo"
     dataSource="@ViewBag.employees"
-    height="300px">
+    popupHeight="300px">
     <e-multicolumncombobox-fields text="EmployeeName" value="EmployeeID"></e-multicolumncombobox-fields>
     <e-multicolumncombobox-columns>
         <e-multicolumncombobox-column field="EmployeeID" header="Employee ID" width="60px" 
@@ -174,7 +171,7 @@ Ensure sufficient contrast ratio (minimum 4.5:1 for normal text, 3:1 for large t
     <label for="combo">Select Employee</label>
     <ejs-multicolumncombobox id="combo"
         dataSource="@ViewBag.employees"
-        height="300px"
+        popupHeight="300px"
         placeholder="Press Alt+Down to open">
         <e-multicolumncombobox-fields text="EmployeeName" value="EmployeeID"></e-multicolumncombobox-fields>
         <e-multicolumncombobox-columns>
@@ -195,7 +192,7 @@ Ensure sufficient contrast ratio (minimum 4.5:1 for normal text, 3:1 for large t
 <ejs-multicolumncombobox id="combo"
     dataSource="@ViewBag.employees"
     keyDown="onKeyDown"
-    height="300px">
+    popupHeight="300px">
     <e-multicolumncombobox-fields text="EmployeeName" value="EmployeeID"></e-multicolumncombobox-fields>
     <e-multicolumncombobox-columns>
         <e-multicolumncombobox-column field="EmployeeID" header="ID" width="60px"></e-multicolumncombobox-column>
@@ -241,8 +238,7 @@ function announceToScreenReader(message) {
     <label for="employee-combo">Choose an employee:</label>
     <ejs-multicolumncombobox id="employee-combo"
         dataSource="@ViewBag.employees"
-        height="300px"
-        ariaLabel="Employee list with ID, name, and designation">
+        popupHeight="300px">
         <e-multicolumncombobox-fields text="EmployeeName" value="EmployeeID"></e-multicolumncombobox-fields>
         <e-multicolumncombobox-columns>
             <e-multicolumncombobox-column field="EmployeeID" header="ID" width="60px"></e-multicolumncombobox-column>
@@ -334,7 +330,7 @@ combo.close = function() {
 <nav>
     <ejs-multicolumncombobox id="combo"
         dataSource="@ViewBag.employees"
-        height="300px">
+        popupHeight="300px">
         <e-multicolumncombobox-fields text="EmployeeName" value="EmployeeID"></e-multicolumncombobox-fields>
         <e-multicolumncombobox-columns>
             <e-multicolumncombobox-column field="EmployeeID" header="ID" width="60px"></e-multicolumncombobox-column>

@@ -28,7 +28,7 @@
     <ejs-multicolumncombobox id="combo"
         dataSource="@ViewBag.employees"
         locale="@ViewBag.Culture"
-        height="300px">
+        popupHeight="300px">
         <e-multicolumncombobox-fields text="EmployeeName" value="EmployeeID"></e-multicolumncombobox-fields>
         <e-multicolumncombobox-columns>
             <e-multicolumncombobox-column field="EmployeeID" header="ID" width="60px"></e-multicolumncombobox-column>
@@ -100,7 +100,7 @@ public IActionResult Index()
     <ejs-multicolumncombobox id="combo"
         dataSource="@ViewBag.employees"
         locale="en"
-        height="300px">
+        popupHeight="300px">
         <e-multicolumncombobox-fields text="EmployeeName" value="EmployeeID"></e-multicolumncombobox-fields>
         <e-multicolumncombobox-columns>
             <e-multicolumncombobox-column field="EmployeeID" header="ID" width="60px"></e-multicolumncombobox-column>
@@ -159,7 +159,7 @@ let combo = document.getElementById('combo').ej2_instances[0];
 
 combo.localeString = {
     'noRecordsTemplate': 'Ningún empleado disponible',
-    'filterBarPlaceholder': 'Buscar empleado...'
+    'placeholder': 'Buscar empleado...'
 };
 ```
 
@@ -220,7 +220,7 @@ public IActionResult GetLocale(string lang)
         dataSource="@ViewBag.employees"
         locale="ar"
         enableRtl="true"
-        height="300px">
+        popupHeight="300px">
         <e-multicolumncombobox-fields text="EmployeeName" value="EmployeeID"></e-multicolumncombobox-fields>
         <e-multicolumncombobox-columns>
             <e-multicolumncombobox-column field="EmployeeID" header="المعرّف" width="60px"></e-multicolumncombobox-column>
@@ -280,7 +280,7 @@ function toggleRtl() {
 <ejs-multicolumncombobox id="combo"
     dataSource="@ViewBag.employees"
     locale="@ViewBag.Culture"
-    height="300px">
+    popupHeight="300px">
     <e-multicolumncombobox-fields text="EmployeeName" value="EmployeeID"></e-multicolumncombobox-fields>
     <e-multicolumncombobox-columns>
         <e-multicolumncombobox-column field="EmployeeID" header="ID" width="60px"></e-multicolumncombobox-column>
@@ -304,7 +304,7 @@ function toggleRtl() {
 <ejs-multicolumncombobox id="combo"
     dataSource="@ViewBag.employees"
     locale="es"
-    height="300px">
+    popupHeight="300px">
     <e-multicolumncombobox-fields text="EmployeeName" value="EmployeeID"></e-multicolumncombobox-fields>
     <e-multicolumncombobox-columns>
         <e-multicolumncombobox-column field="EmployeeID" header="ID" width="60px"></e-multicolumncombobox-column>
@@ -368,7 +368,7 @@ public IActionResult Index()
 <ejs-multicolumncombobox id="combo"
     dataSource="@ViewBag.employees"
     locale="@CultureInfo.CurrentCulture.TwoLetterISOLanguageName"
-    height="300px">
+    popupHeight="300px">
     <e-multicolumncombobox-fields text="EmployeeName" value="EmployeeID"></e-multicolumncombobox-fields>
     <e-multicolumncombobox-columns>
         <e-multicolumncombobox-column field="EmployeeID" 

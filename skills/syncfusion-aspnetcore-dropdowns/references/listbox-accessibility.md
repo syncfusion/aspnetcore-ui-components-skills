@@ -33,12 +33,9 @@ ListBox includes built-in accessibility features to meet WCAG 2.2 AA standards:
 ```cshtml
 <ejs-listbox id="skills"
     dataSource="@ViewBag.skills"
-    height="300px"
-    aria-label="Skills selection"
-    aria-describedby="skills-help"
-    role="listbox">
+    height="300px">
     <e-listbox-fields text="Name" value="Id"></e-listbox-fields>
-    <e-listbox-selectionsettings mode="Multiple" type="Checkbox"></e-listbox-selectionsettings>
+    <e-listbox-selectionsettings mode="Multiple"></e-listbox-selectionsettings>
 </ejs-listbox>
 
 <div id="skills-help" class="sr-only">
@@ -97,9 +94,7 @@ public IActionResult Index()
 ```cshtml
 <ejs-listbox id="items"
     dataSource="@ViewBag.items"
-    height="300px"
-    aria-label="Select items"
-    keyDown="onKeyDown">
+    height="300px">
     <e-listbox-fields text="Name" value="Id"></e-listbox-fields>
     <e-listbox-selectionsettings mode="Multiple"></e-listbox-selectionsettings>
 </ejs-listbox>
@@ -136,8 +131,6 @@ ListBox announces:
 
 <ejs-listbox id="technologies-list"
     dataSource="@ViewBag.technologies"
-    aria-labelledby="technologies-list"
-    aria-describedby="tech-instructions"
     height="300px">
     <e-listbox-fields text="Name" value="Id"></e-listbox-fields>
 </ejs-listbox>
@@ -189,22 +182,6 @@ function focusListBox() {
     listbox.focusIn(); // Set focus
 }
 </script>
-```
-
-### Tab Order Management
-
-```cshtml
-@* Custom tab index for form layout *@
-<input type="text" tabindex="1" placeholder="Name"/>
-
-<ejs-listbox id="options"
-    dataSource="@ViewBag.options"
-    tabindex="2"
-    height="200px">
-    <e-listbox-fields text="Name" value="Id"></e-listbox-fields>
-</ejs-listbox>
-
-<button tabindex="3">Submit</button>
 ```
 
 ---

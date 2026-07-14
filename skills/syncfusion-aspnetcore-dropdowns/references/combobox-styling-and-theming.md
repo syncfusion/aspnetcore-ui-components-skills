@@ -175,11 +175,11 @@ Most themes use CSS custom properties (variables) that you can override:
 <div class="combo-wrapper">
     <ejs-combobox id="responsive-combo"
         dataSource="ViewBag.Items"
-        fields="@(new { text = "Name", value = "Id" })"
         placeholder="Select an item"
         allowFiltering="true"
         popupHeight="auto">
     </ejs-combobox>
+    <e-combobox-fields text="Name" value="Id"></e-combobox-fields>
 </div>
 
 <style>

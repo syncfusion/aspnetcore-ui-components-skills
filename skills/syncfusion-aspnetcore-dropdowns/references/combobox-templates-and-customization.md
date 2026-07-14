@@ -357,7 +357,6 @@ Apply custom CSS class to root element:
 <ejs-combobox id="products-combo"
     dataSource="@ViewBag.products"
     itemTemplate="productTemplate"
-    valueTemplate="selectedTemplate"
     placeholder="Select a product">
     <e-combobox-fields text="Name" value="Id"></e-combobox-fields>
 </ejs-combobox>
@@ -370,13 +369,6 @@ Apply custom CSS class to root element:
             <div class="product-price">$${Price}</div>
             <div class="product-stock">${Stock} in stock</div>
         </div>
-    </div>
-</script>
-
-<script type="text/x-template" id="selectedTemplate">
-    <div class="selected-product">
-        <img src="${ImageUrl}" alt="${Name}" class="small-img" />
-        <span>${Name} ($${Price})</span>
     </div>
 </script>
 ```

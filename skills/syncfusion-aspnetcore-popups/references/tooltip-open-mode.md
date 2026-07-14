@@ -31,8 +31,10 @@ Multiple modes can be combined with spaces: `opensOn="Hover Click"`.
 The default mode — hover on desktop, tap-and-hold on mobile:
 
 ```csharp
-<ejs-tooltip content="Auto mode tooltip" opensOn="Auto">
-    <button class="e-btn">Hover or Tap</button>
+<ejs-tooltip id="tooltip" target="#target" content="Auto mode tooltip" opensOn="Auto">
+    <e-content-template>
+        <button id="target" class="e-btn">Hover or Tap</button>
+    </e-content-template>
 </ejs-tooltip>
 ```
 
@@ -43,8 +45,10 @@ The default mode — hover on desktop, tap-and-hold on mobile:
 Tooltip appears on mouse hover and disappears when mouse leaves:
 
 ```csharp
-<ejs-tooltip content="Hover over this button" opensOn="Hover">
-    <button class="e-btn">Hover Me</button>
+<ejs-tooltip id="tooltip" target="#target" content="Hover over this button" opensOn="Hover">
+    <e-content-template>
+        <button id="target" class="e-btn">Hover Me</button>
+    </e-content-template>
 </ejs-tooltip>
 ```
 
@@ -55,8 +59,10 @@ Tooltip appears on mouse hover and disappears when mouse leaves:
 Tooltip opens on click and closes on another click:
 
 ```csharp
-<ejs-tooltip content="Click to open, click to close" opensOn="Click">
-    <button class="e-btn">Click Me</button>
+<ejs-tooltip id="tooltip" target="#target" content="Click to open, click to close" opensOn="Click">
+    <e-content-template>
+        <button id="target" class="e-btn">Click Me</button>
+    </e-content-template>
 </ejs-tooltip>
 ```
 
@@ -67,8 +73,10 @@ Tooltip opens on click and closes on another click:
 Tooltip appears when an input or focusable element receives focus:
 
 ```csharp
-<ejs-tooltip content="Focus this input" opensOn="Focus">
-    <input type="text" class="e-input" placeholder="Click to focus" />
+<ejs-tooltip id="tooltip" target="#target" content="Focus this input" opensOn="Focus">
+    <e-content-template>
+        <input id="target" type="text" class="e-input" placeholder="Click to focus" />
+    </e-content-template>
 </ejs-tooltip>
 ```
 
@@ -79,8 +87,10 @@ Tooltip appears when an input or focusable element receives focus:
 Programmatically control tooltip opening/closing with `.open()` and `.close()` methods:
 
 ```csharp
-<ejs-tooltip id="tooltip" content="Tooltip opened programmatically" opensOn="Custom">
-    <button class="e-btn" onclick="toggleTooltip()">Toggle Tooltip</button>
+<ejs-tooltip id="tooltip" target="#target" id="tooltip" content="Tooltip opened programmatically" opensOn="Custom">
+    <e-content-template>
+        <button id="target" class="e-btn" onclick="toggleTooltip()">Toggle Tooltip</button>
+    </e-content-template>
 </ejs-tooltip>
 
 <script>
@@ -107,16 +117,12 @@ Combine multiple trigger modes using spaces:
 
 ```csharp
 @* Opens on both hover AND click *@
-<ejs-tooltip content="Hover or click to show" opensOn="Hover Click">
-    <button class="e-btn">Hover or Click</button>
+<ejs-tooltip id="tooltip" target="#target" content="Hover or click to show" opensOn="Hover Click">
+    <e-content-template>
+        <button id="target" class="e-btn">Hover or Click</button>
+    </e-content-template>
 </ejs-tooltip>
 
-@* Opens on hover or focus (useful for forms) *@
-<ejs-tooltip content="Help text" opensOn="Hover Focus" target=".help-icon">
-    <form>
-        <input type="text" class="e-input help-icon" title="Help text" />
-    </form>
-</ejs-tooltip>
 ```
 
 ---
@@ -126,10 +132,12 @@ Combine multiple trigger modes using spaces:
 Use `isSticky="true"` to keep the tooltip visible with a close (×) button until the user clicks it:
 
 ```csharp
-<ejs-tooltip content="This tooltip stays open until you close it" 
+<ejs-tooltip id="tooltip" target="#target" content="This tooltip stays open until you close it" 
     opensOn="Click" 
     isSticky="true">
-    <button class="e-btn">Click for Sticky Tooltip</button>
+    <e-content-template>
+        <button id="target" class="e-btn">Click for Sticky Tooltip</button>
+    </e-content-template>
 </ejs-tooltip>
 ```
 
@@ -143,18 +151,22 @@ Control the delay before the tooltip appears or disappears using `openDelay` and
 
 ```csharp
 @* Slow to open (500ms), quick to close *@
-<ejs-tooltip content="Delayed open" 
+<ejs-tooltip id="tooltip" target="#target" content="Delayed open" 
     opensOn="Hover" 
     openDelay="500" 
     closeDelay="100">
-    <button class="e-btn">Hover (slow open)</button>
+    <e-content-template>
+        <button id="target" class="e-btn">Hover (slow open)</button>
+    </e-content-template>
 </ejs-tooltip>
 
 @* Fast to open, slow to close (useful for accidental mouse-out) *@
-<ejs-tooltip content="Sticky on hover" 
+<ejs-tooltip id="tooltip" target="#target" content="Sticky on hover" 
     opensOn="Hover" 
     openDelay="0" 
     closeDelay="1000">
-    <button class="e-btn">Hover (slow close)</button>
+    <e-content-template>
+        <button id="target" class="e-btn">Hover (slow close)</button>
+    </e-content-template>
 </ejs-tooltip>
 ```

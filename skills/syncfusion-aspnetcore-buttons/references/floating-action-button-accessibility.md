@@ -25,7 +25,7 @@ When FAB contains only an icon, provide descriptive aria-label:
 ```cshtml
 <ejs-fab 
     id="addBtn"
-    iconCss="e-icons e-plus-icon"
+    iconCss="e-icons e-plus"
     cssClass="e-primary"
     htmlAttributes="@new { aria_label = 'Add new item' }">
 </ejs-fab>
@@ -35,7 +35,7 @@ When FAB contains only an icon, provide descriptive aria-label:
 ```cshtml
 <ejs-fab 
     id="addBtn"
-    iconCss="e-icons e-plus-icon"
+    iconCss="e-icons e-plus"
     cssClass="e-primary">
 </ejs-fab>
 ```
@@ -50,7 +50,7 @@ When FAB has both icon and text, label is more discoverable:
 <ejs-fab 
     id="fab"
     content="Create"
-    iconCss="e-icons e-plus-icon"
+    iconCss="e-icons e-plus"
     cssClass="e-primary"
     htmlAttributes="@new { aria_label = 'Create new item' }">
 </ejs-fab>
@@ -193,7 +193,7 @@ Floating action buttons support:
     
     <ejs-fab 
         id="newDocBtn"
-        iconCss="e-icons e-plus-icon"
+        iconCss="e-icons e-plus"
         cssClass="e-primary"
         position="BottomRight"
         target=".fab-container"

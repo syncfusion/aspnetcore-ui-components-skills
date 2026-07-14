@@ -151,7 +151,7 @@ Create a complete page with OTP Input examples in `Views/Home/Index.cshtml`:
         <label>OTP input is automatically focused:</label>
         <ejs-otpinput id="otpAutoFocus" 
             length="6" 
-            auto-focus="true">
+            autoFocus="true">
         </ejs-otpinput>
     </div>
 

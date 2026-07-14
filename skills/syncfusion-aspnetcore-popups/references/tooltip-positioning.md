@@ -15,55 +15,79 @@ The `position` attribute specifies where the tooltip appears relative to the tar
 
 ```csharp
 @* Top Row *@
-<ejs-tooltip content="Top Left" position="TopLeft">
-    <button class="e-btn">Top Left</button>
+<ejs-tooltip id="tooltip" target="#target" content="Top Left" position="TopLeft">
+    <e-content-template>
+        <button id="target" class="e-btn">Top Left</button>
+    </e-content-template>
 </ejs-tooltip>
 
-<ejs-tooltip content="Top Center" position="TopCenter">
-    <button class="e-btn">Top Center</button>
+<ejs-tooltip id="tooltip" target="#target" content="Top Center" position="TopCenter">
+    <e-content-template>
+        <button id="target" class="e-btn">Top Center</button>
+    </e-content-template>
 </ejs-tooltip>
 
-<ejs-tooltip content="Top Right" position="TopRight">
-    <button class="e-btn">Top Right</button>
+<ejs-tooltip id="tooltip" target="#target" content="Top Right" position="TopRight">
+    <e-content-template>
+        <button id="target" class="e-btn">Top Right</button>
+    </e-content-template>
 </ejs-tooltip>
 
 @* Bottom Row *@
-<ejs-tooltip content="Bottom Left" position="BottomLeft">
-    <button class="e-btn">Bottom Left</button>
+<ejs-tooltip id="tooltip" target="#target" content="Bottom Left" position="BottomLeft">
+    <e-content-template>
+        <button id="target" class="e-btn">Bottom Left</button>
+    </e-content-template>
 </ejs-tooltip>
 
-<ejs-tooltip content="Bottom Center" position="BottomCenter">
-    <button class="e-btn">Bottom Center</button>
+<ejs-tooltip id="tooltip" target="#target" content="Bottom Center" position="BottomCenter">
+    <e-content-template>
+        <button id="target" class="e-btn">Bottom Center</button>
+    </e-content-template>
 </ejs-tooltip>
 
-<ejs-tooltip content="Bottom Right" position="BottomRight">
-    <button class="e-btn">Bottom Right</button>
+<ejs-tooltip id="tooltip" target="#target" content="Bottom Right" position="BottomRight">
+    <e-content-template>
+        <button id="target" class="e-btn">Bottom Right</button>
+    </e-content-template>
 </ejs-tooltip>
 
 @* Left Column *@
-<ejs-tooltip content="Left Top" position="LeftTop">
-    <button class="e-btn">Left Top</button>
+<ejs-tooltip id="tooltip" target="#target" content="Left Top" position="LeftTop">
+    <e-content-template>
+        <button id="target" class="e-btn">Left Top</button>
+    </e-content-template>
 </ejs-tooltip>
 
-<ejs-tooltip content="Left Center" position="LeftCenter">
-    <button class="e-btn">Left Center</button>
+<ejs-tooltip id="tooltip" target="#target" content="Left Center" position="LeftCenter">
+    <e-content-template>
+        <button id="target" class="e-btn">Left Center</button>
+    </e-content-template>
 </ejs-tooltip>
 
-<ejs-tooltip content="Left Bottom" position="LeftBottom">
-    <button class="e-btn">Left Bottom</button>
+<ejs-tooltip id="tooltip" target="#target" content="Left Bottom" position="LeftBottom">
+    <e-content-template>
+        <button id="target" class="e-btn">Left Bottom</button>
+    </e-content-template>
 </ejs-tooltip>
 
 @* Right Column *@
-<ejs-tooltip content="Right Top" position="RightTop">
-    <button class="e-btn">Right Top</button>
+<ejs-tooltip id="tooltip" target="#target" content="Right Top" position="RightTop">
+    <e-content-template>
+        <button id="target" class="e-btn">Right Top</button>
+    </e-content-template>
 </ejs-tooltip>
 
-<ejs-tooltip content="Right Center" position="RightCenter">
-    <button class="e-btn">Right Center</button>
+<ejs-tooltip id="tooltip" target="#target" content="Right Center" position="RightCenter">
+    <e-content-template>
+        <button id="target" class="e-btn">Right Center</button>
+    </e-content-template>
 </ejs-tooltip>
 
-<ejs-tooltip content="Right Bottom" position="RightBottom">
-    <button class="e-btn">Right Bottom</button>
+<ejs-tooltip id="tooltip" target="#target" content="Right Bottom" position="RightBottom">
+    <e-content-template>
+        <button id="target" class="e-btn">Right Bottom</button>
+    </e-content-template>
 </ejs-tooltip>
 ```
 
@@ -81,22 +105,28 @@ The `tipPointerPosition` attribute controls where the arrow tip points on the to
 | `End` | Positions the tip pointer at the end edge |
 
 ```csharp
-<ejs-tooltip content="Tip at Start" 
+<ejs-tooltip id="tooltip" target="#target" content="Tip at Start" 
     position="RightCenter" 
     tipPointerPosition="Start">
-    <button class="e-btn">Start Tip</button>
+    <e-content-template>
+        <button id="target" class="e-btn">Start Tip</button>
+    </e-content-template>
 </ejs-tooltip>
 
-<ejs-tooltip content="Tip at Middle" 
+<ejs-tooltip id="tooltip" target="#target" content="Tip at Middle" 
     position="RightCenter" 
     tipPointerPosition="Middle">
-    <button class="e-btn">Middle Tip</button>
+    <e-content-template>
+        <button id="target" class="e-btn">Middle Tip</button>
+    </e-content-template>
 </ejs-tooltip>
 
-<ejs-tooltip content="Tip at End" 
+<ejs-tooltip id="tooltip" target="#target" content="Tip at End" 
     position="RightCenter" 
     tipPointerPosition="End">
-    <button class="e-btn">End Tip</button>
+    <e-content-template>
+        <button id="target" class="e-btn">End Tip</button>
+    </e-content-template>
 </ejs-tooltip>
 ```
 
@@ -107,13 +137,15 @@ The `tipPointerPosition` attribute controls where the arrow tip points on the to
 Use the `refresh()` method to recalculate tooltip position after the target element moves or the viewport changes:
 
 ```csharp
-<ejs-tooltip id="tooltip" content="Dynamic Tooltip">
-    <button id="targetBtn" class="e-btn" onclick="moveButton()">Move Me</button>
+<ejs-tooltip id="tooltip" target="#target" content="Dynamic Tooltip">
+    <e-content-template>
+        <button id="target" class="e-btn" onclick="moveButton()">Move Me</button>
+    </e-content-template>
 </ejs-tooltip>
 
 <script>
     function moveButton() {
-        var btn = document.getElementById('targetBtn');
+        var btn = document.getElementById('target');
         btn.style.marginLeft = '200px';
         
         // Refresh tooltip position after target moves
@@ -131,30 +163,38 @@ Use `offsetX` and `offsetY` to adjust the distance between the target and the to
 
 ```csharp
 @* No offset (default) *@
-<ejs-tooltip content="No Offset" position="TopCenter">
-    <button class="e-btn">Default</button>
+<ejs-tooltip id="tooltip" target="#target" content="No Offset" position="TopCenter">
+    <e-content-template>
+        <button id="target" class="e-btn">Default</button>
+    </e-content-template>
 </ejs-tooltip>
 
 @* 10px horizontal offset *@
-<ejs-tooltip content="10px Right Offset" 
+<ejs-tooltip id="tooltip" target="#target" content="10px Right Offset" 
     position="RightCenter" 
     offsetX="10">
-    <button class="e-btn">Offset X</button>
+    <e-content-template>
+        <button id="target" class="e-btn">Offset X</button>
+    </e-content-template>
 </ejs-tooltip>
 
 @* 20px vertical offset *@
-<ejs-tooltip content="20px Down Offset" 
+<ejs-tooltip id="tooltip" target="#target" content="20px Down Offset" 
     position="TopCenter" 
     offsetY="20">
-    <button class="e-btn">Offset Y</button>
+    <e-content-template>
+        <button id="target" class="e-btn">Offset Y</button>
+    </e-content-template>
 </ejs-tooltip>
 
 @* Both offsets *@
-<ejs-tooltip content="Combined Offset" 
+<ejs-tooltip id="tooltip" target="#target" content="Combined Offset" 
     position="RightCenter" 
     offsetX="10" 
     offsetY="10">
-    <button class="e-btn">Both Offsets</button>
+    <e-content-template>
+        <button id="target" class="e-btn">Both Offsets</button>
+    </e-content-template>
 </ejs-tooltip>
 ```
 
@@ -166,16 +206,20 @@ The `windowCollision` attribute controls whether the tooltip adjusts position to
 
 ```csharp
 @* Auto-flip behavior enabled *@
-<ejs-tooltip content="Stays in viewport" 
+<ejs-tooltip id="tooltip" target="#target" content="Stays in viewport" 
     position="TopCenter" 
     windowCollision="true">
-    <button class="e-btn">Near Edge</button>
+    <e-content-template>
+        <button id="target" class="e-btn">Near Edge</button>
+    </e-content-template>
 </ejs-tooltip>
 
 @* Allow tooltip to extend beyond viewport *@
-<ejs-tooltip content="May go off-screen" 
+<ejs-tooltip id="tooltip" target="#target" content="May go off-screen" 
     position="TopCenter" 
     windowCollision="false">
-    <button class="e-btn">Allow Overflow</button>
+    <e-content-template>
+        <button id="target" class="e-btn">Allow Overflow</button>
+    </e-content-template>
 </ejs-tooltip>
 ```

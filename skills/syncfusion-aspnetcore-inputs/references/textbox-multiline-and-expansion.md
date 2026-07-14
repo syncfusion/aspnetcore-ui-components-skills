@@ -211,8 +211,7 @@ Create a textbox that automatically expands as user types:
             <ejs-textbox id="recipient" 
                          placeholder="recipient@example.com"
                          floatLabelType="Auto"
-                         type="email"
-                         required="true">
+                         type="email">
             </ejs-textbox>
         </div>
 
@@ -221,8 +220,7 @@ Create a textbox that automatically expands as user types:
             <ejs-textbox id="subject" 
                          placeholder="Message subject"
                          floatLabelType="Auto"
-                         type="text"
-                         required="true">
+                         type="text">
             </ejs-textbox>
         </div>
 
@@ -234,7 +232,6 @@ Create a textbox that automatically expands as user types:
                          rows="4"
                          input="expandMessage"
                          floatLabelType="Auto"
-                         required="true"
                          type="text">
             </ejs-textbox>
         </div>
@@ -270,7 +267,6 @@ Create a textbox that automatically expands as user types:
             <ejs-textbox id="authorName" 
                          placeholder="Your name"
                          floatLabelType="Auto"
-                         required="true"
                          type="text">
             </ejs-textbox>
         </div>
@@ -281,7 +277,6 @@ Create a textbox that automatically expands as user types:
             <ejs-textbox id="authorEmail" 
                          placeholder="your@email.com"
                          floatLabelType="Auto"
-                         required="true"
                          type="email">
             </ejs-textbox>
         </div>
@@ -296,7 +291,6 @@ Create a textbox that automatically expands as user types:
                          maxLength="1000"
                          input="handleCommentInput"
                          floatLabelType="Auto"
-                         required="true"
                          type="text">
             </ejs-textbox>
         </div>

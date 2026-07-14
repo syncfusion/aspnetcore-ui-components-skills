@@ -42,6 +42,23 @@ Single thumb for selecting one value:
 - Single parameter adjustment
 - Age selection
 
+### Type: MinRange
+
+Two thumbs for selecting a min range:
+
+**Razor View (CSHTML):**
+```html
+<div class="container mt-5">
+    <h4>MinRange Slider</h4>
+    
+    <ejs-slider id="minrange" 
+                value="ViewBag.range"
+                type="MinRange">
+    </ejs-slider>
+</div>
+
+```
+
 ### Type: Range
 
 Two thumbs for selecting a range:
@@ -85,8 +102,7 @@ Two thumbs for selecting a range:
                  min="0" 
                  max="100" 
                  value="50"
-                 orientation="Horizontal"
-                 type="single">
+                 orientation="Horizontal">
 </ejs-slider>
 ```
 
@@ -110,8 +126,7 @@ Two thumbs for selecting a range:
                      min="0" 
                      max="100" 
                      value="50"
-                     orientation="Vertical"
-                     type="single">
+                     orientation="Vertical">
     </ejs-slider>
 </div>
 ```
@@ -181,8 +196,7 @@ Show different colors for different ranges (requires CSS):
                      max="100" 
                      value="50"
                      cssClass="temp-warm"
-                     input="updateTempColor"
-                     type="single">
+                     input="updateTempColor">
     </ejs-slider>
     
     <p id="tempDisplay">Temperature: 50°</p>
@@ -258,7 +272,7 @@ Show different colors for different ranges (requires CSS):
                      startValue="100"
                      endValue="400"
                      step="10"
-                     type="range">
+                     type="Range">
     </ejs-slider>
 </div>
 
@@ -301,8 +315,7 @@ Show different colors for different ranges (requires CSS):
                              max="100" 
                              value="50"
                              step="1"
-                             input="updateVolume"
-                             type="single">
+                             input="updateVolume">
             </ejs-slider>
             
             <span class="e-icons e-volume-high"></span>
@@ -334,8 +347,7 @@ Show different colors for different ranges (requires CSS):
                              max="100" 
                              value="50"
                              orientation="Vertical"
-                             input="updateBrightness"
-                             type="single">
+                             input="updateBrightness">
             </ejs-slider>
         </div>
         <p class="text-center mt-2">
@@ -377,7 +389,7 @@ Show different colors for different ranges (requires CSS):
                          endValue="500"
                          step="25"
                          change="updatePriceDisplay"
-                         type="range">
+                         type="Range">
         </ejs-slider>
 
         <div class="row mt-3">

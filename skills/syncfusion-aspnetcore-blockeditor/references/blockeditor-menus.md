@@ -743,12 +743,11 @@ Right-click context menu for block-level operations.
 
 ### Built-in Context Menu Items
 
-- Cut
-- Copy
-- Paste
-- Delete
-- Edit
-- Properties
+-  **Undo/Redo**: Undo and redo actions.
+-  **Cut/Copy/Paste**: Standard clipboard actions.
+-  **Indent**: Increase or decrease the indent level of the selected block.
+-  **Link**: Allows you to add or edit a hyperlink for the selected text. When a link is present, the context menu provides options such as `Open Link`, `Edit Link`, `Copy Link`, and `Remove Link`.
+-  **Table**: Provides built-in table actions such as `Insert` and `Delete`. These options appear in the context menu when the cursor is focused within a table cell and the context menu is opened.
 
 ### Configure Context Menu
 

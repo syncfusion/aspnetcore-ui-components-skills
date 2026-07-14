@@ -46,11 +46,11 @@ public class ComboBoxData
 ```html
 <ejs-combobox id="large-combo" 
     dataSource="ViewBag.LargeDataset"
-    fields="@(new { text = "Name", value = "Id" })"
     enableVirtualization="true"
     allowFiltering="true"
     popupHeight="300px"
     placeholder="Searching 50,000 items efficiently...">
+    <e-combobox-fields text="Name" value="Id"></e-combobox-fields>
 </ejs-combobox>
 ```
 
@@ -106,9 +106,9 @@ public ActionResult Index()
 ```html
 <ejs-combobox id="combo" 
     dataSource="ViewBag.Items"
-    fields="@(new { text = "Name", value = "Id" })"
     locale="@ViewBag.Locale"
     placeholder="Seleccionar...">
+    <e-combobox-fields text="Name" value="Id"></e-combobox-fields>
 </ejs-combobox>
 ```
 
@@ -149,9 +149,9 @@ Create custom locale strings in `_Layout.cshtml`:
 ```html
 <ejs-combobox id="combo" 
     dataSource="ViewBag.Items"
-    fields="@(new { text = "Name", value = "Id" })"
     enableRtl="true"
     placeholder="اختر عنصرًا">
+    <e-combobox-fields text="Name" value="Id"></e-combobox-fields>
 </ejs-combobox>
 ```
 
@@ -177,10 +177,8 @@ Create custom locale strings in `_Layout.cshtml`:
 ```html
 <label for="combo-select">Select a Category:</label>
 <ejs-combobox id="combo-select"
-    dataSource="ViewBag.Items"
-    fields="@(new { text = "Name", value = "Id" })"
-    aria-label="Category selection combobox"
-    aria-describedby="combo-help">
+    dataSource="ViewBag.Items">
+    <e-combobox-fields text="Name" value="Id"></e-combobox-fields>
 </ejs-combobox>
 <span id="combo-help">Use arrow keys to navigate, Enter to select</span>
 ```
@@ -208,9 +206,9 @@ The ComboBox automatically supports these keyboard shortcuts:
 ```html
 <ejs-combobox id="combo" 
     dataSource="ViewBag.Items"
-    fields="@(new { text = "Name", value = "Id" })"
     enabled="false"
     placeholder="Disabled ComboBox">
+    <e-combobox-fields text="Name" value="Id"></e-combobox-fields>
 </ejs-combobox>
 ```
 
@@ -242,8 +240,8 @@ public ActionResult Index()
 ```html
 <ejs-combobox id="combo" 
     dataSource="ViewBag.Items"
-    fields="@(new { text = "Name", value = "Id", disabled = "Disabled" })"
     placeholder="Select an option">
+    <e-combobox-fields text="Name" value="Id" disabled="Disabled"></e-combobox-fields>
 </ejs-combobox>
 ```
 

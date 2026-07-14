@@ -22,7 +22,7 @@ NumericTextBox in ASP.NET Core provides powerful formatting and validation capab
 - **Strict mode** - Enforce boundaries or allow out-of-range values
 - **Decimal control** - Manage precision and decimal places
 
-The `format` property controls display, while `min`, `max`, and `strict-mode` control validation.
+The `format` property controls display, while `min`, `max`, and `strictMode` control validation.
 
 ---
 
@@ -162,7 +162,7 @@ Use `min` and `max` properties to restrict numeric input to a valid range:
     min="0" 
     max="120"
     value="25"
-    strict-mode="true">
+    strictMode="true">
 </ejs-numerictextbox>
 
 <!-- Rating: 0-5 -->
@@ -171,7 +171,7 @@ Use `min` and `max` properties to restrict numeric input to a valid range:
     min="0" 
     max="5"
     step="0.5"
-    strict-mode="true">
+    strictMode="true">
 </ejs-numerictextbox>
 
 <!-- Percentage: 0-100 -->
@@ -180,7 +180,7 @@ Use `min` and `max` properties to restrict numeric input to a valid range:
     min="0" 
     max="100"
     format="p"
-    strict-mode="true">
+    strictMode="true">
 </ejs-numerictextbox>
 ```
 
@@ -188,7 +188,7 @@ Use `min` and `max` properties to restrict numeric input to a valid range:
 
 ## Strict Mode Property
 
-**strict-mode="true"** (Default)
+**strictMode="true"** (Default)
 
 When enabled, values outside the min/max range are prevented from being entered. The input is immediately rejected if out of range.
 
@@ -198,7 +198,7 @@ When enabled, values outside the min/max range are prevented from being entered.
     value="50" 
     min="0" 
     max="100"
-    strict-mode="true">
+    strictMode="true">
 </ejs-numerictextbox>
 ```
 
@@ -209,7 +209,7 @@ When enabled, values outside the min/max range are prevented from being entered.
 
 ---
 
-**strict-mode="false"**
+**strictMode="false"**
 
 When disabled, users can enter any value, but it's automatically corrected to fit within min/max when the control loses focus (blur event).
 
@@ -219,7 +219,7 @@ When disabled, users can enter any value, but it's automatically corrected to fi
     value="50" 
     min="0" 
     max="100"
-    strict-mode="false">
+    strictMode="false">
 </ejs-numerictextbox>
 ```
 
@@ -272,9 +272,9 @@ Use the `decimals` property to control the number of decimal places:
         min="0"
         max="99999.99"
         decimals="2"
-        strict-mode="true"
-        placeholder="Enter price">
-        <e-events change="onPriceChange"></e-events>
+        strictMode="true"
+        placeholder="Enter price"
+        change="onPriceChange">
     </ejs-numerictextbox>
 </div>
 
@@ -296,9 +296,9 @@ function onPriceChange(args) {
         min="0"
         max="150"
         decimals="0"
-        strict-mode="true"
-        show-spin-button="true">
-        <e-events change="onAgeChange"></e-events>
+        strictMode="true"
+        showSpinButton="true"
+        change="onAgeChange">
     </ejs-numerictextbox>
 </div>
 
@@ -325,7 +325,7 @@ function onAgeChange(args) {
         min="0"
         max="1"
         step="0.05"
-        strict-mode="true">
+        strictMode="true">
     </ejs-numerictextbox>
 </div>
 ```
@@ -342,8 +342,8 @@ function onAgeChange(args) {
         max="999"
         step="1"
         decimals="0"
-        strict-mode="true"
-        show-spin-button="true">
+        strictMode="true"
+        showSpinButton="true">
     </ejs-numerictextbox>
 </div>
 ```
@@ -359,7 +359,7 @@ function onAgeChange(args) {
         max="5"
         step="0.5"
         decimals="1"
-        strict-mode="true"
+        strictMode="true"
         placeholder="Rate 0-5">
     </ejs-numerictextbox>
 </div>

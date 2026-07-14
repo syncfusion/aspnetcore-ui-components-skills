@@ -17,7 +17,7 @@
 ```cshtml
 <ejs-multicolumncombobox id="combo"
     dataSource="@ViewBag.employees"
-    height="300px">
+    popupHeight="300px">
     <e-multicolumncombobox-fields text="EmployeeName" value="EmployeeID"></e-multicolumncombobox-fields>
     <e-multicolumncombobox-columns>
         <e-multicolumncombobox-column field="EmployeeID" header="ID" width="60px"></e-multicolumncombobox-column>
@@ -60,7 +60,7 @@ function getStatusTemplate(props) {
 ```cshtml
 <ejs-multicolumncombobox id="combo"
     dataSource="@ViewBag.employees"
-    height="300px">
+    popupHeight="300px">
     <e-multicolumncombobox-fields text="EmployeeName" value="EmployeeID"></e-multicolumncombobox-fields>
     <e-multicolumncombobox-columns>
         <!-- Photo column -->
@@ -85,7 +85,7 @@ function getPhotoTemplate(props) {
 ```cshtml
 <ejs-multicolumncombobox id="combo"
     dataSource="@ViewBag.employees"
-    height="300px">
+    popupHeight="300px">
     <e-multicolumncombobox-fields text="EmployeeName" value="EmployeeID"></e-multicolumncombobox-fields>
     <e-multicolumncombobox-columns>
         <e-multicolumncombobox-column field="EmployeeID" header="ID" width="60px"></e-multicolumncombobox-column>
@@ -135,7 +135,7 @@ function getDetailsTemplate(props) {
 ```cshtml
 <ejs-multicolumncombobox id="combo"
     dataSource="@ViewBag.employees"
-    height="300px">
+    popupHeight="300px">
     <e-multicolumncombobox-fields text="EmployeeName" value="EmployeeID"></e-multicolumncombobox-fields>
     <e-multicolumncombobox-columns>
         <e-multicolumncombobox-column field="EmployeeID" header="ID" width="60px"
@@ -245,7 +245,7 @@ function toggleColumnSort(field) {
 ```cshtml
 <ejs-multicolumncombobox id="combo"
     dataSource="@ViewBag.employees"
-    height="300px">
+    popupHeight="300px">
     <e-multicolumncombobox-fields text="EmployeeName" value="EmployeeID"></e-multicolumncombobox-fields>
     <e-multicolumncombobox-columns>
         <e-multicolumncombobox-column field="EmployeeID" header="ID" width="60px"></e-multicolumncombobox-column>
@@ -317,7 +317,7 @@ function getPaginationFooterTemplate(props) {
 ```cshtml
 <ejs-multicolumncombobox id="combo"
     dataSource="@ViewBag.employees"
-    height="300px">
+    popupHeight="300px">
     <e-multicolumncombobox-fields text="EmployeeName" value="EmployeeID"></e-multicolumncombobox-fields>
     <e-multicolumncombobox-columns>
         <!-- Full row template -->
@@ -419,7 +419,7 @@ function getRowTemplate(props) {
 <ejs-multicolumncombobox id="combo"
     dataSource="@ViewBag.employees"
     noRecordsTemplate="getNoRecordsTemplate"
-    height="300px">
+    popupHeight="300px">
     <e-multicolumncombobox-fields text="EmployeeName" value="EmployeeID"></e-multicolumncombobox-fields>
     <e-multicolumncombobox-columns>
         <e-multicolumncombobox-column field="EmployeeID" header="ID" width="60px"></e-multicolumncombobox-column>

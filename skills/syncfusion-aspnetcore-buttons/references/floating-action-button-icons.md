@@ -5,7 +5,7 @@
 ```cshtml
 <ejs-fab 
     id="fab" 
-    iconCss="e-icons e-plus-icon"
+    iconCss="e-icons e-plus"
     cssClass="e-primary">
 </ejs-fab>
 ```
@@ -16,7 +16,7 @@
 <ejs-fab 
     id="fab" 
     content="Add"
-    iconCss="e-icons e-plus-icon"
+    iconCss="e-icons e-plus"
     cssClass="e-primary">
 </ejs-fab>
 ```
@@ -25,13 +25,13 @@
 
 | Icon | Code |
 |------|------|
-| Plus | `e-icons e-plus-icon` |
-| Edit | `e-icons e-edit-icon` |
-| Delete | `e-icons e-delete-icon` |
-| Search | `e-icons e-search-icon` |
-| Call | `e-icons e-call-icon` |
-| Chat | `e-icons e-chat-icon` |
-| Mail | `e-icons e-mail-icon` |
+| Plus | `e-icons e-plus` |
+| Edit | `e-icons e-edit` |
+| Delete | `e-icons e-delete` |
+| Search | `e-icons e-search` |
+| Call | `e-icons e-call` |
+| Chat | `e-icons e-chat` |
+| Mail | `e-icons e-mail` |
 
 ---
 

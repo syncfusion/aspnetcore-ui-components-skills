@@ -251,19 +251,6 @@ function moveToAvailable() {
 </ejs-listbox>
 ```
 
-### Virtual Scrolling
-
-For large datasets, enable virtual scrolling:
-
-```cshtml
-<ejs-listbox id="large-list"
-    dataSource="@ViewBag.largeData"
-    enableVirtualization="true"
-    height="300px">
-    <e-listbox-fields text="Name" value="Id"></e-listbox-fields>
-</ejs-listbox>
-```
-
 ---
 
 ## Enable/Disable Items

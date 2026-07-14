@@ -71,9 +71,9 @@ public ActionResult Index()
 ```html
 <ejs-combobox id="status-combo"
     dataSource="ViewBag.StatusData"
-    fields="@(new { text = "Status", value = "Status" })"
     allowResize="true"
     placeholder="Select Status">
+    <e-combobox-fields text="Status" value="Status"></e-combobox-fields>
 </ejs-combobox>
 ```
 
@@ -141,10 +141,10 @@ public ActionResult Index()
 ```html
 <ejs-combobox id="product-combo"
     dataSource="ViewBag.Products"
-    fields="@(new { text = "Name", value = "Name" })"
     allowResize="true"
     itemTemplate="#productTemplate"
     popupHeight="350px">
+    <e-combobox-fields text="Name" value="Name"></e-combobox-fields>
 </ejs-combobox>
 
 <script id="productTemplate" type="text/x-template">

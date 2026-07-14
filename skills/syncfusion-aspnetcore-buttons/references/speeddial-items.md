@@ -4,10 +4,19 @@
 
 ```cshtml
 @{
-    List<object> items = new List<object>();
-    items.Add(new { text = "Edit" });
-    items.Add(new { text = "Delete" });
-    items.Add(new { text = "Add" });
+    List<SpeedDialItem> items = new List<SpeedDialItem>();
+    items.Add(new SpeedDialItem
+    {
+        Text = "Cut"
+    });
+    items.Add(new SpeedDialItem
+    {
+        Text = "Copy"
+    });
+    items.Add(new SpeedDialItem
+    {
+        Text = "Paste"
+    });
 }
 
 <ejs-speeddial 
@@ -22,10 +31,22 @@
 
 ```cshtml
 @{
-    List<object> items = new List<object>();
-    items.Add(new { text = "Edit", iconCss = "e-icons e-edit-icon" });
-    items.Add(new { text = "Delete", iconCss = "e-icons e-delete-icon" });
-    items.Add(new { text = "Add", iconCss = "e-icons e-plus-icon" });
+    List<SpeedDialItem> items = new List<SpeedDialItem>();
+    items.Add(new SpeedDialItem
+    {
+        IconCss="e-icons e-cut",
+        Text="Cut"
+    });
+    items.Add(new SpeedDialItem
+    {
+        IconCss="e-icons e-copy",
+        Text="Copy"
+    });
+    items.Add(new SpeedDialItem
+    {
+        IconCss="e-icons e-paste",
+        Text="Paste"
+    });
 }
 
 <ejs-speeddial 
@@ -33,23 +54,6 @@
     content="Action"
     items="items"
     iconCss="e-icons e-share-icon"
-    target="#container">
-</ejs-speeddial>
-```
-
-## Items with Titles
-
-```cshtml
-@{
-    List<object> items = new List<object>();
-    items.Add(new { text = "Cut", title = "Cut selected text" });
-    items.Add(new { text = "Copy", title = "Copy selected text" });
-    items.Add(new { text = "Paste", title = "Paste from clipboard" });
-}
-
-<ejs-speeddial 
-    id="speeddial"
-    items="items"
     target="#container">
 </ejs-speeddial>
 ```

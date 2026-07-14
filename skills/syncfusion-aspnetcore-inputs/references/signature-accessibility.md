@@ -77,8 +77,7 @@ The component captures input from touch events (finger or stylus), making it ful
     
     <ejs-signature id="signature" 
                    disabled="false" 
-                   isReadOnly="false"
-                   aria-label="Digital signature canvas. Use mouse, touch, or pen to sign. Press Ctrl+S to save.">
+                   isReadOnly="false">
     </ejs-signature>
     
     <p id="signatureHelp">
@@ -117,10 +116,7 @@ The component captures input from touch events (finger or stylus), making it ful
 <div class='signature-container'>
     <h4 id="signHeading">Digital Signature</h4>
     
-    <ejs-signature id="signature"
-                   aria-labelledby="signHeading"
-                   aria-describedby="signDescription">
-    </ejs-signature>
+    <ejs-signature id="signature"></ejs-signature>
     
     <div id="signDescription">
         <p>Sign your name in the box above.</p>

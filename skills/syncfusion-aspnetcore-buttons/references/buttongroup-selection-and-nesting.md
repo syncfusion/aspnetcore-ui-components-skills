@@ -17,17 +17,17 @@ Create mutually exclusive button groups where only one button can be selected at
 <div class="e-btn-group">
     <input type="radio" id="rad1" name="format" value="list" />
     <label for="rad1" class="e-btn">
-        <ejs-button>List View</ejs-button>
+        <ejs-button content="List View"></ejs-button>
     </label>
     
     <input type="radio" id="rad2" name="format" value="grid" />
     <label for="rad2" class="e-btn">
-        <ejs-button>Grid View</ejs-button>
+        <ejs-button content="Grid View"></ejs-button>
     </label>
     
     <input type="radio" id="rad3" name="format" value="details" />
     <label for="rad3" class="e-btn">
-        <ejs-button>Details View</ejs-button>
+        <ejs-button content="Details View"></ejs-button>
     </label>
 </div>
 
@@ -94,17 +94,11 @@ Combine ButtonGroup with DropDownButton for complex menus.
 }
 
 <div class="e-btn-group">
-    <ejs-button id="alignLeft" cssClass="e-outline" title="Align Left">
-        <i class="e-icons e-align-left-icon"></i>
-    </ejs-button>
+    <ejs-button id="alignLeft" cssClass="e-outline e-icons e-align-left-icon" title="Align Left"></ejs-button>
     
-    <ejs-button id="alignCenter" cssClass="e-outline" title="Align Center">
-        <i class="e-icons e-align-center-icon"></i>
-    </ejs-button>
+    <ejs-button id="alignCenter" cssClass="e-outline e-icons e-align-center-icon" title="Align Center"></ejs-button>
     
-    <ejs-button id="alignRight" cssClass="e-outline" title="Align Right">
-        <i class="e-icons e-align-right-icon"></i>
-    </ejs-button>
+    <ejs-button id="alignRight" cssClass="e-outline e-icons e-align-right-icon" title="Align Right"></ejs-button>
     
     <div class="e-btn-separator"></div>
     
@@ -163,7 +157,7 @@ Create a ButtonGroup that includes SplitButton components.
         cssClass="e-outline">
     </ejs-splitbutton>
     
-    <ejs-button id="helpBtn" cssClass="e-outline">Help</ejs-button>
+    <ejs-button id="helpBtn" cssClass="e-outline" content="Help"></ejs-button>
 </div>
 ```
 
@@ -204,13 +198,13 @@ public class IndexModel : PageModel
         <input type="radio" id="list" name="SelectedView" value="list" 
                @(Model.SelectedView == "list" ? "checked" : "") />
         <label for="list" class="e-btn">
-            <ejs-button>List</ejs-button>
+            <ejs-button content="List"></ejs-button>
         </label>
         
         <input type="radio" id="grid" name="SelectedView" value="grid" 
                @(Model.SelectedView == "grid" ? "checked" : "") />
         <label for="grid" class="e-btn">
-            <ejs-button>Grid</ejs-button>
+            <ejs-button content="Grid"></ejs-button>
         </label>
     </div>
     

@@ -16,7 +16,7 @@
 ```cshtml
 <ejs-multicolumncombobox id="combo"
     dataSource="@ViewBag.employees"
-    height="300px">
+    popupHeight="300px">
     <e-multicolumncombobox-fields text="EmployeeName" value="EmployeeID"></e-multicolumncombobox-fields>
     <e-multicolumncombobox-columns>
         <e-multicolumncombobox-column field="EmployeeID" header="ID" width="60px"></e-multicolumncombobox-column>
@@ -109,7 +109,7 @@ function clearSort() {
 ```cshtml
 <ejs-multicolumncombobox id="combo"
     dataSource="@ViewBag.employees"
-    height="300px">
+    popupHeight="300px">
     <e-multicolumncombobox-fields text="EmployeeName" value="EmployeeID"></e-multicolumncombobox-fields>
     <e-multicolumncombobox-columns>
         <e-multicolumncombobox-column field="Department" header="Department" width="120px"></e-multicolumncombobox-column>
@@ -171,7 +171,7 @@ sortByMultipleColumns([
 <ejs-multicolumncombobox id="combo"
     dataSource="@ViewBag.employees"
     actionBegin="onActionBegin"
-    height="300px">
+    popupHeight="300px">
     <e-multicolumncombobox-fields text="EmployeeName" value="EmployeeID"></e-multicolumncombobox-fields>
     <e-multicolumncombobox-columns>
         <e-multicolumncombobox-column field="EmployeeID" header="ID" width="60px"></e-multicolumncombobox-column>
@@ -317,7 +317,7 @@ function naturalSort(columnName, ascending = true) {
 
 <ejs-multicolumncombobox id="combo"
     dataSource="@ViewBag.employees"
-    height="300px">
+    popupHeight="300px">
     <e-multicolumncombobox-fields text="EmployeeName" value="EmployeeID"></e-multicolumncombobox-fields>
     <e-multicolumncombobox-columns>
         <e-multicolumncombobox-column field="EmployeeID" header="ID" width="60px"></e-multicolumncombobox-column>

@@ -85,7 +85,7 @@ At the end of `<body>` in the layout file, register the Syncfusion Script Manage
 
 **Tag Helper** (`~/Pages/Index.cshtml`):
 ```cshtml
-<ejs-button id="button">Default Button</ejs-button>
+<ejs-button id="button" content="Default Button"></ejs-button>
 ```
 
 This renders a minimal button with default styling.
@@ -109,7 +109,7 @@ Place this script after the `<ejs-scripts></ejs-scripts>` tag.
 Alternatively, you can enable ripple on individual buttons using the `enableRipple` property (available in newer versions):
 
 ```cshtml
-<ejs-button id="button" enableRipple="true">Ripple Button</ejs-button>
+<ejs-button id="button" enableRipple="true" content="Ripple Button"></ejs-button>
 ```
 
 ---
@@ -120,7 +120,7 @@ Handle button clicks using the `onclick` attribute pointing to a JavaScript func
 
 **View (`~/Pages/Index.cshtml`):**
 ```cshtml
-<ejs-button id="submitBtn" onclick="handleClick()">Submit</ejs-button>
+<ejs-button id="submitBtn" onclick="handleClick()" content="Submit"></ejs-button>
 
 <script>
     function handleClick() {
@@ -134,7 +134,7 @@ For server-side form submissions, use a standard HTML form:
 
 ```cshtml
 <form method="post">
-    <ejs-button id="submitBtn" type="submit">Submit</ejs-button>
+    <ejs-button id="submitBtn" type="submit" content="Submit"></ejs-button>
 </form>
 ```
 
@@ -166,8 +166,8 @@ public async Task<IActionResult> OnPostAsync()
             <input id="password" type="password" name="password" required />
         </div>
         <div class="e-form-group">
-            <ejs-button id="submitBtn" type="submit">Login</ejs-button>
-            <ejs-button id="resetBtn" type="reset">Reset</ejs-button>
+            <ejs-button id="submitBtn" type="submit" content="Login"></ejs-button>
+            <ejs-button id="resetBtn" type="reset" content="Reset"></ejs-button>
         </div>
     </div>
 </form>

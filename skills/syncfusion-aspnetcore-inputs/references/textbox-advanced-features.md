@@ -241,7 +241,6 @@ Bind TextBox to C# model property:
 <ejs-textbox asp-for="Model.Email" 
              placeholder="Email"
              floatLabelType="Auto"
-             required="true"
              type="email">
 </ejs-textbox>
 <span asp-validation-for="Email" class="text-danger"></span>
@@ -380,7 +379,6 @@ public IActionResult UpdateProfile(UserProfile model)
                     <ejs-textbox asp-for="FirstName" 
                                  placeholder="First Name"
                                  floatLabelType="Auto"
-                                 required="true"
                                  input="validateName"
                                  type="text">
                     </ejs-textbox>
@@ -393,7 +391,6 @@ public IActionResult UpdateProfile(UserProfile model)
                     <ejs-textbox asp-for="LastName" 
                                  placeholder="Last Name"
                                  floatLabelType="Auto"
-                                 required="true"
                                  input="validateName"
                                  type="text">
                     </ejs-textbox>
@@ -406,7 +403,6 @@ public IActionResult UpdateProfile(UserProfile model)
                     <ejs-textbox asp-for="Email" 
                                  placeholder="Email"
                                  floatLabelType="Auto"
-                                 required="true"
                                  type="email">
                     </ejs-textbox>
                     <span asp-validation-for="Email" class="text-danger"></span>

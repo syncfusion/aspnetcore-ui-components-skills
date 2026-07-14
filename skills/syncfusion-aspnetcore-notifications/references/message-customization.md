@@ -2,7 +2,7 @@
 
 ## Table of Contents
 - [Content Alignment](#content-alignment)
-- [Custom Appearance with css-class](#custom-appearance-with-css-class)
+- [Custom Appearance with cssClass](#custom-appearance-with-cssClass)
 - [CSS-Only Message Rendering](#css-only-message-rendering)
 - [Content Templates](#content-templates)
 - [RTL Support](#rtl-support)
@@ -12,7 +12,7 @@
 
 ## Content Alignment
 
-By default, message content aligns to the left. Use built-in CSS classes via the `css-class` attribute to change alignment:
+By default, message content aligns to the left. Use built-in CSS classes via the `cssClass` attribute to change alignment:
 
 | CSS Class | Effect |
 |-----------|--------|
@@ -28,33 +28,33 @@ By default, message content aligns to the left. Use built-in CSS classes via the
 @* Centered *@
 <ejs-message id="msg_center"
              content="The license will expire today"
-             css-class="e-content-center"
+             cssClass="e-content-center"
              severity="Warning">
 </ejs-message>
 
 @* Right-aligned *@
 <ejs-message id="msg_right"
              content="The license key is invalid"
-             css-class="e-content-right"
+             cssClass="e-content-right"
              severity="Error">
 </ejs-message>
 ```
 
 ---
 
-## Custom Appearance with css-class
+## Custom Appearance with cssClass
 
-The `css-class` attribute appends one or more CSS classes to the message's root element. Use this to override default styles, set border-radius, change padding, or apply any custom design:
+The `cssClass` attribute appends one or more CSS classes to the message's root element. Use this to override default styles, set border-radius, change padding, or apply any custom design:
 
 ```cshtml
 @* Rounded corners *@
 <ejs-message id="msg_rounded" content="The license will expire today"
-             css-class="rounded" severity="Warning">
+             cssClass="rounded" severity="Warning">
 </ejs-message>
 
 @* Square (no border-radius) *@
 <ejs-message id="msg_square" content="The license key is invalid"
-             css-class="square" severity="Error">
+             cssClass="square" severity="Error">
 </ejs-message>
 ```
 
@@ -72,7 +72,7 @@ The `css-class` attribute appends one or more CSS classes to the message's root 
 Multiple classes are space-separated:
 
 ```cshtml
-<ejs-message id="msg_combo" css-class="e-content-center rounded"
+<ejs-message id="msg_combo" cssClass="e-content-center rounded"
              severity="Info" content="Centered + rounded">
 </ejs-message>
 ```
@@ -169,8 +169,8 @@ The `<e-content-template>` tag helper enables rich, interactive message bodies. 
         <div>
             <h4>Merged pull request</h4>
             <p>Pull request #41 merged after a successful build</p>
-            <ejs-button id="viewCommitBtn" content="View commit" css-class="e-link"></ejs-button>
-            <ejs-button id="dismissBtn" content="Dismiss" css-class="e-link" click="onRichClosed"></ejs-button>
+            <ejs-button id="viewCommitBtn" content="View commit" cssClass="e-link"></ejs-button>
+            <ejs-button id="dismissBtn" content="Dismiss" cssClass="e-link" click="onRichClosed"></ejs-button>
         </div>
     </e-content-template>
 </ejs-message>
@@ -186,20 +186,20 @@ The `<e-content-template>` tag helper enables rich, interactive message bodies. 
 
 ## RTL Support
 
-Enable right-to-left text direction for RTL languages (Arabic, Hebrew, etc.) using `enable-rtl="true"`:
+Enable right-to-left text direction for RTL languages (Arabic, Hebrew, etc.) using `enableRtl="true"`:
 
 ```cshtml
-<ejs-message id="msg_rtl" content="مرحبا بالعالم" severity="Info" enable-rtl="true"></ejs-message>
+<ejs-message id="msg_rtl" content="مرحبا بالعالم" severity="Info" enableRtl="true"></ejs-message>
 ```
 
 ---
 
 ## Persistence
 
-The `enable-persistence="true"` attribute saves the component's state (including `visible`) across page reloads using browser storage:
+The `enablePersistence="true"` attribute saves the component's state (including `visible`) across page reloads using browser storage:
 
 ```cshtml
-<ejs-message id="msg_persist" content="Persistent message" enable-persistence="true"></ejs-message>
+<ejs-message id="msg_persist" content="Persistent message" enablePersistence="true"></ejs-message>
 ```
 
 Use this when you want dismissed messages to stay dismissed after a page reload.

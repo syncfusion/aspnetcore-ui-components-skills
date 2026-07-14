@@ -36,20 +36,20 @@ Users who rely on keyboard navigation can interact with the close icon:
 | `Tab` / `Shift+Tab` | Move focus to the close icon in the message |
 | `Enter` / `Space` | Close the focused message (fires the `closed` event) |
 
-Note: Keyboard interaction applies only when `show-close-icon="true"`. Messages without a close icon are purely informational and require no keyboard interaction.
+Note: Keyboard interaction applies only when `showCloseIcon="true"`. Messages without a close icon are purely informational and require no keyboard interaction.
 
 ## Implementation Notes
 
 ### Dismissible Messages
 
-When `show-close-icon="true"`, the close icon is a focusable button with an `aria-label`. Ensure your `closed` handler updates the `visible` state to reflect dismissal:
+When `showCloseIcon="true"`, the close icon is a focusable button with an `aria-label`. Ensure your `closed` handler updates the `visible` state to reflect dismissal:
 
 ```cshtml
 @* ~/Pages/Index.cshtml *@
 <ejs-message id="msg_accessible"
              content="Your session will expire in 5 minutes"
              severity="Warning"
-             show-close-icon="true"
+             showCloseIcon="true"
              visible="true"
              closed="onAccessibleClosed">
 </ejs-message>
@@ -84,5 +84,5 @@ All severity color combinations (Normal, Info, Success, Warning, Error) across a
 Enable right-to-left layout for RTL languages to ensure proper visual ordering for screen readers operating in RTL mode:
 
 ```cshtml
-<ejs-message id="msg_rtl" content="رسالة تحذير" severity="Warning" enable-rtl="true"></ejs-message>
+<ejs-message id="msg_rtl" content="رسالة تحذير" severity="Warning" enableRtl="true"></ejs-message>
 ```

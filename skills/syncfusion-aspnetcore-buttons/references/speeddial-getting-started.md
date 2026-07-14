@@ -67,10 +67,19 @@ At the end of `<body>`:
 
 ```cshtml
 @{
-    List<object> items = new List<object>();
-    items.Add(new { text = "Cut" });
-    items.Add(new { text = "Copy" });
-    items.Add(new { text = "Paste" });
+    List<SpeedDialItem> items = new List<SpeedDialItem>();
+    items.Add(new SpeedDialItem
+    {
+        Text = "Cut"
+    });
+    items.Add(new SpeedDialItem
+    {
+        Text = "Copy"
+    });
+    items.Add(new SpeedDialItem
+    {
+        Text = "Paste"
+    });
 }
 
 <div id="container" style="position: relative; height: 400px;">

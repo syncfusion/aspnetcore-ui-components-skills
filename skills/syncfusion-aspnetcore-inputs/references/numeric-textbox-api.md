@@ -1,6 +1,9 @@
 # NumericTextBox API Reference for ASP.NET Core
 
-Complete API reference for the NumericTextBox TagHelper in ASP.NET Core using Syncfusion.EJ2.AspNet.Core.
+> **Source:** [https://help.syncfusion.com/cr/aspnetcore-js2/syncfusion.ej2.inputs.numerictextbox.html#properties](https://help.syncfusion.com/cr/aspnetcore-js2/syncfusion.ej2.inputs.numerictextbox.html#properties)  
+> **Namespace:** `Syncfusion.EJ2.Inputs`  
+> **Assembly:** `Syncfusion.AspNetCore.Inputs.dll`  
+> **Tag Helper:** `<ejs-numerictextbox>`
 
 ## TagHelper Syntax
 
@@ -13,375 +16,114 @@ Complete API reference for the NumericTextBox TagHelper in ASP.NET Core using Sy
 
 ## Properties
 
-### value
-
-**Type:** `decimal`  
-**Default:** `null`
-
-Gets or sets the current numeric value of the NumericTextBox.
-
-```html
-<ejs-numerictextbox id="numericTextBox" value="10.5">
-</ejs-numerictextbox>
-```
-
----
-
-### min
-
-**Type:** `decimal`  
-**Default:** `null`
-
-Gets or sets the minimum allowed value. If `strictMode` is enabled, values below this are rejected.
-
-```html
-<ejs-numerictextbox id="numericTextBox" value="50" min="0">
-</ejs-numerictextbox>
-```
-
----
-
-### max
-
-**Type:** `decimal`  
-**Default:** `null`
-
-Gets or sets the maximum allowed value. If `strictMode` is enabled, values above this are rejected.
-
-```html
-<ejs-numerictextbox id="numericTextBox" value="50" max="100">
-</ejs-numerictextbox>
-```
-
----
-
-### step
-
-**Type:** `decimal`  
-**Default:** `1`
-
-Gets or sets the increment step value when using the spinner buttons.
-
-```html
-<ejs-numerictextbox id="numericTextBox" value="10" step="5">
-</ejs-numerictextbox>
-```
-
----
-
-### decimals
-
-**Type:** `int`  
-**Default:** `null`
-
-Specifies the number of decimal places to display. When the control loses focus, the value is rounded to this precision.
-
-```html
-<ejs-numerictextbox id="numericTextBox" value="10.5" decimals="2">
-</ejs-numerictextbox>
-```
-
----
-
-### format
-
-**Type:** `string`  
-**Default:** `null`
-
-Gets or sets the format to display the numeric value. Uses .NET standard numeric format strings.
-
-**Common format specifiers:**
-- `n0` - Number format with no decimals (1,234)
-- `n2` - Number format with 2 decimals (1,234.56)
-- `c0` - Currency with no decimals ($100)
-- `c2` - Currency with 2 decimals ($99.99)
-- `p` - Percentage format (50%)
-- `p2` - Percentage with 2 decimals (50.50%)
-- `e2` - Scientific notation (1.23E+03)
-
-```html
-<!-- Currency -->
-<ejs-numerictextbox id="currency" value="99.99" format="c2">
-</ejs-numerictextbox>
-
-<!-- Number with thousand separator -->
-<ejs-numerictextbox id="number" value="1234.56" format="n2">
-</ejs-numerictextbox>
-
-<!-- Percentage -->
-<ejs-numerictextbox id="percentage" value="0.5" format="p">
-</ejs-numerictextbox>
-```
-
----
-
-### currency
-
-**Type:** `string`  
-**Default:** `null`
-
-Specifies the currency code (ISO 4217) for currency formatting. Use with `format="c"` specifier.
-
-**Common currency codes:**
-- `USD` - US Dollar
-- `EUR` - Euro
-- `GBP` - British Pound
-- `JPY` - Japanese Yen
-- `CAD` - Canadian Dollar
-- `AUD` - Australian Dollar
-
-```html
-<ejs-numerictextbox id="numericTextBox" value="99.99" format="c2" currency="EUR">
-</ejs-numerictextbox>
-```
-
----
-
-### placeholder
-
-**Type:** `string`  
-**Default:** `null`
-
-Gets or sets the placeholder text displayed when the control is empty.
-
-```html
-<ejs-numerictextbox id="numericTextBox" placeholder="Enter amount">
-</ejs-numerictextbox>
-```
-
----
-
-### enabled
-
-**Type:** `bool`  
-**Default:** `true`
-
-Gets or sets whether the NumericTextBox is enabled for user interaction. When `false`, the control appears disabled.
-
-```html
-<ejs-numerictextbox id="numericTextBox" value="10" enabled="false">
-</ejs-numerictextbox>
-```
-
----
-
-### readonly
-
-**Type:** `bool`  
-**Default:** `false`
-
-Gets or sets whether the NumericTextBox is read-only. Users can focus and select, but cannot edit the value.
-
-```html
-<ejs-numerictextbox id="numericTextBox" value="10" readonly="true">
-</ejs-numerictextbox>
-```
-
----
-
-### strictMode
-
-**Type:** `bool`  
-**Default:** `true`
-
-Gets or sets whether to enforce strict validation. When `true`, values outside the min/max range are not allowed. When `false`, out-of-range values are allowed but are corrected on blur.
-
-```html
-<!-- Strict validation enforced -->
-<ejs-numerictextbox id="strict" value="50" min="0" max="100" strict-mode="true">
-</ejs-numerictextbox>
-
-<!-- Allow out-of-range values -->
-<ejs-numerictextbox id="nonstrict" value="50" min="0" max="100" strict-mode="false">
-</ejs-numerictextbox>
-```
-
----
-
-### showSpinButton
-
-**Type:** `bool`  
-**Default:** `true`
-
-Gets or sets whether to display the spinner (up/down) buttons.
-
-```html
-<!-- With spinner buttons -->
-<ejs-numerictextbox id="withSpinner" value="10" show-spin-button="true">
-</ejs-numerictextbox>
-
-<!-- Without spinner buttons -->
-<ejs-numerictextbox id="noSpinner" value="10" show-spin-button="false">
-</ejs-numerictextbox>
-```
-
----
-
-### allowMouseWheel
-
-**Type:** `bool`  
-**Default:** `true`
-
-Gets or sets whether the mouse wheel can be used to increment/decrement the value.
-
-```html
-<ejs-numerictextbox id="numericTextBox" value="10" allow-mouse-wheel="true">
-</ejs-numerictextbox>
-```
-
----
-
-### cssClass
-
-**Type:** `string`  
-**Default:** `null`
-
-Gets or sets CSS classes for custom styling. Predefined classes: `e-small`, `e-bigger`, `e-error`, `e-warning`, `e-success`.
-
-```html
-<ejs-numerictextbox id="small" value="10" css-class="e-small">
-</ejs-numerictextbox>
-
-<ejs-numerictextbox id="error" value="10" css-class="e-error">
-</ejs-numerictextbox>
-
-<ejs-numerictextbox id="success" value="10" css-class="e-success">
-</ejs-numerictextbox>
-```
-
----
-
-### htmlAttributes
-
-**Type:** `IDictionary<string, object>`  
-**Default:** `null`
-
-Gets or sets additional HTML attributes for the input element (like `aria-label`, `data-*` attributes).
-
-```html
-<ejs-numerictextbox id="numericTextBox" value="10" 
-    aria-label="Enter quantity"
-    data-testid="quantity-input">
-</ejs-numerictextbox>
-```
+| Property | Tag Helper Attr | Type | Default | Description |
+|----------|-----------------|------|---------|-------------|
+| `AllowMouseWheel` | `allowMouseWheel` | `bool` | `true` | Gets or sets a value indicating whether the mouse wheel interaction is enabled for incrementing or decrementing the value |
+| `AppendTemplate` | `appendTemplate` | `string` | `null` | Specifies the HTML template string for custom elements to append to the NumericTextBox input. Supports icons, buttons, or any valid HTML. Updates dynamically on property change |
+| `Blur` | `blur` | `string` (JS function) | `null` | Triggers when the NumericTextBox loses focus |
+| `Change` | `change` | `string` (JS function) | `null` | Triggers when the value of the NumericTextBox changes. Triggered on: changing value via keyboard then focusing out, scrolling within the input, using the spin buttons, or programmatic value changes |
+| `Created` | `created` | `string` (JS function) | `null` | Triggers when the NumericTextBox component is created |
+| `CssClass` | `cssClass` | `string` | `null` | Gets or Sets the CSS classes to root element of the NumericTextBox which helps to customize the complete UI styles |
+| `Currency` | `currency` | `string` | `null` | Specifies the currency code to use in currency formatting. Possible values are the ISO 4217 currency codes, such as `USD`, `EUR` |
+| `Decimals` | `decimals` | `double` | `Double.NaN` | Specifies the number precision applied to the textbox value when the NumericTextBox is focused |
+| `Destroyed` | `destroyed` | `string` (JS function) | `null` | Triggers when the NumericTextBox component is destroyed |
+| `Enabled` | `enabled` | `bool` | `true` | Sets a value that enables or disables the NumericTextBox control |
+| `EnablePersistence` | `enablePersistence` | `bool` | `false` | Enable or disable persisting NumericTextBox state between page reloads. If enabled, the `value` state will be persisted |
+| `EnableRtl` | `enableRtl` | `bool` | `false` | Enable or disable rendering component in right to left direction |
+| `FloatLabelType` | `floatLabelType` | `FloatLabelType` | `FloatLabelType.Never` | Acts as a label and floats above the NumericTextBox. Possible values: `Never`, `Always`, `Auto` |
+| `Focus` | `focus` | `string` (JS function) | `null` | Triggers when the NumericTextBox gets focus |
+| `For` | `for` | `ModelExpression` | — | Overrides `Syncfusion.EJ2.EJTagHelper.For` |
+| `Format` | `format` | `string` | `"n2"` | Specifies the number format that indicates the display format for the value of the NumericTextBox |
+| `HtmlAttributes` | `htmlAttributes` | `object` | `null` | Add additional HTML attributes (e.g., disabled, value). If both property and equivalent HTML attribute are configured, the component considers the property value |
+| `Locale` | `locale` | `string` | `""` | Overrides the global culture and localization value. Default global culture is `'en-US'` |
+| `Max` | `max` | `object` | `null` | Specifies a maximum value that is allowed a user can enter |
+| `Min` | `min` | `object` | `null` | Specifies a minimum value that is allowed a user can enter |
+| `Placeholder` | `placeholder` | `string` | `null` | Gets or sets the string shown as a hint/placeholder when the NumericTextBox is empty |
+| `PrependTemplate` | `prependTemplate` | `string` | `null` | Specifies the HTML template string for custom elements to prepend to the NumericTextBox input. Supports icons, buttons, or any valid HTML. Updates dynamically on property change |
+| `Readonly` | `readonly` | `bool` | `false` | Sets a value that enables or disables the readonly state on the NumericTextBox. If `true`, NumericTextBox will not allow input |
+| `ShowClearButton` | `showClearButton` | `bool` | `false` | Specifies whether to show or hide the clear icon |
+| `ShowSpinButton` | `showSpinButton` | `bool` | `true` | Specifies whether the up and down spin buttons should be displayed in NumericTextBox |
+| `Step` | `step` | `double` | `1` | Specifies the incremental or decremental step size for the NumericTextBox |
+| `StrictMode` | `strictMode` | `bool` | `true` | Specifies a value that indicates whether the NumericTextBox control allows the value for the specified range. If `true`, the input value will be restricted between min and max |
+| `ValidateDecimalOnType` | `validateDecimalOnType` | `bool` | `false` | Specifies whether the decimals length should be restricted during typing |
+| `Value` | `value` | `object` | `null` | Sets the value of the NumericTextBox |
+| `Width` | `width` | `string` | `null` | Specifies the width of the NumericTextBox |
 
 ---
 
 ## Events
 
-Events are handled through the `<e-events>` child element:
+> The official `Syncfusion.EJ2.Inputs.NumericTextBox` page documents events as tag-helper string properties. Use the property name as a tag helper attribute with a JavaScript function name as the value.
 
-### change
+| Event | Tag Helper Attr | Description |
+|-------|-----------------|-------------|
+| `Blur` | `blur` | Triggers when the NumericTextBox loses focus |
+| `Change` | `change` | Triggers when the value of the NumericTextBox changes (keyboard, spin buttons, programmatic) |
+| `Created` | `created` | Triggers when the NumericTextBox component is created |
+| `Destroyed` | `destroyed` | Triggers when the NumericTextBox component is destroyed |
+| `Focus` | `focus` | Triggers when the NumericTextBox gets focus |
 
-Fires when the value changes (on blur or when using spinner buttons).
+### Event Usage Example
 
 ```html
-<ejs-numerictextbox id="numericTextBox" value="10">
-    <e-events change="onChange"></e-events>
+<ejs-numerictextbox id="numericTextBox" value="10"
+                    change="onChange" focus="onFocus" blur="onBlur" created="onCreated">
 </ejs-numerictextbox>
 
 <script>
-function onChange(args) {
-    console.log('New value:', args.value);
-}
-</script>
-```
-
-### focus
-
-Fires when the NumericTextBox receives focus.
-
-```html
-<ejs-numerictextbox id="numericTextBox" value="10">
-    <e-events focus="onFocus"></e-events>
-</ejs-numerictextbox>
-
-<script>
-function onFocus(args) {
-    console.log('NumericTextBox focused');
-}
-</script>
-```
-
-### blur
-
-Fires when the NumericTextBox loses focus.
-
-```html
-<ejs-numerictextbox id="numericTextBox" value="10">
-    <e-events blur="onBlur"></e-events>
-</ejs-numerictextbox>
-
-<script>
-function onBlur(args) {
-    console.log('NumericTextBox blurred, value:', args.value);
-}
+    function onChange(args) {
+        console.log('New value:', args.value);
+    }
+    function onFocus(args) {
+        console.log('NumericTextBox focused');
+    }
+    function onBlur(args) {
+        console.log('NumericTextBox blurred, value:', args.value);
+    }
+    function onCreated() {
+        console.log('NumericTextBox created');
+    }
 </script>
 ```
 
 ---
 
-## Complete Example
+## Methods
 
+> The official `Syncfusion.EJ2.Inputs.NumericTextBox` API page does not document a public Methods section. Component instance methods can be invoked via the underlying EJ2 widget reference (e.g. `document.getElementById('id').ej2_instances[0]`). For guaranteed behavior, prefer the documented properties and events above.
+
+---
+
+## Examples
+
+### Currency
 ```html
-<!-- Views/Home/Index.cshtml -->
-<div style="padding: 20px; max-width: 600px;">
-    <h2>Complete NumericTextBox Example</h2>
+<ejs-numerictextbox id="currency" value="99.99" format="c2" currency="USD">
+</ejs-numerictextbox>
+```
 
-    <div style="margin-bottom: 20px;">
-        <label for="productPrice">Product Price (USD):</label>
-        <ejs-numerictextbox id="productPrice" 
-            value="99.99" 
-            format="c2" 
-            currency="USD"
-            min="0" 
-            max="10000"
-            decimals="2"
-            strict-mode="true"
-            placeholder="Enter price">
-            <e-events change="onPriceChange" blur="onPriceBlur"></e-events>
-        </ejs-numerictextbox>
-        <p id="priceDisplay"></p>
-    </div>
+### Number with thousand separator
+```html
+<ejs-numerictextbox id="number" value="1234.56" format="n2">
+</ejs-numerictextbox>
+```
 
-    <div style="margin-bottom: 20px;">
-        <label for="quantity">Quantity:</label>
-        <ejs-numerictextbox id="quantity" 
-            value="1" 
-            min="1" 
-            max="100"
-            step="1"
-            strict-mode="true">
-            <e-events change="onQuantityChange"></e-events>
-        </ejs-numerictextbox>
-    </div>
+### Percentage
+```html
+<ejs-numerictextbox id="percentage" value="0.5" format="p">
+</ejs-numerictextbox>
+```
 
-    <button onclick="submitForm()">Submit Order</button>
-</div>
+### Strict mode with range
+```html
+<ejs-numerictextbox id="strict" value="50" min="0" max="100" strictMode="true">
+</ejs-numerictextbox>
+```
 
-@section scripts {
-    <ejs-scripts></ejs-scripts>
-    <script>
-        function onPriceChange(args) {
-            console.log('Price changed to:', args.value);
-            document.getElementById('priceDisplay').textContent = 'Price: ' + args.value;
-        }
-
-        function onPriceBlur(args) {
-            console.log('Price finalized:', args.value);
-        }
-
-        function onQuantityChange(args) {
-            console.log('Quantity changed to:', args.value);
-        }
-
-        function submitForm() {
-            const price = ej.base.getValue('#productPrice').ej2_instances[0].value;
-            const quantity = ej.base.getValue('#quantity').ej2_instances[0].value;
-            console.log('Submitting: Price =', price, ', Quantity =', quantity);
-        }
-    </script>
-}
+### With spinner buttons
+```html
+<ejs-numerictextbox id="withSpinner" value="10" step="5" showSpinButton="true">
+</ejs-numerictextbox>
 ```
 
 ---

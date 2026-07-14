@@ -88,7 +88,7 @@ Install-Package Syncfusion.EJ2.AspNet.Core
 
 **5. Render the Button:**
 ```cshtml
-<ejs-button id="btn" cssClass="e-primary">Click Me</ejs-button>
+<ejs-button id="btn" cssClass="e-primary" content="Click Me"></ejs-button>
 ```
 
 ---
@@ -97,12 +97,12 @@ Install-Package Syncfusion.EJ2.AspNet.Core
 
 #### Primary Action Button
 ```cshtml
-<ejs-button id="submit" cssClass="e-primary" type="submit">Save Changes</ejs-button>
+<ejs-button id="submit" cssClass="e-primary" type="submit" content="Save Changes"></ejs-button>
 ```
 
 #### Danger Action Button
 ```cshtml
-<ejs-button id="delete" cssClass="e-danger" onclick="confirmDelete()">Delete</ejs-button>
+<ejs-button id="delete" cssClass="e-danger" onclick="confirmDelete()" content="Delete"></ejs-button>
 ```
 
 #### Icon Button
@@ -112,7 +112,7 @@ Install-Package Syncfusion.EJ2.AspNet.Core
 
 #### Disabled Button
 ```cshtml
-<ejs-button id="btn" disabled="true">Cannot Click</ejs-button>
+<ejs-button id="btn" disabled="true" content="Cannot Click"></ejs-button>
 ```
 
 #### Form Submission
@@ -192,9 +192,9 @@ Install-Package Syncfusion.EJ2.AspNet.Core
 **5. Render the ButtonGroup:**
 ```cshtml
 <div class="e-btn-group">
-    <ejs-button id="btn1">HTML</ejs-button>
-    <ejs-button id="btn2">CSS</ejs-button>
-    <ejs-button id="btn3">JavaScript</ejs-button>
+    <ejs-button id="btn1" content="HTML"></ejs-button>
+    <ejs-button id="btn2" content="CSS"></ejs-button>
+    <ejs-button id="btn3" content="JavaScript"></ejs-button>
 </div>
 ```
 
@@ -205,18 +205,18 @@ Install-Package Syncfusion.EJ2.AspNet.Core
 #### Vertical ButtonGroup
 ```cshtml
 <div class="e-btn-group e-vertical">
-    <ejs-button id="btn1">Top</ejs-button>
-    <ejs-button id="btn2">Middle</ejs-button>
-    <ejs-button id="btn3">Bottom</ejs-button>
+    <ejs-button id="btn1" content="Top"></ejs-button>
+    <ejs-button id="btn2" content="Middle"></ejs-button>
+    <ejs-button id="btn3" content="Bottom"></ejs-button>
 </div>
 ```
 
 #### Segmented Control
 ```cshtml
 <div class="e-btn-group">
-    <ejs-button id="left" cssClass="e-outline">Left</ejs-button>
-    <ejs-button id="center" cssClass="e-outline">Center</ejs-button>
-    <ejs-button id="right" cssClass="e-outline">Right</ejs-button>
+    <ejs-button id="left" cssClass="e-outline" content="Left"></ejs-button>
+    <ejs-button id="center" cssClass="e-outline" content="Center"></ejs-button>
+    <ejs-button id="right" cssClass="e-outline" content="Right"></ejs-button>
 </div>
 ```
 
@@ -328,7 +328,7 @@ Install-Package Syncfusion.EJ2.AspNet.Core
 ```cshtml
 <form method="post">
     <ejs-checkbox id="terms" name="agreeTerms" value="agreed" label="I agree to terms"></ejs-checkbox>
-    <ejs-button id="submit" type="submit" cssClass="e-primary">Submit</ejs-button>
+    <ejs-button id="submit" type="submit" cssClass="e-primary" content="Submit"></ejs-button>
 </form>
 ```
 
@@ -439,7 +439,7 @@ Install-Package Syncfusion.EJ2.AspNet.Core
     <ejs-radiobutton id="r1" name="choice" value="a" label="Option A"></ejs-radiobutton>
     <ejs-radiobutton id="r2" name="choice" value="b" label="Option B" checked="true"></ejs-radiobutton>
     <ejs-radiobutton id="r3" name="choice" value="c" label="Option C"></ejs-radiobutton>
-    <ejs-button id="submit" type="submit" cssClass="e-primary">Submit</ejs-button>
+    <ejs-button id="submit" type="submit" cssClass="e-primary" content="Submit"></ejs-button>
 </form>
 ```
 
@@ -802,10 +802,19 @@ The **Speed Dial** component is a floating action button that expands into a men
 ```csharp
 public ActionResult Index()
 {
-    List<object> items = new List<object>();
-    items.Add(new { text = "Edit", iconCss = "e-icons e-edit-icon" });
-    items.Add(new { text = "Delete", iconCss = "e-icons e-delete-icon" });
-    ViewBag.items = items;
+    List<SpeedDialItem> items = new List<SpeedDialItem>();
+    items.Add(new SpeedDialItem
+    {
+        Text = "Cut"
+    });
+    items.Add(new SpeedDialItem
+    {
+        Text = "Copy"
+    });
+    items.Add(new SpeedDialItem
+    {
+        Text = "Paste"
+    });
     return View();
 }
 ```

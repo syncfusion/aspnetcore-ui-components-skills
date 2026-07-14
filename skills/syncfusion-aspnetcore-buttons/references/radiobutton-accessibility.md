@@ -8,11 +8,8 @@ Always use proper `<input type="radio">` elements with labels:
 ```cshtml
 <fieldset>
     <legend>Choose Option</legend>
-    <input type="radio" id="opt1" name="choice" value="1" />
-    <label for="opt1">Option 1</label>
-    
-    <input type="radio" id="opt2" name="choice" value="2" />
-    <label for="opt2">Option 2</label>
+    <ejs-radiobutton id="opt1" name="choice" value="1" label="Option 1"></ejs-radiobutton>
+    <ejs-radiobutton id="opt2" name="choice" value="2" label="Option 2"></ejs-radiobutton>
 </fieldset>
 ```
 
@@ -31,20 +28,17 @@ Group radio buttons with `<fieldset>` and provide context with `<legend>`:
 ```cshtml
 <fieldset>
     <legend>Shipping Method</legend>
-    
+
     <div>
-        <input type="radio" id="standard" name="shipping" value="standard" />
-        <label for="standard">Standard (5-7 business days)</label>
+        <ejs-radiobutton id="standard" name="shipping" value="standard" label="Standard (5-7 business days)"></ejs-radiobutton>
     </div>
-    
+
     <div>
-        <input type="radio" id="express" name="shipping" value="express" />
-        <label for="express">Express (2-3 business days)</label>
+        <ejs-radiobutton id="express" name="shipping" value="express" label="Express (2-3 business days)"></ejs-radiobutton>
     </div>
-    
+
     <div>
-        <input type="radio" id="overnight" name="shipping" value="overnight" />
-        <label for="overnight">Overnight</label>
+        <ejs-radiobutton id="overnight" name="shipping" value="overnight" label="Overnight"></ejs-radiobutton>
     </div>
 </fieldset>
 ```
@@ -57,25 +51,23 @@ Group radio buttons with `<fieldset>` and provide context with `<legend>`:
 
 ```cshtml
 <div role="group" aria-label="Sort Direction">
-    <input type="radio" id="asc" name="sort" value="asc" />
-    <label for="asc">Ascending</label>
-    
-    <input type="radio" id="desc" name="sort" value="desc" />
-    <label for="desc">Descending</label>
+    <ejs-radiobutton id="asc" name="sort" value="asc" label="Ascending" htmlAttributes="@new { aria_label = \"Ascending\" }"></ejs-radiobutton>
+
+    <ejs-radiobutton id="desc" name="sort" value="desc" label="Descending" htmlAttributes="@new { aria_label = \"Descending\" }"></ejs-radiobutton>
 </div>
 ```
 
 ### aria-disabled
 
 ```cshtml
-<input 
-    type="radio" 
+<ejs-radiobutton 
     id="old" 
     name="option" 
     value="old" 
-    disabled 
-    aria-disabled="true" />
-<label for="old">Disabled Option</label>
+    disabled="true" 
+    htmlAttributes="@new { aria_disabled = \"true\" }"
+    label="Disabled Option">
+</ejs-radiobutton>
 ```
 
 ---
@@ -93,54 +85,36 @@ Radio button groups support:
 
 ```cshtml
 <div role="group" aria-label="View Options">
-    <input 
-        type="radio" 
-        id="list" 
-        name="view" 
-        value="list" 
-        checked 
-        tabindex="0" />
-    <label for="list">List View</label>
-    
-    <input type="radio" id="grid" name="view" value="grid" tabindex="-1" />
-    <label for="grid">Grid View</label>
-    
-    <input type="radio" id="table" name="view" value="table" tabindex="-1" />
-    <label for="table">Table View</label>
+    <ejs-radiobutton id="list" name="view" value="list" checked="true" tabindex="0" label="List View"></ejs-radiobutton>
+
+    <ejs-radiobutton id="grid" name="view" value="grid" tabindex="-1" label="Grid View"></ejs-radiobutton>
+
+    <ejs-radiobutton id="table" name="view" value="table" tabindex="-1" label="Table View"></ejs-radiobutton>
 </div>
 
 <style>
     input[type="radio"]:focus {
         outline: 2px solid #0066cc;
         outline-offset: 2px;
-    }
-</style>
-```
+    ```cshtml
+    <fieldset>
+        <legend>Payment Method</legend>
 
----
+        <div class="radio-group">
+            <ejs-radiobutton id="credit" name="payment" value="credit" checked="true" label="Credit Card" htmlAttributes="@new { aria_describedby = \"creditDesc\" }"></ejs-radiobutton>
+            <span id="creditDesc" class="radio-description">Visa, Mastercard, or Amex</span>
+        </div>
 
-## Complete Accessible Example
+        <div class="radio-group">
+            <ejs-radiobutton id="paypal" name="payment" value="paypal" label="PayPal" htmlAttributes="@new { aria_describedby = \"paypalDesc\" }"></ejs-radiobutton>
+            <span id="paypalDesc" class="radio-description">Pay securely with your PayPal account</span>
+        </div>
 
-```cshtml
-<fieldset>
-    <legend>Payment Method</legend>
-    
-    <div class="radio-group">
-        <input type="radio" id="credit" name="payment" value="credit" checked />
-        <label for="credit">
-            <span class="radio-label">Credit Card</span>
-            <span class="radio-description">Visa, Mastercard, or Amex</span>
-        </label>
-    </div>
-    
-    <div class="radio-group">
-        <input type="radio" id="paypal" name="payment" value="paypal" />
-        <label for="paypal">
-            <span class="radio-label">PayPal</span>
-            <span class="radio-description">Pay securely with your PayPal account</span>
-        </label>
-    </div>
-    
+        <div class="radio-group">
+            <ejs-radiobutton id="bank" name="payment" value="bank" label="Bank Transfer" htmlAttributes="@new { aria_describedby = \"bankDesc\" }"></ejs-radiobutton>
+            <span id="bankDesc" class="radio-description">Direct bank account transfer</span>
+        </div>
+    </fieldset>
     <div class="radio-group">
         <input type="radio" id="bank" name="payment" value="bank" />
         <label for="bank">

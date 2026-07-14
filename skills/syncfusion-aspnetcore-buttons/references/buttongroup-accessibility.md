@@ -71,9 +71,9 @@ Ensure proper keyboard support:
 
 ```cshtml
 <div class="e-btn-group">
-    <ejs-button id="btn1" tabindex="0">First</ejs-button>
-    <ejs-button id="btn2">Second</ejs-button>
-    <ejs-button id="btn3">Third</ejs-button>
+    <ejs-button id="btn1" tabindex="0" content="First"></ejs-button>
+    <ejs-button id="btn2" content="Second"></ejs-button>
+    <ejs-button id="btn3" content="Third"></ejs-button>
 </div>
 
 <style>

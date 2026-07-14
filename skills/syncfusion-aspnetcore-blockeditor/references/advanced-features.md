@@ -2,27 +2,6 @@
 
 ## Paste Cleanup and Sanitization
 
-### Configure Allowed Styles
-
-Specify which CSS styles are preserved when content is pasted:
-
-```razor
-@{
-    var allowedStyles = new string[] { "font-weight", "font-style", "text-decoration", "text-transform" };
-}
-
-<ejs-blockeditor id="block-editor">
-    <e-blockeditor-pastesettings allowedStyles="@allowedStyles">
-    </e-blockeditor-pastesettings>
-</ejs-blockeditor>
-```
-
-By default, the following styles are allowed:
-- `font-weight`
-- `font-style`
-- `text-decoration`
-- `text-transform`
-
 ### Set Denied Tags
 
 Remove specific HTML tags from pasted content:
@@ -91,12 +70,10 @@ Handle paste operations with events:
 ```csharp
 public IActionResult Index()
 {
-    var allowedStyles = new string[] { "text-decoration", "font-weight" };
     var deniedTags = new string[] { "script", "iframe" };
     
     var pasteSettings = new PasteCleanupSettings
     {
-        AllowedStyles = allowedStyles,
         DeniedTags = deniedTags,
         KeepFormat = true,
         PlainText = false
@@ -398,13 +375,7 @@ public IActionResult SecureEditor()
         "object", "style", "link", "meta"
     };
     
-    var allowedStyles = new string[] 
-    {
-        "font-weight", "font-style", "text-decoration"
-    };
-    
     ViewBag.DeniedTags = deniedTags;
-    ViewBag.AllowedStyles = allowedStyles;
     
     return View();
 }
@@ -415,7 +386,6 @@ public IActionResult SecureEditor()
 ```razor
 @{
     var deniedTags = ViewBag.DeniedTags as string[];
-    var allowedStyles = ViewBag.AllowedStyles as string[];
 }
 
 <div id="secure-editor-container">
@@ -428,7 +398,6 @@ public IActionResult SecureEditor()
                      height="400px">
         <e-blockeditor-pastesettings 
             deniedTags="@deniedTags"
-            allowedStyles="@allowedStyles"
             keepFormat="true">
         </e-blockeditor-pastesettings>
     </ejs-blockeditor>
@@ -486,7 +455,6 @@ Test the sanitizer with potentially harmful content:
 
 1. **Always keep `enableHtmlSanitizer` enabled** unless you have a specific, well-understood reason to disable it
 2. **Use `deniedTags`** to block additional tags specific to your security requirements
-3. **Limit `allowedStyles`** to only the CSS properties you need
 4. **Validate file uploads** using `beforeFileUpload` event
 5. **Implement server-side validation** as a second layer of defense
 6. **Sanitize data before storage** even with client-side protection
@@ -656,7 +624,6 @@ public IActionResult Index()
                      undoRedoStack="50"
                      blocks="@ViewBag.BlocksData">
         <e-blockeditor-pastesettings 
-            allowedStyles="@(new string[] { "font-weight", "font-style", "text-decoration" })"
             deniedTags="@(new string[] { "script", "iframe", "form" })"
             keepFormat="true">
         </e-blockeditor-pastesettings>

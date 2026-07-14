@@ -53,12 +53,8 @@ public ActionResult Index()
 ```html
 <ejs-combobox id="emp-combo" 
     dataSource="ViewBag.EmployeeData"
-    fields="@(new { 
-        text = "Name", 
-        value = "EmployeeId",
-        groupBy = "Department"
-    })"
     placeholder="Select an employee">
+    <e-combobox-fields text="Name" value="EmployeeId" groupBy="Department"></e-combobox-fields>
 </ejs-combobox>
 ```
 
@@ -97,12 +93,8 @@ public ActionResult Index()
 **View (Razor):**
 ```html
 <ejs-combobox id="fruit-combo"
-    dataSource="ViewBag.FruitData"
-    fields="@(new { 
-        text = "Name", 
-        value = "Name",
-        groupBy = "Category"
-    })">
+    dataSource="ViewBag.FruitData">
+    <e-combobox-fields text="Name" value="Name" groupBy="Category"></e-combobox-fields>
 </ejs-combobox>
 ```
 
@@ -142,15 +134,15 @@ public ActionResult Index()
 <!-- Ascending sort -->
 <ejs-combobox id="emp-asc"
     dataSource="ViewBag.SortedAscending"
-    fields="@(new { text = "Name", value = "EmployeeId" })"
     placeholder="Sorted A → Z">
+    <e-combobox-fields text="Name" value="EmployeeId"></e-combobox-fields>
 </ejs-combobox>
 
 <!-- Descending sort -->
 <ejs-combobox id="emp-desc"
     dataSource="ViewBag.SortedDescending"
-    fields="@(new { text = "Name", value = "EmployeeId" })"
     placeholder="Sorted Z → A">
+    <e-combobox-fields text="Name" value="EmployeeId"></e-combobox-fields>
 </ejs-combobox>
 ```
 
@@ -197,12 +189,8 @@ public ActionResult Index()
 ```html
 <ejs-combobox id="emp-combo"
     dataSource="ViewBag.EmployeeData"
-    fields="@(new { 
-        text = "Name", 
-        value = "EmployeeId",
-        groupBy = "Department"
-    })"
     placeholder="Grouped and sorted">
+    <e-combobox-fields text="Name" value="EmployeeId" groupBy="Department"></e-combobox-fields>
 </ejs-combobox>
 ```
 
@@ -216,13 +204,9 @@ public ActionResult Index()
 ```html
 <ejs-combobox id="emp-combo"
     dataSource="ViewBag.EmployeeData"
-    fields="@(new { 
-        text = "Name", 
-        value = "EmployeeId",
-        groupBy = "Department"
-    })"
     groupTemplate="#groupTemplate"
     placeholder="Select employee">
+    <e-combobox-fields text="Name" value="EmployeeId" groupBy="Department"></e-combobox-fields>
 </ejs-combobox>
 
 <script id="groupTemplate" type="text/x-template">

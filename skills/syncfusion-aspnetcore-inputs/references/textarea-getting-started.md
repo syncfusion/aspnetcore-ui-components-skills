@@ -134,14 +134,14 @@ Create a complete page with TextArea examples in `Views/Home/Index.cshtml`:
     <!-- TextArea with Max Length -->
     <div style="margin-bottom: 20px;">
         <label for="maxLength">Max Length (200 chars):</label>
-        <ejs-textarea id="maxLength" maxlength="200" placeholder="Maximum 200 characters">
+        <ejs-textarea id="maxLength" maxLength="200" placeholder="Maximum 200 characters">
         </ejs-textarea>
     </div>
 
     <!-- TextArea with Floating Label -->
     <div style="margin-bottom: 20px;">
         <label for="floating">With Floating Label:</label>
-        <ejs-textarea id="floating" placeholder="Enter your feedback" float-label-type="Auto">
+        <ejs-textarea id="floating" placeholder="Enter your feedback" floatLabelType="Auto">
         </ejs-textarea>
     </div>
 

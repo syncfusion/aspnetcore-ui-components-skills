@@ -1,9 +1,11 @@
 # Getting Started with ListBox
 
 ## Table of Contents
-- [ASP.NET Core Application Setup](#aspnet-core-application-setup)
-- [Installing Syncfusion Packages](#installing-syncfusion-packages)
-- [TagHelper Registration](#taghelper-registration)
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+- [Setup TagHelpers](#setup-taghelpers)
+- [Add Styles and Scripts](#add-styles-and-scripts)
+- [Register Script Manager](#register-script-manager)
 - [Creating Your First ListBox](#creating-your-first-listbox)
 - [Running the Application](#running-the-application)
 - [Troubleshooting](#troubleshooting)
@@ -28,77 +30,89 @@ Or create using Visual Studio template:
 
 ---
 
-## Installing Syncfusion Packages
+## Prerequisites
 
-Install the Syncfusion ASP.NET Core package via NuGet:
+- ASP.NET Core 6.0+ project (Razor Pages or MVC)
+- Visual Studio 2022+ or VS Code
 
-**Package Manager Console:**
+System requirements: https://ej2.syncfusion.com/aspnetcore/documentation/system-requirements
 
-```powershell
+---
+
+## Installation
+
+Install the NuGet package via Package Manager Console:
+
+```bash
 Install-Package Syncfusion.EJ2.AspNet.Core
 ```
 
-**Or using .NET CLI:**
+Or via .NET CLI:
 
 ```bash
 dotnet add package Syncfusion.EJ2.AspNet.Core
 ```
 
-**Verify Installation:**
+---
 
-Check your `.csproj` file:
+## Setup TagHelpers
 
-```xml
-<ItemGroup>
-    <PackageReference Include="Syncfusion.EJ2.AspNet.Core" Version="*" />
-</ItemGroup>
+Open `~/Pages/_ViewImports.cshtml` (Razor Pages) or `~/Views/_ViewImports.cshtml` (MVC) and add:
+
+```cshtml
+@addTagHelper *, Syncfusion.EJ2
 ```
 
 ---
 
-## TagHelper Registration
+## Add Styles and Scripts (Local Hosting Recommended)
 
-### Register Service in Program.cs
+**⚠️ SECURITY:** For production, host vendor scripts locally from the NuGet package instead of using CDN to mitigate supply chain risks (W012).
 
-Add Syncfusion services:
+### Option A: Local Hosting (RECOMMENDED) ✅
 
-```csharp
-var builder = WebApplication.CreateBuilder(args);
+In `~/Pages/Shared/_Layout.cshtml` (or `~/Views/Shared/_Layout.cshtml`), add inside `<head>`:
 
-// Add services to the container
-builder.Services.AddControllersWithViews();
-
-// ✅ Add Syncfusion services
-builder.Services.AddSyncfusionEJ2();
-
-var app = builder.Build();
-
-// Configure the HTTP request pipeline
-if (!app.Environment.IsDevelopment())
-{
-    app.UseExceptionHandler("/Home/Error");
-}
-
-app.UseStaticFiles();
-app.UseRouting();
-app.UseAuthorization();
-
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
-
-app.Run();
+```html
+<head>
+    <!-- ✅ Serve from local NuGet package (safest) -->
+    <link rel="stylesheet" href="~/lib/ej2/fluent2.css" />
+</head>
 ```
 
-### Add TagHelper Reference
+### Option B: CDN with Subresource Integrity (SRI) ⚠️
 
-Edit `Views/_ViewImports.cshtml`:
+If CDN is mandatory, use SRI hashes + HTTPS:
 
-```cshtml
-@using MyListBoxApp
-@using MyListBoxApp.Models
-@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
-@addTagHelper *, Syncfusion.EJ2  <!-- ✅ Add this line -->
+```html
+<head>
+    <!-- ⚠️ Pin version and add SRI hash for integrity verification -->
+    <link rel="stylesheet" 
+          href="https://cdn.syncfusion.com/ej2/{{ site.ej2version }}/fluent2.css"
+          integrity="sha384-[GET_ACTUAL_HASH_FROM_CDN]"
+          crossorigin="anonymous" />
+    <script src="https://cdn.syncfusion.com/ej2/{{ site.ej2version }}/dist/ej2.min.js"
+            integrity="sha384-[GET_ACTUAL_HASH_FROM_CDN]"
+            crossorigin="anonymous"></script>
+</head>
+```
+
+**Get SRI hashes from:** https://www.srihash.org/ or Syncfusion CDN documentation.
+
+> **Tip:** Replace `21.1.37` with your installed package version. Check current version at nuget.org.
+
+---
+
+## Register Script Manager
+
+At the end of `<body>` in `_Layout.cshtml`, register the script manager:
+
+```html
+<body>
+    @RenderBody()
+    <!-- Required: Syncfusion script manager -->
+    <ejs-scripts></ejs-scripts>
+</body>
 ```
 
 ---
@@ -232,7 +246,7 @@ The browser displays your ListBox component.
 | Issue | Fix |
 |-------|-----|
 | ListBox component not rendering | Verify `@addTagHelper *, Syncfusion.EJ2` in `_ViewImports.cshtml` |
-| Script errors in console | Ensure `builder.Services.AddSyncfusionEJ2();` in `Program.cs` |
+| Script errors in console | Ensure `<ejs-scripts></ejs-scripts>` is included in `_Layout.cshtml` |
 | No data displays in list | Confirm `ViewBag.data` is populated and `dataSource` binding is correct |
 | Events not firing | Check event handler function name matches `change="onListBoxChange"` attribute |
 | Styling issues | Verify CSS imports are present in `_Layout.cshtml` |

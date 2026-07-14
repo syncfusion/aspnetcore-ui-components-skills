@@ -59,7 +59,7 @@ At the end of `<body>`:
 ```cshtml
 <ejs-fab 
     id="fab" 
-    iconCss="e-icons e-plus-icon"
+    iconCss="e-icons e-plus"
     cssClass="e-primary">
 </ejs-fab>
 ```

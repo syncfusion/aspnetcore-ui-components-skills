@@ -82,7 +82,6 @@ When a visible label isn't available:
 **Razor View (CSHTML):**
 ```html
 <ejs-textarea id="search-description" 
-              aria-label="Search description"
               placeholder="Search">
 </ejs-textarea>
 ```
@@ -96,7 +95,6 @@ Connect to a heading or other element:
 <h2 id="form-title">Contact Form</h2>
 
 <ejs-textarea id="message" 
-              aria-labelledby="form-title"
               placeholder="Your message"
               rows="5">
 </ejs-textarea>
@@ -112,8 +110,6 @@ Connect to a heading or other element:
 </label>
 
 <ejs-textarea id="required-field" 
-              required="true"
-              aria-required="true"
               placeholder="Please provide feedback"
               rows="4">
 </ejs-textarea>
@@ -125,9 +121,6 @@ Connect to a heading or other element:
 ```html
 <label for="email-content">Email Content</label>
 <ejs-textarea id="email-content" 
-              required="true"
-              aria-required="true"
-              aria-describedby="email-error"
               rows="5">
 </ejs-textarea>
 
@@ -259,9 +252,6 @@ ej2-textarea:focus-within {
 <ejs-textarea aria-describedby="feedback-hint"></ejs-textarea>
 <span id="feedback-hint">Describe your experience</span>
 
-<!-- aria-required: Mark as required -->
-<ejs-textarea aria-required="true"></ejs-textarea>
-
 <!-- aria-invalid: Mark as invalid -->
 <ejs-textarea aria-invalid="true"></ejs-textarea>
 
@@ -299,9 +289,7 @@ ej2-textarea:focus-within {
                     </label>
                     <input type="text" id="name" name="name" 
                            class="form-control"
-                           required
-                           aria-required="true"
-                           aria-describedby="name-help" />
+                           required/>
                     <small id="name-help" class="form-text text-muted">
                         Enter your full name
                     </small>
@@ -315,9 +303,7 @@ ej2-textarea:focus-within {
                     </label>
                     <input type="email" id="email" name="email" 
                            class="form-control"
-                           required
-                           aria-required="true"
-                           aria-describedby="email-help" />
+                           required/>
                     <small id="email-help" class="form-text text-muted">
                         We'll never share your email
                     </small>
@@ -332,8 +318,6 @@ ej2-textarea:focus-within {
                     <ejs-textarea id="subject" 
                                   name="subject"
                                   class="form-control"
-                                  required="true"
-                                  aria-required="true"
                                   aria-describedby="subject-help"
                                   placeholder="Briefly describe your feedback"
                                   rows="2"
@@ -353,9 +337,6 @@ ej2-textarea:focus-within {
                     <ejs-textarea id="feedback" 
                                   name="feedback"
                                   class="form-control"
-                                  required="true"
-                                  aria-required="true"
-                                  aria-describedby="feedback-help"
                                   placeholder="Please share your detailed feedback"
                                   rows="5"
                                   maxLength="1000">
@@ -430,9 +411,6 @@ ej2-textarea:focus-within {
     <div class="form-group mb-3">
         <label for="message">Message</label>
         <ejs-textarea id="message" 
-                      required="true"
-                      aria-required="true"
-                      aria-describedby="message-error"
                       placeholder="Your message"
                       rows="4">
         </ejs-textarea>

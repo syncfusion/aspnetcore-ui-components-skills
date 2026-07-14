@@ -7,6 +7,7 @@
   - [Setting File Type](#setting-file-type)
   - [Setting File Size](#setting-file-size)
   - [Setting Maximum Count](#setting-maximum-count)
+  - [Attachment Templates](#attachment-templates)
 - [Pre-loading Attached Files in Prompts](#pre-loading-attached-files-in-prompts)
 
 ## Enable Attachment
@@ -135,6 +136,52 @@ Restrict how many files can be attached at once using the `maximumCount` propert
     function onCreated() {
         assistObj = this;
     }
+    function onPromptRequest() {
+        setTimeout(function () {
+            var defaultResponse = 'For real-time prompt processing, connect the AI AssistView control to your preferred AI service, such as OpenAI or Azure Cognitive Services. Ensure you obtain the necessary API credentials to authenticate and enable seamless integration.';
+            assistObj.addPromptResponse(defaultResponse);
+        }, 2000);
+    }
+</script>
+```
+
+### Attachment Templates
+
+Control how attachments appear inside message bubbles after sending.
+
+```razor
+@using Syncfusion.EJ2.InteractiveChat
+
+<div class="aiassist-container" style="height: 350px; width: 650px;">
+    @Html.EJS().AIAssistView("aiAssistView")
+        .EnableAttachments(true)
+        .AttachmentSettings(new AIAssistViewAttachmentSettings()
+        {
+            SaveUrl = @Url.Content("https://services.syncfusion.com/aspnet/production/api/FileUploader/Save"),
+            RemoveUrl = @Url.Content("https://services.syncfusion.com/aspnet/production/api/FileUploader/Remove"),
+            AttachmentTemplate = "attachmentTemplate"
+        })
+        .PromptRequest("onPromptRequest")
+        .Created("onCreated")
+        .Render()
+</div>
+
+<script>
+    var assistObj;
+
+    function attachmentTemplate(context) {
+        return `
+            <div class="e-attached-file-temp">
+                <div class="attached-file-name">${context.selectedFile.name}</div>
+                <div class="attached-file-type">${context.selectedFile.type}</div>
+            </div>
+        `;
+    }
+
+    function onCreated() {
+        assistObj = this;
+    }
+
     function onPromptRequest() {
         setTimeout(function () {
             var defaultResponse = 'For real-time prompt processing, connect the AI AssistView control to your preferred AI service, such as OpenAI or Azure Cognitive Services. Ensure you obtain the necessary API credentials to authenticate and enable seamless integration.';

@@ -1,6 +1,6 @@
 ---
 name: syncfusion-aspnetcore-blockeditor
-description: Implement Syncfusion Block Editor control in ASP.NET Core applications using Razor Tag Helpers. Use this skill when working with Syncfusion Block Editor, EJ2 BlockEditor, ASP.NET Core block-based content editing, or <ejs-blockeditor> syntax. Covers block management, nested content structures, drag-and-drop functionality, content sanitization, installation, tag helper setup, block types, content manipulation, events, menus, and advanced features for creating rich block-based document editors.
+description: Implement Syncfusion Block Editor control in ASP.NET Core applications using Razor Tag Helpers. Use this skill when working with Syncfusion Block Editor, EJ2 BlockEditor, ASP.NET Core block-based content editing, or <ejs-blockeditor> syntax and collaborative editing features, real-time multi-user editing, Yjs integration, user presence and remote cursors, document version history. Covers block management, nested content structures, drag-and-drop functionality, content sanitization, installation, tag helper setup, block types, content manipulation, events, menus, and advanced features for creating rich block-based document editors.
 metadata:
   author: "Syncfusion Inc"
   version: "34.1.29"
@@ -18,12 +18,13 @@ The Syncfusion Block Editor is a versatile, block-based content editor that allo
 - **Nested Structures**: Support for collapsible headings, quotes, and callouts with child blocks
 - **Rich Editor Menus**: Slash commands, context menus, inline toolbars, and block action menus
 - **Drag-and-Drop**: Reorder blocks seamlessly with visual feedback
-- **Content Sanitization**: Built-in paste cleanup with configurable allowed styles and denied tags
+- **Content Sanitization**: Built-in paste cleanup with configurable denied tags
 - **Keyboard Shortcuts**: Comprehensive shortcuts for formatting, block creation, and management
 - **Undo/Redo**: Configurable undo/redo stack (default 30 actions)
 - **Globalization**: Multi-language support and RTL layout support
 - **Events**: Rich event system for monitoring user interactions and content changes
 - **Responsive Design**: Adaptive UI that works on desktop and mobile devices
+- **Collaborative Editing**: Real-time multi-user document editing with Yjs CRDT framework, remote cursor awareness, user presence tracking, and version history management
 
 ## Documentation and Navigation Guide
 
@@ -80,7 +81,7 @@ The Syncfusion Block Editor is a versatile, block-based content editor that allo
 
 ### Advanced Features
 📄 **Read:** [references/advanced-features.md](references/advanced-features.md)
-- Paste cleanup and content sanitization (allowed styles, denied tags)
+- Paste cleanup and content sanitization (denied tags)
 - Keep format and plain text modes
 - Undo/Redo functionality and stack configuration
 - Keyboard shortcuts and customization
@@ -88,6 +89,17 @@ The Syncfusion Block Editor is a versatile, block-based content editor that allo
 - XSS protection and HTML sanitizer
 - RTL (Right-to-Left) support
 - Globalization and multi-language localization
+
+### Collaborative Editing
+📄 **Read:** [references/collaborative-editing.md](references/collaborative-editing.md)
+- Real-time multi-user document editing with Yjs provider integration
+- Configuring collaboration adapters and providers (y-websocket, y-webrtc, Hocuspocus, Liveblocks, PartyKit)
+- User presence and remote cursor visualization with enableAwareness
+- Active user tracking and user configuration with avatarBgColor
+- Version history management with snapshots, restore, compare, export, and import operations
+- Snapshot lifecycle events (snapshotCreated, snapshotRestored)
+- Best practices for development and production deployments
+- Troubleshooting collaboration issues
 
 ## Quick Start Example
 
@@ -231,7 +243,6 @@ new BlockModel
 ```razor
 <ejs-blockeditor id="block-editor">
     <e-blockeditor-pastesettings 
-        allowedStyles="@(new string[] { "font-weight", "font-style", "text-decoration" })"
         deniedTags="@(new string[] { "script", "iframe", "form" })"
         keepFormat="true">
     </e-blockeditor-pastesettings>

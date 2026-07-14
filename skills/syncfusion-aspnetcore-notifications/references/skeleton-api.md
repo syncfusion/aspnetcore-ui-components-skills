@@ -19,7 +19,7 @@ Defines single/multiple classes (separated by space) to be used for customizatio
 
 - **Type:** `string`
 - **Default:** `""`
-- **Tag attribute:** `css-class`
+- **Tag attribute:** `cssClass`
 
 ### EnablePersistence
 Enable or disable persisting component's state between page reloads.
@@ -33,7 +33,7 @@ Enable or disable rendering component in right to left direction.
 
 - **Type:** `bool`
 - **Default:** `false`
-- **Tag attribute:** `enable-rtl`
+- **Tag attribute:** `enableRtl`
 
 ### Height
 Defines the height of the Skeleton. Height is not required when shape is `"Circle"` and `"Square"`.
@@ -75,7 +75,7 @@ Defines the animation effect of the Skeleton.
 
 - **Type:** `ShimmerEffect` (enum)
 - **Default:** `ShimmerEffect.Wave`
-- **Tag attribute:** `shimmer-effect`
+- **Tag attribute:** `shimmerEffect`
 - **Values:** `"Wave"` | `"Pulse"` | `"Fade"`
 
 ### Visible
@@ -101,11 +101,11 @@ Defines the width of the Skeleton. Width will be prioritized and used as dimensi
 | `Shape` | `shape` | `SkeletonType` enum |
 | `Width` | `width` | `string` |
 | `Height` | `height` | `string` |
-| `ShimmerEffect` | `shimmer-effect` | `ShimmerEffect` enum |
-| `CssClass` | `css-class` | `string` |
+| `ShimmerEffect` | `shimmerEffect` | `ShimmerEffect` enum |
+| `CssClass` | `cssClass` | `string` |
 | `Label` | `label` | `string` |
 | `Visible` | `visible` | `bool` |
-| `EnableRtl` | `enable-rtl` | `bool` |
+| `EnableRtl` | `enableRtl` | `bool` |
 | `EnablePersistence` | `enable-persistence` | `bool` |
 | `Locale` | `locale` | `string` |
 | `HtmlAttributes` | `html-attributes` | `object` |
@@ -125,7 +125,7 @@ Defines the `shape` attribute values:
 | `Rectangle` | Rectangular block |
 
 ### ShimmerEffect
-Defines the `shimmer-effect` attribute values:
+Defines the `shimmerEffect` attribute values:
 
 | Value | Description |
 |---|---|
@@ -143,11 +143,11 @@ Defines the `shimmer-effect` attribute values:
                shape="Rectangle"
                width="100%"
                height="200px"
-               shimmer-effect="Pulse"
-               css-class="my-card-skeleton"
+               shimmerEffect="Pulse"
+               cssClass="my-card-skeleton"
                label="Loading featured image"
                visible="true"
-               enable-rtl="false"
+               enableRtl="false"
                enable-persistence="false">
 </ejs-skeleton>
 ```

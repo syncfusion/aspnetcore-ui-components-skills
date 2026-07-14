@@ -78,9 +78,9 @@ The ButtonGroup is a **pure CSS component** — wrap `<ejs-button>` elements ins
 
 ```cshtml
 <div class="e-btn-group">
-    <ejs-button id="btn1">HTML</ejs-button>
-    <ejs-button id="btn2">CSS</ejs-button>
-    <ejs-button id="btn3">JavaScript</ejs-button>
+    <ejs-button id="btn1" content="HTML"></ejs-button>
+    <ejs-button id="btn2" content="CSS"></ejs-button>
+    <ejs-button id="btn3" content="JavaScript"></ejs-button>
 </div>
 ```
 

@@ -32,19 +32,19 @@ Apply predefined semantic color styles using the `cssClass` attribute. These con
 
 ```cshtml
 <div class="button-group">
-    <ejs-button id="button1" cssClass="e-primary">Primary</ejs-button>
-    <ejs-button id="button2" cssClass="e-success">Success</ejs-button>
-    <ejs-button id="button3" cssClass="e-info">Info</ejs-button>
-    <ejs-button id="button4" cssClass="e-warning">Warning</ejs-button>
-    <ejs-button id="button5" cssClass="e-danger">Danger</ejs-button>
-    <ejs-button id="button6" cssClass="e-link">Link</ejs-button>
+    <ejs-button id="button1" cssClass="e-primary" content="Primary"></ejs-button>
+    <ejs-button id="button2" cssClass="e-success" content="Success"></ejs-button>
+    <ejs-button id="button3" cssClass="e-info" content="Info"></ejs-button>
+    <ejs-button id="button4" cssClass="e-warning" content="Warning"></ejs-button>
+    <ejs-button id="button5" cssClass="e-danger" content="Danger"></ejs-button>
+    <ejs-button id="button6" cssClass="e-link" content="Link"></ejs-button>
 </div>
 ```
 
 Multiple classes can be combined (space-separated):
 
 ```cshtml
-<ejs-button id="button" cssClass="e-small e-primary">Small Primary Button</ejs-button>
+<ejs-button id="button" cssClass="e-small e-primary" content="Small Primary Button"></ejs-button>
 ```
 
 ---
@@ -54,8 +54,8 @@ Multiple classes can be combined (space-separated):
 A flat button has no background color — useful for secondary or low-emphasis actions.
 
 ```cshtml
-<ejs-button id="flatButton" cssClass="e-flat">Flat Button</ejs-button>
-<ejs-button id="flatButtonPrimary" cssClass="e-flat e-primary">Flat Primary</ejs-button>
+<ejs-button id="flatButton" cssClass="e-flat" content="Flat Button"></ejs-button>
+<ejs-button id="flatButtonPrimary" cssClass="e-flat e-primary" content="Flat Primary"></ejs-button>
 ```
 
 ---
@@ -65,8 +65,8 @@ A flat button has no background color — useful for secondary or low-emphasis a
 An outline button has a visible border with a transparent background.
 
 ```cshtml
-<ejs-button id="outlineButton" cssClass="e-outline">Outline Button</ejs-button>
-<ejs-button id="outlineButtonPrimary" cssClass="e-outline e-primary">Outline Primary</ejs-button>
+<ejs-button id="outlineButton" cssClass="e-outline" content="Outline Button"></ejs-button>
+<ejs-button id="outlineButtonPrimary" cssClass="e-outline e-primary" content="Outline Primary"></ejs-button>
 ```
 
 ---
@@ -90,7 +90,7 @@ A toggle button switches between two states (normal ↔ active). Set `isToggle="
 
 **View (`~/Pages/Index.cshtml`):**
 ```cshtml
-<ejs-button id="toggleButton" isToggle="true" cssClass="e-flat" iconCss="e-icons e-play-icon">Play</ejs-button>
+<ejs-button id="toggleButton" isToggle="true" cssClass="e-flat" iconCss="e-icons e-play-icon" content="Play"></ejs-button>
 
 <script>
     let isPlaying = false;
@@ -124,9 +124,9 @@ Use the native HTML `type` attribute to control form submission behavior:
 
 ```cshtml
 <form method="post">
-    <ejs-button id="submitBtn" type="submit">Submit</ejs-button>
-    <ejs-button id="resetBtn" type="reset">Reset</ejs-button>
-    <ejs-button id="customBtn" type="button" onclick="customAction()">Custom Action</ejs-button>
+    <ejs-button id="submitBtn" type="submit" content="Submit"></ejs-button>
+    <ejs-button id="resetBtn" type="reset" content="Reset"></ejs-button>
+    <ejs-button id="customBtn" type="button" onclick="customAction()" content="Custom Action"></ejs-button>
 </form>
 
 <script>
@@ -145,10 +145,10 @@ Use the native HTML `type` attribute to control form submission behavior:
 Use Syncfusion's built-in icon library via the `iconCss` attribute. Icon classes follow the format `e-icons e-[icon-name]-icon`:
 
 ```cshtml
-<ejs-button id="saveBtn" iconCss="e-icons e-save-icon">Save</ejs-button>
-<ejs-button id="deleteBtn" iconCss="e-icons e-delete-icon">Delete</ejs-button>
-<ejs-button id="editBtn" iconCss="e-icons e-edit-icon">Edit</ejs-button>
-<ejs-button id="closeBtn" iconCss="e-icons e-close-icon">Close</ejs-button>
+<ejs-button id="saveBtn" iconCss="e-icons e-save-icon" content="Save"></ejs-button>
+<ejs-button id="deleteBtn" iconCss="e-icons e-delete-icon" content="Delete"></ejs-button>
+<ejs-button id="editBtn" iconCss="e-icons e-edit-icon" content="Edit"></ejs-button>
+<ejs-button id="closeBtn" iconCss="e-icons e-close-icon" content="Close"></ejs-button>
 ```
 
 **Common icon names:**
@@ -171,10 +171,10 @@ Use custom SVG or external icon libraries (Font Awesome, Bootstrap Icons, etc.):
 
 ```cshtml
 <!-- Bootstrap Icons -->
-<ejs-button id="svgBtn" iconCss="bi bi-heart">Like</ejs-button>
+<ejs-button id="svgBtn" iconCss="bi bi-heart" content="Like"></ejs-button>
 
 <!-- Font Awesome -->
-<ejs-button id="faBtn" iconCss="fa-solid fa-star">Star</ejs-button>
+<ejs-button id="faBtn" iconCss="fa-solid fa-star" content="Star"></ejs-button>
 ```
 
 Include the necessary CSS library in your `_Layout.cshtml`:
@@ -195,10 +195,10 @@ By default, icons appear **before** the button text. Control positioning with th
 
 ```cshtml
 <!-- Icon on the left (default) -->
-<ejs-button id="btnLeft" iconCss="e-icons e-save-icon">Save</ejs-button>
+<ejs-button id="btnLeft" iconCss="e-icons e-save-icon" content="Save"></ejs-button>
 
 <!-- Icon on the right -->
-<ejs-button id="btnRight" iconCss="e-icons e-arrow-right-icon" iconPosition="Right">Next</ejs-button>
+<ejs-button id="btnRight" iconCss="e-icons e-arrow-right-icon" iconPosition="Right" content="Next"></ejs-button>
 ```
 
 ---
@@ -210,7 +210,7 @@ By default, icons appear **before** the button text. Control positioning with th
 Buttons render with default height and padding:
 
 ```cshtml
-<ejs-button id="defaultBtn">Default Button</ejs-button>
+<ejs-button id="defaultBtn" content="Default Button"></ejs-button>
 ```
 
 ### Small Size
@@ -218,7 +218,7 @@ Buttons render with default height and padding:
 Use `cssClass="e-small"` for compact buttons (useful in toolbars, dense UIs):
 
 ```cshtml
-<ejs-button id="smallBtn" cssClass="e-small">Small Button</ejs-button>
+<ejs-button id="smallBtn" cssClass="e-small" content="Small Button"></ejs-button>
 <ejs-button id="smallBtnIcon" cssClass="e-small" iconCss="e-icons e-plus-icon"></ejs-button>
 ```
 
@@ -228,7 +228,7 @@ Use CSS to make a button fill its container width:
 
 ```cshtml
 <div style="max-width: 300px;">
-    <ejs-button id="blockBtn" style="width: 100%;">Full Width Button</ejs-button>
+    <ejs-button id="blockBtn" style="width: 100%;" content="Full Width Button"></ejs-button>
 </div>
 ```
 
@@ -242,7 +242,7 @@ Or use a CSS class:
 ```
 
 ```cshtml
-<ejs-button id="blockBtn" cssClass="e-btn-block">Full Width Button</ejs-button>
+<ejs-button id="blockBtn" cssClass="e-btn-block" content="Full Width Button"></ejs-button>
 ```
 
 ---
@@ -254,31 +254,31 @@ Or use a CSS class:
     <!-- Color variants -->
     <section>
         <h2>Color Variants</h2>
-        <ejs-button id="btn1" cssClass="e-primary">Primary</ejs-button>
-        <ejs-button id="btn2" cssClass="e-success">Success</ejs-button>
-        <ejs-button id="btn3" cssClass="e-danger">Danger</ejs-button>
+        <ejs-button id="btn1" cssClass="e-primary" content="Primary"></ejs-button>
+        <ejs-button id="btn2" cssClass="e-success" content="Success"></ejs-button>
+        <ejs-button id="btn3" cssClass="e-danger" content="Danger"></ejs-button>
     </section>
 
     <!-- Button types -->
     <section>
         <h2>Button Types</h2>
-        <ejs-button id="btn4" cssClass="e-flat">Flat</ejs-button>
-        <ejs-button id="btn5" cssClass="e-outline">Outline</ejs-button>
+        <ejs-button id="btn4" cssClass="e-flat" content="Flat"></ejs-button>
+        <ejs-button id="btn5" cssClass="e-outline" content="Outline"></ejs-button>
         <ejs-button id="btn6" cssClass="e-round" iconCss="e-icons e-plus-icon"></ejs-button>
     </section>
 
     <!-- With icons -->
     <section>
         <h2>With Icons</h2>
-        <ejs-button id="btn7" iconCss="e-icons e-save-icon">Save</ejs-button>
-        <ejs-button id="btn8" iconCss="e-icons e-delete-icon" cssClass="e-danger">Delete</ejs-button>
+        <ejs-button id="btn7" iconCss="e-icons e-save-icon" content="Save"></ejs-button>
+        <ejs-button id="btn8" iconCss="e-icons e-delete-icon" cssClass="e-danger" content="Delete"></ejs-button>
     </section>
 
     <!-- Sizes -->
     <section>
         <h2>Sizes</h2>
-        <ejs-button id="btn9">Normal</ejs-button>
-        <ejs-button id="btn10" cssClass="e-small">Small</ejs-button>
+        <ejs-button id="btn9" content="Normal"></ejs-button>
+        <ejs-button id="btn10" cssClass="e-small" content="Small"></ejs-button>
     </section>
 </div>
 

@@ -134,7 +134,7 @@ Create a complete page with TextBox examples in `Views/Home/Index.cshtml`:
     <!-- TextBox with Floating Label -->
     <div style="margin-bottom: 20px;">
         <label for="floating">With Floating Label:</label>
-        <ejs-textbox id="floating" placeholder="Enter text" float-label-type="Auto">
+        <ejs-textbox id="floating" placeholder="Enter text" floatLabelType="Auto">
         </ejs-textbox>
     </div>
 

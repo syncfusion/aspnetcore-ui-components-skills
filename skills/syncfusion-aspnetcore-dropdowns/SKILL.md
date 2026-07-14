@@ -1291,13 +1291,13 @@ public IActionResult Index()
 
 ### Common Patterns
 
-#### Pattern 1: Multiple Selection with Checkboxes
+#### Pattern 1: Multiple Selection
 ```cshtml
 <ejs-listbox id="skills"
     dataSource="@ViewBag.skills"
     height="300px">
     <e-listbox-fields text="Name" value="Id"></e-listbox-fields>
-    <e-listbox-selectionsettings mode="Multiple" type="Checkbox"></e-listbox-selectionsettings>
+    <e-listbox-selectionsettings mode="Multiple"></e-listbox-selectionsettings>
 </ejs-listbox>
 ```
 

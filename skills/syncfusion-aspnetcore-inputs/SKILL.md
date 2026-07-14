@@ -751,7 +751,7 @@ The **Range Slider** (`<ejs-slider>`) is a versatile input control that allows u
 - Screen reader support and RTL
 
 #### API Reference
-📄 **Read:** [references/range-slider-api-reference.md](references/range-slider-api-reference.md)
+📄 **Read:** [references/range-slider-api.md](references/range-slider-api.md)
 - All properties with types, defaults, and descriptions
 - All events (Change, Input, SlideStart, SlideEnd, Created, Destroyed)
 - All methods (getValue, setValue, refresh, destroy)

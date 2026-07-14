@@ -328,7 +328,6 @@ Group multiple related inputs:
                                  placeholder="your@email.com"
                                  floatLabelType="Auto"
                                  prependTemplate="emailIcon"
-                                 required="true"
                                  type="email">
                     </ejs-textbox>
                 </div>
@@ -428,7 +427,6 @@ Group multiple related inputs:
                                  placeholder="Username"
                                  floatLabelType="Auto"
                                  prependTemplate="userIcon"
-                                 required="true"
                                  type="text">
                     </ejs-textbox>
                 </div>
@@ -441,7 +439,6 @@ Group multiple related inputs:
                                  floatLabelType="Auto"
                                  prependTemplate="lockIcon"
                                  appendTemplate="visibilityToggle"
-                                 required="true"
                                  type="password">
                     </ejs-textbox>
                 </div>

@@ -9,7 +9,6 @@
 - [Trailing Icon](#trailing-icon)
 - [Trailing Icon URL](#trailing-icon-url)
 - [Outline Chip](#outline-chip)
-- [Custom Template](#custom-template)
 - [HTML Attributes](#html-attributes)
 - [Disabled State](#disabled-state)
 - [RTL Support](#rtl-support)
@@ -306,87 +305,6 @@ Custom outline styling:
 
 ---
 
-## Custom Template
-
-Use Razor templating to create fully custom chip layouts:
-
-```razor
-<ejs-chiplist id="custom-template-chips">
-    <e-chips>
-        <e-chip>
-            <e-template>
-                <div class="custom-chip">
-                    <img src="/images/user.png" alt="User" class="chip-avatar" />
-                    <div class="chip-content">
-                        <span class="chip-name">Developer Name</span>
-                        <span class="chip-role">Developer</span>
-                    </div>
-                </div>
-            </e-template>
-        </e-chip>
-    </e-chips>
-</ejs-chiplist>
-```
-
-**Dynamic data via ViewModel:**
-```razor
-@model List<TeamMember>
-
-<ejs-chiplist id="team-chips">
-    <e-chips>
-        @foreach (var member in Model)
-        {
-            <e-chip text="@member.Name">
-                <e-template>
-                    <div class="custom-chip">
-                        <img src="@member.PhotoUrl" alt="@member.Name" class="chip-avatar" />
-                        <div class="chip-content">
-                            <span class="chip-name">@member.Name</span>
-                            <span class="chip-role">@member.Role</span>
-                        </div>
-                    </div>
-                </e-template>
-            </e-chip>
-        }
-    </e-chips>
-</ejs-chiplist>
-```
-
-CSS for custom template:
-```css
-.custom-chip {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 4px 8px;
-}
-
-.chip-avatar {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    object-fit: cover;
-}
-
-.chip-content {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-}
-
-.chip-name {
-    font-weight: 600;
-    font-size: 12px;
-}
-
-.chip-role {
-    font-size: 10px;
-    color: #999;
-}
-```
-
----
-
 ## HTML Attributes
 
 Pass custom HTML attributes to chips using `HtmlAttributes`:
@@ -403,7 +321,7 @@ Pass custom HTML attributes to chips using `HtmlAttributes`:
 
 <ejs-chiplist id="custom-attrs-chips">
     <e-chips>
-        <e-chip text="React" html-attributes="chipAttributes"></e-chip>
+        <e-chip text="React" htmlAttributes="chipAttributes"></e-chip>
     </e-chips>
 </ejs-chiplist>
 ```

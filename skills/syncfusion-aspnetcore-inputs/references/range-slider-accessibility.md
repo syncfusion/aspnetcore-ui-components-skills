@@ -70,9 +70,7 @@ Slider must be reachable with Tab key:
 <ejs-slider id="quantity" 
                  min="1" 
                  max="100" 
-                 value="50"
-                 aria-label="Select quantity"
-                 type="single">
+                 value="50">
 </ejs-slider>
 
 <!-- User tabs here -->
@@ -100,9 +98,7 @@ Once focused, use arrow keys to adjust value:
                  min="0" 
                  max="100" 
                  value="50"
-                 step="1"
-                 aria-label="Volume level"
-                 type="single">
+                 step="1">
 </ejs-slider>
 
 <!-- When focused:
@@ -151,19 +147,7 @@ Provide descriptive label for screen readers:
 <ejs-slider id="volume" 
                  min="0" 
                  max="100" 
-                 value="50"
-                 aria-label="Adjust volume level from 0 to 100"
-                 type="single">
-</ejs-slider>
-
-<!-- Range slider with label -->
-<ejs-slider id="priceRange" 
-                 min="0" 
-                 max="1000" 
-                 startValue="200"
-                 endValue="800"
-                 aria-label="Select price range from $0 to $1000"
-                 type="range">
+                 value="50">
 </ejs-slider>
 ```
 
@@ -178,34 +162,8 @@ Link slider to external label element:
 <ejs-slider id="volumeSlider" 
                  min="0" 
                  max="100" 
-                 value="50"
-                 aria-labelledby="volumeLabel"
-                 type="single">
+                 value="50">
 </ejs-slider>
-```
-
-### aria-describedby
-
-Provide additional description:
-
-**Razor View (CSHTML):**
-```html
-<label id="priceLabel">Price Range</label>
-
-<ejs-slider id="priceSlider" 
-                 min="0" 
-                 max="1000" 
-                 startValue="200"
-                 endValue="800"
-                 aria-labelledby="priceLabel"
-                 aria-describedby="priceHelp"
-                 type="range">
-</ejs-slider>
-
-<p id="priceHelp" class="form-text text-muted">
-    Drag the handles to select your price range. 
-    Use arrow keys when focused for precise adjustments.
-</p>
 ```
 
 ### aria-valuenow / aria-valuemin / aria-valuemax
@@ -217,12 +175,7 @@ For single sliders, provide current value:
 <ejs-slider id="accessible" 
                  min="0" 
                  max="100" 
-                 value="50"
-                 aria-label="Value"
-                 aria-valuenow="50"
-                 aria-valuemin="0"
-                 aria-valuemax="100"
-                 type="single">
+                 value="50">
 </ejs-slider>
 ```
 
@@ -243,11 +196,7 @@ Make value changes audible to screen reader users:
                      min="0" 
                      max="100" 
                      value="50"
-                     aria-labelledby="sliderLabel"
-                     aria-live="polite"
-                     aria-atomic="true"
-                     change="announceBrightnessChange"
-                     type="single">
+                     change="announceBrightnessChange">
     </ejs-slider>
 
     <!-- Screen reader will announce changes -->
@@ -290,8 +239,7 @@ Use fieldset for grouped sliders:
         <ejs-slider id="brightnessSlider" 
                          min="0" 
                          max="100" 
-                         value="50"
-                         type="single">
+                         value="50">
         </ejs-slider>
     </div>
 
@@ -300,8 +248,7 @@ Use fieldset for grouped sliders:
         <ejs-slider id="contrastSlider" 
                          min="0" 
                          max="100" 
-                         value="50"
-                         type="single">
+                         value="50">
         </ejs-slider>
     </div>
 
@@ -310,8 +257,7 @@ Use fieldset for grouped sliders:
         <ejs-slider id="saturationSlider" 
                          min="0" 
                          max="100" 
-                         value="50"
-                         type="single">
+                         value="50">
         </ejs-slider>
     </div>
 </fieldset>
@@ -340,11 +286,7 @@ Use fieldset for grouped sliders:
                                  max="100" 
                                  value="50"
                                  step="1"
-                                 aria-labelledby="volumeLabel"
-                                 aria-describedby="volumeHelp"
-                                 aria-live="polite"
-                                 change="updateVolume"
-                                 type="single">
+                                 change="updateVolume">
                 </ejs-slider>
 
                 <span class="e-icons e-volume-high" aria-hidden="true"></span>
@@ -396,13 +338,9 @@ Use fieldset for grouped sliders:
                 <ejs-slider id="priceFilter" 
                                  min="0" 
                                  max="1000" 
-                                 startValue="200"
-                                 endValue="800"
                                  step="50"
-                                 aria-labelledby="priceFilterLabel"
-                                 aria-describedby="priceFilterHelp"
                                  change="updatePriceDisplay"
-                                 type="range">
+                                 type="Range">
                 </ejs-slider>
 
                 <div id="priceFilterLabel" class="sr-only">
@@ -427,8 +365,7 @@ Use fieldset for grouped sliders:
 
 <script>
     function updatePriceDisplay(e) {
-        document.getElementById('minPrice').textContent = e.startValue;
-        document.getElementById('maxPrice').textContent = e.endValue;
+        console.log('Changed');
     }
 
     function applyFilter() {

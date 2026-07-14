@@ -19,7 +19,7 @@ Always use proper HTML button elements. Avoid using divs or spans styled as butt
 
 **✓ CORRECT:**
 ```cshtml
-<ejs-button id="saveBtn">Save</ejs-button>
+<ejs-button id="saveBtn" content="Save"></ejs-button>
 ```
 
 **✗ INCORRECT:**
@@ -37,16 +37,16 @@ Use clear, action-oriented button text. Avoid generic labels like "Click here" o
 
 **✓ CORRECT:**
 ```cshtml
-<ejs-button id="submitBtn">Submit Form</ejs-button>
-<ejs-button id="deleteBtn" cssClass="e-danger">Delete User Account</ejs-button>
-<ejs-button id="continueBtn">Continue to Payment</ejs-button>
+<ejs-button id="submitBtn" content="Submit Form"></ejs-button>
+<ejs-button id="deleteBtn" cssClass="e-danger" content="Delete User Account"></ejs-button>
+<ejs-button id="continueBtn" content="Continue to Payment"></ejs-button>
 ```
 
 **✗ INCORRECT:**
 ```cshtml
-<ejs-button id="btn1">Click Here</ejs-button>
-<ejs-button id="btn2">OK</ejs-button>
-<ejs-button id="btn3">Go</ejs-button>
+<ejs-button id="btn1" content="Click Here"></ejs-button>
+<ejs-button id="btn2" content="OK"></ejs-button>
+<ejs-button id="btn3" content="Go"></ejs-button>
 ```
 
 ### Icon-Only Buttons
@@ -94,8 +94,8 @@ When disabling a button, ensure screen readers understand it's disabled:
 <ejs-button 
     id="submitBtn" 
     disabled="true"
-    htmlAttributes="@new { aria_disabled = 'true' }">
-    Submit
+    htmlAttributes="@new { aria_disabled = 'true' }"
+    content="Submit">
 </ejs-button>
 ```
 
@@ -110,8 +110,8 @@ For toggle buttons, indicate the current state:
     id="toggleBtn" 
     isToggle="true" 
     cssClass="e-flat"
-    htmlAttributes="@new { aria_pressed = 'false' }">
-    Toggle Feature
+    htmlAttributes="@new { aria_pressed = 'false' }"
+    content="Toggle Feature">
 </ejs-button>
 
 <script>
@@ -138,8 +138,8 @@ Buttons should appear in a logical tab order. Use HTML structure or `tabindex` i
         <input type="text" id="username" />
     </div>
     <div>
-        <ejs-button id="submitBtn" type="submit">Submit</ejs-button>
-        <ejs-button id="cancelBtn" tabindex="0">Cancel</ejs-button>
+        <ejs-button id="submitBtn" type="submit" content="Submit"></ejs-button>
+        <ejs-button id="cancelBtn" tabindex="0" content="Cancel"></ejs-button>
     </div>
 </form>
 ```
@@ -154,7 +154,7 @@ Syncfusion buttons support:
 
 **Example:**
 ```cshtml
-<ejs-button id="actionBtn" onclick="performAction()">Perform Action</ejs-button>
+<ejs-button id="actionBtn" onclick="performAction()" content="Perform Action"></ejs-button>
 
 <script>
     const actionBtn = ej2_instances['actionBtn'][0];
@@ -185,8 +185,7 @@ Ensure buttons have visible focus indicators:
 Manage focus for complex interactions:
 
 ```cshtml
-<ejs-button id="focusBtn" onfocus="handleFocus()" onblur="handleBlur()">
-    Focus Me
+<ejs-button id="focusBtn" onfocus="handleFocus()" onblur="handleBlur()" content="Focus Me">
 </ejs-button>
 
 <script>
@@ -238,7 +237,7 @@ Always use `type="submit"` for form submission:
 ```cshtml
 <form method="post" id="myForm">
     <input type="text" name="username" />
-    <ejs-button id="submitBtn" type="submit">Submit</ejs-button>
+    <ejs-button id="submitBtn" type="submit" content="Submit"></ejs-button>
 </form>
 ```
 
@@ -247,7 +246,7 @@ Always use `type="submit"` for form submission:
 Use `type="reset"` to clear form fields:
 
 ```cshtml
-<ejs-button id="resetBtn" type="reset">Reset Form</ejs-button>
+<ejs-button id="resetBtn" type="reset" content="Reset Form"></ejs-button>
 ```
 
 ### Button Role
@@ -274,7 +273,7 @@ For buttons that trigger validation, communicate errors to screen readers:
 
 <form>
     <input id="emailInput" type="email" required />
-    <ejs-button id="submitBtn" type="submit" onclick="validateForm()">Submit</ejs-button>
+    <ejs-button id="submitBtn" type="submit" onclick="validateForm()" content="Submit"></ejs-button>
 </form>
 
 <script>
@@ -296,9 +295,7 @@ For buttons that trigger validation, communicate errors to screen readers:
 
 **✓ CORRECT:**
 ```cshtml
-<ejs-button id="submitBtn" disabled="@(!Model.IsFormValid)">
-    Submit
-</ejs-button>
+<ejs-button id="submitBtn" disabled="@(!Model.IsFormValid)" content="Submit"></ejs-button>
 ```
 
 Disabled buttons:
@@ -314,7 +311,7 @@ Disabled buttons:
 ### Icon + Text (Recommended)
 
 ```cshtml
-<ejs-button id="saveBtn" iconCss="e-icons e-save-icon">Save</ejs-button>
+<ejs-button id="saveBtn" iconCss="e-icons e-save-icon" content="Save"></ejs-button>
 ```
 
 Screen readers announce: "Save, button"
@@ -405,16 +402,16 @@ Use tools like:
                     id="submitBtn" 
                     type="submit" 
                     cssClass="e-primary"
-                    htmlAttributes="@new { aria_label = 'Submit registration form' }">
-                    Register
+                    htmlAttributes="@new { aria_label = 'Submit registration form' }"
+                    content="Register">
                 </ejs-button>
                 
                 <ejs-button 
                     id="resetBtn" 
                     type="reset" 
                     cssClass="e-flat"
-                    htmlAttributes="@new { aria_label = 'Clear all fields' }">
-                    Clear
+                    htmlAttributes="@new { aria_label = 'Clear all fields' }"
+                    content="Clear">
                 </ejs-button>
                 
                 <ejs-button 
@@ -422,8 +419,8 @@ Use tools like:
                     type="button" 
                     cssClass="e-outline"
                     onclick="goBack()"
-                    htmlAttributes="@new { aria_label = 'Cancel and go back' }">
-                    Cancel
+                    htmlAttributes="@new { aria_label = 'Cancel and go back' }"
+                    content="Cancel">
                 </ejs-button>
             </div>
         </fieldset>

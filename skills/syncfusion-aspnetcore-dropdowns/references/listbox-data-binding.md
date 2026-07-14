@@ -205,18 +205,6 @@ function onSelectionChange(args) {
 </script>
 ```
 
-### Checkbox Selection
-
-Display checkboxes for selection:
-
-```cshtml
-<ejs-listbox id="items"
-    dataSource="@ViewBag.items">
-    <e-listbox-fields text="Name" value="Id"></e-listbox-fields>
-    <e-listbox-selectionsettings mode="Multiple" type="Checkbox"></e-listbox-selectionsettings>
-</ejs-listbox>
-```
-
 ---
 
 ## Common Patterns
@@ -259,30 +247,7 @@ public IActionResult Index()
 </ejs-listbox>
 ```
 
-### Pattern 3: Multiple Selection with Checkboxes
-
-```cshtml
-<ejs-listbox id="skills"
-    dataSource="@ViewBag.skills"
-    change="onSkillsChange"
-    height="300px">
-    <e-listbox-fields text="Name" value="Id"></e-listbox-fields>
-    <e-listbox-selectionsettings mode="Multiple" type="Checkbox"></e-listbox-selectionsettings>
-</ejs-listbox>
-
-<div id="selectedSkills" style="margin-top: 20px;">
-    <strong>Selected:</strong> <span id="skillList"></span>
-</div>
-
-<script>
-function onSkillsChange(args) {
-    var skills = args.value.join(', ');
-    document.getElementById('skillList').textContent = skills || 'None';
-}
-</script>
-```
-
-### Pattern 4: With Filtering
+### Pattern 3: With Filtering
 
 ```cshtml
 <ejs-listbox id="items"
@@ -294,7 +259,7 @@ function onSkillsChange(args) {
 </ejs-listbox>
 ```
 
-### Pattern 5: Pre-Selected Values
+### Pattern 4: Pre-Selected Values
 
 **Controller:**
 

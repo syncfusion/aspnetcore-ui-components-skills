@@ -388,7 +388,7 @@ This reference covers styling options, CSS customization, predefined themes, and
                              endValue="4000"
                              step="100"
                              change="updateMaterialDisplay"
-                             type="range"
+                             type="Range"
                              cssClass="e-primary">
             </ejs-slider>
 

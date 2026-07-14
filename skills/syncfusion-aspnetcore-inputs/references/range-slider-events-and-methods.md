@@ -70,7 +70,7 @@ Fires when user finishes dragging (on thumb release).
                  max="100" 
                  startValue="30"
                  endValue="70"
-                 type="range"
+                 type="Range"
                  change="onSliderChange">
 </ejs-slider>
 
@@ -165,8 +165,7 @@ slider.endValue = 70;
 <ejs-slider id="slider" 
                  min="0" 
                  max="100" 
-                 value="50"
-                 type="single">
+                 value="50">
 </ejs-slider>
 
 <div class="mt-3">
@@ -243,8 +242,7 @@ slider.destroy();
                              slideStart="onStart"
                              input="onInput"
                              slideEnd="onEnd"
-                             change="onChange"
-                             type="single">
+                             change="onChange">
             </ejs-slider>
 
             <div id="eventLog" class="mt-3" style="background: #f5f5f5; padding: 10px; border-radius: 4px;">
@@ -309,7 +307,7 @@ slider.destroy();
                              slideStart="onPriceSlideStart"
                              input="onPriceInput"
                              change="onPriceChange"
-                             type="range">
+                             type="Range">
             </ejs-slider>
 
             <div class="row mt-3">
@@ -386,8 +384,7 @@ slider.destroy();
                              max="200" 
                              value="100"
                              step="10"
-                             input="updateBrightness"
-                             type="single">
+                             input="updateBrightness">
             </ejs-slider>
             <p class="mt-2">
                 Brightness: <strong id="brightnessValue">100</strong>%

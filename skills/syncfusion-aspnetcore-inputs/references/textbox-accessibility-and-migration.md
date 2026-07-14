@@ -114,7 +114,6 @@ Mark required fields properly:
 </label>
 <ejs-textbox id="name" 
              aria-required="true"
-             required="true"
              placeholder="Full Name"
              type="text">
 </ejs-textbox>
@@ -347,7 +346,6 @@ Make form sections understandable to screen readers:
 <ejs-textbox id="name" 
              placeholder="Full Name"
              floatLabelType="Auto"
-             required="true"
              type="text">
 </ejs-textbox>
 
@@ -356,7 +354,6 @@ Make form sections understandable to screen readers:
 <ejs-textbox id="email" 
              placeholder="your@email.com"
              floatLabelType="Auto"
-             required="true"
              type="email">
 </ejs-textbox>
 ```
@@ -396,7 +393,6 @@ Make form sections understandable to screen readers:
                         <ejs-textbox id="username" 
                                      placeholder="Enter username"
                                      aria-required="true"
-                                     required="true"
                                      type="text">
                         </ejs-textbox>
                     </div>
@@ -408,7 +404,6 @@ Make form sections understandable to screen readers:
                                      placeholder="Enter password"
                                      aria-describedby="password-hint"
                                      aria-required="true"
-                                     required="true"
                                      type="password">
                         </ejs-textbox>
                         <p id="password-hint" class="form-text text-muted">
@@ -477,7 +472,6 @@ Make form sections understandable to screen readers:
                 <ejs-textbox asp-for="Name" 
                              aria-required="true"
                              floatLabelType="Auto"
-                             required="true"
                              type="text">
                 </ejs-textbox>
                 <span asp-validation-for="Name" role="alert" class="text-danger"></span>
@@ -490,7 +484,6 @@ Make form sections understandable to screen readers:
                 <ejs-textbox asp-for="Email" 
                              aria-required="true"
                              floatLabelType="Auto"
-                             required="true"
                              type="email">
                 </ejs-textbox>
                 <span asp-validation-for="Email" role="alert" class="text-danger"></span>

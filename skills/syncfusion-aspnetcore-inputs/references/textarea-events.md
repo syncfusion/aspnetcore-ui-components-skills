@@ -142,8 +142,7 @@ All TextArea events provide an `args` object with the following properties:
 - **previousValue** - Previous text value (for change event)
 
 ```html
-<ejs-textarea id="textarea">
-    <e-events change="handleChange"></e-events>
+<ejs-textarea id="textarea" change="handleChange">
 </ejs-textarea>
 
 <script>
@@ -164,8 +163,7 @@ function handleChange(args) {
 Fires when the value changes:
 
 ```html
-<ejs-textarea id="textarea">
-    <e-events change="onValueChange"></e-events>
+<ejs-textarea id="textarea" change="onValueChange">
 </ejs-textarea>
 
 <script>
@@ -180,8 +178,7 @@ function onValueChange(args) {
 Fires when the TextArea receives focus:
 
 ```html
-<ejs-textarea id="textarea" placeholder="Click to focus">
-    <e-events focus="onFocus"></e-events>
+<ejs-textarea id="textarea" placeholder="Click to focus" focus="onFocus">
 </ejs-textarea>
 
 <script>
@@ -197,8 +194,7 @@ function onFocus(args) {
 Fires when the TextArea loses focus:
 
 ```html
-<ejs-textarea id="textarea">
-    <e-events blur="onBlur"></e-events>
+<ejs-textarea id="textarea" blur="onBlur">
 </ejs-textarea>
 
 <script>
@@ -214,8 +210,7 @@ function onBlur(args) {
 Fires as the user types or pastes content:
 
 ```html
-<ejs-textarea id="textarea" maxlength="500">
-    <e-events input="onInput"></e-events>
+<ejs-textarea id="textarea" maxLength="500" input="onInput">
 </ejs-textarea>
 
 <script>
@@ -239,10 +234,10 @@ function onInput(args) {
 <div style="max-width: 600px;">
     <label for="comment">Comment (max 280 characters):</label>
     <ejs-textarea id="comment" 
-        maxlength="280"
+        maxLength="280"
         placeholder="Share your thoughts..."
-        rows="4">
-        <e-events input="updateCharCount"></e-events>
+        rows="4"
+        input="updateCharCount">
     </ejs-textarea>
     
     <div style="margin-top: 10px; display: flex; justify-content: space-between;">
@@ -285,8 +280,8 @@ function submitComment() {
     <label for="draft">Your Article Draft:</label>
     <ejs-textarea id="draft"
         placeholder="Write your article..."
-        rows="8">
-        <e-events blur="saveDraft"></e-events>
+        rows="8"
+        blur="saveDraft">
     </ejs-textarea>
     
     <div id="saveStatus" style="margin-top: 10px; color: #666; font-size: 0.875rem;">
@@ -337,8 +332,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 placeholder="Please provide detailed feedback..."
                 rows="5"
                 minlength="10"
-                maxlength="500">
-                <e-events change="validateFeedback" blur="validateFeedback"></e-events>
+                maxLength="500"
+                change="validateFeedback" 
+                blur="validateFeedback">
             </ejs-textarea>
             <div id="feedbackError" style="color: red; margin-top: 5px; font-size: 0.875rem;">
                 <!-- Error message appears here -->
@@ -392,8 +388,8 @@ function validateForm(event) {
         <h3>Markdown Editor</h3>
         <ejs-textarea id="markdownEditor"
             placeholder="Enter markdown..."
-            rows="10">
-            <e-events input="updatePreview"></e-events>
+            rows="10"
+            input="updatePreview">
         </ejs-textarea>
     </div>
 
@@ -429,8 +425,8 @@ function updatePreview(args) {
                 <ejs-textarea id="qualifications"
                     placeholder="Tell us about your qualifications..."
                     rows="5"
-                    maxlength="500">
-                    <e-events blur="saveStep2"></e-events>
+                    maxLength="500"
+                    blur="saveStep2">
                 </ejs-textarea>
                 <small style="color: #666;">
                     <span id="qualLength">0</span> / 500 characters
@@ -442,8 +438,8 @@ function updatePreview(args) {
                 <ejs-textarea id="experience"
                     placeholder="Describe your relevant experience..."
                     rows="5"
-                    maxlength="500">
-                    <e-events blur="saveStep2"></e-events>
+                    maxLength="500"
+                    blur="saveStep2">
                 </ejs-textarea>
                 <small style="color: #666;">
                     <span id="expLength">0</span> / 500 characters

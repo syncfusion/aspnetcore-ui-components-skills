@@ -1,8 +1,11 @@
 # Getting Started with MultiColumn ComboBox
 
 ## Table of Contents
+- [Prerequisites](#prerequisites)
 - [Installation](#installation)
-- [TagHelper Registration](#taghelper-registration)
+- [Setup TagHelpers](#setup-taghelpers)
+- [Add Styles and Scripts](#add-styles-and-scripts)
+- [Register Script Manager](#register-script-manager)
 - [Basic Component Setup](#basic-component-setup)
 - [Binding Data with Fields and Columns](#binding-data-with-fields-and-columns)
 - [Configuring Popup Size](#configuring-popup-size)
@@ -10,17 +13,24 @@
 
 ---
 
+## Prerequisites
+
+- ASP.NET Core 6.0+ project (Razor Pages or MVC)
+- Visual Studio 2022+ or VS Code
+
+System requirements: https://ej2.syncfusion.com/aspnetcore/documentation/system-requirements
+
+---
+
 ## Installation
 
-Install the Syncfusion ASP.NET Core package via NuGet:
+Install the NuGet package via Package Manager Console:
 
-**Package Manager Console:**
-
-```powershell
+```bash
 Install-Package Syncfusion.EJ2.AspNet.Core
 ```
 
-**Or using .NET CLI:**
+Or via .NET CLI:
 
 ```bash
 dotnet add package Syncfusion.EJ2.AspNet.Core
@@ -28,28 +38,64 @@ dotnet add package Syncfusion.EJ2.AspNet.Core
 
 ---
 
-## TagHelper Registration
+## Setup TagHelpers
 
-### Register Service in Program.cs
-
-Add Syncfusion services:
-
-```csharp
-var builder = WebApplication.CreateBuilder(args);
-
-builder.Services.AddControllersWithViews();
-builder.Services.AddSyncfusionEJ2();  // ✅ Add this
-
-var app = builder.Build();
-app.Run();
-```
-
-### Add TagHelper Reference
-
-Edit `Views/_ViewImports.cshtml`:
+Open `~/Pages/_ViewImports.cshtml` (Razor Pages) or `~/Views/_ViewImports.cshtml` (MVC) and add:
 
 ```cshtml
 @addTagHelper *, Syncfusion.EJ2
+```
+
+---
+
+## Add Styles and Scripts (Local Hosting Recommended)
+
+**⚠️ SECURITY:** For production, host vendor scripts locally from the NuGet package instead of using CDN to mitigate supply chain risks (W012).
+
+### Option A: Local Hosting (RECOMMENDED) ✅
+
+In `~/Pages/Shared/_Layout.cshtml` (or `~/Views/Shared/_Layout.cshtml`), add inside `<head>`:
+
+```html
+<head>
+    <!-- ✅ Serve from local NuGet package (safest) -->
+    <link rel="stylesheet" href="~/lib/ej2/fluent2.css" />
+</head>
+```
+
+### Option B: CDN with Subresource Integrity (SRI) ⚠️
+
+If CDN is mandatory, use SRI hashes + HTTPS:
+
+```html
+<head>
+    <!-- ⚠️ Pin version and add SRI hash for integrity verification -->
+    <link rel="stylesheet" 
+          href="https://cdn.syncfusion.com/ej2/{{ site.ej2version }}/fluent2.css"
+          integrity="sha384-[GET_ACTUAL_HASH_FROM_CDN]"
+          crossorigin="anonymous" />
+    <script src="https://cdn.syncfusion.com/ej2/{{ site.ej2version }}/dist/ej2.min.js"
+            integrity="sha384-[GET_ACTUAL_HASH_FROM_CDN]"
+            crossorigin="anonymous"></script>
+</head>
+```
+
+**Get SRI hashes from:** https://www.srihash.org/ or Syncfusion CDN documentation.
+
+> **Tip:** Replace `21.1.37` with your installed package version. Check current version at nuget.org.
+
+---
+
+## Register Script Manager
+
+At the end of `<body>` in `_Layout.cshtml`, register the script manager:
+
+```html
+<body>
+    @RenderBody()
+    <!-- Required: Syncfusion script manager -->
+    <ejs-scripts></ejs-scripts>
+</body>
 ```
 
 ---
@@ -197,7 +243,6 @@ dotnet run
 ## First Implementation Checklist
 
 - [ ] NuGet package installed: `Syncfusion.EJ2.AspNet.Core`
-- [ ] Service registered in `Program.cs`: `builder.Services.AddSyncfusionEJ2();`
 - [ ] TagHelper added to `_ViewImports.cshtml`: `@addTagHelper *, Syncfusion.EJ2`
 - [ ] MultiColumn ComboBox added to view with `<ejs-multicolumn-combobox>`
 - [ ] dataSource populated with data via controller `ViewBag`

@@ -46,7 +46,7 @@ Specifies the CSS class or multiple classes separated by space that can be appen
 
 - **Type:** `string`
 - **Default:** `""`
-- **Tag attribute:** `css-class`
+- **Tag attribute:** `cssClass`
 
 ### Destroyed
 Triggers when the Message component is destroyed successfully.
@@ -60,14 +60,14 @@ Enable or disable persisting component's state between page reloads.
 
 - **Type:** `bool`
 - **Default:** `false`
-- **Tag attribute:** `enable-persistence`
+- **Tag attribute:** `enablePersistence`
 
 ### EnableRtl
 Enable or disable rendering component in right to left direction.
 
 - **Type:** `bool`
 - **Default:** `false`
-- **Tag attribute:** `enable-rtl`
+- **Tag attribute:** `enableRtl`
 
 ### HtmlAttributes
 Allows additional HTML attributes such as title, name, etc., and accepts n number of attributes in a key-value pair format.
@@ -95,14 +95,14 @@ Shows or hides the close icon in the Message component. An end user can click th
 
 - **Type:** `bool`
 - **Default:** `false`
-- **Tag attribute:** `show-close-icon`
+- **Tag attribute:** `showCloseIcon`
 
 ### ShowIcon
 Shows or hides the severity icon in the Message component. When set to true, the severity icon is displayed at the left edge of the Message component. This icon will be distinctive based on the severity property.
 
 - **Type:** `bool`
 - **Default:** `true`
-- **Tag attribute:** `show-icon`
+- **Tag attribute:** `showIcon`
 
 ### Variant
 Specifies the variant from predefined appearance variants to display the content of the Message component. The available variants are Text, Outlined, and Filled.
@@ -129,7 +129,7 @@ Fires when the Message component is closed (dismissed) by the user via the close
 ```cshtml
 <ejs-message id="msg_dismiss"
              content="Dismissible message"
-             show-close-icon="true"
+             showCloseIcon="true"
              closed="onMessageClosed">
 </ejs-message>
 
@@ -181,14 +181,14 @@ Fires when the Message component is destroyed via the `destroy()` method.
 |---|---|---|
 | `Content` | `content` | Plain text or selector string |
 | `ContentTemplate` | — | `<e-content-template>` child element |
-| `CssClass` | `css-class` | `string` |
+| `CssClass` | `cssClass` | `string` |
 | `Severity` | `severity` | `Severity` enum |
 | `Variant` | `variant` | `Variant` enum |
-| `ShowIcon` | `show-icon` | `bool` |
-| `ShowCloseIcon` | `show-close-icon` | `bool` |
+| `ShowIcon` | `showIcon` | `bool` |
+| `ShowCloseIcon` | `showCloseIcon` | `bool` |
 | `Visible` | `visible` | `bool` |
-| `EnableRtl` | `enable-rtl` | `bool` |
-| `EnablePersistence` | `enable-persistence` | `bool` |
+| `EnableRtl` | `enableRtl` | `bool` |
+| `EnablePersistence` | `enablePersistence` | `bool` |
 | `Locale` | `locale` | `string` |
 | `HtmlAttributes` | `html-attributes` | `object` |
 | `Closed` | `closed` | JS function name |

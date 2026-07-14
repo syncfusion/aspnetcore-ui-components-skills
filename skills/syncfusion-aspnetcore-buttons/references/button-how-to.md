@@ -9,7 +9,7 @@ Common patterns and recipes for working with Syncfusion ASP.NET Core buttons.
 **View:**
 ```cshtml
 <div class="button-container">
-    <ejs-button id="blockButton" cssClass="e-block">Block Button</ejs-button>
+    <ejs-button id="blockButton" cssClass="e-block" content="Block Button"></ejs-button>
 </div>
 
 <style>
@@ -36,13 +36,13 @@ Common patterns and recipes for working with Syncfusion ASP.NET Core buttons.
     }
 </style>
 
-<ejs-button id="roundedBtn" cssClass="e-rounded">Rounded Button</ejs-button>
+<ejs-button id="roundedBtn" cssClass="e-rounded" content="Rounded Button"></ejs-button>
 ```
 
 Alternatively, use predefined CSS:
 
 ```cshtml
-<ejs-button id="roundBtn" cssClass="e-round">Round Button</ejs-button>
+<ejs-button id="roundBtn" cssClass="e-round" content="Round Button"></ejs-button>
 ```
 
 ---
@@ -56,7 +56,7 @@ Alternatively, use predefined CSS:
 
 **Using Button with onclick navigation:**
 ```cshtml
-<ejs-button id="navBtn" onclick="navigateTo('/dashboard')">Go to Dashboard</ejs-button>
+<ejs-button id="navBtn" onclick="navigateTo('/dashboard')" content="Go to Dashboard"></ejs-button>
 
 <script>
     function navigateTo(url) {
@@ -92,7 +92,7 @@ Alternatively, use predefined CSS:
     }
 </style>
 
-<ejs-button id="customBtn" cssClass="custom-button">Custom Styled Button</ejs-button>
+<ejs-button id="customBtn" cssClass="custom-button" content="Custom Styled Button"></ejs-button>
 ```
 
 ---
@@ -129,12 +129,12 @@ Alternatively, use predefined CSS:
 
 **Disabled button:**
 ```cshtml
-<ejs-button id="disabledBtn" disabled="true">Disabled Button</ejs-button>
+<ejs-button id="disabledBtn" disabled="true" content="Disabled Button"></ejs-button>
 ```
 
 **Toggle disabled state with JavaScript:**
 ```cshtml
-<ejs-button id="toggleBtn">Disable Me</ejs-button>
+<ejs-button id="toggleBtn" content="Disable Me"></ejs-button>
 
 <script>
     document.getElementById('toggleBtn').addEventListener('click', function() {
@@ -180,7 +180,7 @@ public class IndexModel : PageModel
 **View:**
 ```cshtml
 <div dir="rtl">
-    <ejs-button id="rtlBtn" enableRtl="true">زر</ejs-button>
+    <ejs-button id="rtlBtn" enableRtl="true" content="زر"></ejs-button>
 </div>
 ```
 
@@ -216,7 +216,7 @@ Use the Syncfusion Tooltip component alongside the button:
 Alternatively, use native HTML title attribute:
 
 ```cshtml
-<ejs-button id="simpleBtn" title="This is a helpful tooltip">Hover Me</ejs-button>
+<ejs-button id="simpleBtn" title="This is a helpful tooltip" content="Hover Me"></ejs-button>
 ```
 
 ---
@@ -227,7 +227,7 @@ A repeat button fires its click handler multiple times when held down:
 
 **View:**
 ```cshtml
-<ejs-button id="repeatBtn">Hold to Repeat</ejs-button>
+<ejs-button id="repeatBtn" content="Hold to Repeat"></ejs-button>
 
 <div id="repeatCount">Count: 0</div>
 
@@ -268,7 +268,7 @@ A repeat button fires its click handler multiple times when held down:
 
 **View:**
 ```cshtml
-<ejs-button id="loadingBtn" onclick="startLoading()">Submit</ejs-button>
+<ejs-button id="loadingBtn" onclick="startLoading()" content="Submit"></ejs-button>
 
 <script>
     async function startLoading() {
@@ -308,8 +308,8 @@ A repeat button fires its click handler multiple times when held down:
         <input type="email" id="email" name="email" required />
     </div>
     <div>
-        <ejs-button id="submitBtn" type="submit" cssClass="e-primary">Submit</ejs-button>
-        <ejs-button id="resetBtn" type="reset">Clear</ejs-button>
+        <ejs-button id="submitBtn" type="submit" cssClass="e-primary" content="Submit"></ejs-button>
+        <ejs-button id="resetBtn" type="reset" content="Clear"></ejs-button>
     </div>
 </form>
 ```
@@ -337,9 +337,9 @@ Group buttons visually without interactive behavior:
 **View:**
 ```cshtml
 <div class="e-btn-group">
-    <ejs-button id="btn1">HTML</ejs-button>
-    <ejs-button id="btn2">CSS</ejs-button>
-    <ejs-button id="btn3">JavaScript</ejs-button>
+    <ejs-button id="btn1" content="HTML"></ejs-button>
+    <ejs-button id="btn2" content="CSS"></ejs-button>
+    <ejs-button id="btn3" content="JavaScript"></ejs-button>
 </div>
 ```
 

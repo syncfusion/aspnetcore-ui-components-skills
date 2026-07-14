@@ -171,39 +171,6 @@ public IActionResult ChipList()
 
 ---
 
-## Chips via `chips` Property (Alternative)
-
-Instead of tag helpers, you can pass data as a collection via the `chips` property:
-
-**View (`ChipsData.cshtml`):**
-```razor
-@{
-    ViewData["Title"] = "Chips from Data";
-
-    var chipsData = new List<Syncfusion.EJ2.Buttons.ChipData>
-    {
-        new Syncfusion.EJ2.Buttons.ChipData { Text = "React" },
-        new Syncfusion.EJ2.Buttons.ChipData { Text = "Angular" },
-        new Syncfusion.EJ2.Buttons.ChipData { Text = "Vue" }
-    };
-}
-
-<ejs-chiplist id="chip-list" chips="chipsData"></ejs-chiplist>
-```
-
-**Controller:**
-```csharp
-public IActionResult ChipsData()
-{
-    return View();
-}
-```
-
-- `chips` accepts `List<string>`, `List<int>`, or `List<ChipData>`.
-- `ChipData` supports: `text`, `cssClass`, `avatarText`, `avatarIconCss`, `leadingIconCss`, `leadingIconUrl`, `trailingIconCss`, `trailingIconUrl`, `enabled`, `htmlAttributes`.
-
----
-
 ## Run the Application
 
 ```bash

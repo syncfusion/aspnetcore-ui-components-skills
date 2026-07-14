@@ -18,8 +18,7 @@
 <ejs-multicolumncombobox id="combo"
     dataSource="@ViewBag.largeDataSet"
     enableVirtualization="true"
-    height="300px"
-    virtualScrollSettings-itemHeight="38">
+    popupHeight="300px">
     <e-multicolumncombobox-fields text="EmployeeName" value="EmployeeID"></e-multicolumncombobox-fields>
     <e-multicolumncombobox-columns>
         <e-multicolumncombobox-column field="EmployeeID" header="ID" width="60px"></e-multicolumncombobox-column>
@@ -43,7 +42,7 @@
 <ejs-multicolumncombobox id="combo"
     dataSource="@ViewBag.largeDataSet"
     enableVirtualization="false"
-    height="300px">
+    popupHeight="300px">
     <!-- ... columns ... -->
 </ejs-multicolumncombobox>
 ```
@@ -58,8 +57,7 @@
 <ejs-multicolumncombobox id="combo"
     dataSource="@ViewBag.employees"
     enableVirtualization="true"
-    height="300px"
-    virtualScrollSettings-itemHeight="40">
+    popupHeight="300px">
     <e-multicolumncombobox-fields text="EmployeeName" value="EmployeeID"></e-multicolumncombobox-fields>
     <e-multicolumncombobox-columns>
         <e-multicolumncombobox-column field="EmployeeID" header="ID" width="60px"></e-multicolumncombobox-column>
@@ -106,7 +104,7 @@ public IActionResult GetEmployeesLazy(int startIndex = 0, int pageSize = 50)
 <ejs-multicolumncombobox id="combo"
     dataSource="@ViewBag.initialData"
     enableVirtualization="true"
-    height="300px"
+    popupHeight="300px"
     virtualScrollSettings-itemHeight="40"
     actionComplete="onLazyLoad">
     <e-multicolumncombobox-fields text="EmployeeName" value="EmployeeID"></e-multicolumncombobox-fields>
@@ -158,9 +156,7 @@ function loadMoreData() {
 <ejs-multicolumncombobox id="combo"
     dataSource="@ViewBag.largeDataSet"
     enableVirtualization="true"
-    height="400px"
-    virtualScrollSettings-itemHeight="38"
-    virtualScrollSettings-bufferHeight="600">
+    popupHeight="400px">
     <e-multicolumncombobox-fields text="EmployeeName" value="EmployeeID"></e-multicolumncombobox-fields>
     <e-multicolumncombobox-columns>
         <e-multicolumncombobox-column field="EmployeeID" header="ID" width="60px"></e-multicolumncombobox-column>
@@ -243,8 +239,7 @@ public class VirtualScrollRequest
     allowFiltering="true"
     filtering="onServerFiltering"
     enableVirtualization="true"
-    height="300px"
-    virtualScrollSettings-itemHeight="38">
+    popupHeight="300px">
     <e-multicolumncombobox-fields text="EmployeeName" value="EmployeeID"></e-multicolumncombobox-fields>
     <e-multicolumncombobox-columns>
         <e-multicolumncombobox-column field="EmployeeID" header="ID" width="60px"></e-multicolumncombobox-column>

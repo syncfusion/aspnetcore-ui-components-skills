@@ -77,10 +77,10 @@ Providing descriptive labels is especially important in multi-skeleton layouts w
 
 ## RTL Support
 
-Enable right-to-left rendering using the `enable-rtl="true"` attribute. This mirrors the shimmer animation direction and flips the layout for RTL languages (Arabic, Hebrew, etc.):
+Enable right-to-left rendering using the `enableRtl="true"` attribute. This mirrors the shimmer animation direction and flips the layout for RTL languages (Arabic, Hebrew, etc.):
 
 ```cshtml
-<ejs-skeleton id="sk_rtl" height="15px" width="80%" enable-rtl="true"></ejs-skeleton>
+<ejs-skeleton id="sk_rtl" height="15px" width="80%" enableRtl="true"></ejs-skeleton>
 ```
 
 For a full RTL card skeleton:
@@ -89,11 +89,11 @@ For a full RTL card skeleton:
 @* ~/Pages/Index.cshtml *@
 <div dir="rtl" style="padding: 16px;">
     <div style="display: flex; align-items: center; gap: 10px;">
-        <ejs-skeleton id="sk_rtl_av" shape="Circle" width="48px" enable-rtl="true" label="تحميل الصورة الرمزية"></ejs-skeleton>
+        <ejs-skeleton id="sk_rtl_av" shape="Circle" width="48px" enableRtl="true" label="تحميل الصورة الرمزية"></ejs-skeleton>
         <div style="flex: 1;">
-            <ejs-skeleton id="sk_rtl_n" height="15px" width="50%" enable-rtl="true" label="تحميل الاسم"></ejs-skeleton>
+            <ejs-skeleton id="sk_rtl_n" height="15px" width="50%" enableRtl="true" label="تحميل الاسم"></ejs-skeleton>
             <br />
-            <ejs-skeleton id="sk_rtl_r" height="12px" width="35%" enable-rtl="true" label="تحميل الدور"></ejs-skeleton>
+            <ejs-skeleton id="sk_rtl_r" height="12px" width="35%" enableRtl="true" label="تحميل الدور"></ejs-skeleton>
         </div>
     </div>
 </div>

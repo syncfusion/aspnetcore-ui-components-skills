@@ -1,161 +1,124 @@
 # ListBoxComponent API Reference
 
 This file is a focused extraction of the official Syncfusion ASP.NET Core ListBox API. It lists all public properties, methods, and events.  
-Reference: https://help.syncfusion.com/cr/aspnetcore-js2/syncfusion.ej2.dropdowns.listbox.html
+Reference: https://help.syncfusion.com/cr/aspnetcore-js2/syncfusion.ej2.dropdowns.listbox.html#properties
 
 ---
 
 ## Properties
 
-- `actionFailureTemplate` (string)
-  - Template to display when a remote data request fails. Default: `'Request failed'`.
+- `actionBegin` (string)
+  - Triggers before fetching data from the remote server. Default: `null`.
+
+- `actionComplete` (string)
+  - Triggers after data is fetched successfully from the remote server. Default: `null`.
+
+- `actionFailure` (string)
+  - Triggers when the data fetch request from the remote server fails. Default: `null`.
 
 - `allowDragAndDrop` (boolean)
-  - Enables drag and drop functionality between ListBox components. Default: `false`.
+  - If `allowDragAndDrop` is set to `true`, then you can perform drag and drop of the list item. ListBox contains same `scope` property enables drag and drop between multiple ListBox. Default: `false`.
 
 - `allowFiltering` (boolean)
-  - When set to `true`, displays a search/filter box. Default: `false`.
+  - To enable the filtering option in this component. Filter action performs when type in search box and collect the matched item through `filtering` event. If searching character does not match, `noRecordsTemplate` property value will be shown. Default: `false`.
+
+- `beforeDrop` (string)
+  - Triggers before dropping the list item on another list item. Default: `null`.
+
+- `beforeItemRender` (string)
+  - Triggers while rendering each list item. Default: `null`.
+
+- `change` (string)
+  - Triggers while select / unselect the list item. Default: `null`.
+
+- `created` (string)
+  - Triggers when the component is created. Default: `null`.
 
 - `cssClass` (string)
-  - Adds custom CSS classes to the root element. Default: `null`.
+  - Sets the CSS classes to root element of this component, which helps to customize the complete styles. Default: `""`.
 
-- `dataSource` (array or DataManager)
-  - Accepts list items from local data or remote service. Default: `[]`.
+- `dataBound` (string)
+  - Triggers when data source is populated in the list. Default: `null`.
 
-- `disabled` (boolean)
-  - Disables the entire ListBox component. Default: `false`.
+- `dataSource` (object)
+  - Accepts the list items either through local or remote service and binds it to the component. It can be an array of JSON Objects or an instance of `DataManager`. Default: `null`.
 
-- `disabledFields` (FieldSettingsModel)
-  - Fields configuration for mapping disabled items. Default: `null`.
+- `destroyed` (string)
+  - Triggers when the component is destroyed. Default: `null`.
 
-- `enableRtl` (boolean)
-  - Enables right-to-left rendering. Default: `false`.
+- `drag` (string)
+  - Triggers while dragging the list item. Default: `null`.
+
+- `dragStart` (string)
+  - Triggers after dragging the list item. Default: `null`.
+
+- `drop` (string)
+  - Triggers before dropping the list item on another list item. Default: `null`.
 
 - `enabled` (boolean)
-  - Specifies whether the component is enabled. Default: `true`.
+  - Specifies a value that indicates whether the component is enabled or not. Default: `true`.
 
-- `enableVirtualization` (boolean)
-  - Enables virtual scrolling for large datasets. Default: `false`.
+- `enablePersistence` (boolean)
+  - Enable or disable persisting component's state between page reloads. If enabled, `value` state will be persisted. Default: `false`.
 
-- `fields` (FieldSettingsModel)
-  - Maps data columns to component. Sub-properties:
-    - `text` — Display field
-    - `value` — Value field
-    - `iconCss` — Icon class field
-    - `groupBy` — Group field
-    - `disabled` — Disabled status field
-  - Default: `{ text: null, value: null }`
+- `enableRtl` (boolean)
+  - Enable or disable rendering component in right to left direction. Default: `false`.
+
+- `fields` (ListBoxFieldSettings)
+  - The `fields` property maps the columns of the data table and binds the data to the component. Sub-properties:
+    - `text` — Maps the text column from data table for each list item
+    - `value` — Maps the value column from data table for each list item
+    - `iconCss` — Maps the icon class column from data table for each list item
+    - `groupBy` — Group the list items with its related items by mapping groupBy field
+  - Default: `null`
 
 - `filterBarPlaceholder` (string)
-  - Placeholder text for filter bar. Default: `'Search'`.
+  - Accepts the value to be displayed as a watermark text on the filter bar. Default: `null`.
 
-- `floatLabelType` (FloatLabelType)
-  - Float label behavior: `'Never'`, `'Always'`, `'Auto'`. Default: `'Never'`.
+- `filtering` (string)
+  - Triggers on typing a character in the component. Default: `null`.
 
-- `headerTemplate` (string)
-  - Template for component header. Default: `null`.
+- `filterType` (FilterType)
+  - Determines on which filter type, the component needs to be considered on search action. Default: `FilterType.StartsWith`.
 
-- `height` (string or number)
-  - Height of the ListBox. Default: `'300px'`.
+- `for` (ModelExpression)
+  - Overrides `Syncfusion.EJ2.EJTagHelper.For`.
+
+- `height` (string)
+  - Sets the height of the ListBox component. Default: `""`.
 
 - `htmlAttributes` (object)
-  - Additional HTML attributes as key-value pairs. Default: `{}`.
+  - Allows additional HTML attributes such as title, name, etc., and accepts n number of attributes in a key-value pair format. Default: `null`.
 
 - `itemTemplate` (string)
-  - Template for each list item. Default: `null`.
+  - Accepts the template design and assigns it to each list item present in the popup. We have built-in `template engine`. Default: `null`.
 
 - `locale` (string)
-  - Localization culture. Default: `'en-US'`.
+  - Overrides the global culture and localization value for this component. Default global culture is `'en-US'`. Default: `"en-US"`.
+
+- `maximumSelectionLength` (double)
+  - Sets limitation to the value selection. based on the limitation, list selection will be prevented. Default: `1000`.
 
 - `noRecordsTemplate` (string)
-  - Template when no data is available. Default: `'No records found'`.
+  - Accepts the template design and assigns it to popup list of component when no data is available on the component. Default: `"No records found"`.
 
-- `query` (Query)
-  - External query to execute with data processing. Default: `null`.
+- `query` (string)
+  - Accepts the external `Query` which will execute along with the data processing. Default: `null`.
 
 - `scope` (string)
-  - CSS class for scope of ListBox interaction. Default: `null`.
+  - Defines the scope value to group sets of draggable and droppable ListBox. A draggable with the same scope value will be accepted by the droppable. Default: `""`.
 
-- `selectionSettings` (SelectionSettingsModel)
-  - Selection mode configuration:
-    - `mode` — `'Single'` or `'Multiple'`
-    - `type` — `'Checkbox'` or `'Default'`
-  - Default: `{ mode: 'Single' }`
+- `select` (string)
+  - Triggers when an item in the popup is selected by the user either with mouse/tap or with keyboard navigation. Default: `null`.
 
-- `sortOrder` (SortOrder)
-  - Sort order: `'None'`, `'Ascending'`, `'Descending'`. Default: `'None'`.
+- `selectionSettings` (ListBoxSelectionSettings)
+  - Specifies the selection mode and its type. Default: `null`.
 
-- `value` (array or string)
-  - Value(s) of selected item(s). Default: `null`.
+- `sortOrder` (object)
+  - Specifies the `sortOrder` to sort the data source. The available type of sort orders are `None`, `Ascending`, `Descending`. Default: `null`.
 
-- `width` (string or number)
-  - Width of component. Default: `'100%'`.
+- `toolbarSettings` (ListBoxToolbarSettings)
+  - Specifies the toolbar items and its position. Default: `null`.
 
----
-
-## Methods
-
-- `addItems(items, itemIndex?)`
-  - Adds item(s) to the ListBox.
-
-- `clear()`
-  - Clears all selections.
-
-- `destroy()`
-  - Removes the component and detaches event handlers.
-
-- `disableItem(item)`
-  - Disables a specific item.
-
-- `enableItem(item)`
-  - Enables a specific item.
-
-- `focusIn()`
-  - Sets focus to the component.
-
-- `focusOut()`
-  - Removes focus from the component.
-
-- `getItems()`
-  - Returns all list items.
-
-- `getSelectedItems()`
-  - Returns selected item(s) with their data.
-
-- `moveAllTo(targetListBox)`
-  - Moves all items to another ListBox (for dual list setup).
-
-- `moveDown()`
-  - Moves selected item down in the list.
-
-- `moveUp()`
-  - Moves selected item up in the list.
-
-- `moveTo(targetListBox)`
-  - Moves selected item(s) to another ListBox.
-
-- `removeItem(item)`
-  - Removes a specific item from the list.
-
-- `selectAll()`
-  - Selects all items in the ListBox.
-
----
-
-## Events
-
-- `actionBegin` — Triggered before fetch request.
-- `actionComplete` — Triggered after data fetch completes.
-- `actionFailure` — Triggered when data fetch fails.
-- `blur` — Triggered when component loses focus.
-- `change` — Triggered when selection changes.
-- `created` — Triggered after component creation.
-- `destroyed` — Triggered after component destruction.
-- `dblClick` — Triggered on double-click of an item.
-- `drag` — Triggered during item drag.
-- `dragStart` — Triggered when drag starts.
-- `dragStop` — Triggered when drag stops.
-- `drop` — Triggered on item drop.
-- `focus` — Triggered when component receives focus.
-- `remove` — Triggered when item is removed.
-- `select` — Triggered when item selected.
+- `value` (object)
+  - Sets the specified item to the selected state or gets the selected item in the ListBox. Default: `null`.
