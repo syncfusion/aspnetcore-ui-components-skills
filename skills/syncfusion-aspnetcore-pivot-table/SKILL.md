@@ -156,7 +156,7 @@ Use this skill when building an ASP.NET Core application and the user needs:
 📄 **Read:** [references/filtering.md](references/filtering.md)
 - Member filtering with include/exclude
 - Label filtering (string, date, numeric)
-- Value filtering on aggregated data
+- Value filtering on aggregated data, including Top N and Bottom N operators
 
 📄 **Read:** [references/sorting.md](references/sorting.md)
 - Member field sorting (ascending/descending)

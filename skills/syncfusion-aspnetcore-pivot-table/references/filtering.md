@@ -3,8 +3,11 @@
 ## Table of Contents
 - [Overview](#overview)
 - [Member Filtering](#member-filtering)
+  - [Append Current Selection to Existing Filters](#append-current-selection-to-existing-filters)
 - [Label Filtering](#label-filtering)
 - [Value Filtering](#value-filtering)
+  - [Top and Bottom Filtering](#top-and-bottom-filtering)
+  - [Value Filtering on Multiple Measures](#value-filtering-on-multiple-measures)
 - [UI Filter Features](#ui-filter-features)
 - [Typical Use Cases](#typical-use-cases)
 - [Best Practices](#best-practices)
@@ -135,6 +138,25 @@ public ActionResult Index()
 **Result**: 
 - Show only USA, UK, Germany
 - Within those countries, exclude Accessories and OLD_PRODUCT
+
+### Append Current Selection to Existing Filters
+
+By default, when a filter is applied and a new field member is selected, the Pivot Table replaces the previous selection. Enabling the **Add current selection to filter** option ensures that each new selection is added to the existing filter instead of replacing it. This allows you to select multiple items incrementally without losing earlier selections.
+
+**When to use this option:**
+- You need to build up a multi-member filter across several dialog interactions
+- You don't want to lose previously selected members when picking additional ones
+- You're working with a long member list and want to add items one at a time using search
+
+**How to append current selections to existing filters:**
+
+1. Open the Filter dialog for the target field.
+2. Search for the required field member and select it.
+3. Enable the **Add current selection to filter** option in the Filter dialog.
+4. Click the **OK** button to apply the filter and keep the member included.
+5. Repeat the steps to add more members to the same filter.
+
+> **Note:** When **Add current selection to filter** is disabled (the default), each new selection replaces the previous members in the filter.
 
 ## Label Filtering
 
@@ -424,9 +446,88 @@ Show countries with sales outside 1,000-10,000 range:
 </e-field>
 ```
 
+### Top and Bottom Filtering
+
+`Top` and `Bottom` are value filter operators used to show only the top N or bottom N members based on an aggregated value. Use `Top` to focus on leading performers (top revenue sources, top-selling products) and `Bottom` to surface underperformers or low-volume items.
+
+To apply Top or Bottom filtering, set the `condition` property to **`Top`** or **`Bottom`** in the [`e-filtersettings`](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.PivotView.PivotViewFilterSetting.html), provide the count N in `value1`, and specify the `measure` field to rank by.
+
+**How they work:**
+- `Top` ranks members by the measure in descending order and keeps the top N
+- `Bottom` ranks members by the measure in ascending order and keeps the bottom N
+- Both operators are available in the value filter dialog under the **Value** tab, in the **Operators** dropdown
+- Both run **client-side** after aggregation, so the full result set is computed first and then trimmed to N
+
+**Rules to keep in mind:**
+- `value1` defines N (the number of members to show). `value2` is not used by these operators.
+- The `measure` property is required when multiple value fields are present, so the ranking is unambiguous.
+- Ties are kept in their natural order; the first N ranked members are shown.
+
+#### Top N - Show Top 5 Countries by Sales
+
+Display only the top 5 countries based on the sum of sales:
+
+```html
+<e-filtersettings>
+    <e-field name="Country" type="Value"
+             measure="Sales"
+             condition="Top" value1="5">
+    </e-field>
+</e-filtersettings>
+```
+
+**Result**: Pivot displays only the 5 countries with the highest Sum(Sales).
+
+#### Bottom N - Show Bottom 5 Countries by Sales
+
+Display only the 5 countries with the lowest sum of sales:
+
+```html
+<e-filtersettings>
+    <e-field name="Country" type="Value"
+             measure="Sales"
+             condition="Bottom" value1="5">
+    </e-field>
+</e-filtersettings>
+```
+
+**Result**: Pivot displays only the 5 countries with the lowest Sum(Sales).
+
+#### Top/Bottom with Multiple Measures
+
+When the pivot has multiple value fields, you must specify which measure to rank by using the `measure` property. For example, to get the top 5 countries by **Sales** (not Profit):
+
+```html
+<e-values>
+    <e-field name="Sales"></e-field>
+    <e-field name="Profit"></e-field>
+</e-values>
+
+<e-filtersettings>
+    <!-- Top 5 countries ranked by Sales (not Profit) -->
+    <e-field name="Country" type="Value"
+             measure="Sales"
+             condition="Top" value1="5">
+    </e-field>
+</e-filtersettings>
+```
+
+**Result**: Top 5 countries ranked by Sum(Sales), even though Profit is also displayed. Replace `Top` with `Bottom` to flip the ranking.
+
+#### Quick Reference
+
+| Filter | Condition | value1 | Result |
+|--------|-----------|--------|--------|
+| Top N | `Top` | Count (e.g., `5`) | Top N members by highest value |
+| Bottom N | `Bottom` | Count (e.g., `5`) | Bottom N members by lowest value |
+
+#### Clearing Top or Bottom Filters
+
+Like other value filters, you can clear a `Top` or `Bottom` filter by opening the filter dialog, switching to the **Value** tab, and clicking the **Clear** option at the bottom of the dialog.
+
 ### Value Filtering on Multiple Measures
 
-When pivot has multiple value fields (Sales and Profit), you must specify which one to filter on:
+When the pivot has multiple value fields (Sales and Profit), you must specify which one to filter on by using the `measure` property. This applies to every value filter operator, including `Top` and `Bottom`:
 
 ```html
 <e-values>
@@ -442,6 +543,25 @@ When pivot has multiple value fields (Sales and Profit), you must specify which 
     </e-field>
 </e-filtersettings>
 ```
+
+**Result**: Countries where Sum(Sales) > 5,000, even though Profit is also displayed.
+
+### Value Filter Conditions Reference
+
+| Operator | Use | Example |
+|----------|-----|---------|
+| `Equals` | Exact value | `Equals:5000` → Only members with value 5000 |
+| `DoesNotEquals` | Exclude value | `DoesNotEquals:0` → Excludes zero-value members |
+| `GreaterThan` | Greater than threshold | `GreaterThan:5000` → Values > 5000 |
+| `GreaterThanOrEqualTo` | Greater or equal | `GreaterThanOrEqualTo:5000` → Values ≥ 5000 |
+| `LessThan` | Less than threshold | `LessThan:5000` → Values < 5000 |
+| `LessThanOrEqualTo` | Less or equal | `LessThanOrEqualTo:5000` → Values ≤ 5000 |
+| `Between` | Range | `Between:1000,10000` → Values 1,000-10,000 |
+| `NotBetween` | Not in range | `NotBetween:1000,10000` → Outside 1,000-10,000 |
+| `Top` | Top N members (client-side) | `Top:5` → Top 5 by highest value |
+| `Bottom` | Bottom N members (client-side) | `Bottom:5` → Bottom 5 by lowest value |
+
+> **Note:** `Top` and `Bottom` operate on the aggregated result set after rendering. They require only `value1` (the count). Use the `measure` property to choose which value field to rank by when the pivot has multiple value fields.
 
 ## UI Filter Features
 
@@ -563,6 +683,32 @@ ViewBag.TopCountries = new string[] { "USA", "China", "Japan", "Germany", "UK" }
 </e-filtersettings>
 ```
 
+### Case 6: Top N Performers - Top 5 Countries by Sales
+
+```html
+<e-filtersettings>
+    <e-field name="Country" type="Value"
+             measure="Sales"
+             condition="Top" value1="5">
+    </e-field>
+</e-filtersettings>
+```
+
+**Business Goal**: Focus executive dashboard on the 5 highest-revenue countries.
+
+### Case 7: Bottom N Underperformers - Bottom 3 Products by Revenue
+
+```html
+<e-filtersettings>
+    <e-field name="Product" type="Value"
+             measure="Revenue"
+             condition="Bottom" value1="3">
+    </e-field>
+</e-filtersettings>
+```
+
+**Business Goal**: Identify the 3 lowest-revenue products for review or discontinuation.
+
 ## Performance Optimization for Large Datasets
 
 ### Member Filter Performance with maxNodeLimitInMemberEditor
@@ -656,6 +802,9 @@ The member filter dialog includes a built-in search box that allows you to find 
 ✓ **Use Exclude for General Filters**: Better for "hide unwanted" scenarios (> 80%)
 ✓ **Label Filters for Text Patterns**: Use Contains/BeginsWith for product names, descriptions
 ✓ **Value Filters for Aggregates**: Use for sales thresholds, quantity ranges, performance metrics
+✓ **Use Top/Bottom for Leaderboards**: Use `Top` and `Bottom` operators to show top/bottom N members without writing custom logic
+✓ **Always Set measure for Top/Bottom**: When the pivot has multiple value fields, set `measure` to define which value to rank by
+✓ **Pair Top with Bottom**: Show the same field with `Top` and `Bottom` to compare leaders and laggards side by side
 ✓ **Case-Sensitivity**: Field names are case-sensitive and must match DataSource exactly
 ✓ **Combine Strategically**: Member + Label + Value filters work together for complex analysis
 ✓ **Validate Conditions**: Use appropriate Operators for each data type (string, number, date)
