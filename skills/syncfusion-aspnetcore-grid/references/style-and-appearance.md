@@ -1,252 +1,463 @@
-# Style and Appearance — Syncfusion ASP.NET Core Grid
+# Styling and Appearance in Data Grid
+
+The Syncfusion Data Grid provides flexible styling and appearance customization options to align with your application's design requirements. You can choose from a wide range of built-in themes, customize visual elements using CSS, and create consistent experiences through theme-based styling.
 
 ## Table of Contents
-- [Overview](#overview)
-- [CSS Variables and Theme Customization](#css-variables-and-theme-customization)
-- [Header Styling](#header-styling)
-- [Row and Alternating Row Styling](#row-and-alternating-row-styling)
-- [Sorting Style](#sorting-style)
-- [Filtering Style](#filtering-style)
-- [Editing Style](#editing-style)
-- [Grouping Style](#grouping-style)
-- [Paging Style](#paging-style)
 
-## When to Use This
-
-- Customize grid colors and themes
-- Apply CSS variables for styling
-- Style specific grid elements
-- Match grid to application branding
-- Create alternating row colors
-- [Aggregates Style](#aggregates-style)
-- [Toolbar Style](#toolbar-style)
-- [Selection Style](#selection-style)
-- [Custom CSS Classes on Cells and Rows](#custom-css-classes-on-cells-and-rows)
+- [Built-in Themes](#built-in-themes)
+- [Theme Packages](#theme-packages)
+- [Size Modes](#size-modes)
+- [Theme Customization](#theme-customization)
+- [Default CSS Override](#default-css-override)
+- [Common Patterns](#common-patterns)
+- [Quick Start](#quick-start)
 
 ---
 
-## Overview
+## Quick Start
 
-Grid appearance is fully customizable via CSS variable overrides and class targeting. The grid uses Bootstrap-compatible or Fluent2 theme CSS classes prefixed with `.e-grid`.
+### Install a Theme Package
+
+```bash
+npm install @syncfusion/ej2-tailwind3-theme
+```
+
+### Import Theme in Your App
+
+```css
+@import "../node_modules/@syncfusion/ej2-tailwind3-theme/styles/grid/index.css";
+```
+```cshtml
+<ejs-grid id="Grid" dataSource="ViewBag.DataSource" allowPaging="true">
+    // Columns
+</ejs-grid>
+```
+
+### Enable Touch Mode (Larger UI Elements)
+
+```jsx
+// Add to body in index.html or apply CSS class dynamically
+<body className="e-bigger">
+  <div id="root"></div>
+</body>
+```
 
 ---
 
-## CSS Variables and Theme Customization
+## Built-in Themes
 
-Override Syncfusion CSS variables to change the look globally. Place overrides in your site CSS:
+The Data Grid components include a comprehensive collection of themes to match popular design systems and provide both light and dark variants.
+
+### Available Themes
+
+| Theme | Style Sheet | Use Case |
+|-------|------------|----------|
+| **Tailwind 3.4** | `tailwind3.css` / `tailwind3.scss` | Modern utility-first design system |
+| **Tailwind 3.4 Dark** | `tailwind3-dark.css` | Dark mode variant of Tailwind 3.4 |
+| **Bootstrap 5.3** | `bootstrap5.3.css` / `bootstrap5.3.scss` | Latest Bootstrap framework integration |
+| **Bootstrap 5.3 Dark** | `bootstrap5.3-dark.css` | Dark mode for Bootstrap 5.3 |
+| **Fluent 2** | `fluent2.css` / `fluent2.scss` | Microsoft Fluent Design System 2 |
+| **Fluent 2 Dark** | `fluent2-dark.css` | Dark mode variant of Fluent 2 |
+| **Material 3** | `material3.css` / `material3.scss` | Latest Google Material Design 3 |
+| **Material 3 Dark** | `material3-dark.css` | Dark mode for Material Design 3 |
+| **Bootstrap 5** | `bootstrap5.css` / `bootstrap5.scss` | Standard Bootstrap 5 |
+| **Bootstrap 5 Dark** | `bootstrap5-dark.css` | Dark variant of Bootstrap 5 |
+| **Fluent** | `fluent.css` / `fluent.scss` | Microsoft Fluent Design |
+| **Fluent Dark** | `fluent-dark.css` | Dark variant of Fluent |
+| **Material** | `material.css` / `material.scss` | Google Material Design |
+| **Material Dark** | `material-dark.css` | Dark variant of Material Design |
+| **Tailwind** | `tailwind.css` / `tailwind.scss` | Standard Tailwind CSS |
+| **Tailwind Dark** | `tailwind-dark.css` | Dark variant of Tailwind |
+| **Office Fabric** | `fabric.css` / `fabric.scss` | Microsoft Office Fabric design |
+| **Office Fabric Dark** | `fabric-dark.css` | Dark variant of Office Fabric |
+| **High Contrast** | `highcontrast.css` | Accessible high contrast theme |
+
+### Choosing a Theme
+
+- **Material 3** — Best for modern, clean designs with vibrant colors
+- **Fluent 2** — Ideal for enterprise applications following Microsoft design
+- **Bootstrap 5.3** — Great for Bootstrap ecosystem integration
+- **Tailwind 3.4** — Recommended for utility-first workflows
+- **High Contrast** — Required for accessibility compliance (WCAG AA/AAA)
+
+---
+
+## Theme Packages
+
+Syncfusion® built-in themes are distributed as npm packages. Install the theme package that matches your design requirements.
+
+### Installation Examples
+
+**Material 3 Theme (Light + Dark variants)**
+
+```bash
+# Light theme
+npm install @syncfusion/ej2-material3-theme
+
+# Dark theme
+npm install @syncfusion/ej2-material3-dark-theme
+```
+
+**Bootstrap 5.3 Theme**
+
+```bash
+npm install @syncfusion/ej2-bootstrap5.3-theme
+npm install @syncfusion/ej2-bootstrap5.3-dark-theme
+```
+
+**Tailwind 3 Theme**
+
+```bash
+npm install @syncfusion/ej2-tailwind3-theme
+npm install @syncfusion/ej2-tailwind3-dark-theme
+```
+
+### All Available Theme Packages
+
+| Theme | Light Package | Dark Package |
+|-------|---|---|
+| Tailwind 3 | `@syncfusion/ej2-tailwind3-theme` | `@syncfusion/ej2-tailwind3-dark-theme` |
+| Bootstrap 5.3 | `@syncfusion/ej2-bootstrap5.3-theme` | `@syncfusion/ej2-bootstrap5.3-dark-theme` |
+| Fluent 2 | `@syncfusion/ej2-fluent2-theme` | `@syncfusion/ej2-fluent2-dark-theme` |
+| Material 3 | `@syncfusion/ej2-material3-theme` | `@syncfusion/ej2-material3-dark-theme` |
+| Bootstrap 5 | `@syncfusion/ej2-bootstrap5-theme` | `@syncfusion/ej2-bootstrap5-dark-theme` |
+| Bootstrap 4 | `@syncfusion/ej2-bootstrap4-theme` | — |
+| Bootstrap | `@syncfusion/ej2-bootstrap-theme` | `@syncfusion/ej2-bootstrap-dark-theme` |
+| Material | `@syncfusion/ej2-material-theme` | `@syncfusion/ej2-material-dark-theme` |
+| Tailwind | `@syncfusion/ej2-tailwind-theme` | `@syncfusion/ej2-tailwind-dark-theme` |
+| Fluent | `@syncfusion/ej2-fluent-theme` | `@syncfusion/ej2-fluent-dark-theme` |
+| Fabric | `@syncfusion/ej2-fabric-theme` | `@syncfusion/ej2-fabric-dark-theme` |
+| High Contrast | `@syncfusion/ej2-highcontrast-theme` | — |
+
+---
+
+## Size Modes
+
+The Data Grid components support two size modes to optimize user experience across different devices and input methods.
+
+### Normal Mode (Default)
+
+Standard sizing optimized for mouse and keyboard interactions. This is the default mode for desktop applications.
+
+```cshtml
+// No additional configuration needed - normal mode is default
+<ejs-grid id="Grid" dataSource="ViewBag.DataSource" allowPaging="true">
+    // Columns
+</ejs-grid>
+```
+
+### Touch Mode (Bigger)
+
+Larger elements with increased padding, font sizes, and touch targets for improved touch interaction and accessibility. Use this for mobile applications or touch-enabled interfaces.
+
+```cshtml
+// Option 1: Apply globally via CSS class on body
+// In index.html
+<body className="e-bigger">
+  <div id="root"></div>
+</body>
+
+// Option 2: Apply dynamically with JavaScript
+document.body.classList.add('e-bigger');
+```
+
+### Size Mode Comparison
+
+| Aspect | Normal Mode | Touch Mode |
+|--------|-------------|-----------|
+| **Target Device** | Desktop, mouse, keyboard | Mobile, tablet, touch input |
+| **Element Size** | Standard | Larger (increased padding/height) |
+| **Font Size** | Standard | Increased for better readability |
+| **Touch Targets** | Moderate | Larger for easier interaction |
+| **Row Height** | ~30-40px | ~48-56px |
+| **Column Headers** | Standard height | Increased height |
+| **Padding** | Compact | Spacious |
+
+---
+
+## Theme Customization
+
+The DataGrid provides flexible theme customization options to help align the control appearance with your application's design requirements. You can customize built-in themes either by overriding CSS variables or by creating customized themes.
+
+### Default CSS Override (CSS Variables)
+
+The DataGrid themes use CSS variables with the unified `--sf` naming convention. This ensures visual consistency, simple customization, and global updates. Centralized variables allow quick adjustments to colors, backgrounds, and borders across the grid.
+
+#### Material 3 Theme Color Variables
+
+The Material 3 theme applies scalable CSS custom properties to maintain consistency. Here are commonly used color-related variables:
+
+| Variable | Purpose | Example Value |
+|----------|---------|----------------|
+| `--e-font-name` | Default font family for DataGrid | `Segoe UI, sans-serif` |
+| `--color-sf-content-bg-color-alt1` | Background of DataGrid header | `#f3f3f3` |
+| `--color-sf-primary` | Primary brand color | `#6200ee` |
+| `--color-sf-surface` | Surface/card background color | `#ffffff` |
+| `--color-sf-on-surface` | Text color on surfaces | `#1c1b1f` |
+| `--color-sf-error` | Error/alert color | `#b3261e` |
+| `--color-sf-warning` | Warning color | `#f57c00` |
+| `--color-sf-success` | Success color | `#388e3c` |
+
+#### Customize CSS Variables
+
+Create a custom stylesheet to override theme variables:
+
+```css
+@import "../node_modules/@syncfusion/ej2-tailwind3-theme/styles/grid/index.css";
+/* custom-theme.css */
+
+/* Override Material 3 theme variables */
+:root {
+  /* Header customization */
+  --color-sf-content-bg-color-alt1: #e8eaf6;
+  
+  /* Primary brand color */
+  --color-sf-primary: #5e35b1;
+  
+  /* Row hover effect */
+  --color-sf-surface-hover: #f3e5f5;
+  
+  /* Border color */
+  --color-sf-outline: #ede7f6;
+  
+  /* Text color */
+  --color-sf-on-surface: #311b92;
+  
+  /* Selection color */
+  --color-sf-secondary-container: #e1bee7;
+}
+```
+
+```cshtml
+<ejs-grid id="Grid" dataSource="ViewBag.DataSource" allowPaging="true">
+    // Columns
+</ejs-grid>
+```
+
+#### Common Customizations
+
+**Change Header Background Color**
 
 ```css
 :root {
-    --color-sf-primary: #007bff;          /* Primary color */
-    --color-sf-base-bg: #ffffff;           /* Grid background */
-    --color-sf-grid-header-bg: #f8f9fa;   /* Header background */
+  --color-sf-content-bg-color-alt1: #2c3e50;
+  --color-sf-on-content-text: #ffffff;
 }
 ```
 
-Or target specific grid instances:
+**Customize Row Hover Effect**
+
 ```css
-#Grid .e-gridheader {
-    background-color: #2d2d2d;
-    color: #ffffff;
+:root {
+  --color-sf-surface-hover: #eceff1;
+}
+```
+
+**Modify Grid Lines Color**
+
+```css
+:root {
+  --color-sf-outline: #b0bec5;
+}
+```
+
+**Change Selected Row Appearance**
+
+```css
+:root {
+  --color-sf-secondary-container: #c5e1a5;
+  --color-sf-on-secondary-container: #33691e;
 }
 ```
 
 ---
 
-## Header Styling
+## Common Patterns
+
+### Pattern 1: Switching Themes Dynamically
+
+Allow users to switch between light and dark themes at runtime:
 
 ```css
-/* Header background and text */
-.e-grid .e-headercell {
-    background-color: #4a90e2;
-    color: white;
-    font-weight: 700;
-}
+@import "../node_modules/@syncfusion/ej2-tailwind3-theme/styles/grid/index.css";
+```
+```cshtml
+<ejs-button id="themeBtn" content="Toggle Dark Mode"></ejs-button>
+<ejs-grid id="Grid" dataSource="ViewBag.DataSource" allowPaging="true">
+    // columns
+</ejs-grid>
 
-/* Header border */
-.e-grid .e-headercell .e-headercelldiv {
-    border-right: 1px solid #357abd;
-}
+<script>
+    let isDarkMode = false;
+    document.getElementById('themeBtn').addEventListener('click', function () {
+        isDarkMode = !isDarkMode;
+
+        const btn = document.getElementById('themeBtn');
+
+        if (isDarkMode) {
+            document.body.classList.add('e-dark');
+            btn.innerText = 'Toggle Light Mode';
+        } else {
+            document.body.classList.remove('e-dark');
+            btn.innerText = 'Toggle Dark Mode';
+        }
+    });
+</script>
 ```
 
----
+### Pattern 2: Responsive Design with Multiple Themes
 
-## Row and Alternating Row Styling
+Apply different themes based on screen size:
 
 ```css
-/* All rows */
-.e-grid .e-row {
-    background-color: #ffffff;
-}
-
-/* Alternating rows (zebra) */
-.e-grid .e-altrow {
-    background-color: #f5f5f5;
-}
-
-/* Hover state */
-.e-grid .e-row:hover .e-rowcell {
-    background-color: #e8f0fe;
-}
+@import "../node_modules/@syncfusion/ej2-bootstrap5.3-theme/styles/grid/index.css";
 ```
+```cshtml
+<ejs-grid id="Grid" dataSource="ViewBag.DataSource">
+    //columns
+</ejs-grid>
+<script>
+    let theme = 'bootstrap';
 
-Apply row CSS class conditionally using `rowDataBound`:
-```javascript
-function rowDataBound(args) {
-    if (args.data.Freight > 100) {
-        args.row.classList.add('high-freight');
+    function resizeHandler() {
+        if (window.innerWidth < 768) {
+            document.body.classList.add('e-bigger');
+            theme = 'touch-optimized';
+        } else {
+            document.body.classList.remove('e-bigger');
+            theme = 'desktop';
+        }
     }
-}
+
+    window.addEventListener('resize', resizeHandler);
+    resizeHandler();
+
+    window.addEventListener('beforeunload', function () {
+        window.removeEventListener('resize', resizeHandler);
+    });
+</script>
 ```
 
----
+### Pattern 3: Custom Brand Colors
 
-## Sorting Style
+Override theme colors to match brand identity:
 
 ```css
-/* Sort icon color */
-.e-grid .e-sortnumber {
-    color: #007bff;
-    background-color: transparent;
+@import "../node_modules/@syncfusion/ej2-material3-theme/styles/grid/index.css";
+/* brand-theme.css */
+:root {
+  /* Company brand color (instead of Material purple) */
+  --color-sf-primary: #1976d2; /* Blue brand */
+  --color-sf-secondary: #dc004e; /* Pink accent */
+  
+  /* Header styling */
+  --color-sf-content-bg-color-alt1: #f5f5f5;
+  
+  /* Selection and hover states */
+  --color-sf-surface-hover: #e3f2fd;
+  --color-sf-secondary-container: #f3e5f5;
+  
+  /* Success/Error states */
+  --color-sf-success: #4caf50;
+  --color-sf-error: #f44336;
 }
+```
 
-/* Sorted column header highlight */
-.e-grid .e-columnheader .e-headercell.e-focus {
-    background-color: #dbe9ff;
+```jsx
+import './brand-theme.css';
+```
+
+### Pattern 4: Accessibility with High Contrast Theme
+
+Implement high contrast theme for accessibility compliance:
+
+
+```cshtml
+<label>
+    <input type="checkbox" id="highContrast" />
+    Enable High Contrast Mode (Accessibility)
+</label>
+
+<ejs-grid id="Grid" dataSource="ViewBag.DataSource">
+    // columns
+</ejs-grid>
+
+<script>
+    let highContrast = false;
+
+    document.getElementById('highContrast').addEventListener('change', function (event) {
+        highContrast = event.target.checked;
+
+        if (highContrast) {
+            document.body.classList.add('e-highcontrast');
+        } else {
+            document.body.classList.remove('e-highcontrast');
+        }
+    });
+</script>
+```
+---
+
+## When to Use Each Approach
+
+| Scenario | Recommendation | Method |
+|----------|---|---|
+| **Static theme** | Use one theme throughout app | Import CSS in main app file |
+| **User preference** | Let users choose theme | Use CSS class switching + state |
+| **Brand matching** | Override default colors | CSS variable customization |
+| **Accessibility** | Support high contrast | Provide high contrast theme toggle |
+| **Mobile-first** | Optimize for touch | Apply `e-bigger` class on mobile |
+| **Team design system** | Consistent styling | Create custom theme package |
+
+---
+
+## Edge Cases & Troubleshooting
+
+### Issue: Custom CSS variables not overriding theme
+
+**Problem:** CSS variable changes ignored by theme
+
+**Solution:** Ensure custom styles load AFTER theme CSS and use `!important` if needed
+
+```jsx
+// Order matters!
+import '@syncfusion/ej2-material3-theme/styles/material3.css';
+import './custom-overrides.css'; // Load custom styles AFTER theme
+
+// In custom-overrides.css:
+:root {
+  --color-sf-primary: #1976d2 !important; /* Use !important if necessary */
+}
+```
+
+### Issue: Touch mode not activating
+
+**Problem:** `e-bigger` class applied but UI not enlarging
+
+**Solution:** 
+1. Verify class is applied to `<body>` or parent container
+2. Check theme includes touch mode styles
+3. Ensure theme CSS is loaded correctly
+
+```jsx
+// ✅ Correct: Add to body in index.html or main layout
+<body className="e-bigger">
+  <div id="root"></div>
+</body>
+
+// Or dynamically:
+if (isTouchDevice) {
+  document.body.classList.add('e-bigger');
 }
 ```
 
 ---
 
-## Filtering Style
+## Best Practices
 
-```css
-/* Filter bar input */
-.e-grid .e-filterbar .e-filterbarcell input {
-    border-bottom: 2px solid #007bff;
-    background: transparent;
-}
-
-/* Filter icon */
-.e-grid .e-filtermenudiv .e-icons {
-    color: #007bff;
-}
-```
-
----
-
-## Editing Style
-
-```css
-/* Edit row highlight */
-.e-grid .e-editedrow .e-rowcell {
-    background-color: #fff3cd;
-}
-
-/* Added row */
-.e-grid .e-addedrow .e-rowcell {
-    background-color: #d4edda;
-}
-```
-
----
-
-## Grouping Style
-
-```css
-/* Group caption row */
-.e-grid .e-groupcaption {
-    background-color: #e9ecef;
-    font-weight: 600;
-}
-
-/* Group drop area */
-.e-grid .e-groupdroparea {
-    background-color: #f0f4ff;
-    border: 1px dashed #007bff;
-}
-```
-
----
-
-## Paging Style
-
-```css
-/* Active page button */
-.e-grid .e-pager .e-currentitem {
-    background-color: #007bff;
-    color: white;
-}
-
-/* Pager container */
-.e-grid .e-pagercontainer {
-    background-color: #f8f9fa;
-}
-```
-
----
-
-## Aggregates Style
-
-```css
-/* Footer aggregate row */
-.e-grid .e-summaryrow .e-summarycell {
-    background-color: #f0f4ff;
-    font-weight: 700;
-    color: #333;
-}
-```
-
----
-
-## Toolbar Style
-
-```css
-/* Toolbar background */
-.e-grid .e-toolbar {
-    background-color: #343a40;
-}
-
-/* Toolbar button */
-.e-grid .e-toolbar .e-btn {
-    color: #ffffff;
-}
-```
-
----
-
-## Selection Style
-
-```css
-/* Selected row */
-.e-grid .e-selectionbackground {
-    background-color: #cce5ff !important;
-}
-
-/* Selected cell */
-.e-grid .e-cellselectionbackground {
-    background-color: #b8daff !important;
-}
-```
-
----
-
-## Custom CSS Classes on Cells and Rows
-
-Apply CSS per cell using `queryCellInfo`:
-```javascript
-function queryCellInfo(args) {
-    if (args.column.field === 'Freight' && args.data.Freight > 100) {
-        args.cell.classList.add('high-value');
-    }
-}
-```
-
-Apply CSS per row using `rowDataBound`:
-```javascript
-function rowDataBound(args) {
-    if (!args.data.Verified) {
-        args.row.style.backgroundColor = '#ffcccc';
-    }
-}
-```
+1. **Choose theme once at startup** — Switching themes frequently impacts performance
+2. **Keep CSS variable overrides minimal** — Override only what you need to customize
+3. **Test accessibility** — Verify color contrast meets WCAG AA standards
+4. **Mobile consideration** — Use `e-bigger` class for better touch UX
+5. **Cache management** — Clear cache when switching themes during development
+6. **Use dark theme package** — Don't manually create dark themes; use official packages
