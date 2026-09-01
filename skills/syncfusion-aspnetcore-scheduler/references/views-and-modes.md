@@ -6,6 +6,7 @@
 - [Displaying Specific Views](#displaying-specific-views)
 - [View Configuration](#view-configuration)
 - [Timescale Settings](#timescale-settings)
+- [Max Event Stack](#max-event-stack)
 - [Advanced Options](#advanced-options)
 
 ## Available Views
@@ -133,6 +134,7 @@ Each view supports these configuration options:
 | `workDays` | int[] | Calendar views | Working days (0=Sun, 6=Sat) |
 | `startHour` | string | Time-based | Start time (e.g., "08:00") |
 | `endHour` | string | Time-based | End time (e.g., "18:00") |
+| `maxEventStack` | int | Day, Week, WorkWeek (with `timeScale` enabled) | Maximum number of events to display per cell (0 = unlimited) |
 
 ### Configuring Individual Views
 
@@ -260,6 +262,42 @@ public class ScheduleController : Controller
     </e-schedule-eventsettings>
 </ejs-schedule>
 ```
+
+---
+
+## Max Event Stack
+
+The `maxEventStack` property controls the maximum number of appointments displayed in a time cell. When the number of events in a cell exceeds the specified value, a `+n more` indicator is shown to indicate additional events exist. This is useful for keeping cells clean and uncluttered when many overlapping appointments are present.
+
+> **Note:** The `maxEventStack` property is applicable only with **Day**, **Week**, and **WorkWeek** views when the `timeScale` option is **enabled**.
+
+### Configure Max Event Stack
+
+```cshtml
+<ejs-schedule id="Schedule"
+              width="100%"
+              height="650px"
+              selectedDate="new DateTime(2026, 5, 29)"
+              currentView="Week">
+    
+    <e-schedule-views>
+        <e-schedule-view option="Day" maxEventStack="1"></e-schedule-view>
+        <e-schedule-view option="Week" maxEventStack="1"></e-schedule-view>
+        <e-schedule-view option="WorkWeek" maxEventStack="1"></e-schedule-view>
+    </e-schedule-views>
+
+    <e-schedule-eventsettings dataSource="@appointments"></e-schedule-eventsettings>
+</ejs-schedule>
+```
+
+### Max Event Stack Scenarios
+
+| Use Case | Recommended Setting | Description |
+|----------|---------------------|-------------|
+| High density events | `maxEventStack="1"` or `maxEventStack="2"` | Compact view with overflow indicator for many overlapping events |
+| Standard scheduling | `maxEventStack="0"` (default) | Show all events without limit |
+| Mobile/responsive | `maxEventStack="1"` | Reduce visual clutter on small screens |
+| Resource timeline | Combine with `rowAutoHeight="true"` | Show more events per cell in timeline views |
 
 ## Advanced Options
 

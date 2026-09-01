@@ -50,6 +50,24 @@ The Syncfusion ASP.NET Core Scheduler is a comprehensive component for managing 
 - Server-side database operations
 - Batch operations for multiple changes
 
+### Clipboard Actions
+📄 **Read:** [references/clipboard-actions.md](references/clipboard-actions.md)
+- Enabling clipboard support with `allowClipboard` property
+- Cut, copy, and paste operations using Scheduler methods
+- Cross-view and cross-Scheduler clipboard operations
+
+### Virtual Scrolling
+📄 **Read:** [references/virtual-scrolling.md](references/virtual-scrolling.md)
+- Enabling `allowVirtualScrolling` on Month and TimelineMonth views
+- Generating large event and resource datasets for performance testing
+
+### Print, Excel Export, and iCalendar (ICS)
+📄 **Read:** [references/export-print.md](references/export-print.md)
+- Printing the Scheduler with default or custom height, width, and selected date
+- Exporting appointments to Excel with customized field mappings
+- Exporting appointments to an iCalendar (`.ics`) file
+- Importing appointments from an iCalendar (`.ics`) file via the Uploader
+
 ### Views and Configuration
 📄 **Read:** [references/views-and-modes.md](references/views-and-modes.md)
 - Available view types (Day, Week, WorkWeek, Month, Year, Agenda, MonthAgenda, Timeline views)
@@ -57,6 +75,7 @@ The Syncfusion ASP.NET Core Scheduler is a comprehensive component for managing 
 - View-specific configurations using e-schedule-views
 - Customizing start/end hours, working days, timescales
 - Date format and weekend display settings
+- Max event stack configuration to limit visible events per cell
 
 ### Scheduling Features
 📄 **Read:** [references/scheduling-features.md](references/scheduling-features.md)
@@ -65,6 +84,8 @@ The Syncfusion ASP.NET Core Scheduler is a comprehensive component for managing 
 - Timezone support (IANA timezones)
 - Recurrence patterns (RFC 5545 format)
 - Resource configuration and grouping
+- Row auto height for timeline and month views
+- Adaptive UI for responsive layouts
 - Complete scheduling configuration example
 
 ### Data Binding
@@ -77,10 +98,19 @@ The Syncfusion ASP.NET Core Scheduler is a comprehensive component for managing 
 - CRUD action configuration with UrlAdaptor
 - Google Calendar integration
 
+### Resources and Grouping
+📄 **Read:** [references/resources-and-grouping.md](references/resources-and-grouping.md)
+- Overview of resource scheduling patterns
+- Single and multi-resource scheduling
+- Resource grouping, color metadata, and working hours
+- Timeline views and remote resource binding
+
 ### Customization and Templates
 📄 **Read:** [references/customization.md](references/customization.md)
 - Event templates and cell templates
 - Event customization using eventRendered event
+- Date Header templates
+- Quick Info templates
 - CSS class customization
 - Tooltip templates and display options
 - Custom editor window configuration
@@ -90,9 +120,7 @@ The Syncfusion ASP.NET Core Scheduler is a comprehensive component for managing 
 📄 **Read:** [references/advanced-features.md](references/advanced-features.md)
 - Resource grouping and multi-resource scheduling
 - Timezone support and conversion
-- Virtual scrolling for performance
 - State persistence
-- Exporting and printing
 - Localization and accessibility
 - Inline appointment editing
 - Read-only mode and appointment blocking
@@ -206,6 +234,9 @@ new AppointmentData {
 - `allowMultiDrag`: Enables dragging multiple events simultaneously
 - `allowInline`: Enables inline editing of event subject
 - `allowOverlap`: Prevents overlapping events when false
+- `allowClipboard`: Enables clipboard support (cut, copy, paste) on the Scheduler (default: false).
+- `rowAutoHeight`: Auto-adjusts work cell height to fit all appointments in the same time range (applies to timeline views and month view)
+- `enableAdaptiveUI`: Enables adaptive (responsive) layout for smaller screens
 - `height` and `width`: Dimension settings
 - `cssClass`: Custom CSS class for styling
 
@@ -219,6 +250,7 @@ new AppointmentData {
 - `spannedEventPlacement`: AllDayRow or TimeSlot for multi-day events
 - `sortComparer`: Custom sort function for overlapping events
 - `editFollowingEvents`: Allows editing current and following recurring events
+- `maxEventStack`: Per-view maximum number of event labels to display per cell. `0` shows all events; positive values show the count plus a `+n more` indicator.
 
 ### Event Field Mapping
 - `id`: Unique appointment identifier (required)
@@ -262,6 +294,10 @@ new AppointmentData {
 - `navigateNext()`: Go to next time period
 - `isSlotAvailable(date, endDate, resourceId)`: Check slot availability
 - `openOverlapAlert()`: Show overlap validation alert
+- `cut(elements)`: Cut the specified appointment(s) into the clipboard (requires `allowClipboard="true"`)
+- `copy(elements)`: Copy the specified appointment(s) into the clipboard (requires `allowClipboard="true"`)
+- `paste(targetElement)`: Paste the clipboard content at the target cell (requires `allowClipboard="true"`)
+- `closeQuickInfoPopup()`: Close the quick info popup (useful when opening the context menu)
 
 ## Related Skills
 - [Data Binding Patterns](../data-binding/) - Connecting data sources

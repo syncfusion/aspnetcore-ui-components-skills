@@ -6,6 +6,8 @@
 - [Timezone Support](#timezone-support)
 - [Recurrence Patterns (RFC 5545)](#recurrence-patterns-rfc-5545)
 - [Resource Configuration](#resource-configuration)
+- [Row Auto Height](#row-auto-height)
+- [Adaptive UI](#adaptive-ui)
 
 ---
 
@@ -375,8 +377,16 @@ public class ResourceData
 
 ### Simple Resource Configuration
 
+```csharp
+@{
+    string[] resources = new string[] { "Departments", "Teams", "Persons" };
+}
+```
+
 ```html
 <ejs-schedule id="schedule" width="100%" height="550px" selectedDate="new DateTime(2024, 3, 10)">
+    <e-schedule-group resources="@resources">
+    </e-schedule-group>
     <e-schedule-resources>
         <e-schedule-resource dataSource="@ViewBag.Resources" 
                             field="ResourceId" 
@@ -454,6 +464,90 @@ var appointment = new AppointmentData
 </ejs-schedule>
 ```
 
+---
+
+## Row Auto Height
+
+The `rowAutoHeight` property automatically adjusts the height of work cells based on the number of appointments present in the same time range. This is useful when you have multiple overlapping appointments and want them all visible without the "+n more" indicator. This functionality is applicable only on **Timeline views** (TimelineDay, TimelineWeek, TimelineWorkWeek, TimelineMonth, TimelineYear) and the **Calendar Month view**.
+
+### Configure Row Auto Height
+
+```cshtml
+<ejs-schedule id="schedule" width="100%" height="650px" cssClass="adaptive-rows" selectedDate="new DateTime(DateTime.Today.Year, 8, 2)" currentView="TimelineWeek" rowAutoHeight="true">
+    <e-schedule-views>
+        <e-schedule-view option="TimelineDay"></e-schedule-view>
+        <e-schedule-view option="TimelineWeek"></e-schedule-view>
+    </e-schedule-views>
+    <e-schedule-group enableCompactView="false" resources="@resources">
+    </e-schedule-group>
+    <e-schedule-resources>
+        <e-schedule-resource dataSource="@Model.rooms" field="RoomId" title="Room Type" name="MeetingRoom" allowMultiple="true" textField="name" idField="id" colorField="color">
+        </e-schedule-resource>
+    </e-schedule-resources>
+    <e-schedule-eventsettings dataSource="@roomDataSource">
+        <e-eventsettings-fields>
+            <e-field-subject name="Subject" title="Summary"></e-field-subject>
+            <e-field-location name="Location" title="Location"></e-field-location>
+            <e-field-description name="Description" title="Comments"></e-field-description>
+            <e-field-starttime name="StartTime" title="From"></e-field-starttime>
+            <e-field-endtime name="EndTime" title="To"></e-field-endtime>
+        </e-eventsettings-fields>
+    </e-schedule-eventsettings>
+</ejs-schedule>
+```
+
+### Row Auto Height Scenarios
+
+| Use Case | Recommended Setting | Description |
+|----------|---------------------|-------------|
+| High appointment density | `rowAutoHeight="true"` | Show all overlapping appointments without truncation |
+| Standard scheduling | `rowAutoHeight="false"` | Use static cell height with `+n more` indicator |
+| Resource timeline view | `rowAutoHeight="true"` | Display all resource bookings clearly |
+| Month view with many events | `rowAutoHeight="true"` | Show more events per day in month view |
+
+---
+
+## Adaptive UI
+
+The `enableAdaptiveUI` property enables the adaptive (responsive) layout for the Scheduler, which provides an optimized viewing experience on smaller screens. When enabled, the Scheduler automatically adjusts its layout based on the screen size, switching to a more compact representation that is easier to interact with on mobile devices.
+
+### Configure Adaptive UI
+
+```cshtml
+<ejs-schedule id="schedule" cssClass='schedule-resource' width='100%' height='650px' selectedDate="new DateTime(DateTime.Today.Year, 4, 4)" enableAdaptiveUI="true">
+    <e-schedule-views>
+        <e-schedule-view option="Day"></e-schedule-view>
+        <e-schedule-view option="Week"></e-schedule-view>
+        <e-schedule-view option="Month" isSelected="true"></e-schedule-view>
+    </e-schedule-views>
+    <e-schedule-group resources="@resources">
+    </e-schedule-group>
+    <e-schedule-resources>
+        <e-schedule-resource dataSource="@Model.projects" field="ProjectId" title="Choose Project" name="Projects" textField="text" idField="id" colorField="color">
+        </e-schedule-resource>
+        <e-schedule-resource dataSource="@Model.categories" field="TaskId" title="Category" name="Categories" textField="text" idField="id" groupIDField='groupId' colorField="color" allowMultiple="true">
+        </e-schedule-resource>
+    </e-schedule-resources>
+    <e-schedule-eventsettings dataSource="@adaptiveDataSource">
+        <e-eventsettings-fields>
+            <e-field-subject name="Subject" title="Summary"></e-field-subject>
+            <e-field-description name="Description" title="Comments"></e-field-description>
+        </e-eventsettings-fields>
+    </e-schedule-eventsettings>
+</ejs-schedule>
+```
+
+### Adaptive UI Scenarios
+
+| Use Case | Recommended Setting | Description |
+|----------|---------------------|-------------|
+| Mobile devices | `enableAdaptiveUI="true"` | Optimized touch-friendly layout for small screens |
+| Responsive web apps | `enableAdaptiveUI="true"` | Adapts layout based on screen size |
+| Desktop only | `enableAdaptiveUI="false"` | Use standard layout for desktop applications |
+| Multi-resource scheduling on mobile | `enableAdaptiveUI="true"` | Tree-view resource navigation on smaller screens |
+
+---
+
 ## Summary of Scheduling Features
 
 | Feature | Configuration | Purpose |
@@ -463,6 +557,8 @@ var appointment = new AppointmentData
 | **Working Days** | Controller configuration | Define business days (Mon-Fri) |
 | **Timezone** | StartTimezone, EndTimezone properties | Handle multi-timezone scheduling |
 | **Recurrence** | RecurrenceRule (RFC 5545) | Create repeating appointments |
+| **Row Auto Height** | rowAutoHeight property | Auto-adjust work cell height to fit all appointments |
+| **Adaptive UI** | enableAdaptiveUI property | Enable responsive layout for smaller screens |
 
 ### Complete Scheduling Configuration Example
 

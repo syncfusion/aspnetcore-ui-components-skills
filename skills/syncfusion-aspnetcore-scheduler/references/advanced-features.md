@@ -504,12 +504,12 @@ Jump to specific date:
 <script>
 function goToToday() {
     var scheduleObj = document.getElementById('schedule').ej2_instances[0];
-    scheduleObj.navigateTo(new Date());
+    scheduleObj.selectedDate = new Date();
 }
 
 function goToDate(dateString) {
     var scheduleObj = document.getElementById('schedule').ej2_instances[0];
-    scheduleObj.navigateTo(new Date(dateString));
+    scheduleObj.selectedDate = new Date(dateString);
 }
 </script>
 ```
@@ -529,12 +529,60 @@ Move to previous or next period:
 <script>
 function goToPrevious() {
     var scheduleObj = document.getElementById('schedule').ej2_instances[0];
-    scheduleObj.navigatePrevious();
+
+    var date = new Date(scheduleObj.selectedDate);
+
+    switch (scheduleObj.currentView) {
+
+        case 'Day':
+            date.setDate(date.getDate() - 1);
+            break;
+
+        case 'Week':
+        case 'WorkWeek':
+            date.setDate(date.getDate() - 7);
+            break;
+
+        case 'Month':
+            date.setMonth(date.getMonth() - 1);
+            break;
+
+        default:
+            date.setDate(date.getDate() - 1);
+            break;
+    }
+
+    scheduleObj.selectedDate = date;
+    scheduleObj.dataBind();
 }
 
 function goToNext() {
     var scheduleObj = document.getElementById('schedule').ej2_instances[0];
-    scheduleObj.navigateNext();
+
+    var date = new Date(scheduleObj.selectedDate);
+
+    switch (scheduleObj.currentView) {
+
+        case 'Day':
+            date.setDate(date.getDate() + 1);
+            break;
+
+        case 'Week':
+        case 'WorkWeek':
+            date.setDate(date.getDate() + 7);
+            break;
+
+        case 'Month':
+            date.setMonth(date.getMonth() + 1);
+            break;
+
+        default:
+            date.setDate(date.getDate() + 1);
+            break;
+    }
+
+    scheduleObj.selectedDate = date;
+    scheduleObj.dataBind();
 }
 </script>
 ```

@@ -133,7 +133,6 @@ When your data source uses different field names than the default Scheduler fiel
         <e-field-location name="Venue"></e-field-location>
         <e-field-description name="Notes"></e-field-description>
         <e-field-isallday name="IsFullDay"></e-field-isallday>
-        <e-field-isblock name="IsDisabled"></e-field-isblock>
     </e-eventsettings-fields>
 </e-schedule-eventsettings>
 ```
@@ -187,6 +186,8 @@ Custom fields are accessible in templates and events but don't require explicit 
 <e-schedule-eventsettings dataSource="ViewBag.datasource" template="@ViewBag.template">
 </e-schedule-eventsettings>
 ```
+
+**Note:** FollowingID, IsReadonly, and IsBlock are not exposed as `<e-field-...>` tag helpers in this Syncfusion ASP.NET Core Scheduler, so they fall back to the default PascalCase field-name mapping handled by the Scheduler itself.
 
 ## Recurring Appointments
 
