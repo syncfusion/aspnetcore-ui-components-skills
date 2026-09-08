@@ -20,6 +20,7 @@
 - [Timeline Cell Tooltip](#timeline-cell-tooltip)
 - [Show or Hide Weekends](#show-or-hide-weekends)
 - [Timeline Template](#timeline-template)
+- [Infinite Timeline Scrolling](#infinite-timeline-scrolling)
 - [Zooming with Toolbar](#zooming-with-toolbar)
 - [Zoom by External Buttons](#zoom-by-external-buttons)
 - [Custom Zooming Levels](#custom-zooming-levels)
@@ -466,6 +467,54 @@ Customize the HTML rendered inside timeline header cells using the `timelineTemp
 ```
 
 > The `timelineTemplate` attribute on `<ejs-gantt>` must reference the `id` of a `<script type="text/x-jsrender">` block. Use `${if(tier == 'topTier')}` / `${if(tier == 'bottomTier')}` conditionals to render different HTML for each tier row.
+
+---
+
+## Infinite Timeline Scrolling
+
+The Gantt Chart supports infinite timeline scrolling, allowing users to scroll horizontally through the timeline without being constrained by predefined start and end date boundaries. This feature is particularly useful for long-running projects or when you want to provide unlimited timeline exploration.
+
+### Enabling Infinite Timeline Scrolling
+
+Enable infinite timeline scrolling using the `enableInfiniteTimelineScroll` property on the `<ejs-gantt>` component. Set to `true` to activate this feature.
+
+**ASP.NET Core Tag Helper:**
+
+```cshtml
+<ejs-gantt id="Gantt" 
+           height="430px" 
+           dataSource="Model.GanttDataSourceCollection" 
+           enableInfiniteTimelineScroll="true"
+           treeColumnIndex="1" 
+           gridLines="Both">
+    <e-gantt-taskfields id="TaskID" name="TaskName" startDate="StartDate" 
+                        endDate="EndDate" duration="Duration" progress="Progress" 
+                        dependency="Predecessor" parentID="ParentID">
+    </e-gantt-taskfields>
+    <e-gantt-splittersettings columnIndex="3"></e-gantt-splittersettings>
+    <e-gantt-timelinesettings viewStartDate="@(new DateTime(2025, 12, 29))"
+                              viewEndDate="@(new DateTime(2026, 04, 27))">
+    </e-gantt-timelinesettings>
+    <e-gantt-labelsettings leftLabel="TaskID" rightLabel="TaskName"></e-gantt-labelsettings>
+    <e-gantt-columns>
+        <e-gantt-column field="TaskID" width="80"></e-gantt-column>
+        <e-gantt-column field="TaskName" headerText="Job Name" width="250"></e-gantt-column>
+        <e-gantt-column field="StartDate"></e-gantt-column>
+        <e-gantt-column field="Duration"></e-gantt-column>
+        <e-gantt-column field="Progress"></e-gantt-column>
+        <e-gantt-column field="Predecessor"></e-gantt-column>
+    </e-gantt-columns>
+</ejs-gantt>
+```
+
+### Key Properties and Behavior
+
+| Property | Description |
+|---|---|
+| `enableInfiniteTimelineScroll` | When set to `true`, enables infinite timeline scrolling in both directions. Users can scroll left or right beyond the normal project boundaries |
+| `viewStartDate` | Optional. Sets the initial visible timeline start date. Can be any date within the scrollable range |
+| `viewEndDate` | Optional. Sets the initial visible timeline end date. Can be any date within the scrollable range |
+| `gridLines` | Set to `Both` to display both vertical and horizontal grid lines for better readability in infinite scroll mode |
 
 ---
 

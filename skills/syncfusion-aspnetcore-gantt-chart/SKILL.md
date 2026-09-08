@@ -98,9 +98,11 @@ Use this skill when you need to:
 ### Timeline
 📄 **Read:** [references/timeline.md](references/timeline.md)
 - Top tier and bottom tier configuration
-- Zooming in and out
+- Timeline view modes (Hour, Day, Week, Month, Year)
 - Custom timeline units and formats
 - Timeline template
+- Infinite timeline scrolling
+- Zooming in and out
 
 ### Task Scheduling
 📄 **Read:** [references/task-scheduling.md](references/task-scheduling.md)
@@ -108,7 +110,16 @@ Use this skill when you need to:
 - Duration units (day, hour, minute, week, month)
 - Unscheduled tasks
 - Task constraints (ALAP, ASAP, FNLT, SNLT, MSO, MFO)
-- Baseline display
+
+### Baseline
+📄 **Read:** [references/baseline.md](references/baseline.md)
+- Baseline feature overview and use cases
+- Mapping baseline date fields (baselineStartDate, baselineEndDate, baselineDuration)
+- Enabling baseline display with renderBaseline and customizing baselineColor
+- Rendering baseline milestones with explicit zero duration
+- CSS styling of baseline bars
+- Baseline templates and dynamic customization
+- Multiple baseline rendering for comparing multiple planning phases
 
 ### Selection
 📄 **Read:** [references/selection.md](references/selection.md)

@@ -1,65 +1,3 @@
-## Rate Limiting Guidance
-
-To mitigate DoS and abuse (especially for recurrence expansions), add rate limiting to your API. Example using built-in ASP.NET Core rate limiting (simplified):
-
-```csharp
-// In Program.cs
-builder.Services.AddRateLimiter(options =>
-{
-    options.AddFixedWindowLimiter("global", config =>
-    {
-        config.PermitLimit = 100; // requests
-        config.Window = TimeSpan.FromMinutes(1);
-        config.QueueProcessingOrder = System.Threading.RateLimiting.QueueProcessingOrder.OldestFirst;
-        config.QueueLimit = 0;
-    });
-});
-
-app.UseRateLimiter();
-
-// Apply policy with attribute or middleware per endpoint
-```
-
-Adjust limits to your traffic patterns and consider client-specific partitioning.
-
-## Timezone Validation
-
-Normalize and validate timezone inputs server-side to avoid timezone injection or incorrect conversions. Example:
-
-```csharp
-public bool TryNormalizeTimezone(string tzId, out TimeZoneInfo zone)
-{
-    zone = null;
-    if (string.IsNullOrEmpty(tzId)) return false;
-    try
-    {
-        zone = TimeZoneInfo.FindSystemTimeZoneById(tzId);
-        return true;
-    }
-    catch (TimeZoneNotFoundException) { return false; }
-    catch (InvalidTimeZoneException) { return false; }
-}
-```
-
-Reject unknown timezone identifiers and prefer storing UTC timestamps in the database with the original timezone metadata.
-
-## Role-based Authorization Examples
-
-Provide role or policy-based authorization examples so implementers can differentiate admin-level operations from user-level operations.
-
-```csharp
-// Role-based example
-[Authorize(Roles = "Admin")]
-public ActionResult AdminGetAllSchedules() { /* admin-only */ }
-
-// Policy-based example (configure in startup)
-// services.AddAuthorization(options => options.AddPolicy("CanManageSchedules", policy => policy.RequireClaim("role", "SchedulerManager")));
-[Authorize(Policy = "CanManageSchedules")]
-public ActionResult ManageSchedules() { /* scoped to SchedulerManager role */ }
-```
-
-Document the minimum privileges required for each endpoint in your API reference and prefer policy-based checks for complex rules.
-
 # Advanced Features in ASP.NET Core Scheduler
 
 ## Table of Contents
@@ -69,6 +7,10 @@ Document the minimum privileges required for each endpoint in your API reference
 - [Public Methods](#public-methods)
 - [Appointment Validation](#appointment-validation)
 - [Working Days and Hours](#working-days-and-hours)
+- [Rate Limiting Guidance](#rate-limiting-guidance)
+- [Timezone Validation](#timezone-validation)
+- [Role-based Authorization Examples](#role-based-authorization-examples)
+- [Best Practices](#best-practices)
 
 ## Read-Only Mode
 
@@ -779,6 +721,68 @@ function onActionComplete(args) {
 }
 </script>
 ```
+
+## Rate Limiting Guidance
+
+To mitigate DoS and abuse (especially for recurrence expansions), add rate limiting to your API. Example using built-in ASP.NET Core rate limiting (simplified):
+
+```csharp
+// In Program.cs
+builder.Services.AddRateLimiter(options =>
+{
+    options.AddFixedWindowLimiter("global", config =>
+    {
+        config.PermitLimit = 100; // requests
+        config.Window = TimeSpan.FromMinutes(1);
+        config.QueueProcessingOrder = System.Threading.RateLimiting.QueueProcessingOrder.OldestFirst;
+        config.QueueLimit = 0;
+    });
+});
+
+app.UseRateLimiter();
+
+// Apply policy with attribute or middleware per endpoint
+```
+
+Adjust limits to your traffic patterns and consider client-specific partitioning.
+
+## Timezone Validation
+
+Normalize and validate timezone inputs server-side to avoid timezone injection or incorrect conversions. Example:
+
+```csharp
+public bool TryNormalizeTimezone(string tzId, out TimeZoneInfo zone)
+{
+    zone = null;
+    if (string.IsNullOrEmpty(tzId)) return false;
+    try
+    {
+        zone = TimeZoneInfo.FindSystemTimeZoneById(tzId);
+        return true;
+    }
+    catch (TimeZoneNotFoundException) { return false; }
+    catch (InvalidTimeZoneException) { return false; }
+}
+```
+
+Reject unknown timezone identifiers and prefer storing UTC timestamps in the database with the original timezone metadata.
+
+## Role-based Authorization Examples
+
+Provide role or policy-based authorization examples so implementers can differentiate admin-level operations from user-level operations.
+
+```csharp
+// Role-based example
+[Authorize(Roles = "Admin")]
+public ActionResult AdminGetAllSchedules() { /* admin-only */ }
+
+// Policy-based example (configure in startup)
+// services.AddAuthorization(options => options.AddPolicy("CanManageSchedules", policy => policy.RequireClaim("role", "SchedulerManager")));
+[Authorize(Policy = "CanManageSchedules")]
+public ActionResult ManageSchedules() { /* scoped to SchedulerManager role */ }
+```
+
+Document the minimum privileges required for each endpoint in your API reference and prefer policy-based checks for complex rules.
 
 ## Best Practices
 

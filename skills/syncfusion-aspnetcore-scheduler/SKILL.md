@@ -4,7 +4,6 @@ description: Implement Syncfusion ASP.NET Core Scheduler component for schedulin
 metadata:
   author: "Syncfusion Inc"
   version: "34.1.29"
-  category: "Calendars"
 ---
 
 # Implementing ASP.NET Core Scheduler
@@ -124,6 +123,9 @@ The Syncfusion ASP.NET Core Scheduler is a comprehensive component for managing 
 - Localization and accessibility
 - Inline appointment editing
 - Read-only mode and appointment blocking
+- Rate Limiting Guidance
+- Timezone Validation
+- Role-based Authorization Examples
 
 ## Quick Start Example
 
