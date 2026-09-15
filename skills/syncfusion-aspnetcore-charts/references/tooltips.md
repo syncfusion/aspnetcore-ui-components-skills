@@ -22,6 +22,7 @@ This guide covers comprehensive tooltip configuration in Syncfusion ASP.NET Core
   - [Shared Tooltip with Header](#shared-tooltip-with-header)
   - [Shared Tooltip Template](#shared-tooltip-template)
 - [Format and Styling](#format-and-styling)
+  - [Inline Tooltip Formatting](#inline-tooltip-formatting)
   - [Currency Format](#currency-format)
   - [Percentage Format](#percentage-format)
   - [Font Styling](#font-styling)
@@ -348,12 +349,71 @@ ViewBag.DetailedData = new[]
 
 ## Format and Styling
 
+### Inline Tooltip Formatting
+
+The tooltip content can be formatted directly within the `format` property by adding DateTime or number format specifiers to supported tooltip tokens. This allows you to control how point and series values are displayed without using the `tooltipRender` event.
+
+Apply a format specifier by adding a colon (`:`) after the tooltip token, followed by the required format.
+
+```cshtml
+<ejs-chart id="inlineTooltipChart">
+    <e-chart-primaryxaxis valueType="@Syncfusion.EJ2.Charts.ValueType.DateTime">
+    </e-chart-primaryxaxis>
+
+    <e-chart-tooltipsettings
+        enable="true"
+        format="${series.name}<br/>${point.x:MMM yyyy}: ${point.y:n2}<br/>Opacity: ${series.opacity}">
+    </e-chart-tooltipsettings>
+
+    <e-series-collection>
+        <e-series
+            dataSource="ViewBag.ChartData"
+            xName="Date"
+            yName="Sales"
+            name="Sales"
+            opacity="0.8"
+            type="@Syncfusion.EJ2.Charts.ChartSeriesType.Column">
+        </e-series>
+    </e-series-collection>
+</ejs-chart>
+```
+
+In the above example, `${point.x:MMM yyyy}` displays the x-value in month-year format, `${point.y:n2}` displays the y-value with two decimal places, and `${series.opacity}` displays the opacity applied to the series.
+
+Inline formatting can be applied to the following tooltip tokens:
+
+- `${point.x}` or `${point.x:MMM yyyy}`: Specifies the x-value of the data point, such as a DateTime or category value.
+- `${point.y}` or `${point.y:n2}`: Specifies the numeric y-value of the data point.
+- `${series.name}`: Specifies the name assigned to the series.
+- `${series.type}`: Specifies the rendering type of the series, such as `Column`, `Bar`, `Line`, or `Spline`.
+- `${series.opacity}` or `${series.opacity:n1}`: Specifies the opacity applied to the series.
+
+> **Important:** The availability of point-specific tokens depends on the fields configured in the data source and the chart series type. The `${series.name}` and `${series.type}` tokens return string values, so DateTime or number formatting is not applied to these tokens.
+
+The following format types are supported:
+
+**DateTime formats:**
+
+- `MMM yyyy`: Displays the abbreviated month and four-digit year.
+- `MM:yy`: Displays the two-digit month and year.
+- `dd MMM`: Displays the two-digit day and abbreviated month.
+
+**Number formats:**
+
+- `n2`: Displays a number with two decimal places.
+- `n0`: Displays a number without decimal places.
+- `c2`: Displays the value in currency format with two decimal places.
+- `p1`: Displays the value in percentage format with one decimal place.
+- `e1`: Displays the value in exponential notation with one decimal place.
+
+If the specified format does not match the resolved value type, the original value is displayed.
+
 ### Currency Format
 
 ```cshtml
 <ejs-chart id="chart">
     <e-chart-primaryxaxis valueType="@Syncfusion.EJ2.Charts.ValueType.Category"></e-chart-primaryxaxis>
-    <e-chart-tooltipsettings enable="true" format="${point.x} : ${point.y}"></e-chart-tooltipsettings>
+    <e-chart-tooltipsettings enable="true" format="${point.x} : ${point.y:c0}"></e-chart-tooltipsettings>
     <e-series-collection>
         <e-series dataSource="ViewBag.RevenueData" 
                   xName="Month" 

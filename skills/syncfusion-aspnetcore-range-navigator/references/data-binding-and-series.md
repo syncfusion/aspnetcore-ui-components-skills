@@ -18,6 +18,10 @@
   - [Line Series](#line-series)
   - [Area Series](#area-series)
   - [StepLine Series](#stepline-series)
+  - [Spline Series](#spline-series)
+  - [SplineArea Series](#splinearea-series)
+  - [Column Series](#column-series)
+  - [Series Type Selection](#series-type-selection)
 - [Data Source Configuration](#data-source-configuration)
   - [Local Data Binding](#local-data-binding)
   - [Remote Data Binding](#remote-data-binding)
@@ -369,7 +373,13 @@ Customize the logarithm base (default is 10):
 
 ## Series Types
 
-RangeNavigator supports three visualization types through the `type` property:
+Range Navigator supports six visualization types through the `type` property:
+- `Line`
+- `Area`
+- `StepLine`
+- `Spline`
+- `SplineArea`
+- `Column`
 
 ### Line Series
 
@@ -415,6 +425,74 @@ Step-like line connecting data points at right angles:
 ```
 
 **Best for:** Discrete state changes, on/off transitions, level measurements
+
+### Spline Series
+
+The Spline series connects data points using smooth, curved segments.
+
+```cshtml
+<e-rangenavigator-rangenavigatorseries
+    datasource="@Model.Data"
+    xName="x"
+    yName="y"
+    type="Spline"
+    width="2"
+    fill="#7C3AED">
+</e-rangenavigator-rangenavigatorseries>
+```
+
+**Best for:** Smooth trends, gradually changing measurements, and data where curved transitions improve readability.
+
+### SplineArea Series
+
+The SplineArea series combines a smooth spline curve with a filled area beneath it.
+
+```cshtml
+<e-rangenavigator-rangenavigatorseries
+    datasource="@Model.Data"
+    xName="x"
+    yName="y"
+    type="SplineArea"
+    fill="#0EA5E9"
+    opacity="0.65">
+    <e-rangenavigatorseries-border
+        color="#0369A1"
+        width="2">
+    </e-rangenavigatorseries-border>
+</e-rangenavigator-rangenavigatorseries>
+```
+
+**Best for:** Smooth trends where both the direction and magnitude of values need to be emphasized.
+
+### Column Series
+
+The Column series displays each data point as a vertical column.
+
+```cshtml
+<e-rangenavigator-rangenavigatorseries
+    datasource="@Model.Data"
+    xName="x"
+    yName="y"
+    type="Column"
+    fill="#F97316"
+    opacity="0.8">
+    <e-rangenavigatorseries-border
+        color="#9A3412"
+        width="1">
+    </e-rangenavigatorseries-border>
+</e-rangenavigator-rangenavigatorseries>
+```
+
+**Best for:** Discrete values, interval-based measurements, transaction volumes, and category comparisons.
+
+### Series Type Selection
+
+- Use `Line` for continuous trends without a filled region.
+- Use `Area` to emphasize both trend and magnitude.
+- Use `StepLine` for discrete state or level changes.
+- Use `Spline` for smoothly varying trends.
+- Use `SplineArea` for smooth trends with an emphasized magnitude.
+- Use `Column` for discrete or interval-based comparisons.
 
 ## Data Source Configuration
 

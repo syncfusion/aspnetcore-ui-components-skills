@@ -24,6 +24,7 @@
   - [Format String Template](#format-string-template)
   - [Format with Multiple Values](#format-with-multiple-values)
   - [Format Variables](#format-variables)
+  - [Inline Tooltip Formatting](#inline-tooltip-formatting)
   - [Currency Format](#currency-format)
   - [Multi-Line Tooltip](#multi-line-tooltip)
 - [Selection Events](#selection-events)
@@ -345,6 +346,49 @@ Customize tooltip content using templates and format strings.
 | ${point.x} | X-axis value | "January" |
 | ${point.y} | Y-axis value | "35000" |
 
+### Inline Tooltip Formatting
+
+The tooltip content can be formatted directly within the `format` property by adding DateTime or number format specifiers to supported tooltip tokens. This allows you to control how point and series values are displayed without using additional events.
+
+Apply a format specifier by adding a colon (`:`) after the tooltip token, followed by the required format.
+
+```html
+<e-chart3d-tooltipsettings
+    enable="true"
+    format="${series.name}<br/>${point.x:MMM yyyy}: ${point.y:n2}<br/>Opacity: ${series.opacity}">
+</e-chart3d-tooltipsettings>
+```
+
+In the above example, `point.x` is displayed in month-year format, `point.y` is displayed with two decimal places, and `series.opacity` displays the opacity applied to the series.
+
+Inline formatting can be applied to the following tooltip tokens:
+
+- `${point.x}` or `${point.x:MMM yyyy}`: Specifies the x-value of the data point, such as a DateTime or category value.
+- `${point.y}` or `${point.y:n2}`: Specifies the numeric y-value of the data point.
+- `${series.name}`: Specifies the name assigned to the series.
+- `${series.type}`: Specifies the series rendering type, such as `Column`, `Bar`, `StackingColumn`, or `StackingBar`.
+- `${series.opacity}` or `${series.opacity:n1}`: Specifies the opacity applied to the series.
+
+> **Important:** The availability of point-specific tokens depends on the fields configured in the data source and the 3D Chart series type. The `${series.name}` and `${series.type}` tokens return string values, so DateTime or number formatting is not applied to them.
+
+The following format types are supported:
+
+**DateTime formats:**
+
+- `MMM yyyy`: Displays the abbreviated month and four-digit year.
+- `MM:yy`: Displays the two-digit month and year.
+- `dd MMM`: Displays the two-digit day and abbreviated month.
+
+**Number formats:**
+
+- `n2`: Displays a number with two decimal places.
+- `n0`: Displays a number without decimal places.
+- `c2`: Displays the value in currency format with two decimal places.
+- `p1`: Displays the value in percentage format with one decimal place.
+- `e1`: Displays the value in exponential notation with one decimal place.
+
+If the specified format does not match the resolved value type, the original value is displayed.
+
 ### Currency Format
 
 ```html
@@ -352,6 +396,15 @@ Customize tooltip content using templates and format strings.
                            format="<b>${point.x}</b><br/>Sales: $${point.y}">
 </e-chart3d-tooltipsettings>
 ```
+
+or
+
+```html
+<e-chart3d-tooltipsettings enable="true" 
+                           format="<b>${point.x}</b><br/>Sales: ${point.y:c0}">
+</e-chart3d-tooltipsettings>
+```
+
 
 **Result:**
 ```

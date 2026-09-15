@@ -29,6 +29,7 @@
   - [Default Format](#default-format)
   - [Custom Format](#custom-format)
   - [Format Placeholders](#format-placeholders)
+  - [Inline Tooltip Formatting](#inline-tooltip-formatting)
   - [Format Examples](#format-examples)
   - [Fixed Tooltip Position](#fixed-tooltip-position)
 - [Tooltip Templates](#tooltip-templates)
@@ -304,6 +305,49 @@ Use the `Format` property with placeholders to customize tooltip content:
 - `${point.y}` - Data value (Y value)
 - `${series.name}` - Series name
 - `${point.percentage}` - Percentage of total
+
+### Inline Tooltip Formatting
+
+The tooltip content can be formatted directly within the `format` property by adding DateTime or number format specifiers to supported tooltip tokens. This allows you to control how point and series values are displayed without using additional events.
+
+Apply a format specifier by adding a colon (`:`) after the tooltip token, followed by the required format.
+
+```cshtml
+<e-circularchart3d-tooltipsettings
+    enable="true"
+    format="${series.name}<br/>${point.x}: ${point.y:n2}<br/>Share: ${point.percentage:n1}%<br/>Opacity: ${series.opacity}">
+</e-circularchart3d-tooltipsettings>
+```
+
+In the above example, `${point.y:n2}` displays the point value with two decimal places, `${point.percentage:n1}` displays the percentage with one decimal place, and `${series.opacity}` displays the opacity applied to the series.
+
+Inline formatting can be applied to the following tooltip tokens:
+
+- `${point.x}` or `${point.x:MMM yyyy}`: Specifies the x-value of the data point, such as a DateTime or category value.
+- `${point.y}` or `${point.y:n2}`: Specifies the numeric y-value of the data point.
+- `${point.percentage}` or `${point.percentage:n1}`: Specifies the percentage contribution of the point.
+- `${series.name}`: Specifies the name assigned to the series.
+- `${series.opacity}` or `${series.opacity:n1}`: Specifies the opacity applied to the series.
+
+> **Important:** The availability of point-specific tokens depends on the fields configured in the data source and the Circular 3D Chart series type. The `${series.name}` and `${series.type}` tokens return string values, so DateTime or number formatting is not applied to these tokens.
+
+The following format types are supported:
+
+**DateTime formats:**
+
+- `MMM yyyy`: Displays the abbreviated month and four-digit year.
+- `MM:yy`: Displays the two-digit month and year.
+- `dd MMM`: Displays the two-digit day and abbreviated month.
+
+**Number formats:**
+
+- `n2`: Displays a number with two decimal places.
+- `n0`: Displays a number without decimal places.
+- `c2`: Displays the value in currency format with two decimal places.
+- `p1`: Displays the value in percentage format with one decimal place.
+- `e1`: Displays the value in exponential notation with one decimal place.
+
+If the specified format does not match the resolved value type, the original value is displayed.
 
 ### Format Examples
 

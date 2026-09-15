@@ -5,6 +5,7 @@
 - [Enabling Tooltips](#enabling-tooltips)
 - [Tooltip Customization](#tooltip-customization)
 - [Tooltip Format](#tooltip-format)
+- [Inline Tooltip Formatting](#inline-tooltip-formatting)
 - [Tooltip Templates](#tooltip-templates)
 - [Track Line Feature](#track-line-feature)
 - [Track Line Customization](#track-line-customization)
@@ -144,6 +145,57 @@ Format tokens control what data is displayed in the tooltip. Multiple tokens can
 <!-- Category with value -->
 <e-sparkline-tooltipsettings format="${xval} = ${yval} items"></e-sparkline-tooltipsettings>
 ```
+
+## Inline Tooltip Formatting
+
+Tooltip values can be formatted directly within the `format` property by adding DateTime or number format specifiers to supported tooltip tokens. This allows you to control how the X and Y values are displayed without using additional events.
+
+Apply a format specifier by adding a colon (`:`) after the tooltip token, followed by the required format.
+
+```cshtml
+<ejs-sparkline
+    id="inlineFormattedTooltip"
+    type="Line"
+    dataSource="ViewBag.SalesData"
+    xName="Date"
+    yName="Revenue"
+    valueType="@Syncfusion.EJ2.Charts.SparklineValueType.DateTime"
+    height="80"
+    width="300">
+
+    <e-sparkline-tooltipsettings
+        visible="true"
+        format="${xval:MMM yyyy}: ${yval:n2}">
+    </e-sparkline-tooltipsettings>
+</ejs-sparkline>
+```
+
+In the above example, `${xval:MMM yyyy}` displays the X-value in month-year format, and `${yval:n2}` displays the Y-value with two decimal places.
+
+Inline formatting can be applied to the following tooltip tokens:
+
+- `${xval}` or `${xval:MMM yyyy}`: Specifies the X-value of the Sparkline data point.
+- `${yval}` or `${yval:n2}`: Specifies the numeric Y-value of the Sparkline data point.
+
+> **Important:** Formatting is applied only when the resolved value supports the specified format. DateTime formatting applies to DateTime values, while number formatting applies to numeric values.
+
+The following format types are supported:
+
+**DateTime formats:**
+
+- `MMM yyyy`: Displays the abbreviated month and four-digit year.
+- `MM:yy`: Displays the two-digit month and year.
+- `dd MMM`: Displays the two-digit day and abbreviated month.
+
+**Number formats:**
+
+- `n2`: Displays a number with two decimal places.
+- `n0`: Displays a number without decimal places.
+- `c2`: Displays the value in currency format with two decimal places.
+- `p1`: Displays the value in percentage format with one decimal place.
+- `e1`: Displays the value in exponential notation with one decimal place.
+
+If the specified format does not match the resolved value type, the original value is displayed.
 
 ## Tooltip Templates
 

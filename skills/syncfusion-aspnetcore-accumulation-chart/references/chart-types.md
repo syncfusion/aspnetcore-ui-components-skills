@@ -15,6 +15,9 @@ This guide covers all accumulation chart types: Pie (including Doughnut variant)
   - [Basic Doughnut Chart](#basic-doughnut-chart)
   - [When to Use Doughnut Charts](#when-to-use-doughnut-charts)
   - [Doughnut with Center Label](#doughnut-with-center-label)
+- [Multiple Pie Series](#multiple-pie-series)
+  - [Basic Multiple Pie Series](#basic-multiple-pie-series)
+  - [Mapping Related Points with mappingKey](#mapping-related-points-with-mappingkey)
 - [Pyramid Chart](#pyramid-chart)
   - [Basic Pyramid Chart](#basic-pyramid-chart)
   - [When to Use Pyramid Charts](#when-to-use-pyramid-charts)
@@ -207,6 +210,246 @@ Display summary information in the center:
 ```
 
 **Alternative: Using Annotation for Center Label** (see advanced-features.md)
+
+## Multiple Pie Series
+
+Render multiple pie or doughnut series in a single Accumulation Chart to compare related datasets as concentric rings. Each series can have its own data source, radius, inner radius, data labels, and styling.
+
+### Basic Multiple Pie Series
+
+```cshtml
+@{
+    List<DeviceUsageData> currentYearData = new List<DeviceUsageData>
+    {
+        new DeviceUsageData { Category = "Mobile", Value = 45 },
+        new DeviceUsageData { Category = "Desktop", Value = 35 },
+        new DeviceUsageData { Category = "Tablet", Value = 20 }
+    };
+
+    List<DeviceUsageData> previousYearData = new List<DeviceUsageData>
+    {
+        new DeviceUsageData { Category = "Mobile", Value = 38 },
+        new DeviceUsageData { Category = "Desktop", Value = 42 },
+        new DeviceUsageData { Category = "Tablet", Value = 20 }
+    };
+}
+
+<ejs-accumulationchart
+    id="multiplePieSeries"
+    title="Device Usage Comparison">
+
+    <e-accumulationchart-legendsettings visible="true">
+    </e-accumulationchart-legendsettings>
+
+    <e-accumulationchart-tooltipsettings
+        enable="true"
+        format="${series.name}<br/>${point.x}: <b>${point.y}%</b>">
+    </e-accumulationchart-tooltipsettings>
+
+    <e-accumulation-series-collection>
+        <e-accumulation-series
+            dataSource="@currentYearData"
+            xName="Category"
+            yName="Value"
+            name="Current Year"
+            type="Pie"
+            radius="100%"
+            innerRadius="70%">
+
+            <e-accumulationseries-datalabel
+                visible="true"
+                name="Category"
+                position="Outside">
+            </e-accumulationseries-datalabel>
+        </e-accumulation-series>
+
+        <e-accumulation-series
+            dataSource="@previousYearData"
+            xName="Category"
+            yName="Value"
+            name="Previous Year"
+            type="Pie"
+            radius="60%"
+            innerRadius="30%">
+
+            <e-accumulationseries-datalabel
+                visible="true"
+                name="Category"
+                position="Inside">
+            </e-accumulationseries-datalabel>
+        </e-accumulation-series>
+    </e-accumulation-series-collection>
+</ejs-accumulationchart>
+```
+
+```csharp
+public class DeviceUsageData
+{
+    public string Category { get; set; }
+
+    public double Value { get; set; }
+}
+```
+
+Configure the `radius` and `innerRadius` properties of each series so that the series render as separate concentric rings without overlapping.
+
+- The outer series uses a larger `radius`.
+- The inner series uses a smaller `radius`.
+- The `innerRadius` property determines the thickness of each ring.
+- Each series can use a separate data source and visual configuration.
+- The tooltip identifies the hovered point and its corresponding series.
+
+### Mapping Related Points with mappingKey
+
+Use the `mappingKey` property in the legend settings to associate corresponding points across multiple pie series. The property specifies the point field used to group related legend items across the series.
+
+```cshtml
+@{
+    List<MappedDeviceUsageData> currentYearData = new List<MappedDeviceUsageData>
+    {
+        new MappedDeviceUsageData
+        {
+            Id = "mobile",
+            Category = "Mobile",
+            Value = 45
+        },
+        new MappedDeviceUsageData
+        {
+            Id = "desktop",
+            Category = "Desktop",
+            Value = 35
+        },
+        new MappedDeviceUsageData
+        {
+            Id = "tablet",
+            Category = "Tablet",
+            Value = 20
+        }
+    };
+
+    List<MappedDeviceUsageData> previousYearData = new List<MappedDeviceUsageData>
+    {
+        new MappedDeviceUsageData
+        {
+            Id = "mobile",
+            Category = "Mobile",
+            Value = 38
+        },
+        new MappedDeviceUsageData
+        {
+            Id = "desktop",
+            Category = "Desktop",
+            Value = 42
+        },
+        new MappedDeviceUsageData
+        {
+            Id = "tablet",
+            Category = "Tablet",
+            Value = 20
+        }
+    };
+}
+
+<ejs-accumulationchart
+    id="mappedMultiplePieSeries"
+    title="Device Usage Comparison">
+
+    <e-accumulationchart-legendsettings
+        visible="true"
+        mappingKey="x">
+    </e-accumulationchart-legendsettings>
+
+    <e-accumulationchart-tooltipsettings
+        enable="true"
+        format="${series.name}<br/>${point.x}: <b>${point.y}%</b>">
+    </e-accumulationchart-tooltipsettings>
+
+    <e-accumulation-series-collection>
+        <e-accumulation-series
+            dataSource="@currentYearData"
+            xName="Category"
+            yName="Value"
+            name="Current Year"
+            type="Pie"
+            radius="100%"
+            innerRadius="70%">
+
+            <e-accumulationseries-datalabel
+                visible="true"
+                name="Category"
+                position="Outside">
+            </e-accumulationseries-datalabel>
+        </e-accumulation-series>
+
+        <e-accumulation-series
+            dataSource="@previousYearData"
+            xName="Category"
+            yName="Value"
+            name="Previous Year"
+            type="Pie"
+            radius="60%"
+            innerRadius="30%">
+
+            <e-accumulationseries-datalabel
+                visible="true"
+                name="Category"
+                position="Inside">
+            </e-accumulationseries-datalabel>
+        </e-accumulation-series>
+    </e-accumulation-series-collection>
+</ejs-accumulationchart>
+```
+
+```csharp
+public class MappedDeviceUsageData
+{
+    public string Id { get; set; }
+
+    public string Category { get; set; }
+
+    public double Value { get; set; }
+}
+```
+
+In the above example:
+
+- `mappingKey="x"` is configured in `e-accumulationchart-legendsettings`.
+- The internal `x` value represents the category mapped through the `xName` property.
+- Points with the same category value across multiple series share a common legend item.
+- Interacting with a mapped legend item affects the corresponding points in all related series.
+- Point mapping does not depend on the order of the records in each data source.
+
+For example, the following points are associated because both use `Mobile` as their category value:
+
+```csharp
+// Current year
+new MappedDeviceUsageData
+{
+    Id = "mobile",
+    Category = "Mobile",
+    Value = 45
+}
+
+// Previous year
+new MappedDeviceUsageData
+{
+    Id = "mobile",
+    Category = "Mobile",
+    Value = 38
+}
+```
+
+Both series configure `xName="Category"`. Therefore, the `Category` field is mapped to the internal `x` value used by `mappingKey="x"`.
+
+**Requirements for `mappingKey`:**
+
+- Configure `mappingKey` inside `e-accumulationchart-legendsettings`.
+- Use `"x"` to associate points through the field mapped by each series' `xName`.
+- Related points across the series must have identical X-values.
+- Use consistent category mapping in all related series.
+- Each mapped value should uniquely identify a category within its series.
+
+> **Note:** Multiple pie series use the `Pie` series type. Enable the legend to display and interact with mapped legend items. Enable data labels and tooltips only when those features are required.
 
 ## Pyramid Chart
 

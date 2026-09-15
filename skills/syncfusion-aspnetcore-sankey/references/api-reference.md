@@ -70,7 +70,7 @@ Creates a new instance of the Sankey Chart component.
 
 ### Title / Subtitle Style Properties (`SankeySankeyTitleStyle`)
 - **[`color`](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.SankeySankeyTitleStyle.html#Syncfusion_EJ2_Charts_SankeySankeyTitleStyle_Color)** (string): Title text color.
-- **[`contentTemplate`](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.SankeySankeyTitleStyle.html#Syncfusion_EJ2_Charts_SankeySankeyTitleStyle_ContentTemplate)** (MvcTemplate&lt;object&gt;): Template content for the title style object.
+- **[`contentTemplate`](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.SankeySankeyTitleStyle.html#Syncfusion_EJ2_Charts_SankeySankeyTitleStyle_ContentTemplate)** (MvcTemplate<object>): Template content for the title style object.
 - **[`fontFamily`](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.SankeySankeyTitleStyle.html#Syncfusion_EJ2_Charts_SankeySankeyTitleStyle_FontFamily)** (string): Font family for the title text.
 - **[`fontStyle`](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.SankeySankeyTitleStyle.html#Syncfusion_EJ2_Charts_SankeySankeyTitleStyle_FontStyle)** (string): Font style for the title text.
 - **[`fontWeight`](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.SankeySankeyTitleStyle.html#Syncfusion_EJ2_Charts_SankeySankeyTitleStyle_FontWeight)** (string): Font weight for the title text.
@@ -96,11 +96,11 @@ Creates a new instance of the Sankey Chart component.
 - **[`right`](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.SankeyMargin.html#Syncfusion_EJ2_Charts_SankeyMargin_Right)** (double): Right margin in pixels.
 - **[`top`](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.SankeyMargin.html#Syncfusion_EJ2_Charts_SankeyMargin_Top)** (double): Top margin in pixels.
 - **[`bottom`](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.SankeyMargin.html#Syncfusion_EJ2_Charts_SankeyMargin_Bottom)** (double): Bottom margin in pixels.
-- **[`contentTemplate`](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.SankeyMargin.html#Syncfusion_EJ2_Charts_SankeyMargin_ContentTemplate)** (MvcTemplate&lt;object&gt;): Template content for the margin object.
+- **[`contentTemplate`](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.SankeyMargin.html#Syncfusion_EJ2_Charts_SankeyMargin_ContentTemplate)** (MvcTemplate<object>): Template content for the margin object.
 
 ### Border Properties (`SankeyBorder`)
 - **[`color`](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.SankeyBorder.html#Syncfusion_EJ2_Charts_SankeyBorder_Color)** (string): Border color.
-- **[`contentTemplate`](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.SankeyBorder.html#Syncfusion_EJ2_Charts_SankeyBorder_ContentTemplate)** (MvcTemplate&lt;object&gt;): Template content for the border object.
+- **[`contentTemplate`](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.SankeyBorder.html#Syncfusion_EJ2_Charts_SankeyBorder_ContentTemplate)** (MvcTemplate<object>): Template content for the border object.
 - **[`dashArray`](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.SankeyBorder.html#Syncfusion_EJ2_Charts_SankeyBorder_DashArray)** (string): Dash pattern for the border stroke.
 - **[`width`](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.SankeyBorder.html#Syncfusion_EJ2_Charts_SankeyBorder_Width)** (double): Border width in pixels.
 
@@ -111,8 +111,8 @@ Creates a new instance of the Sankey Chart component.
 
 ## Data Properties
 
-- **[`nodes`](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.Sankey.html#Syncfusion_EJ2_Charts_Sankey_Nodes)** (List&lt;[`SankeyNode`](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.SankeyNode.html)&gt;): Collection of nodes representing entities in the diagram.
-- **[`links`](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.Sankey.html#Syncfusion_EJ2_Charts_Sankey_Links)** (List&lt;[`SankeyLink`](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.SankeyLink.html)&gt;): Collection of links representing flows between nodes.
+- **[`nodes`](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.Sankey.html#Syncfusion_EJ2_Charts_Sankey_Nodes)** (List<[`SankeyNode`](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.SankeyNode.html)>): Collection of nodes representing entities in the diagram.
+- **[`links`](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.Sankey.html#Syncfusion_EJ2_Charts_Sankey_Links)** (List<[`SankeyLink`](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.SankeyLink.html)>): Collection of links representing flows between nodes.
 
 ---
 
@@ -137,7 +137,7 @@ Creates a new instance of the Sankey Chart component.
 - **[`opacity`](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.SankeyChartNodeSettings.html#Syncfusion_EJ2_Charts_SankeyChartNodeSettings_Opacity)** (double): Node opacity.
 - **[`highlightOpacity`](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.SankeyChartNodeSettings.html#Syncfusion_EJ2_Charts_SankeyChartNodeSettings_HighlightOpacity)** (double): Node opacity when highlighted.
 - **[`inactiveOpacity`](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.SankeyChartNodeSettings.html#Syncfusion_EJ2_Charts_SankeyChartNodeSettings_InactiveOpacity)** (double): Node opacity when inactive.
-- **[`contentTemplate`](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.SankeyChartNodeSettings.html#Syncfusion_EJ2_Charts_SankeyChartNodeSettings_ContentTemplate)** (MvcTemplate&lt;object&gt;): Template content for the node settings object.
+- **[`contentTemplate`](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.SankeyChartNodeSettings.html#Syncfusion_EJ2_Charts_SankeyChartNodeSettings_ContentTemplate)** (MvcTemplate<object>): Template content for the node settings object.
 
 ### Link Settings (`SankeyChartLinkSettings`)
 - **[`opacity`](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.SankeyChartLinkSettings.html#Syncfusion_EJ2_Charts_SankeyChartLinkSettings_Opacity)** (double): Link opacity.
@@ -145,7 +145,7 @@ Creates a new instance of the Sankey Chart component.
 - **[`inactiveOpacity`](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.SankeyChartLinkSettings.html#Syncfusion_EJ2_Charts_SankeyChartLinkSettings_InactiveOpacity)** (double): Link opacity when inactive.
 - **[`colorType`](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.SankeyChartLinkSettings.html#Syncfusion_EJ2_Charts_SankeyChartLinkSettings_ColorType)** (ColorType): Link color application mode (`Source`, `Target`, `Blend`).
 - **[`curvature`](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.SankeyChartLinkSettings.html#Syncfusion_EJ2_Charts_SankeyChartLinkSettings_Curvature)** (double): Curvature factor of the link path.
-- **[`contentTemplate`](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.SankeyChartLinkSettings.html#Syncfusion_EJ2_Charts_SankeyChartLinkSettings_ContentTemplate)** (MvcTemplate&lt;object&gt;): Template content for the link settings object.
+- **[`contentTemplate`](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.SankeyChartLinkSettings.html#Syncfusion_EJ2_Charts_SankeyChartLinkSettings_ContentTemplate)** (MvcTemplate<object>): Template content for the link settings object.
 
 ### SankeyNode Properties
 - **[`Id`](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.SankeyNode.html#Syncfusion_EJ2_Charts_SankeyNode_Id)** (string): Unique string identifier for the node.
@@ -156,7 +156,7 @@ Creates a new instance of the Sankey Chart component.
 ### SankeyChartDataLabel Properties
 - **[`Text`](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.SankeyChartDataLabel.html#Syncfusion_EJ2_Charts_SankeyChartDataLabel_Text)** (string): Label text.
 - **[`Padding`](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.SankeyChartDataLabel.html#Syncfusion_EJ2_Charts_SankeyChartDataLabel_Padding)** (double): Space around the label text.
-- **[`ContentTemplate`](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.SankeyChartDataLabel.html#Syncfusion_EJ2_Charts_SankeyChartDataLabel_ContentTemplate)** (MvcTemplate&lt;object&gt;): Template content for the data label object.
+- **[`ContentTemplate`](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.SankeyChartDataLabel.html#Syncfusion_EJ2_Charts_SankeyChartDataLabel_ContentTemplate)** (MvcTemplate<object>): Template content for the data label object.
 
 ### SankeyLink Properties
 - **[`SourceId`](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.SankeyLink.html#Syncfusion_EJ2_Charts_SankeyLink_SourceId)** (string): Unique identifier of the source node.
@@ -178,7 +178,7 @@ Creates a new instance of the Sankey Chart component.
 - **[`fontWeight`](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.SankeyChartLabelSettings.html#Syncfusion_EJ2_Charts_SankeyChartLabelSettings_FontWeight)** (string): Font weight for labels.
 - **[`color`](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.SankeyChartLabelSettings.html#Syncfusion_EJ2_Charts_SankeyChartLabelSettings_Color)** (string): Label text color.
 - **[`padding`](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.SankeyChartLabelSettings.html#Syncfusion_EJ2_Charts_SankeyChartLabelSettings_Padding)** (double): Space around label text.
-- **[`contentTemplate`](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.SankeyChartLabelSettings.html#Syncfusion_EJ2_Charts_SankeyChartLabelSettings_ContentTemplate)** (MvcTemplate&lt;object&gt;): Template content for the label settings object.
+- **[`contentTemplate`](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.SankeyChartLabelSettings.html#Syncfusion_EJ2_Charts_SankeyChartLabelSettings_ContentTemplate)** (MvcTemplate<object>): Template content for the label settings object.
 
 ### Legend Settings
 - **[`legendSettings`](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.Sankey.html#Syncfusion_EJ2_Charts_Sankey_LegendSettings)** ([`SankeyChartLegendSettings`](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.SankeyChartLegendSettings.html)): Legend configuration for the sankey diagram.
@@ -208,7 +208,7 @@ Creates a new instance of the Sankey Chart component.
 ### SankeyLocation Properties
 - **[`x`](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.SankeyLocation.html#Syncfusion_EJ2_Charts_SankeyLocation_X)** (double): X coordinate position for custom legend/tooltip placement.
 - **[`y`](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.SankeyLocation.html#Syncfusion_EJ2_Charts_SankeyLocation_Y)** (double): Y coordinate position for custom legend/tooltip placement.
-- **[`contentTemplate`](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.SankeyLocation.html#Syncfusion_EJ2_Charts_SankeyLocation_ContentTemplate)** (MvcTemplate&lt;object&gt;): Template content for the location object.
+- **[`contentTemplate`](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.SankeyLocation.html#Syncfusion_EJ2_Charts_SankeyLocation_ContentTemplate)** (MvcTemplate<object>): Template content for the location object.
 
 ### SankeyLegendBorder Inherited Properties
 - **[`SankeyLegendBorder`](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.SankeyLegendBorder.html)** inherits the border members from [`SankeyBorder`](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.SankeyBorder.html): [`color`](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.SankeyBorder.html#Syncfusion_EJ2_Charts_SankeyBorder_Color), [`contentTemplate`](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.SankeyBorder.html#Syncfusion_EJ2_Charts_SankeyBorder_ContentTemplate), [`dashArray`](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.SankeyBorder.html#Syncfusion_EJ2_Charts_SankeyBorder_DashArray), and [`width`](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.SankeyBorder.html#Syncfusion_EJ2_Charts_SankeyBorder_Width).
@@ -218,7 +218,7 @@ Creates a new instance of the Sankey Chart component.
 
 ### SankeyFont Properties
 - **[`color`](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.SankeyFont.html#Syncfusion_EJ2_Charts_SankeyFont_Color)** (string): Text color.
-- **[`contentTemplate`](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.SankeyFont.html#Syncfusion_EJ2_Charts_SankeyFont_ContentTemplate)** (MvcTemplate&lt;object&gt;): Template content for the font object.
+- **[`contentTemplate`](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.SankeyFont.html#Syncfusion_EJ2_Charts_SankeyFont_ContentTemplate)** (MvcTemplate<object>): Template content for the font object.
 - **[`fontFamily`](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.SankeyFont.html#Syncfusion_EJ2_Charts_SankeyFont_FontFamily)** (string): Font family.
 - **[`fontStyle`](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.SankeyFont.html#Syncfusion_EJ2_Charts_SankeyFont_FontStyle)** (string): Font style.
 - **[`fontWeight`](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.SankeyFont.html#Syncfusion_EJ2_Charts_SankeyFont_FontWeight)** (string): Font weight.
@@ -254,7 +254,7 @@ Creates a new instance of the Sankey Chart component.
 
 ### SankeyTooltipTextStyle Properties
 - **[`color`](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.SankeyTooltipTextStyle.html#Syncfusion_EJ2_Charts_SankeyTooltipTextStyle_Color)** (string): Tooltip text color.
-- **[`contentTemplate`](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.SankeyTooltipTextStyle.html#Syncfusion_EJ2_Charts_SankeyTooltipTextStyle_ContentTemplate)** (MvcTemplate&lt;object&gt;): Template content for the tooltip text style object.
+- **[`contentTemplate`](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.SankeyTooltipTextStyle.html#Syncfusion_EJ2_Charts_SankeyTooltipTextStyle_ContentTemplate)** (MvcTemplate<object>): Template content for the tooltip text style object.
 - **[`fontFamily`](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.SankeyTooltipTextStyle.html#Syncfusion_EJ2_Charts_SankeyTooltipTextStyle_FontFamily)** (string): Tooltip font family.
 - **[`fontSize`](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.SankeyTooltipTextStyle.html#Syncfusion_EJ2_Charts_SankeyTooltipTextStyle_FontSize)** (string): Tooltip font size.
 - **[`fontStyle`](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.SankeyTooltipTextStyle.html#Syncfusion_EJ2_Charts_SankeyTooltipTextStyle_FontStyle)** (string): Tooltip font style.
@@ -265,7 +265,7 @@ Creates a new instance of the Sankey Chart component.
 - **[`right`](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.SankeyContainerPadding.html#Syncfusion_EJ2_Charts_SankeyContainerPadding_Right)** (double): Right padding in pixels.
 - **[`top`](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.SankeyContainerPadding.html#Syncfusion_EJ2_Charts_SankeyContainerPadding_Top)** (double): Top padding in pixels.
 - **[`bottom`](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.SankeyContainerPadding.html#Syncfusion_EJ2_Charts_SankeyContainerPadding_Bottom)** (double): Bottom padding in pixels.
-- **[`contentTemplate`](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.SankeyContainerPadding.html#Syncfusion_EJ2_Charts_SankeyContainerPadding_ContentTemplate)** (MvcTemplate&lt;object&gt;): Template content for the container padding object.
+- **[`contentTemplate`](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.SankeyContainerPadding.html#Syncfusion_EJ2_Charts_SankeyContainerPadding_ContentTemplate)** (MvcTemplate<object>): Template content for the container padding object.
 
 ---
 

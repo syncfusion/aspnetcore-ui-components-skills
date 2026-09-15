@@ -22,6 +22,10 @@
 - [Removing Indicators](#removing-indicators)
     - [Remove All Indicators](#remove-all-indicators)
     - [Dynamic Removal (JavaScript)](#dynamic-removal-javascript)
+- [Indicator Events](#indicator-events)
+  - [Before Indicator Change](#before-indicator-change)
+  - [Indicator Change](#indicator-changed)
+  - [Basic Implementation](#basic-implementation)
 - [Indicator Customization](#indicator-customization)
     - [Color and Line Style](#color-and-line-style)
     - [Multiple Indicators](#multiple-indicators)
@@ -277,6 +281,78 @@ chart.refresh();
 chart.series[0].indicators = [];
 chart.refresh();
 ```
+## Indicator Events
+
+Stock Chart provides events to track and manage indicators added or removed through the toolbar.
+
+### Before Indicator Change
+
+The `beforeIndicatorChange` event is triggered before an indicator is added or removed through the Stock Chart toolbar. Set `args.cancel` to `true` to prevent the requested update.
+
+### Indicator Changed
+
+The `indicatorChanged` event is triggered after an indicator has been added or removed successfully. Use this event to track the completed change or run dependent application logic.
+
+### Basic Implementation
+
+```cshtml
+@{
+    string[] indicatorTypes = new[]
+    {
+        "Sma",
+        "Ema",
+        "Tma",
+        "BollingerBands",
+        "Momentum",
+        "Atr",
+        "Rsi",
+        "Macd",
+        "Stochastic",
+        "AccumulationDistribution"
+    };
+}
+
+<ejs-stockchart
+    id="stockChart"
+    indicatorType="indicatorTypes"
+    beforeIndicatorChange="onBeforeIndicatorChange"
+    indicatorChanged="onIndicatorChanged">
+
+    <e-stockchart-series-collection>
+        <e-stockchart-series
+            dataSource="ViewBag.StockData"
+            type="Candle"
+            xName="date"
+            open="open"
+            high="high"
+            low="low"
+            close="close"
+            name="Price">
+        </e-stockchart-series>
+    </e-stockchart-series-collection>
+</ejs-stockchart>
+
+<script>
+    function onBeforeIndicatorChange(args) {
+        console.log("Indicator update requested:", args);
+
+        // Set args.cancel to true to prevent the requested update.
+        // args.cancel = true;
+    }
+
+    function onIndicatorChanged(args) {
+        console.log("Indicator updated successfully:", args);
+    }
+</script>
+```
+
+**Event behavior:**
+
+- `beforeIndicatorChange` runs before the toolbar indicator update.
+- Set `args.cancel` to `true` to cancel the requested update.
+- When canceled, the indicator is not added or removed.
+- `indicatorChanged` runs only after the indicator update succeeds.
+- These events apply to indicators added or removed through the Stock Chart toolbar.
 
 ## Indicator Customization
 

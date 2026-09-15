@@ -17,6 +17,7 @@
     - [Tooltip Customization](#tooltip-customization)
     - [Shared Tooltip (Trackball)](#shared-tooltip-trackball)
     - [Custom Tooltip Format](#custom-tooltip-format)
+    - [Inline Tooltip Formatting](#inline-tooltip-formatting)
 - [Selection](#selection)
     - [Point Selection](#point-selection)
     - [Series Selection](#series-selection)
@@ -248,7 +249,7 @@ Define tooltip content format:
 
 ```cshtml
 <ejs-stockchart id="stockChart">
-    <e-stockchart-tooltipsettings enable="true" format="<b>${seriesName}</b><br/>Date: ${point.x}<br/>Close: ${point.close}"></e-stockchart-tooltipsettings>
+    <e-stockchart-tooltipsettings enable="true" format="<b>${series.name}</b><br/>Date: ${point.x}<br/>Close: ${point.close}"></e-stockchart-tooltipsettings>
 </ejs-stockchart>
 ```
 
@@ -260,6 +261,80 @@ Available template variables:
 - ${point.high}: High price
 - ${point.low}: Low price
 - ${point.volume}: Volume
+
+### Inline Tooltip Formatting
+
+Tooltip values can be formatted directly within the `format` property by adding DateTime or number format specifiers to supported tooltip tokens. This allows Stock Chart values to be formatted without using additional events.
+
+Apply a format specifier by adding a colon (`:`) after the tooltip token, followed by the required format.
+
+```cshtml
+<ejs-stockchart id="stockChart">
+    <e-stockchart-tooltipsettings
+        enable="true"
+        format="<b>${series.name}</b><br/>Date: ${point.x:MMM yyyy}<br/>Open: ${point.open:n2}<br/>High: ${point.high:n2}<br/>Low: ${point.low:n2}<br/>Close: ${point.close:n2}<br/>Volume: ${point.volume:n0}">
+    </e-stockchart-tooltipsettings>
+
+    <e-stockchart-primaryxaxis valueType="DateTime">
+    </e-stockchart-primaryxaxis>
+
+    <e-stockchart-series-collection>
+        <e-stockchart-series
+            name="AAPL"
+            dataSource="stockData"
+            xName="x"
+            open="open"
+            high="high"
+            low="low"
+            close="close"
+            volume="volume"
+            type="Candle">
+        </e-stockchart-series>
+    </e-stockchart-series-collection>
+</ejs-stockchart>
+```
+
+In the above example:
+
+- `${point.x:MMM yyyy}` displays the date using an abbreviated month and four-digit year.
+- `${point.open:n2}` displays the opening price with two decimal places.
+- `${point.high:n2}` displays the highest price with two decimal places.
+- `${point.low:n2}` displays the lowest price with two decimal places.
+- `${point.close:n2}` displays the closing price with two decimal places.
+- `${point.volume:n0}` displays the volume without decimal places.
+
+Inline formatting can be applied to the following tooltip tokens:
+
+- `${point.x}` or `${point.x:MMM yyyy}`: Specifies the X-value, such as a DateTime or category value.
+- `${point.y}` or `${point.y:n2}`: Specifies the numeric Y-value for series such as `Line`, `Spline`, and `Area`.
+- `${point.open}` or `${point.open:n2}`: Specifies the opening price.
+- `${point.high}` or `${point.high:n2}`: Specifies the highest price.
+- `${point.low}` or `${point.low:n2}`: Specifies the lowest price.
+- `${point.close}` or `${point.close:n2}`: Specifies the closing price.
+- `${point.volume}` or `${point.volume:n0}`: Specifies the trading volume.
+- `${series.name}`: Specifies the name assigned to the series.
+- `${series.type}`: Specifies the rendering type of the series.
+- `${series.opacity}` or `${series.opacity:n1}`: Specifies the opacity applied to the series.
+
+> **Important:** The availability of point-specific tokens depends on the fields configured in the data source and the Stock Chart series type. The `${series.name}` and `${series.type}` tokens return string values, so DateTime or number formatting is not applied to them.
+
+The following format types are supported:
+
+**DateTime formats:**
+
+- `MMM yyyy`: Displays the abbreviated month and four-digit year.
+- `MM:yy`: Displays the two-digit month and year.
+- `dd MMM`: Displays the two-digit day and abbreviated month.
+
+**Number formats:**
+
+- `n2`: Displays a number with two decimal places.
+- `n0`: Displays a number without decimal places.
+- `c2`: Displays the value in currency format with two decimal places.
+- `p1`: Displays the value in percentage format with one decimal place.
+- `e1`: Displays the value in exponential notation with one decimal place.
+
+If the specified format does not match the resolved value type, the original value is displayed.
 
 ### Tooltip API Properties
 
