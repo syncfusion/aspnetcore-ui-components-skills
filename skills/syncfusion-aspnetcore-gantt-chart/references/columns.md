@@ -7,6 +7,7 @@
 - [Column Template](#column-template)
 - [Column Type](#column-type)
 - [Column Format](#column-format)
+- [Serial Number Column](#serial-number-column)
 - [Checkbox Column](#checkbox-column)
 - [Show or Hide Columns Dynamically](#show-or-hide-columns-dynamically)
 - [Controlling Column Actions](#controlling-column-actions)
@@ -217,6 +218,98 @@ Pass a built-in skeleton string or a custom format object to `format`:
     </e-gantt-columns>
 </ejs-gantt>
 ```
+
+---
+
+## Serial Number Column
+
+Add an auto-incrementing serial number column to display row indices. Enable with `enableSerialNumber="true"` and include a column with `field="SerialNumber"`.
+
+### Enable Serial Number Column
+
+```cshtml
+<ejs-gantt id='Gantt' dataSource="ViewBag.DataSource" height="450px"
+           enableSerialNumber="true">
+    <e-gantt-taskfields id="TaskId" name="TaskName" startDate="StartDate"
+                        endDate="EndDate" duration="Duration" progress="Progress" child="SubTasks">
+    </e-gantt-taskfields>
+    <e-gantt-columns>
+        <e-gantt-column field="SerialNumber" headerText="S.No" width="70" textAlign="Center"></e-gantt-column>
+        <e-gantt-column field="TaskId" width="100"></e-gantt-column>
+        <e-gantt-column field="TaskName" headerText="Task Name" width="250"></e-gantt-column>
+        <e-gantt-column field="StartDate" format="yMd"></e-gantt-column>
+        <e-gantt-column field="Duration"></e-gantt-column>
+        <e-gantt-column field="Progress"></e-gantt-column>
+    </e-gantt-columns>
+</ejs-gantt>
+```
+
+### Serial Number Column Behavior
+
+| Scenario | Behavior |
+|----------|----------|
+| **Initial Render** | Serial numbers increment from 1 based on visible row order |
+| **Sorting** | Serial numbers re-index after sort is applied; numbers reflect current sort order |
+| **Filtering** | Serial numbers re-index to show only visible filtered rows; numbers are sequential for visible rows only |
+| **Searching** | Serial numbers re-index for matching search results; hidden rows are not numbered |
+| **Row Expand/Collapse** | Expanding or collapsing parent rows updates serial numbers; child row numbers adjust accordingly |
+| **Adding Rows** | New rows receive the next sequential number; existing numbers update if insertion changes row order |
+| **Editing Rows** | Serial numbers remain unchanged during cell or dialog editing |
+| **Deleting Rows** | Remaining rows are re-indexed; numbers remain sequential |
+| **Drag and Drop** | Serial numbers re-index after rows are reordered; new sequence is reflected |
+| **Virtualization** | Serial numbers reflect position in virtualized view; numbers update as user scrolls |
+| **Paging** | Each page has independent serial numbering starting from 1 (if paging is enabled) |
+
+### Serial Number Column Examples
+
+**Basic Serial Number Column:**
+```cshtml
+<e-gantt-column field="SerialNumber" headerText="No." width="60" textAlign="Center"></e-gantt-column>
+```
+
+**Frozen Serial Number Column:**
+```cshtml
+<e-gantt-column field="SerialNumber" headerText="S.No" width="70" 
+                textAlign="Center" isFrozen="true"></e-gantt-column>
+```
+
+**Custom Header with Serial Number:**
+```cshtml
+<e-gantt-column field="SerialNumber" headerTemplate="#serialHeader" width="70" 
+                textAlign="Center"></e-gantt-column>
+
+<script type="text/x-template" id="serialHeader">
+    <div>
+        <span style="color: #0066cc; font-weight: bold;">Sequence #</span>
+    </div>
+</script>
+```
+
+### Serial Number Column Limitations
+
+1. **Cannot Be Edited**: Serial number values are read-only and auto-generated; do not set `allowEditing="true"` on this column.
+
+2. **Cannot Be Sorted**: Serial number column sorting is disabled; sorting is based on underlying data, and serial numbers reflect the sorted order.
+
+3. **Cannot Be Filtered**: Serial numbers cannot be used as filter criteria; filter other columns instead.
+
+4. **Cannot Be Used for CRUD**: Serial numbers are computed; they cannot be used as task IDs or primary keys for CRUD operations.
+
+5. **Paging Context**: When paging is enabled, each page shows serial numbers starting from 1; across pages, numbers are not continuous.
+
+6. **Hierarchical Display**: Serial numbers include parent and child tasks in a single sequence; collapsed parents do not affect numbering of visible children.
+
+### Best Practices
+
+1. **Position at Start**: Place the serial number column at the leftmost position for clarity.
+
+2. **Freeze if Needed**: If you have many columns, consider freezing the serial number column so it stays visible during horizontal scroll.
+
+3. **Use Meaningful Header**: Use clear headers like "S.No" or "Row #" to indicate the column's purpose.
+
+4. **Combine with Primary Key**: Always maintain a separate ID field (TaskId) for primary key operations; do not rely on serial numbers for data identification.
+
+5. **Document Behavior**: If your application depends on serial number updates, document the re-indexing behavior for sort, filter, and drag-and-drop operations.
 
 ---
 

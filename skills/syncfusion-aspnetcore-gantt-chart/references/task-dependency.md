@@ -5,6 +5,7 @@
 - [Task Relationship Types](#task-relationship-types)
 - [Define Task Relationship](#define-task-relationship)
 - [Parent Dependencies](#parent-dependencies)
+- [Allowed Dependency Types](#allowed-dependency-types)
 - [Predecessor Offset with Duration Units](#predecessor-offset-with-duration-units)
 - [Predecessor Offset Synchronization on Initial Load](#predecessor-offset-synchronization-on-initial-load)
 - [Disable Automatic Dependency Offset Updates](#disable-automatic-dependency-offset-updates)
@@ -98,6 +99,146 @@ By default, `allowParentDependency` is `true`, meaning parent tasks can act as p
     </e-gantt-taskfields>
 </ejs-gantt>
 ```
+
+---
+
+## Allowed Dependency Types
+
+The `allowedDependencyTypes` property restricts which dependency types (FS, SS, FF, SF) are permitted during dependency creation, editing, and data loading. Use this to enforce project-specific scheduling rules and prevent invalid dependency configurations.
+
+### Configuration
+
+```cshtml
+<ejs-gantt id='Gantt' dataSource="ViewBag.DataSource" height="450px"
+           allowedDependencyTypes="@(new string[] { "FS", "SS" })">
+    <e-gantt-taskfields id="TaskId" name="TaskName" startDate="StartDate"
+                        endDate="EndDate" duration="Duration" progress="Progress"
+                        dependency="Predecessor" child="SubTasks">
+    </e-gantt-taskfields>
+    <e-gantt-editsettings allowEditing="true"></e-gantt-editsettings>
+</ejs-gantt>
+```
+
+### Supported Dependency Types
+
+| Type | Code | Description |
+|---|---|---|
+| Finish to Start | `"FS"` | Successor cannot start until predecessor finishes |
+| Start to Start | `"SS"` | Successor cannot start until predecessor starts |
+| Finish to Finish | `"FF"` | Successor cannot finish until predecessor finishes |
+| Start to Finish | `"SF"` | Successor cannot finish until predecessor starts |
+
+### Default Behavior
+
+- **If not configured**: All dependency types (`FS`, `SS`, `FF`, `SF`) are allowed.
+- **If configured with types**: Only specified types are allowed; others are rejected.
+- **If configured as empty array**: Equivalent to not specifying the property; all types are allowed.
+
+### Behavior During Data Loading
+
+When `allowedDependencyTypes` is specified, dependencies in the data source are validated:
+
+```csharp
+// Configuration:
+allowedDependencyTypes: new string[] { "FS", "SS" }
+
+// Data:
+new GanttTask { Predecessor = "2FS" },    // ✓ Allowed (FS in allowed list)
+new GanttTask { Predecessor = "3SS" },    // ✓ Allowed (SS in allowed list)
+new GanttTask { Predecessor = "4FF" },    // ✗ Rejected (FF not in allowed list)
+new GanttTask { Predecessor = "5SF" },    // ✗ Rejected (SF not in allowed list)
+```
+
+**Rejected dependencies are silently ignored during data load** — the task is loaded without the dependency link.
+
+### Behavior During UI Dependency Creation
+
+When users create dependencies via taskbar dragging or the dependency dialog:
+
+- Only allowed dependency types are available in the type selector
+- Attempting to create a disallowed type is prevented by the component
+- Only allowed types appear in dependency editing dialogs
+
+### Behavior During Dialog and Taskbar Editing
+
+When editing task dates in a dialog or dragging a taskbar:
+
+- If an edit would violate a predecessor constraint of an allowed type, the component enforces the constraint
+- If an edit would violate a predecessor constraint of a disallowed type, the constraint is ignored (since that type is not permitted)
+
+### Usage Example: FS-Only Project
+
+Restrict all dependencies to Finish-to-Start relationships:
+
+```cshtml
+<ejs-gantt id='Gantt' dataSource="ViewBag.DataSource" height="450px"
+           allowedDependencyTypes="@(new string[] { "FS" })">
+    <e-gantt-taskfields id="TaskId" name="TaskName" startDate="StartDate"
+                        endDate="EndDate" duration="Duration" progress="Progress"
+                        dependency="Predecessor" child="SubTasks">
+    </e-gantt-taskfields>
+    <e-gantt-editsettings allowEditing="true" allowTaskbarEditing="true">
+    </e-gantt-editsettings>
+</ejs-gantt>
+```
+
+With this configuration:
+- Only `"2FS"`, `"3FS"`, etc. are accepted in data
+- Dependency dialog shows only "Finish to Start" option
+- Taskbar dependency dragging creates only FS links
+
+### Usage Example: Complex Projects
+
+Allow multiple dependency types for flexible scheduling:
+
+```cshtml
+<ejs-gantt id='Gantt' dataSource="ViewBag.DataSource" height="450px"
+           allowedDependencyTypes="@(new string[] { "FS", "SS", "FF" })">
+    <e-gantt-taskfields id="TaskId" name="TaskName" startDate="StartDate"
+                        endDate="EndDate" duration="Duration" progress="Progress"
+                        dependency="Predecessor" child="SubTasks">
+    </e-gantt-taskfields>
+    <e-gantt-editsettings allowEditing="true"></e-gantt-editsettings>
+</ejs-gantt>
+```
+
+With this configuration:
+- `FS`, `SS`, and `FF` dependencies are accepted
+- `SF` dependencies in data are rejected
+- Dependency dialogs show FS, SS, and FF options only
+
+### Mixed Dependency Data with Constraints
+
+Data may contain mixed dependency types. Configure the component to accept only appropriate types:
+
+```csharp
+var tasks = new List<GanttTask>
+{
+    new GanttTask { TaskId = 1, TaskName = "Planning", Predecessor = null },
+    new GanttTask { TaskId = 2, TaskName = "Design", Predecessor = "1FS" },      // FS accepted
+    new GanttTask { TaskId = 3, TaskName = "QA Planning", Predecessor = "2SS" },  // SS accepted
+    new GanttTask { TaskId = 4, TaskName = "Testing", Predecessor = "3FF" },      // FF not allowed → ignored
+    new GanttTask { TaskId = 5, TaskName = "Launch", Predecessor = "4FS,3FS" }    // FS accepted, FF ignored
+};
+
+// With allowedDependencyTypes: ["FS", "SS"]
+// Task 4 loads without the 3FF link
+// Task 5 loads with both 4FS and 3FS links
+```
+
+### Best Practices
+
+1. **Define Clear Rules**: Document which dependency types your project allows and why.
+
+2. **Configure Early**: Set `allowedDependencyTypes` before binding data to ensure consistent validation.
+
+3. **Validate Data Before Import**: Pre-process data to remove or replace disallowed dependency types before loading into Gantt.
+
+4. **Use for Governance**: Apply restrictions to enforce project scheduling standards and prevent invalid relationships.
+
+5. **Combine with Other Constraints**: Use `allowedDependencyTypes` with task constraints (`ASAP`, `ALAP`, etc.) for comprehensive scheduling control.
+
+6. **Test Editing Scenarios**: Verify that allowed dependency types function correctly during dialog editing, taskbar dragging, and programmatic updates.
 
 ---
 

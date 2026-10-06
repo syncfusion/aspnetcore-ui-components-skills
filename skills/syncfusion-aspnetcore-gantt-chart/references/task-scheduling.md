@@ -310,6 +310,96 @@ Set a uniform duration unit for all tasks in the project using `durationUnit` on
 | `Day` (default) | Duration expressed in calendar days |
 | `Hour` | Duration expressed in hours (respects `dayWorkingTime`) |
 | `Minute` | Duration expressed in minutes |
+| `Week` | Duration expressed in weeks (calculated as `weeks × daysPerWeek × hoursPerDay`) |
+| `Month` | Duration expressed in months (calculated as `months × daysPerMonth × hoursPerDay`) |
+
+### Week Duration Unit
+
+The `Week` duration unit allows tasks to be scheduled in weeks. A week is calculated based on the `daysPerWeek` property.
+
+**Example: Task with 2-week duration**
+```cshtml
+<ejs-gantt id='Gantt' dataSource="ViewBag.dataSource" height="450px" 
+           durationUnit="Week" daysPerWeek="5">
+    <e-gantt-taskfields id="TaskId" name="TaskName" startDate="StartDate"
+                        endDate="EndDate" duration="Duration" progress="Progress" child="SubTasks">
+    </e-gantt-taskfields>
+</ejs-gantt>
+```
+
+**Data:**
+```csharp
+// Duration = 2 (weeks)
+// With daysPerWeek=5 and hoursPerDay=8:
+// Actual duration = 2 weeks × 5 days/week × 8 hours/day = 80 working hours
+```
+
+### Month Duration Unit
+
+The `Month` duration unit allows tasks to be scheduled in months. A month is calculated based on the `daysPerMonth` property.
+
+**Example: Task with 1-month duration**
+```cshtml
+<ejs-gantt id='Gantt' dataSource="ViewBag.dataSource" height="450px" 
+           durationUnit="Month" daysPerMonth="20">
+    <e-gantt-taskfields id="TaskId" name="TaskName" startDate="StartDate"
+                        endDate="EndDate" duration="Duration" progress="Progress" child="SubTasks">
+    </e-gantt-taskfields>
+</ejs-gantt>
+```
+
+**Data:**
+```csharp
+// Duration = 1 (month)
+// With daysPerMonth=20 and hoursPerDay=8:
+// Actual duration = 1 month × 20 days/month × 8 hours/day = 160 working hours
+```
+
+### daysPerWeek and daysPerMonth Configuration
+
+Configure the number of days per week and per month for week/month duration calculations.
+
+```cshtml
+<ejs-gantt id='Gantt' dataSource="ViewBag.dataSource" height="450px"
+           durationUnit="Week" daysPerWeek="6" daysPerMonth="25">
+    <e-gantt-taskfields id="TaskId" name="TaskName" startDate="StartDate"
+                        endDate="EndDate" duration="Duration" progress="Progress" child="SubTasks">
+    </e-gantt-taskfields>
+</ejs-gantt>
+```
+
+**Properties:**
+
+| Property | Type | Default | Description |
+|---|---|---|---|
+| `daysPerWeek` | int | 5 | Number of working days in a week for week duration calculation |
+| `daysPerMonth` | int | 20 | Number of working days in a month for month duration calculation |
+
+**Calculation:**
+- Week duration = `duration × daysPerWeek × hoursPerDay` (in working hours)
+- Month duration = `duration × daysPerMonth × hoursPerDay` (in working hours)
+
+### Week/Month Duration Interaction with Calendars and Holidays
+
+Week and month durations respect working time, holidays, and weekends:
+
+```
+Task: Start 04/08 (Mon), Duration 1 week, daysPerWeek=5, hoursPerDay=8
+Result: 1 week × 5 days × 8 hours = 40 working hours
+
+Calendar:
+- Mon 04/08: 8 hrs
+- Tue 04/09: 8 hrs
+- Wed 04/10: Holiday (0 hrs)
+- Thu 04/11: 8 hrs
+- Fri 04/12: 8 hrs
+- Sat 04/13: Weekend (0 hrs)
+- Mon 04/15: 8 hrs
+
+End Date: 04/15 (extends beyond the calendar week due to holiday)
+```
+
+> When `daysPerWeek` and `daysPerMonth` are configured with calendars (project or task calendars), the scheduler skips non-working days and holidays, potentially extending the calendar duration beyond the nominal period.
 
 > When `durationUnit` is set globally, it applies to all tasks that do not have an individual duration unit defined.
 
@@ -337,13 +427,30 @@ public class GanttDataModel
     public DateTime StartDate { get; set; }
     public DateTime EndDate { get; set; }
     public int Duration { get; set; }
-    public string DurationUnit { get; set; }  // "day", "hour", or "minute"
+    public string DurationUnit { get; set; }  // "day", "hour", "minute", "week", or "month"
     public int Progress { get; set; }
     public List<GanttDataModel> SubTasks { get; set; }
 }
 ```
 
-> The `DurationUnit` field accepts string values: `"day"`, `"hour"`, or `"minute"` (lowercase).
+> The `DurationUnit` field accepts string values: `"day"`, `"hour"`, `"minute"`, `"week"`, or `"month"` (lowercase).
+
+**Per-task week/month example:**
+```cshtml
+<ejs-gantt id='Gantt' dataSource="ViewBag.dataSource" height="450px" daysPerWeek="5" daysPerMonth="20">
+    <e-gantt-taskfields id="TaskId" name="TaskName" startDate="StartDate"
+                        endDate="EndDate" duration="Duration" durationUnit="DurationUnit"
+                        progress="Progress" child="SubTasks">
+    </e-gantt-taskfields>
+</ejs-gantt>
+```
+
+With data:
+```csharp
+new GanttDataModel { TaskId = 1, Duration = 2, DurationUnit = "week" },   // 2 weeks
+new GanttDataModel { TaskId = 2, Duration = 1, DurationUnit = "month" },  // 1 month
+new GanttDataModel { TaskId = 3, Duration = 5, DurationUnit = "day" }     // 5 days
+```
 
 ---
 

@@ -7,6 +7,11 @@
 - [Selection Type](#selection-type)
 - [Toggle Selection](#toggle-selection)
 - [Hover Highlighting](#hover-highlighting)
+- [Hierarchy Checkbox Selection](#hierarchy-checkbox-selection)
+  - [Enable Hierarchy Checkbox Selection](#enable-hierarchy-checkbox-selection)
+  - [Hierarchy Checkbox Mode](#hierarchy-checkbox-mode)
+  - [Behavior by Mode](#behavior-by-mode)
+  - [Examples](#examples)
 - [Row Selection](#row-selection)
   - [Select a Row on Initial Load](#select-a-row-on-initial-load)
   - [Select a Row Dynamically](#select-a-row-dynamically)
@@ -98,6 +103,196 @@ Set `enableToggle="true"` on `<e-gantt-selectionsettings>` to allow deselecting 
     });
 </script>
 ```
+
+---
+
+## Hierarchy Checkbox Selection
+
+Hierarchy checkbox selection enables parent and child task rows to be selected via checkboxes, with optional automatic selection propagation through the task hierarchy. This is useful for bulk operations like selecting all subtasks, excluding specific items, or making resource-level decisions.
+
+### Enable Hierarchy Checkbox Selection
+
+To enable checkbox-based row selection with hierarchy support:
+
+1. Add a checkbox column using `<e-gantt-column type="checkbox">`
+2. Set `hierarchyCheckboxMode` on `<e-gantt-selectionsettings>` to control propagation behavior
+3. Configure `selectionSettings.type="Multiple"` for multi-select
+4. Enable `allowSelection="true"` on `<ejs-gantt>`
+
+```cshtml
+<ejs-gantt id="Gantt" dataSource="ViewBag.DataSource" height="450px" allowSelection="true">
+    <e-gantt-taskfields id="TaskId" name="TaskName" startDate="StartDate"
+                        endDate="EndDate" duration="Duration" progress="Progress" child="SubTasks">
+    </e-gantt-taskfields>
+    <e-gantt-columns>
+        <e-gantt-column field="CheckBox" headerText="" showCheckbox="true" width="70" allowFiltering="false" width="50"></e-gantt-column>
+        <e-gantt-column field="TaskId"></e-gantt-column>
+        <e-gantt-column field="TaskName"></e-gantt-column>
+        <e-gantt-column field="Duration"></e-gantt-column>
+        <e-gantt-column field="Progress"></e-gantt-column>
+    </e-gantt-columns>
+    <e-gantt-selectionsettings mode="Row" type="Multiple" hierarchyCheckboxMode="Hierarchy">
+    </e-gantt-selectionsettings>
+</ejs-gantt>
+```
+
+### Hierarchy Checkbox Mode
+
+The `hierarchyCheckboxMode` property controls how checkbox selection propagates in the parent–child hierarchy. Three modes are supported:
+
+| Mode | Behavior |
+|---|---|
+| `Self` | Selects only the clicked checkbox. Parent and child states are independent. |
+| `Hierarchy` (default) | Selection propagates bidirectionally through parent–child relationships. Selecting a parent selects all descendants; selecting a child updates parent state. |
+| `FilteredHierarchy` | Propagates selection only through visible rows in the filtered/searched view. Hidden rows are unaffected. |
+
+### Behavior by Mode
+
+#### Self Mode
+
+Only the clicked row's checkbox state changes. No propagation occurs.
+
+```cshtml
+<e-gantt-selectionsettings mode="Row" type="Multiple" hierarchyCheckboxMode="Self">
+</e-gantt-selectionsettings>
+```
+
+**Interaction:**
+- Click parent checkbox → only parent is selected
+- Click child checkbox → only child is selected
+- Each row is independent
+
+**Use case:** When you need granular control and do not want automatic cascading.
+
+#### Hierarchy Mode (Default)
+
+Selection propagates bidirectionally through the parent–child hierarchy.
+
+```cshtml
+<e-gantt-selectionsettings mode="Row" type="Multiple" hierarchyCheckboxMode="Hierarchy">
+</e-gantt-selectionsettings>
+```
+
+**Interaction:**
+- **Clicking a parent checkbox:**
+  - ✓ All descendant rows (children, grandchildren, etc.) are selected
+  - ✓ The parent itself is selected
+  - Parent state reflects child state if children are mixed (selected/unselected)
+
+- **Clicking a child checkbox:**
+  - ✓ The child row is selected
+  - ✓ Parent checkboxes update to reflect the hierarchy state
+  - If all siblings are selected, the parent is marked selected
+  - If some siblings are selected, the parent is marked indeterminate (if supported)
+
+- **Collapsed descendants:**
+  - ✓ Hidden child rows are still affected by parent selection
+  - ✓ Expanding a parent row shows the correct checkbox states
+  - Selection state persists across collapse/expand actions
+
+**Use case:** General-purpose task management, bulk operations, and cascading selections.
+
+#### FilteredHierarchy Mode
+
+Selection propagates only through visible rows (after filtering or searching). Hidden rows retain their pre-filter state but are not affected by new selections.
+
+```cshtml
+<e-gantt-selectionsettings mode="Row" type="Multiple" hierarchyCheckboxMode="FilteredHierarchy">
+</e-gantt-selectionsettings>
+```
+
+**Interaction:**
+- **Before filtering:** Selecting a parent selects all children (standard hierarchy)
+- **After filtering:** Selecting a parent selects only visible children
+- **Hidden child (by filter):** Not selected even if parent is selected; remains unselected
+- **Clearing filter:** Previously hidden rows maintain their unselected state; previously visible rows keep their selections
+
+**Use case:** Large projects where you want hierarchy propagation within the current filtered view without affecting hidden data.
+
+### Examples
+
+**Example 1: Hierarchy Mode (Select All Subtasks)**
+
+```cshtml
+<ejs-gantt id="Gantt" dataSource="ViewBag.DataSource" height="450px" allowSelection="true">
+    <e-gantt-taskfields id="TaskId" name="TaskName" startDate="StartDate"
+                        endDate="EndDate" duration="Duration" progress="Progress" child="SubTasks">
+    </e-gantt-taskfields>
+    <e-gantt-columns>
+        <e-gantt-column field="CheckBox" headerText="" showCheckbox="true" width="70" allowFiltering="false" width="50"></e-gantt-column>
+        <e-gantt-column field="TaskName" headerText="Task Name" width="250"></e-gantt-column>
+        <e-gantt-column field="Progress"></e-gantt-column>
+    </e-gantt-columns>
+    <e-gantt-selectionsettings mode="Row" type="Multiple" hierarchyCheckboxMode="Hierarchy">
+    </e-gantt-selectionsettings>
+</ejs-gantt>
+
+<script>
+    // Handle bulk approval
+    document.getElementById('approveBtn').addEventListener('click', function () {
+        var ganttObj = document.getElementById('Gantt').ej2_instances[0];
+        var selectedRows = ganttObj.getSelectedRowsData(); // All selected records
+        console.log('Approved tasks:', selectedRows);
+        // Send to server for bulk update
+    });
+</script>
+```
+
+**Example 2: Self Mode (Independent Selection)**
+
+```cshtml
+<ejs-gantt id="Gantt" dataSource="ViewBag.DataSource" height="450px" allowSelection="true">
+    <e-gantt-taskfields id="TaskId" name="TaskName" startDate="StartDate"
+                        endDate="EndDate" duration="Duration" progress="Progress" child="SubTasks">
+    </e-gantt-taskfields>
+    <e-gantt-columns>
+        <e-gantt-column field="CheckBox" headerText="" showCheckbox="true" width="70" allowFiltering="false" width="50"></e-gantt-column>
+        <e-gantt-column field="TaskName"></e-gantt-column>
+    </e-gantt-columns>
+    <e-gantt-selectionsettings mode="Row" type="Multiple" hierarchyCheckboxMode="Self">
+    </e-gantt-selectionsettings>
+</ejs-gantt>
+```
+
+Each row's checkbox state is fully independent; no automatic propagation occurs.
+
+**Example 3: FilteredHierarchy Mode (Filtered View Selection)**
+
+```cshtml
+<ejs-gantt id="Gantt" dataSource="ViewBag.DataSource" height="450px" 
+           allowSelection="true" allowFiltering="true">
+    <e-gantt-taskfields id="TaskId" name="TaskName" startDate="StartDate"
+                        endDate="EndDate" duration="Duration" progress="Progress" child="SubTasks">
+    </e-gantt-taskfields>
+    <e-gantt-columns>
+        <e-gantt-column field="CheckBox" headerText="" showCheckbox="true" width="70" allowFiltering="false" width="50"></e-gantt-column>
+        <e-gantt-column field="TaskName" headerText="Task Name" width="250" allowFiltering="true"></e-gantt-column>
+        <e-gantt-column field="Progress"></e-gantt-column>
+    </e-gantt-columns>
+    <e-gantt-selectionsettings mode="Row" type="Multiple" hierarchyCheckboxMode="FilteredHierarchy">
+    </e-gantt-selectionsettings>
+</ejs-gantt>
+```
+
+When filtering is applied, selections propagate only through visible rows.
+
+### Limitations and Best Practices
+
+1. **Checkbox Column Required:** The hierarchy checkbox feature requires a checkbox column (`type="checkbox"`) to be visible.
+
+2. **Multiple Selection Required:** Set `selectionSettings.type="Multiple"` to enable multi-select via checkboxes.
+
+3. **Hierarchy Mode Default:** `Hierarchy` is the default mode; explicitly set if you want a different behavior.
+
+4. **Collapsed Rows:** In `Hierarchy` mode, collapsed child rows are still selected when their parent is selected; state is maintained across collapse/expand.
+
+5. **Indeterminate State:** If a parent has some (but not all) children selected, the parent checkbox may show an indeterminate visual state (browser/CSS dependent).
+
+6. **FilteredHierarchy Scope:** `FilteredHierarchy` propagation is limited to the current filter/search context; unfilter or clear search to include hidden rows.
+
+7. **Programmatic Selection:** Use `selectRows()` and `deselectRows()` methods to programmatically manage selections; they respect the hierarchy mode.
+
+8. **Performance:** Large hierarchies (thousands of rows) may experience performance delays during bulk selection; test with your expected data size.
 
 ---
 

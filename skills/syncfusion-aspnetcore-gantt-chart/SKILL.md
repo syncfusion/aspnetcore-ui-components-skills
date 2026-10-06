@@ -52,6 +52,7 @@ Use this skill when you need to:
 - Defining columns and field mapping
 - Custom column headers & header templates
 - Column templates & value accessors
+- Serial number column (`enableSerialNumber`, auto-increment row numbering, behavior during sort/filter/drag-drop)
 - Checkbox column, frozen columns
 - Column reordering, resizing, spanning
 - Responsive columns, WBS column, column menu
@@ -70,7 +71,8 @@ Use this skill when you need to:
 📄 **Read:** [references/task-dependency.md](references/task-dependency.md)
 - SS, SF, FS, FF relationship types
 - Mapping dependency field
-- Predecessor offset values
+- Predecessor offset values and duration units
+- Allowed dependency types (`allowedDependencyTypes`, restrict FS/SS/FF/SF, validation during load and editing)
 - Dependency editing via mouse drag
 - Validation, error handling, parent dependencies
 
@@ -107,9 +109,21 @@ Use this skill when you need to:
 ### Task Scheduling
 📄 **Read:** [references/task-scheduling.md](references/task-scheduling.md)
 - Auto, Manual, Custom scheduling modes
-- Duration units (day, hour, minute, week, month)
+- Duration units (day, hour, minute, week, month) with `daysPerWeek` and `daysPerMonth`
+- Global and per-task duration unit configuration
+- Inline duration values with embedded units (e.g., "5 days", "2 weeks", "1 month")
 - Unscheduled tasks
 - Task constraints (ALAP, ASAP, FNLT, SNLT, MSO, MFO)
+
+### Calendar Settings
+📄 **Read:** [references/calendar-settings.md](references/calendar-settings.md)
+- Project calendar configuration with working hours, holidays, and exceptions
+- Task calendar definition and assignment via `taskFields.calendarId`
+- Working time blocks and split-shift scheduling
+- Holiday and calendar exception management
+- `hoursPerDay` configuration for duration conversion
+- Calendar interaction with scheduling, dependencies, and working time
+- Multi-shift and region-specific calendar scenarios
 
 ### Baseline
 📄 **Read:** [references/baseline.md](references/baseline.md)
@@ -125,6 +139,8 @@ Use this skill when you need to:
 📄 **Read:** [references/selection.md](references/selection.md)
 - Row selection and cell selection
 - Single/multiple selection modes
+- Hierarchy checkbox selection with `hierarchyCheckboxMode` (Self, Hierarchy, FilteredHierarchy)
+- Parent/child selection propagation and collapse/expand behavior
 - Programmatic selection
 
 ### Scrolling
@@ -186,6 +202,16 @@ Use this skill when you need to:
 - Change the drag gripper icon via CSS overrides
 - Customize dependency connector lines with `connectorLineWidth` and `connectorLineBackground`
 - Multi-taskbar display in project view using `enableMultiTaskbar="true"`
+
+### Taskbar Draw
+📄 **Read:** [references/taskbar-draw.md](references/taskbar-draw.md)
+- Enable taskbar draw with `allowTaskbarDraw="true"` in EditSettings
+- Create/schedule unscheduled tasks by dragging on the timeline
+- Automatic date and duration calculation based on drawn range
+- Task type scenarios (unscheduled, partial, parent, child, milestone, manual)
+- Calendar and working time interaction with taskbar draw
+- Predecessor constraint handling during drawing
+- Best practices and troubleshooting
 
 ### Labels and Tooltips
 📄 **Read:** [references/labels-and-tooltips.md](references/labels-and-tooltips.md)
