@@ -561,6 +561,52 @@ ViewBag.RevenueData = new[]
 </script>
 ```
 
+#### Raw Datasource Record in `tooltipRender`
+
+The complete source record for the hovered point is available only through the `tooltipRender` event as `args.data.rawData`. It is not a tooltip-format token. Access fields with their datasource names, such as `args.data.rawData.x` or `args.data.rawData.high`.
+
+```cshtml
+<ejs-chart id="rawDataTooltipChart" title="HiloOpenClose Raw Data Tooltip" tooltipRender="tooltipRender">
+    <e-chart-primaryxaxis valueType="@Syncfusion.EJ2.Charts.ValueType.Category"></e-chart-primaryxaxis>
+    <e-chart-primaryyaxis minimum="80" maximum="200" interval="20"></e-chart-primaryyaxis>
+    <e-chart-tooltipsettings enable="true"></e-chart-tooltipsettings>
+    <e-series-collection>
+        <e-series dataSource="ViewBag.HiloData" type="@Syncfusion.EJ2.Charts.ChartSeriesType.HiloOpenClose"
+                  xName="X" open="Open" high="High" low="Low" close="Close" name="Price">
+        </e-series>
+    </e-series-collection>
+</ejs-chart>
+<script>
+    function tooltipRender(args) {
+        if (!args.data || !args.data.rawData) {
+            return;
+        }
+        var rawData = args.data.rawData;
+        args.headerText = '<b>' + rawData.x + '</b>';
+        args.text = [
+            'Open: ' + rawData.open,
+            'High: ' + rawData.high,
+            'Low: ' + rawData.low,
+            'Close: ' + rawData.close
+        ];
+    }
+</script>
+```
+
+```csharp
+// Controller
+ViewBag.HiloData = new[]
+{
+    new { X = "Jan", Open = 120, High = 160, Low = 100, Close = 140 },
+    new { X = "Feb", Open = 150, High = 190, Low = 130, Close = 170 },
+    new { X = "Mar", Open = 130, High = 170, Low = 110, Close = 150 },
+    new { X = "Apr", Open = 160, High = 180, Low = 120, Close = 140 },
+    new { X = "May", Open = 150, High = 170, Low = 110, Close = 130 }
+};
+```
+
+The JavaScript datasource record uses the serialized camel-case field names. Guard `args.data` and `args.data.rawData` before accessing a field. Do not generate `${point.data.<field>}` for this feature.
+
 ### Conditional Tooltips
 
 ```cshtml

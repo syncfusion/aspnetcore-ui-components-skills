@@ -1,6 +1,6 @@
 ---
 name: syncfusion-aspnetcore-ai-assistview
-description: Implement the Syncfusion ASP.NET Core AI AssistView control for interactive AI-powered assistance interfaces. Use this skill when implementing AI assistants, prompt suggestions, custom views, file attachments, markdown responses, customizable templates, regenerable responses, thinking capabilities (chain-of-thoughts), generative UI blocks, Text-to-Speech conversion, Speech-to-Text voice input, or customizing advanced AI conversation UI in ASP.NET Core applications.
+description: Implement the Syncfusion ASP.NET Core AI AssistView control for interactive AI-powered assistance interfaces. Use this skill when implementing AI assistants, prompt suggestions, mentions in the prompt editor, custom views, file attachments, markdown responses, customizable templates, regenerable responses, thinking capabilities (chain-of-thoughts), generative UI blocks, Text-to-Speech conversion, Speech-to-Text voice input, telemetry tracking, or customizing advanced AI conversation UI in ASP.NET Core applications.
 metadata:
   author: "Syncfusion Inc"
   version: "34.1.29"
@@ -38,6 +38,8 @@ The Syncfusion AI AssistView is a comprehensive component for building AI-powere
 - **Generative UI**: Render dynamic interactive tools and UI elements within AI responses
 - **Text-to-Speech**: Convert AI responses into spoken audio with customizable voice settings
 - **Speech-to-Text**: Convert spoken words into text using the device's microphone for voice-based prompt input
+- **Telemetry**: Track AI interaction metrics (duration, tool calls, model info, token usage) and surface a built-in telemetry button in each response toolbar with a hover tooltip report
+- **Mentions**: Configure mention characters in the prompt editor with a suggestion popup driven by a configurable data source, field mappings, filtering, popup dimensions, and templates
 
 ## Navigation Guide
 
@@ -73,7 +75,7 @@ The Syncfusion AI AssistView is a comprehensive component for building AI-powere
 - PromptRequest event for handling prompts (with `cancel`, `attachedFiles`, `promptSuggestions`)
 - PromptChanged event for text changes (with `value`, `previousValue`)
 - StopRespondingClick event for cancelling in-progress responses
-- Attachment events (upload, success, failure, removed, click)
+- Attachment events (upload, success, failure, removed, removing, click)
 
 ### Using Methods and APIs
 📄 **Read:** [references/methods-and-apis.md](references/methods-and-apis.md)
@@ -86,6 +88,7 @@ The Syncfusion AI AssistView is a comprehensive component for building AI-powere
 - Banner templates for welcome messages
 - Prompt item templates for custom prompt rendering
 - Response item templates for response customization
+- Response animation templates for custom loading indicators while the response is being generated
 - Suggestion item templates
 - Footer templates for custom actions
 - Custom view types and active view configuration
@@ -147,6 +150,28 @@ The Syncfusion AI AssistView is a comprehensive component for building AI-powere
 - Speech recognition properties (*language*, *buttonSettings*, *tooltipSettings*, *allowInterimResults*)
 - Handling speech events (*onStart*, *onStop*, *transcriptChanged*, *onError*)
 - Real-time transcription with interim results support
+
+#### Telemetry
+📄 **Read:** [references/telemetry.md](references/telemetry.md)
+- Enabling telemetry with `e-aiassistview-telemetrysettings` tag helper
+- Built-in telemetry button in the response toolbar showing the response duration
+- Hover tooltip displaying the telemetry report for each response
+- Configuring captured metrics with the `metrics` property (`status`, `duration`, `toolCalls`, `streamingChunks`, `model`, `inputTokens`, `outputTokens`, `totalTokens`, `reasoningTokens`, `cachedInputTokens`)
+- Customizing reports with the `beforeReport` callback (modify, add custom attributes, or suppress)
+- Passing `TelemetryData` to `addPromptResponse` to merge model and token usage details
+- Adding domain-specific custom attributes via `customAttributes` on `TelemetryData`
+- Turn tracking, button state, tooltip display, duration formatting, total-token computation, and regenerate flow behavior
+
+#### Mentions
+📄 **Read:** [references/mentions.md](references/mentions.md)
+- Enabling mentions in the prompt editor using the `mentions` property (array of mention settings)
+- Mention trigger character with `mentionChar` (e.g., `@`, `/`) and `showMentionChar` toggle for selected mentions
+- Data source configuration with `dataSource` (local collection or `DataManager` for remote data)
+- Field mappings via `fields` for display text and unique value
+- Filtering suggestions with `query`, `filterType` (`Contains`, `StartsWith`, `EndsWith`), and `highlight` properties
+- Popup dimensions using `popupWidth` and `popupHeight`
+- Customization with `displayTemplate`, `itemTemplate`, and `noRecordsTemplate`
+- Handling selection via the `mentionSelect` event with `args.itemData`
 
 ## Quick Start
 

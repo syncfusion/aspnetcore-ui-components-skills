@@ -73,6 +73,7 @@ Use this skill when you need to:
 - **Interactivity:** Zooming, panning, crosshair, trackball, selection, tooltips
 - **Customization:** Themes, colors, gradients, custom templates
 - **Advanced Features:** Annotations, striplines, trendlines, technical indicators, error bars
+- **AI Agent Integration:** WebMCP enablement, settings, selected tools, exposure controls, and pre-execution handling
 - **Export:** PDF, SVG, PNG, JPEG, CSV formats
 - **Accessibility:** WCAG 2.0 compliant, keyboard navigation, RTL support
 
@@ -205,6 +206,18 @@ Use this skill when you need to:
 - Multiple selection
 - Selection events
 - Visual feedback customization
+
+### WebMCP and AI Agent Integration
+
+📄 **Read:** [references/webmcp.md](references/webmcp.md)
+
+When you need to:
+- Enable WebMCP with `enableWebMcp="true"` or `.EnableWebMcp(true)`
+- Configure `webMcpSettings` or `.WebMcpSettings(...)`
+- Set the WebMCP registration name, selected tools, custom tools, or `ExposedTo`
+- Register all built-in tools by omitting `Tools`
+- Handle execution with `beforeWebMcpToolExecute` or `.BeforeWebMcpToolExecute(...)`
+- Use automatic registration without `registerWebMcpTools()`
 
 ### Advanced Features
 
@@ -455,5 +468,6 @@ For a comprehensive reference of all Chart API properties, methods, and events, 
 ## Additional Resources
 
 - **Official API Documentation:** [Chart API Reference](https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Charts.Chart.html)
+- **WebMCP APIs:** `EnableWebMcp`, `WebMcpSettings`, `BeforeWebMcpToolExecute`, and their `ChartBuilder` methods
 - **Live Demos:** [ASP.NET Core Chart Demos](https://ej2.syncfusion.com/aspnetcore/Chart/Overview)
 - **GitHub Samples:** [ASP.NET Core Examples](https://github.com/SyncfusionExamples/ASP-NET-Core-Getting-Started-Examples)

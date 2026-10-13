@@ -31,6 +31,7 @@ Complete API reference for the Syncfusion ASP.NET Core Chart (`Syncfusion.EJ2.Ch
   - [Zooming and Scrolling](#zooming-and-scrolling)
   - [Animation](#animation)
 - [Advanced Feature Properties](#advanced-feature-properties)
+- [WebMCP](#webmcp)
   - [Annotations](#annotations)
   - [Indicators Technical Analysis](#indicators-technical-analysis)
   - [Trendlines and Error Bars](#trendlines-and-error-bars)
@@ -43,6 +44,7 @@ Complete API reference for the Syncfusion ASP.NET Core Chart (`Syncfusion.EJ2.Ch
   - [Persistence](#persistence)
 - [Event Properties](#event-properties)
   - [Lifecycle Events](#lifecycle-events)
+- [WebMCP Events](#webmcp-events)
   - [Series and Point Events](#series-and-point-events)
   - [Annotation Events](#annotation-events)
   - [Axis Events](#axis-events)
@@ -167,6 +169,79 @@ Creates a new instance of the Chart component.
 
 ---
 
+## WebMCP
+
+### EnableWebMcp
+
+Enables WebMCP integration for the Chart.
+
+- **Chart property:** `EnableWebMcp`
+- **Type:** `bool`
+- **Default:** `false`
+- **Tag Helper attribute:** `enableWebMcp`
+- **Builder method:** `ChartBuilder.EnableWebMcp(bool enableWebMcp = true)`
+
+### WebMcpSettings
+
+Configures WebMCP tool registration for the Chart.
+
+- **Chart property:** `WebMcpSettings`
+- **Type:** `ChartWebMcpSettings`
+- **Tag Helper attribute:** `webMcpSettings`
+- **Builder method:** `ChartBuilder.WebMcpSettings(...)`
+
+#### ChartWebMcpSettings
+
+| Property | Type | Default | Description |
+|---|---|---|---|
+| `Name` | `string` | `null` | Prefix applied to registered tool names. If null or empty, the Chart element ID is used. |
+| `Tools` | `object` or tool-name collection | `null` | Built-in tool allowlist or custom tool definitions. Omit to register all built-in tools. An explicit empty collection clears prior registrations. |
+| `ExposedTo` | `string[]` | `null` | Model contexts or origins allowed to access the registered tools. |
+
+Tag Helper:
+
+```cshtml
+@{
+    var webMcpSettings = new ChartWebMcpSettings
+    {
+        Name = "salesChart",
+        Tools = new[]
+        {
+            "inspectChart",
+            "getSeriesData",
+            "getChartAxes"
+        },
+        ExposedTo = new[] { "assistant" }
+    };
+}
+
+<ejs-chart id="salesChart"
+           enableWebMcp="true"
+           webMcpSettings="webMcpSettings">
+</ejs-chart>
+```
+
+Fluent builder:
+
+```csharp
+@Html.EJS().Chart("salesChart")
+    .EnableWebMcp(true)
+    .WebMcpSettings(settings => settings
+        .Name("salesChart")
+        .Tools(new[] { "inspectChart", "getSeriesData", "getChartAxes" })
+        .ExposedTo(new[] { "assistant" }))
+    .Render()
+```
+
+When all built-in tools are required, omit `Tools`:
+
+```csharp
+var webMcpSettings = new ChartWebMcpSettings
+{
+    Name = "salesChart"
+};
+```
+
 ## Advanced Feature Properties
 
 ### Annotations
@@ -209,6 +284,43 @@ Creates a new instance of the Chart component.
 ---
 
 ## Event Properties
+
+### WebMCP Events
+
+#### BeforeWebMcpToolExecute
+
+Triggers before a WebMCP tool begins execution. Use it to inspect, modify, cancel, or control confirmation before the operation takes effect.
+
+- **Chart property:** `BeforeWebMcpToolExecute`
+- **Type:** `string`
+- **Default:** `null`
+- **Tag Helper attribute:** `beforeWebMcpToolExecute`
+- **Builder method:** `ChartBuilder.BeforeWebMcpToolExecute(string beforeWebMcpToolExecute)`
+
+```cshtml
+<ejs-chart id="salesChart"
+           enableWebMcp="true"
+           webMcpSettings="webMcpSettings"
+           beforeWebMcpToolExecute="beforeWebMcpToolExecute">
+</ejs-chart>
+
+<script>
+    function beforeWebMcpToolExecute(args) {
+        if (args.toolName.endsWith('_printChart')) {
+            args.cancel = true;
+            args.cancellationResponse = 'Printing is disabled in this sample.';
+        }
+    }
+</script>
+```
+
+```csharp
+@Html.EJS().Chart("salesChart")
+    .EnableWebMcp(true)
+    .WebMcpSettings(settings => settings.Name("salesChart"))
+    .BeforeWebMcpToolExecute("beforeWebMcpToolExecute")
+    .Render()
+```
 
 ### Lifecycle Events
 - **`load`** (string): [Before chart loads; allows customization before rendering](https://help.syncfusion.com/cr/aspnetcore-js2/syncfusion.ej2.charts.chart.html#anchorload)

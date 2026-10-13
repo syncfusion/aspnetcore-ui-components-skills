@@ -64,6 +64,7 @@ The Syncfusion File Manager is a comprehensive, production-ready component for f
 - **Localization**: Support multiple languages and locale-specific formatting
 - **Security & permissions**: Control access to folders and files by role or user
 - **Custom authentication**: Add headers, API keys, or tokens to requests
+- **Docker provider service**: Deploy the unified Azure Blob / Amazon S3 provider service with a single Docker image
 
 ## Quick Start Example
 
@@ -301,6 +302,15 @@ Navigate to the appropriate reference file based on your implementation needs:
 - Error handling strategies
 - Resumable upload patterns
 - File operation request/response structure
+
+### 🐳 Docker Deployment
+📄 **Read:** [references/docker-deployment.md](references/docker-deployment.md)
+- Unified Docker provider service for Azure Blob Storage and Amazon S3
+- Prerequisite setup (Docker Desktop, Docker Engine, Azure / AWS accounts)
+- Environment variable configuration (`FILEMANAGER_PROVIDER`, `AZURE_*`, `AWS_*`)
+- `docker-compose.yml` for both storage providers
+- Client-side `ajaxSettings` wiring (`FileOperations`, `Upload`, `Download`, `GetImage`)
+- Troubleshooting DNS and connectivity issues
 
 ### Complete API Reference
 📄 **Read:** [references/api-complete-reference.md](references/api-complete-reference.md)
@@ -572,6 +582,13 @@ Navigate to the appropriate reference file based on your implementation needs:
 - Multi-file upload with progress tracking
 - Persistent user preferences across sessions
 - Synchronized state
+
+**Use Case 5: Cloud-Backed Deployment with Docker**
+- Deploy the unified File Manager provider Docker image for Azure Blob Storage or Amazon S3
+- Configure `FILEMANAGER_PROVIDER` and provider-specific environment variables
+- Run the container via `docker-compose.yml`
+- Point the File Manager `ajaxSettings` at the Docker service endpoints
+- See [references/docker-deployment.md](references/docker-deployment.md) for the full Docker workflow
 
 ---
 

@@ -1,6 +1,6 @@
 ---
 name: syncfusion-aspnetcore-inline-ai-assist
-description: Implement Syncfusion ASP.NET Core Inline AI Assist control for real-time text processing and AI-powered features. Use this skill when users need intelligent prompt suggestions, AI-assisted content generation, command popups, response actions, or positioning AI assist popups in ASP.NET Core applications.
+description: Implement Syncfusion ASP.NET Core Inline AI Assist control for real-time text processing and AI-powered features. Use this skill when users need intelligent prompt suggestions, AI-assisted content generation, command popups, response actions, positioning AI assist popups, or Speech-to-Text voice input in ASP.NET Core applications.
 metadata:
   author: "Syncfusion Inc"
   version: "34.1.29"
@@ -19,6 +19,7 @@ The Inline AI Assist is a Syncfusion ASP.NET Core control that provides intellig
 - **Public methods**: addResponse, executePrompt, showPopup, hidePopup, showCommandPopup, hideCommandPopup
 - **Template support**: Custom editor templates and response templates
 - **Globalization**: Localization (L10n) and RTL support
+- **Speech-to-Text**: Convert spoken words into text using the device's microphone for voice-based prompt input, with support for language, button settings, tooltip settings, interim results, and lifecycle events
 
 ## Documentation Navigation Guide
 
@@ -95,6 +96,17 @@ The Inline AI Assist is a Syncfusion ASP.NET Core control that provides intellig
 - Globalization: L10n and localization
 - RTL (enableRtl property)
 - Accessibility features
+
+### Speech-to-Text
+📄 **Read:** [references/speech-to-text.md](references/speech-to-text.md)
+- Enabling built-in Speech-to-Text using the `speechToTextSettings` property with `Enable = true`
+- Using the `e-inlineaiassist-speechtotextsettings` tag helper
+- Configuring speech recognition language with `Lang` (e.g., `'en-US'`, `'es-ES'`, `'fr-FR'`)
+- Customizing the microphone button with `ButtonSettings` (`Content`, `StopContent`, `IconCss`, `StopIconCss`)
+- Enabling real-time transcription with `AllowInterimResults`
+- Customizing the microphone tooltip with `TooltipSettings` (`Content`, `StopContent`, `Position`)
+- Handling Speech-to-Text events: `speechToTextOnStart`, `speechToTextOnStop`, `speechToTextTranscriptChanged`, `speechToTextOnError`
+- Browser compatibility and microphone permission considerations
 
 ## Quick Start Example
 

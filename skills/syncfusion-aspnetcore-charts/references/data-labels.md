@@ -28,6 +28,7 @@ This guide covers comprehensive data label configuration in Syncfusion ASP.NET C
 - [Smart Label Arrangement](#smart-label-arrangement)
   - [Auto Smart Labels](#auto-smart-labels)
   - [Prevent Label Overlap](#prevent-label-overlap)
+  - [Handling Overlapping Data Labels](#handling-overlapping-data-labels)
 - [Label Customization](#label-customization)
   - [Font Customization](#font-customization)
   - [Background and Border](#background-and-border)
@@ -465,6 +466,261 @@ ViewBag.MappedData = new[]
         </e-accumulation-series>
     </e-accumulation-series-collection>
 </ejs-accumulationchart>
+```
+
+### Handling Overlapping Data Labels
+
+Use the `labelIntersectAction` property to specify how overlapping data labels are handled.
+
+The following options are available:
+
+- `None`: Displays all data labels without changing their positions, even when they overlap.
+- `Hide`: Hides data labels that overlap.
+- `Rotate90`: Rotates overlapping data labels by 90 degrees.
+- `RelocateVertically`: Relocates overlapping data labels vertically.
+- `RelocateHorizontally`: Relocates overlapping data labels horizontally.
+
+The `RelocateVertically` and `RelocateHorizontally` options enable the Smart Data Label feature and are supported only for the following series types:
+
+- `StackingColumn`
+- `StackingColumn100`
+- `StackingBar`
+- `StackingBar100`
+
+These options improve readability by relocating overlapping data labels and connecting them to their corresponding data points using connector lines.
+
+Use the `smartLabelSettings` property to customize the appearance and position of relocated data labels. The following settings are available:
+
+- `background`: Specifies the background color of the relocated data label.
+- `pointerShape`: Specifies the pointer shape of the relocated data label.
+- `border`: Customizes the color, width, and dash array of the relocated data label border.
+- `connectorLineStyle`: Customizes the color and width of the connector line.
+- `offset`: Specifies the distance by which the data label is relocated. This property is applicable only when `labelIntersectAction` is set to `RelocateVertically`.
+
+The following example demonstrates how to relocate overlapping data labels vertically in a stacking column chart:
+
+```cshtml
+@{
+    var marker = new
+    {
+        dataLabel = new
+        {
+            visible = true,
+            position = "Middle",
+            format = "Value: {value}",
+            font = new
+            {
+                size = "14px"
+            },
+            labelIntersectAction = "RelocateVertically",
+            smartLabelSettings = new
+            {
+                background = "#ffffff",
+                pointerShape = "Arrow",
+                border = new
+                {
+                    color = "#808080",
+                    width = 1,
+                    dashArray = "2,2"
+                },
+                connectorLineStyle = new
+                {
+                    color = "#808080",
+                    width = 1
+                },
+                offset = 10
+            }
+        }
+    };
+}
+<ejs-chart id="container" title="Quarterly Sales" height="260px">
+    <e-chart-primaryxaxis valueType="@Syncfusion.EJ2.Charts.ValueType.Category" title="Quarter"></e-chart-primaryxaxis>
+    <e-chart-primaryyaxis title="Sales" minimum="0" maximum="8" interval="1"></e-chart-primaryyaxis>
+    <e-series-collection>
+        <e-series dataSource="@ViewBag.ChartData" type="@Syncfusion.EJ2.Charts.ChartSeriesType.StackingColumn" xName="Quarter" yName="ProductA" name="Product A" marker="marker"></e-series>
+        <e-series dataSource="@ViewBag.ChartData" type="@Syncfusion.EJ2.Charts.ChartSeriesType.StackingColumn" xName="Quarter" yName="ProductB" name="Product B" marker="marker"></e-series>
+        <e-series dataSource="@ViewBag.ChartData" type="@Syncfusion.EJ2.Charts.ChartSeriesType.StackingColumn" xName="Quarter" yName="ProductC" name="Product C" marker="marker"></e-series>
+        <e-series dataSource="@ViewBag.ChartData" type="@Syncfusion.EJ2.Charts.ChartSeriesType.StackingColumn" xName="Quarter" yName="ProductD" name="Product D" marker="marker"></e-series>
+        <e-series dataSource="@ViewBag.ChartData" type="@Syncfusion.EJ2.Charts.ChartSeriesType.StackingColumn" xName="Quarter" yName="ProductE" name="Product E" marker="marker"></e-series>
+        <e-series dataSource="@ViewBag.ChartData" type="@Syncfusion.EJ2.Charts.ChartSeriesType.StackingColumn" xName="Quarter" yName="ProductF" name="Product F" marker="marker"></e-series>
+    </e-series-collection>
+</ejs-chart>
+```
+
+Use the following controller data:
+
+```csharp
+public IActionResult Index()
+{
+    List<ChartData> chartData = new List<ChartData>
+    {
+        new ChartData { Quarter = "Q1", ProductA = 1.1, ProductB = 1.2, ProductC = 1.1, ProductD = 1.2, ProductE = 1.1, ProductF = 1.2 },
+        new ChartData { Quarter = "Q2", ProductA = 1.2, ProductB = 1.1, ProductC = 1.2, ProductD = 1.1, ProductE = 1.2, ProductF = 1.1 },
+        new ChartData { Quarter = "Q3", ProductA = 1.1, ProductB = 1.1, ProductC = 1.2, ProductD = 1.2, ProductE = 1.1, ProductF = 1.2 },
+        new ChartData { Quarter = "Q4", ProductA = 1.2, ProductB = 1.2, ProductC = 1.1, ProductD = 1.1, ProductE = 1.2, ProductF = 1.1 }
+    };
+    ViewBag.ChartData = chartData;
+    return View();
+}
+
+public class ChartData
+{
+    public string Quarter { get; set; }
+    public double ProductA { get; set; }
+    public double ProductB { get; set; }
+    public double ProductC { get; set; }
+    public double ProductD { get; set; }
+    public double ProductE { get; set; }
+    public double ProductF { get; set; }
+}
+```
+
+To relocate overlapping data labels horizontally, set `labelIntersectAction` to `RelocateHorizontally`. The `offset` property is not required for horizontal relocation.
+
+```cshtml
+@{
+    var horizontalMarker = new
+    {
+        dataLabel = new
+        {
+            visible = true,
+            position = "Middle",
+            labelIntersectAction = "RelocateHorizontally",
+            smartLabelSettings = new
+            {
+                background = "#ffffff",
+                pointerShape = "Arrow",
+                border = new
+                {
+                    color = "#808080",
+                    width = 1,
+                    dashArray = "2,2"
+                },
+                connectorLineStyle = new
+                {
+                    color = "#808080",
+                    width = 1
+                }
+            }
+        }
+    };
+}
+```
+
+> **Note:** Smart data labels are supported only for the `StackingColumn`, `StackingColumn100`, `StackingBar`, and `StackingBar100` series. The `offset` property is applicable only when `labelIntersectAction` is set to `RelocateVertically`.
+
+### Stack Labels and Zero-Value Stacks
+
+Bind `stackLabels` on `<ejs-chart>`. Point data labels render individual segment values; `stackLabels` renders aggregate totals.
+
+```cshtml
+@{
+    var stackLabels = new
+    {
+        visible = true,
+        format = "{value}",
+        position = "Top",
+        alignment = "Center",
+        fill = "#FFFFFF",
+        border = new { color = "#64748B", width = 1 },
+        font = new { color = "#0F172A", size = "12px", fontWeight = "600" },
+        margin = new { left = 5, right = 5, top = 3, bottom = 3 }
+    };
+}
+<ejs-chart id="stackLabelChart" stackLabels="stackLabels" textRender="stackLabelTextRender">
+    <e-chart-primaryxaxis valueType="@Syncfusion.EJ2.Charts.ValueType.Category"></e-chart-primaryxaxis>
+    <e-chart-primaryyaxis minimum="-20" maximum="80" interval="20"></e-chart-primaryyaxis>
+    <e-series-collection>
+        <e-series dataSource="ViewBag.Hardware" type="@Syncfusion.EJ2.Charts.ChartSeriesType.StackingColumn"
+                  xName="Quarter" yName="Value" name="Hardware"></e-series>
+        <e-series dataSource="ViewBag.Software" type="@Syncfusion.EJ2.Charts.ChartSeriesType.StackingColumn"
+                  xName="Quarter" yName="Value" name="Software"></e-series>
+    </e-series-collection>
+</ejs-chart>
+<script>
+    function stackLabelTextRender(args) {
+        if (args.text === '0') { args.text = 'No total'; }
+    }
+</script>
+```
+
+Positive and negative stacks use their resolved aggregate positions. Zero totals render at the value-axis baseline, including positive and negative values that cancel. Null and undefined values must not produce an invalid total.
+
+```csharp
+using Microsoft.AspNetCore.Mvc;
+
+public class ChartController : Controller
+{
+    public IActionResult StackLabels()
+    {
+        ViewBag.Hardware = new[]
+        {
+            new { Quarter = "Q1", Value = (double?)30 },
+            new { Quarter = "Q2", Value = (double?)0 },
+            new { Quarter = "Q3", Value = (double?)null },
+            new { Quarter = "Q4", Value = (double?)10 }
+        };
+        ViewBag.Software = new[]
+        {
+            new { Quarter = "Q1", Value = (double?)22 },
+            new { Quarter = "Q2", Value = (double?)0 },
+            new { Quarter = "Q3", Value = (double?)null },
+            new { Quarter = "Q4", Value = (double?)-10 }
+        };
+        return View();
+    }
+}
+```
+
+
+`stackLabels` is a Chart-level configuration that displays the total for each visible stack. It differs from `marker.dataLabel`, which displays individual segment values. A stack that resolves to zero now renders a stack label at the value-axis baseline. This includes all-zero stacks, null or undefined values normalized to zero, and positive and negative values that cancel to zero.
+
+```cshtml
+@{
+    var stackLabels = new
+    {
+        visible = true,
+        format = "{value}",
+        font = new { color = "#111827", size = "12px", fontWeight = "600" },
+        fill = "#FFFFFF",
+        border = new { color = "#6B7280", width = 1 },
+        margin = new { left = 5, right = 5, top = 3, bottom = 3 }
+    };
+}
+<ejs-chart id="stackLabelChart" title="Stack Totals and Zero-Value Labels" stackLabels="stackLabels">
+    <e-chart-primaryxaxis valueType="@Syncfusion.EJ2.Charts.ValueType.Category"></e-chart-primaryxaxis>
+    <e-chart-primaryyaxis minimum="-20" maximum="80" interval="20"></e-chart-primaryyaxis>
+    <e-series-collection>
+        <e-series dataSource="ViewBag.Hardware" type="@Syncfusion.EJ2.Charts.ChartSeriesType.StackingColumn"
+                  xName="Quarter" yName="Value" name="Hardware" stackingGroup="Sales"></e-series>
+        <e-series dataSource="ViewBag.Software" type="@Syncfusion.EJ2.Charts.ChartSeriesType.StackingColumn"
+                  xName="Quarter" yName="Value" name="Software" stackingGroup="Sales"></e-series>
+        <e-series dataSource="ViewBag.Services" type="@Syncfusion.EJ2.Charts.ChartSeriesType.StackingColumn"
+                  xName="Quarter" yName="Value" name="Services" stackingGroup="Sales"></e-series>
+    </e-series-collection>
+</ejs-chart>
+```
+
+```csharp
+// Controller
+ViewBag.Hardware = new[]
+{
+    new { Quarter = "Q1", Value = (double?)30 }, new { Quarter = "Q2", Value = (double?)0 },
+    new { Quarter = "Q3", Value = (double?)null }, new { Quarter = "Q4", Value = (double?)18 },
+    new { Quarter = "Q5", Value = (double?)10 }
+};
+ViewBag.Software = new[]
+{
+    new { Quarter = "Q1", Value = (double?)22 }, new { Quarter = "Q2", Value = (double?)0 },
+    new { Quarter = "Q3", Value = (double?)null }, new { Quarter = "Q4", Value = (double?)15 },
+    new { Quarter = "Q5", Value = (double?)-10 }
+};
+ViewBag.Services = new[]
+{
+    new { Quarter = "Q1", Value = (double?)18 }, new { Quarter = "Q2", Value = (double?)0 },
+    new { Quarter = "Q3", Value = (double?)0 }, new { Quarter = "Q4", Value = (double?)12 },
+    new { Quarter = "Q5", Value = (double?)0 }
+};
 ```
 
 ## Label Customization

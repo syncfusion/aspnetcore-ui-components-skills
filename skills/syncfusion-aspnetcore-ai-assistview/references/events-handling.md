@@ -9,6 +9,7 @@
   - [BeforeAttachmentUpload](#beforeattachmentupload)
   - [AttachmentUploadSuccess](#attachmentuploadSuccess)
   - [AttachmentUploadFailure](#attachmentuploadfailure)
+  - [AttachmentRemoving](#attachmentremoving)
   - [AttachmentRemoved](#attachmentremoved)
   - [AttachmentClick](#attachmentclick)
 
@@ -311,6 +312,49 @@ The `AttachmentRemoved` event is triggered when an attached file is removed in t
     }
 </script>
 ```
+
+### AttachmentRemoving
+
+The `attachmentRemoving` event is triggered when an attached file is being removed in the AI AssistView.
+
+```razor
+@using Syncfusion.EJ2.InteractiveChat;
+
+<div class="aiassist-container" style="height: 350px; width: 650px;">
+    <ejs-aiassistview id="aiAssistView" enableAttachments="true" attachmentRemoving="attachmentRemoving" promptRequest="onPromptRequest" created="onCreated">
+        <e-aiassistview-attachmentsettings saveUrl=@Url.Content("https://services.syncfusion.com/aspnet/production/api/FileUploader/Save") removeUrl=@Url.Content("https://services.syncfusion.com/aspnet/production/api/FileUploader/Remove")></e-aiassistview-attachmentsettings>
+    </ejs-aiassistview>
+</div>
+
+<script>
+    var assistObj;
+    function onCreated() {
+        assistObj = this;
+    }
+    function attachmentRemoving() {
+        // your required action here..
+    }
+    function onPromptRequest() {
+        setTimeout(() => {
+            let defaultResponse = 'For real-time prompt processing, connect the AI AssistView control to your preferred AI service, such as OpenAI or Azure Cognitive Services. Ensure you obtain the necessary API credentials to authenticate and enable seamless integration.';
+            assistObj.addPromptResponse(defaultResponse);
+        }, 2000);
+    }
+</script>
+```
+
+**Event Arguments:**
+
+The following arguments are available in the `attachmentRemoving` event handler:
+
+| Argument | Type | Description |
+|---|---|---|
+| `cancel` | `boolean` | Defines whether the current action can be prevented. |
+| `currentRequest` | `XMLHttpRequest` | Returns the XMLHttpRequest instance that is associated with the remove action. |
+| `customFormData` | `{ [key: string]: Object }[]` | Defines the additional data with key and value pair format that will be submitted to the remove action. |
+| `event` | `MouseEvent \| TouchEvent \| KeyboardEventArgs` | Returns the original event arguments. |
+| `filesData` | [`FileInfo[]`](https://ej2.syncfusion.com/documentation/api/uploader/fileinfo) | Returns the list of files' details that will be removed. |
+| `postRawFile` | `boolean` | Defines whether the selected raw file is sent to the server's remove action. Set `true` to send the raw file; set `false` to send the file name only. |
 
 ### AttachmentClick
 

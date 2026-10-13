@@ -93,6 +93,83 @@ ViewBag.LongLabelData = new[]
 </ejs-chart>
 ```
 
+#### Rotate and Trim Intersecting Labels
+
+`LabelIntersectAction` additionally supports `Rotate45WithTrim` and `Rotate90WithTrim`. These actions rotate intersecting axis labels and then trim text that exceeds the available label bounds.
+
+**Complete axis-label actions:**
+
+- `None`: Takes no action; labels may overlap.
+- `Hide`: Hides intersecting labels.
+- `Trim`: Trims labels with an ellipsis.
+- `Wrap`: Wraps labels onto multiple lines.
+- `MultipleRows`: Arranges labels in multiple rows.
+- `Rotate45`: Rotates intersecting labels by 45 degrees.
+- `Rotate90`: Rotates intersecting labels by 90 degrees.
+- `Rotate45WithTrim`: Rotates intersecting labels by 45 degrees and trims text that exceeds the available bounds.
+- `Rotate90WithTrim`: Rotates intersecting labels by 90 degrees and trims text that exceeds the available bounds.
+
+##### `Rotate45WithTrim` sample
+
+```cshtml
+<ejs-chart id="rotate45WithTrimChart" title="Department Revenue">
+    <e-chart-primaryxaxis valueType="@Syncfusion.EJ2.Charts.ValueType.Category"
+                         labelIntersectAction="@Syncfusion.EJ2.Charts.LabelIntersectAction.Rotate45WithTrim"
+                         maximumLabelWidth="90">
+        <e-majorgridlines width="0"></e-majorgridlines>
+    </e-chart-primaryxaxis>
+    <e-chart-primaryyaxis minimum="0" maximum="80" interval="20" labelFormat="{value}M"></e-chart-primaryyaxis>
+    <e-chart-tooltipsettings enable="true"></e-chart-tooltipsettings>
+    <e-series-collection>
+        <e-series dataSource="ViewBag.DepartmentData" type="@Syncfusion.EJ2.Charts.ChartSeriesType.Column"
+                  xName="Department" yName="Revenue" name="Revenue">
+        </e-series>
+    </e-series-collection>
+</ejs-chart>
+```
+
+```csharp
+// Controller
+ViewBag.DepartmentData = new[]
+{
+    new { Department = "Consumer Electronics and Accessories", Revenue = 72 },
+    new { Department = "Home Furniture and Interior Products", Revenue = 58 },
+    new { Department = "Sports Equipment and Outdoor Recreation", Revenue = 64 },
+    new { Department = "Personal Care and Beauty Products", Revenue = 49 },
+    new { Department = "Books, Education and Office Supplies", Revenue = 55 }
+};
+```
+
+##### `Rotate90WithTrim` sample
+
+```cshtml
+<ejs-chart id="rotate90WithTrimChart" title="Product Sales">
+    <e-chart-primaryxaxis valueType="@Syncfusion.EJ2.Charts.ValueType.Category"
+                         labelIntersectAction="@Syncfusion.EJ2.Charts.LabelIntersectAction.Rotate90WithTrim"
+                         maximumLabelWidth="100">
+        <e-majorgridlines width="0"></e-majorgridlines>
+    </e-chart-primaryxaxis>
+    <e-chart-primaryyaxis minimum="0" maximum="50" interval="10"></e-chart-primaryyaxis>
+    <e-series-collection>
+        <e-series dataSource="ViewBag.ProductSales" type="@Syncfusion.EJ2.Charts.ChartSeriesType.Column"
+                  xName="Product" yName="Units" name="Units Sold">
+        </e-series>
+    </e-series-collection>
+</ejs-chart>
+```
+
+```csharp
+// Controller
+ViewBag.ProductSales = new[]
+{
+    new { Product = "Professional Wireless Noise-Cancelling Headphones", Units = 42 },
+    new { Product = "Ultra-Wide High-Resolution Desktop Monitor", Units = 36 },
+    new { Product = "Ergonomic Adjustable Standing Workstation Desk", Units = 31 },
+    new { Product = "Smart Home Security and Monitoring System", Units = 39 },
+    new { Product = "Portable High-Capacity Power Station", Units = 28 }
+};
+```
+
 ## Label Formatting
 
 ### Numeric Format

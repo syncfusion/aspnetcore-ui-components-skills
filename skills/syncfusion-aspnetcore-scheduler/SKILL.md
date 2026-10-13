@@ -20,6 +20,8 @@ The Syncfusion ASP.NET Core Scheduler is a comprehensive component for managing 
 - **Custom Templates:** Customizing event appearance and templates
 - **Working Hours:** Configuring business hours, working days, and timezones
 - **Event Operations:** Drag-and-drop rescheduling, resizing, and inline editing
+- **Event Buffer:** Reserving setup, preparation, or recovery time before and after each appointment
+- **Current Time Indicator:** Highlighting the current time on the time-grid and timeline views
 
 ## Documentation and Navigation Guide
 
@@ -54,6 +56,20 @@ The Syncfusion ASP.NET Core Scheduler is a comprehensive component for managing 
 - Enabling clipboard support with `allowClipboard` property
 - Cut, copy, and paste operations using Scheduler methods
 - Cross-view and cross-Scheduler clipboard operations
+
+### Event Buffer
+📄 **Read:** [references/event-buffer.md](references/event-buffer.md)
+- Enabling pre/post event buffer with `enableBuffer` on `eventSettings`
+- Mapping `BufferBefore` and `BufferAfter` fields through `e-eventsettings-fields`
+- Authoring a `bufferTemplate` and `renderBuffer` helper for the buffer pill
+- Pairing buffers with `allowOverlap="false"` for buffer-aware conflict detection
+
+### Custom Current Time Indicator
+📄 **Read:** [references/custom-current-time-indicator.md](references/custom-current-time-indicator.md)
+- Enabling the indicator with `showTimeIndicator="true"` on `ejs-schedule`
+- Customizing `currentTimeIndicatorSettings` (`showTime`, `showPreviousDates`, `onTop`)
+- Updating settings at runtime with `dataBind()`
+- Supported time-grid and timeline views
 
 ### Virtual Scrolling
 📄 **Read:** [references/virtual-scrolling.md](references/virtual-scrolling.md)
@@ -241,6 +257,8 @@ new AppointmentData {
 - `enableAdaptiveUI`: Enables adaptive (responsive) layout for smaller screens
 - `height` and `width`: Dimension settings
 - `cssClass`: Custom CSS class for styling
+- `showTimeIndicator`: Enables the current time indicator line on time-grid and timeline views (default: false)
+- `currentTimeIndicatorSettings`: Client-side object that customizes the indicator. Supports `showTime`, `showPreviousDates`, and `onTop`.
 
 ### Event Settings Properties
 - `dataSource`: Binds appointment data (array or DataManager)
@@ -253,6 +271,8 @@ new AppointmentData {
 - `sortComparer`: Custom sort function for overlapping events
 - `editFollowingEvents`: Allows editing current and following recurring events
 - `maxEventStack`: Per-view maximum number of event labels to display per cell. `0` shows all events; positive values show the count plus a `+n more` indicator.
+- `enableBuffer`: Enables the pre/post event buffer feature. Renders a buffer pill against each event edge using `bufferTemplate`.
+- `bufferTemplate`: Id of the `<script type="text/x-template">` block that renders the buffer pill. Receives `data` (the appointment record) and `bufferType` (`"before"` or `"after"`).
 
 ### Event Field Mapping
 - `id`: Unique appointment identifier (required)
